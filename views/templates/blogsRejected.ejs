@@ -1,0 +1,20 @@
+<% layout('layout') %>
+    <div class="row mt-4 home">
+        <div class="col-md-3 sidemenu">
+            <div class="component">
+                <%- include('../particles/sidebarBlog.ejs') -%>
+            </div>
+        </div>
+        <div class="col-md-9 home__content">
+            <div class="card home__blogs mb-5 cardStyle" id="home__blogs">
+                <div class="home__blogsHeader headerMain">
+                    <p>Rejected Blogs</p>
+                </div>
+                <div class="home__blogsCard blogsCard">
+                    <% for (var i=1; i <=10; i++ ) { %>
+                        <%- include('../particles/blogsCard.ejs') -%>
+                            <% } %>
+                </div>
+            </div>
+        </div>
+    </div>

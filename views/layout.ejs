@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/glide/glide.core.min.css">
+    <link rel="stylesheet" href="/css/glide/glide.theme.min.css">
+    <!-- javascript -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- jquery script -->
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+
+    <title>Welcome to BJP</title>
+</head>
+
+<body style="background-color: #E5E5E5;">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/icons/bjp_logo.png" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+                aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarToggler">
+                <!-- mr-auto mt-2 mt-lg-0 -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" data-link href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-link href="/privileges">Privileges</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-link href="/committees">Committees</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="Navbar-end">
+                <div class="d-flex">
+                    <div class="dropdown">
+                        <span class="navEndIcon" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <img src="img/icons/notification.png">
+                        </span>
+                        <div class="dropdown-menu cardStyle" aria-labelledby="dropdownMenuButton">
+                            <div class="home__header header">
+                                <p>Notifications <span>(15 New)</span></p>
+                            </div>
+                            <% for (var i=1; i <=5; i++ ) { %>
+                                <a class="dropdown-item" href="#">
+                                    <div class="notification_item d-flex">
+                                        <img class="notification_icon" src="img/icons/notification_icon.png" alt="">
+                                        <div class="notification_data">
+                                            <p><b>Utkarsh Kumar </b>posted an event that needs your approval.</p>
+                                            <div class="notification_time">
+                                                <img src="img/icons/Time.png" alt="">
+                                                <small><span class="notification_timeItem">15 min</span> ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <% } %>
+                        </div>
+                        <span class="navEndIcon">
+                            <img src="img/icons/Profile.png" />
+                        </span>
+                    </div>
+                </div>
+            </div>
+    </nav>
+    <div class="container">
+        <%- body -%>
+    </div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!-- glide JavaScript -->
+
+    <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+
+    <!-- external javascript -->
+
+    <script type="application/javascript" src="/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<% layout('layout') %>
+    <div class="row mt-4 home">
+        <div class="col-md-3 sidemenu">
+            <div class="component">
+                <%- include('../particles/sidebarHome.ejs') -%>
+            </div>
+        </div>
+        <div class="col-md-9 home__content">
+            <div class="card home__events cardStyle" id="home__events">
+                <div class="home__eventsHeader headerMain">
+                    <p>Upcoming Events</p>
+                </div>
+                <div class="glide">
+                    <div class="glide__body">
+                        <div class="glide__track" data-glide-el="track">
+                            <ul class="glide__slides">
+                                <% for (var i=1; i <=10; i++ ) { %>
+                                    <li class="glide__slide">
+                                        <%- include('../particles/eventCard.ejs') -%>
+                                    </li>
+                                    <% } %>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="glide__arrows" data-glide-el="controls">
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+                            <img src="img/icons/prev.png" alt="">
+                        </button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+                            <img src="img/icons/next.png" alt="">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card home__blogs mt-4 cardStyle" id="home__blogs">
+                <div class="home__blogsHeader headerMain">
+                    <p>Recent Blogs</p>
+                </div>
+                <div class="home__blogsCard blogsCard">
+                    <% for (var i=1; i <=3; i++ ) { %>
+                        <%- include('../particles/blogsCard.ejs') -%>
+                            <% } %>
+                </div>
+            </div>
+            <div class="card home__complaints mt-4 cardStyle mb-5" id="home__complaints">
+                <div class="home__complaintsHeader headerMain">
+                    <p>Recent Complaints</p>
+                </div>
+                <div class="home__complaintsCard blogsCard">
+                    <% for (var i=1; i <=3; i++ ) { %>
+                        <%- include('../particles/complaintsCard.ejs') -%>
+                            <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
