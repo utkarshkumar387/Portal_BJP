@@ -2,18 +2,129 @@
     <div class="row mt-4 home">
         <div class="col-md-3 sidemenu">
             <div class="component">
-                <%- include('../particles/sidebarBlog.ejs') -%>
+                <%- include('../particles/sidebarComplaints.ejs') -%>
             </div>
         </div>
         <div class="col-md-9 home__content">
-            <div class="card home__blogs mb-5 cardStyle" id="home__blogs">
-                <div class="home__blogsHeader headerMain">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed blanditiis cupiditate
-                        veniam adipisci in esse.</p>
+            <div class="card home__complaints cardStyle" id="home__complaints">
+                <div class="home__complaintsHeader headerMain">
+                    <p>Sub: <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, eaque? Numquam sunt
+                            modi adipisci
+                            incidunt!<p></p>
                 </div>
-                <div class="home__blogsCard blogsCard">
-                    <% for (var i=1; i <=10; i++ ) { %>
-                        <%- include('../particles/blogsCard.ejs') -%>
+                <div class="home__complaintsCard blogsCard">
+                    <div class="complaintsData">
+                        <div class="complaintsdata__top mb-4 d-flex">
+                            <p><b>8 JAN 2021</b></p>
+                            <p><b>Reference Number: <span>8767654343</span></b></p>
+                        </div>
+                        <p><b>To,</b></p>
+                        <p class="complaintsData__sent">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Doloremque sint veritatis vel totam quo repellat quaerat nesciunt in!</p>
+                        <p class="complaintsData__subject pb-3 pt-3"><b>Sub: <span>Lorem ipsum dolor sit amet
+                                    consectetur,
+                                    adipisicing elit. Facilis minus
+                                    eligendi qui exercitationem eum! Nihil.</span></b></p>
+                        <p>Dear Sir,</p>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam id optio veniam aut
+                            provident, repudiandae, ea est doloribus voluptate quis maxime molestias repellendus ipsam,
+                            omnis et nisi. Cumque aliquam voluptatum nobis corporis fuga quo vel porro perspiciatis amet
+                            ipsum accusantium quos aliquid eaque minus delectus soluta, rem molestias, autem
+                            consequuntur aperiam architecto tempora? Saepe sed, est excepturi rerum a unde! Non nostrum
+                            eum cupiditate praesentium illum odit, laboriosam eaque voluptatum quia quidem blanditiis,
+                            sequi necessitatibus nisi. Quibusdam, doloremque? Voluptas adipisci repellendus cum ipsum
+                            nobis, nam dolorem voluptates aperiam modi labore hic quibusdam natus alias, optio obcaecati
+                            officia, quo inventore dolorum nostrum maiores porro odio expedita ex! Error ex odit
+                            molestiae deserunt ut. Magnam dicta aliquam dolor, quo reprehenderit totam ea molestiae
+                            possimus esse distinctio similique laudantium. Incidunt, deleniti explicabo excepturi ad est
+                            officiis. Aut eaque corrupti officiis, expedita quos ratione iusto atque fugiat at sed in
+                            inventore quam, neque ipsum totam? A ea odio autem, adipisci, tempora, perspiciatis iusto
+                            delectus itaque illo voluptate quibusdam quod voluptatem quo distinctio magni reprehenderit
+                            blanditiis nihil. In voluptates id debitis ipsam, possimus voluptatibus nulla laboriosam
+                            aspernatur eius odit velit sit repellendus magnam placeat, facere nam, quam facilis ratione
+                            inventore neque minima! Voluptas, quis neque!
+                        </p>
+                        <p>Thank You!</p>
+                        <p>Yours sincerly<br>Utkarsh</p>
+                    </div>
+                    <div class="complaintsFooter">
+                        <div class="complaints__header">
+                            <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
+                                class="rounded-circle" alt="...">
+                            <div class="complaints__sender">
+                                <b>Abhishek Varde</b>
+                                <p class="small">Pune, <span>Maharashtra</span>
+                                </p>
+                            </div>
+                            <%- include('../Atoms/priorityLow.ejs') -%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card comments mt-4 cardStyle mb-4">
+                <div class="home__complaintsHeader headerMain">
+                    <p>Comments</p>
+                </div>
+                <div class="complaints__comments">
+                    <div class="comments__section">
+                        <div class="complaints__header">
+                            <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
+                                class="rounded-circle" alt="...">
+                            <div class="complaints__sender">
+                                <b>Abhishek Varde</b>
+                                <p class="small">Pune, <span>Maharashtra</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="complaints__comment ml-5">
+                            <div class="comment__box p-3 mt-3 mb-3">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam at totam natus.
+                                    Voluptatum, porro. Incidunt aspernatur veniam tenetur? Quod, eius harum doloremque
+                                    quos
+                                    maxime consequatur iure, porro dignissimos debitis non provident rerum quam
+                                    officiis.
+                                    Dolorem asperiores magnam earum at consequuntur soluta accusamus culpa deleniti
+                                    tempora
+                                    voluptatem. Quas officia maiores libero.</p>
+                            </div>
+                            <div class="complaints__reply pl-3">
+                                <div class="complaints__header">
+                                    <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
+                                        class="rounded-circle" alt="...">
+                                    <div class="complaints__sender">
+                                        <b>Abhishek Varde</b>
+                                        <p class="small">Pune, <span>Maharashtra</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="comment__box p-3 ml-5 mt-3">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam at totam natus.
+                                        Voluptatum, porro. Incidunt aspernatur veniam tenetur? Quod, eius harum
+                                        doloremque
+                                        quos
+                                        maxime consequatur iure, porro dignissimos debitis non provident rerum quam
+                                        officiis.
+                                        Dolorem asperiores magnam earum at consequuntur soluta accusamus culpa deleniti
+                                        tempora
+                                        voluptatem. Quas officia maiores libero.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comments__enter mt-5">
+                        <textarea placeholder="Share your Comments.." class="form-control mb-4"
+                            id="exampleFormControlTextarea1" rows="5"></textarea>
+                        <a class="postComment__button">Post Comment</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card home__complaints mt-4 cardStyle mb-5" id="home__complaints">
+                <div class="home__complaintsHeader headerMain">
+                    <p>Recent Complaints</p>
+                </div>
+                <div class="home__complaintsCard blogsCard">
+                    <% for (var i=1; i <=3; i++ ) { %>
+                        <%- include('../particles/complaintsCard.ejs') -%>
                             <% } %>
                 </div>
             </div>

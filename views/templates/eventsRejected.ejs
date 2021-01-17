@@ -1,0 +1,24 @@
+<% layout('layout') %>
+    <div class="row mt-4 mb-5 home">
+        <div class="col-md-3 sidemenu">
+            <div class="component">
+                <%- include('../particles/sidebarEvent.ejs') -%>
+            </div>
+        </div>
+        <div class="col-md-9 home__content">
+            <div class="card">
+                <div class="home__blogsHeader headerMain">
+                    <p>Rejected Events</p>
+                </div>
+                <div class="events">
+                    <div class="row">
+                        <% for (var i=1; i <=12; i++ ) { %>
+                            <div class="col-md-4 events__card mb-4 px-3">
+                                <%- include('../particles/eventCard.ejs') -%>
+                            </div>
+                            <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,72 @@
+<% layout('layout') %>
+    <div class="row mt-4 home">
+        <div class="col-md-3 sidemenu">
+            <div class="component">
+                <%- include('../particles/sidebarEvent.ejs') -%>
+            </div>
+        </div>
+        <div class="col-md-9 home__content">
+            <div class="card home__blogs mb-4 cardStyle" id="home__blogs">
+                <div class="home__blogsHeader headerMain">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi voluptatibus excepturi consectetur,
+                        id quo optio!</p>
+                </div>
+                <div class="events__data">
+                    <div class="events__image">
+                        <img src="https://pbs.twimg.com/media/D3KmHyIWAAAcdSh.jpg" alt="">
+                    </div>
+                    <div class="events__detail mb-2">
+                        <div class="details row">
+                            <div class="col-md-4">
+                                <p><b>Venue</b></p>
+                                <p><b>Date & Time</b></p>
+                                <p><b>Chief Guests</b></p>
+                            </div>
+                            <div class="col-md-8">
+                                <p>Leela Palace, Chennai</p>
+                                <p>Thurshday, 31 Dec 2020 | 06:30 PM</p>
+                                <p>Chief Guest Name</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="events__organizer">
+                        <div class="complaints__header">
+                            <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
+                                class="rounded-circle" alt="...">
+                            <div class="complaints__sender">
+                                <b>Abhishek Varde</b>
+                                <p class="small">Pune, <span>Maharashtra</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card home__events mb-5 cardStyle" id="home__events">
+                <div class="home__eventsHeader headerMain">
+                    <p>Upcoming Events</p>
+                </div>
+                <div class="glide">
+                    <div class="glide__body">
+                        <div class="glide__track" data-glide-el="track">
+                            <ul class="glide__slides">
+                                <% for (var i=1; i <=10; i++ ) { %>
+                                    <li class="glide__slide events__card">
+                                        <%- include('../particles/eventCard.ejs') -%>
+                                    </li>
+                                    <% } %>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="glide__arrows" data-glide-el="controls">
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+                            <img src="img/icons/prev.png" alt="">
+                        </button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+                            <img src="img/icons/next.png" alt="">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

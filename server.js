@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(morgan('dev'));
 
-require('./routes')(app);
+require('./routes/home')(app);
 require('./routes/committee')(app);
 require('./routes/privilege')(app);
 require('./routes/blogs')(app);
@@ -30,6 +30,13 @@ require('./routes/complaints')(app);
 require('./routes/complaintsUnapproved')(app);
 require('./routes/complaintsRejected')(app);
 require('./routes/complaintsView')(app);
+require('./routes/blogsView')(app);
+require('./routes/profile')(app);
+require('./routes/events')(app);
+require('./routes/eventsUnapproved')(app);
+require('./routes/eventsRejected')(app);
+require('./routes/eventsView')(app);
+require('./routes/profileEdit')(app);
 
 
 app.use(express.static('public'));
