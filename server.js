@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(morgan('dev'));
 
-require('./routes/home')(app);
+require('./routes/index')(app);
 require('./routes/committee')(app);
 require('./routes/privilege')(app);
 require('./routes/blogs')(app);

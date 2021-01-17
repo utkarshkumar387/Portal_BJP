@@ -1,5 +1,5 @@
 module.exports = function (app) {
     app.get('/', function (req, res, next) {
-        res.render('templates/home');
+        res.render('templates/index');
     })
 }
