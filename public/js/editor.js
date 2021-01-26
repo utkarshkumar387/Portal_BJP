@@ -22,7 +22,7 @@ function downloadPoster() {
 }
 
 const bindInputToElement = (inputEl, elementEl) => {
-    inputEl.addEventListener('change', () => {
+    inputEl.addEventListener('keyup', () => {
         elementEl.textContent = inputEl.value;
     });
 }
