@@ -112,6 +112,9 @@ color: #FFFFFF !important;
     zoom: var(--zoom);
     background-color: orange;
 }
+.zoom_container{
+    padding: 8px 12px;
+}
 .editor_zoom{
     /* background: #4b4343; */
     background-color: rgba(237,240,242,.7);

@@ -20,3 +20,34 @@ function downloadPoster() {
         link.click();
     });
 }
+
+const bindInputToElement = (inputEl, elementEl) => {
+    inputEl.addEventListener('change', () => {
+        elementEl.textContent = inputEl.value;
+    });
+}
+bindInputToElement(
+    document.getElementById('your_name'),
+    document.getElementById('card_name')
+);
+
+bindInputToElement(
+    document.getElementById('phone_number'),
+    document.getElementById('card_phone')
+);
+bindInputToElement(
+    document.getElementById('Whatsapp_number'),
+    document.getElementById('card_whatsapp')
+);
+bindInputToElement(
+    document.getElementById('facebook_link'),
+    document.getElementById('card_facebook')
+);
+bindInputToElement(
+    document.getElementById('instagram_link'),
+    document.getElementById('card_instagram')
+);
+bindInputToElement(
+    document.getElementById('twitter_link'),
+    document.getElementById('card_twitter')
+);
