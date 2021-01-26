@@ -7,6 +7,8 @@
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
     scroll-behavior: smooth;
+    color: #4E4B66;
+    
 }
 .navbar{
     background-color: #ffffff;
@@ -228,6 +230,9 @@
 }
 .events__card .card .card-footer a{
     color: #F58220
+}
+.events__card .card .card-footer a:hover{
+    text-decoration: none;
 }
 .events__card .card .card-footer a span img{
     height: 14px !important;
@@ -573,6 +578,148 @@ opacity: 0.05;
 .events__organizer{
     padding: 24px 32px 32px 32px;
 }
+/* committee */
+.committee__card .card .card-body{
+    padding: 27px 12px 12px 12px;
+}
+.committee__card .card .card-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center !important;
+    border: none;
+    background-color: #fff;
+    align-items: center;
+    font-size: 14px;
+    line-height: 21px;
+    padding: 12px;
+}
+.committee__card .card .card-footer p{
+    display: block;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 21px;
+}
+.committee__card .card .card-footer a{
+    color: #F58220
+}
+.committee__card .card .card-footer a:hover{
+    text-decoration: none;
+}
+.committee__card .card .card-footer a span img{
+    height: 14px !important;
+}
+.committee__card .card img{
+    height: 300px !important;
+    object-fit: cover;
+}
+.committee__card p{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+}
+.committee__edit{
+    background: #2979FF;
+    border-radius: 40px;
+    color:  #D6D8E7 !important;
+    text-decoration: none;
+    padding: 8px 12px;
+}
+.committee__body h3{
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 30px;
+}
+.myCommittee .myCommittee__card img{
+    width: 100%;
+    object-fit: cover;
+}
+.myCommittee__data{
+    padding: 32px;
+}
+.myCommittee__data h3{
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 72px;
+    color: #4E4B66;
+}
+.myCommittee__data p{
+    font-weight: normal;
+font-size: 18px;
+line-height: 28px;
+}
+.committee__members{
+    padding: 32px;
+}
+.search__box{
+    background-color:#EFF0F7;
+    width: 100%;
+    border-radius: 50px;
+    height: 64px;
+    padding: 15px 50px;
+}
+/* .search__box img{
+    height: 18px;
+    width: 18px;
+} */
+.search__box input{
+    border: none;
+    background-color:#EFF0F7;
+    font-size: 24px;
+}
+.search__box input:focus{
+    outline: none;
+}
+.member__inner{
+    padding: 18px 24px;
+}
+.member__button{
+    background: #2979FF;
+border-radius: 40px;
+color: #fff;
+padding: 8px 32px;
+font-size: 16px;
+text-decoration: none;
+}
+.member__button:hover{
+    text-decoration: none;
+    color: #fff;
+}
+.member__more{
+    cursor: pointer;
+}
+.manager .badge{
+    border-radius: 39px;
+    background-color: #F77B72;
+    color: #FFFFFF;
+    padding: 8px 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: normal;
+    font-weight: 13px;
+}
+.manager .badge img{
+    height: 15px;
+    width: 15px;
+}
+/* .manager{
+    background-color: #F77B72;
+    border-radius: 39px;
+    height: 24px;
+}
+.manager .badge img{
+    margin-right: 8px;
+    height: 20px;
+    width: 20px;
+}
+.manager .badge{
+    color: #fff;
+    padding: 5px 10px;
+}
+.manager .badge span{
+    font-family: 'Poppins', sans-serif;
+} */
 @media (min-width: 1024px){
     .navbar #navbarToggler {
         display: flex;

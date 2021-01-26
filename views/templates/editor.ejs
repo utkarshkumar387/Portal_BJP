@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/editor.css">
+    <!-- javascript -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- jquery script -->
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+
+    <title>Welcome to Editor</title>
+</head>
+
+<body style="background-color: #E5E5E5;">
+    <nav class="navbar sticky-top navbar-expand-lg editor__navbar justify-content-between">
+        <div class="navbar__left d-flex align-items-center">
+            <a class="editor__back"><img src="img/icons/back.png" /></a>
+            <a class="navbar-brand ml-4" href="#"><img src="img/icons/bjp_logo.png" /></a>
+        </div>
+        <div class="Navbar-end navbar__right">
+            <div class="d-flex align-items-center">
+                <a class="ml-4"><img src="img/icons/save.png"></a>
+                <a class="ml-4"><img src="img/icons/undo.png"></a>
+                <a class="ml-4"><img src="img/icons/delete.png"></a>
+                <a class="button__download ml-4 d-flex align-items-center" onclick="downloadPoster()"
+                    id="download-button"><img class="mr-2" src="img/icons/download_file.png" />Download</a>
+                <a class="button__share ml-4 d-flex align-items-center"><img class="mr-2"
+                        src="img/icons/share_file.png" />Share</a>
+            </div>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+            aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+    <div class="container-fluid">
+        <div class="item scroller leftsidebar">
+            <div class="inner">
+                <ul class="list-unstyled components nav d-block" id="myTab" role="tablist">
+                    <li class="d-flex justify-content-center list">
+                        <a class="nav-link align-items-center active" id="details-tab" data-toggle="tab" href="#details"
+                            role="tab" aria-controls="details" aria-selected="true">
+                            <img src="img/icons/details.png" class="mb-2" />
+                            Details
+                        </a>
+                    </li>
+                    <li class="d-flex justify-content-center list">
+                        <a class="nav-link align-items-center" id="templates-tab" data-toggle="tab" href="#templates"
+                            role="tab" aria-controls="templates" aria-selected="false">
+                            <img src="img/icons/template.png" class="mb-2" />
+                            Templates
+                        </a>
+                    </li>
+                    <li class="d-flex justify-content-center list">
+                        <a class="nav-link align-items-center" id="backgrounds-tab" data-toggle="tab"
+                            href="#backgrounds" role="tab" aria-controls="backgrounds" aria-selected="false">
+                            <img src="img/icons/background.png" class="mb-2" />
+                            Backgrounds
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#homeSubmenu" class="align-items-center list" data-toggle="collapse"
+                            aria-expanded="false" class="dropdown-toggle">
+                            <i class="fa fa-chevron-circle-down mb-2" aria-hidden="true" style="font-size: 20px;"></i>
+                            More
+                        </a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li class="list__inner">
+                                <a href="index.html" class="align-items-center">
+                                    <img src="img/icons/typo.png" class="mb-2" alt="">
+                                    Text
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- <ul class="list-unstyled components" id="myTab" role="tablist">
+                    <li class="d-flex justify-content-center list">
+                        <a class="align-items-center nav-link active" id="home-tab" data-toggle="tab" href="#home"
+                            role="tab" aria-controls="home" aria-selected="true">
+                            <img src="img/icons/details.png" class="mb-2" />
+                            Details
+                        </a>
+                    </li>
+                    <li class="d-flex justify-content-center list">
+                        <a class="align-items-center nav-link" id="profile-tab" data-toggle="tab" href="#profile"
+                            role="tab" aria-controls="profile" aria-selected="false">
+                            <img src="img/icons/template.png" class="mb-2" />
+                            Templates
+                        </a>
+                    </li>
+                    <li class="d-flex justify-content-center list">
+                        <a href="services.html" class="align-items-center">
+                            <img src="img/icons/background.png" class="mb-2" />
+                            Backgrounds
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#homeSubmenu" class="align-items-center list" data-toggle="collapse"
+                            aria-expanded="false" class="dropdown-toggle">
+                            <i class="fa fa-chevron-circle-down mb-2" aria-hidden="true" style="font-size: 20px;"></i>
+                            More
+                        </a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li class="list__inner">
+                                <a href="index.html" class="align-items-center">
+                                    <img src="img/icons/typo.png" class="mb-2" alt="">
+                                    Text
+                                </a>
+                            </li>
+                            <li class="list__inner">
+                                <a href="drivers.html" class="align-items-center">
+                                    <img src="img/icons/upload.png" class="mb-2" alt="">
+                                    Upload
+                                </a>
+                            </li>
+                            <li class="list__inner">
+                                <a href="inventory.html" class="align-items-center">
+                                    <img src="img/icons/effects.png" class="mb-2" alt="">
+                                    Effects
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul> -->
+            </div>
+        </div>
+        <div class="item scroller workarea">
+            <div class="inner box mt-4 mb-4">
+                <div class="layout" id="layoutZoom">
+                    <div class="layout__inner px-3 py-3">
+                        <div class="poster">
+                            <img src="img/ddp.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="editor_zoom cardStyle mb-3">
+                <div class="sliderContainer zoom_container">
+                    <i class="fa fa-search-minus zoom_icon mr-2" aria-hidden="true"></i>
+                    <input type="range" min="45" max="70" value="60" name="zoom" data-sizing="%"
+                        class="slider zoom_slider" id="zoom_range">
+                    <i class="fa fa-search-plus zoom_icon ml-2" aria-hidden="true"></i>
+                    <!-- <p>Value: <span id="demo"></span></p> -->
+                </div>
+            </div>
+        </div>
+        <div class="item scroller rightsidebar">
+            <div class="inner rightsidebar__inner">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
+                        <div class="form-group">
+                            <label for="file_name">File Name</label>
+                            <input type="text" class="form-control" id="file_name" value="untitled">
+                        </div>
+                        <div class="form-group">
+                            <label for="your_name">Your name</label>
+                            <input type="text" class="form-control" id="your_name" placeholder="Enter your name...">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone_number">Phone Number</label>
+                            <input type="tel" class="form-control" id="phone_number"
+                                placeholder="Enter Phone number...">
+                        </div>
+                        <div class="form-group">
+                            <label for="Whatsapp_number">Whatsapp Number</label>
+                            <input type="tel" class="form-control" id="Whatsapp_number"
+                                placeholder="Enter Whatsapp number...">
+                        </div>
+                        <div class="form-group">
+                            <label for="facebook_link">Facebook Link</label>
+                            <input type="text" class="form-control" id="facebook_link"
+                                placeholder="Facebook.com/utkarshkumar123">
+                        </div>
+                        <div class="form-group">
+                            <label for="instagram_link">Instagram Link</label>
+                            <input type="text" class="form-control" id="instagram_link"
+                                placeholder="Instagram.com/utkarshkumar123">
+                        </div>
+                        <div class="form-group">
+                            <label for="twitter_link">Twitter Link</label>
+                            <input type="text" class="form-control" id="twitter_link"
+                                placeholder="Twitter.com/utkarshkumar123">
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="templates" role="tabpanel" aria-labelledby="templates-tab">
+                        <div class="row">
+                            <% for (var i=1; i <=4; i++ ) { %>
+                                <div class="col-md-6 py-3 d-flex justify-content-center">
+                                    <div class="background__box">
+
+                                    </div>
+                                </div>
+                                <% } %>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="backgrounds" role="tabpanel" aria-labelledby="backgrounds-tab">
+                        <div class="row">
+                            <% for (var i=1; i <=12; i++ ) { %>
+                                <div class="col-md-6 py-3 d-flex justify-content-center">
+                                    <div class="background__box">
+
+                                    </div>
+                                </div>
+                                <% } %>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">File Name</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1"
+                                placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Your name</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1"
+                                placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Phone Number</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1"
+                                placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Whatsapp Number</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1"
+                                placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Facebook Link</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1"
+                                placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Instagram Link</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1"
+                                placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Twitter Link</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1"
+                                placeholder="name@example.com">
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        ...
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        ...
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!-- glide JavaScript -->
+
+    <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+
+    <!-- external javascript -->
+
+    <script type="application/javascript" src="/js/editor.js"></script>
+    <script type="application/javascript" src="/js/html2canvas.js"></script>
+</body>
+
+</html>

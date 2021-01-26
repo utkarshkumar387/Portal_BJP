@@ -37,6 +37,9 @@ require('./routes/eventsUnapproved')(app);
 require('./routes/eventsRejected')(app);
 require('./routes/eventsView')(app);
 require('./routes/profileEdit')(app);
+require('./routes/editorPage')(app);
+require('./routes/committeeMy')(app);
+require('./routes/committeeClicked')(app);
 
 
 app.use(express.static('public'));
