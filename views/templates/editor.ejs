@@ -81,7 +81,8 @@
                         </a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
                             <li class="list__inner">
-                                <a href="index.html" class="align-items-center">
+                                <a href="#text" class="align-items-center" id="text-tab" data-toggle="tab" role="tab"
+                                    aria-controls="text" aria-selected="false">
                                     <img src="img/icons/typo.png" class="mb-2" alt="">
                                     Text
                                 </a>
@@ -142,9 +143,9 @@
         </div>
         <div class="item scroller workarea">
             <div class="inner box mt-4 mb-4">
-                <div class="layout" id="layoutZoom">
+                <div class="layout" onload="enableEditMode();" contenteditable="True" id="layoutZoom">
                     <div class="layout__inner px-3 py-3">
-                        <div class="poster">
+                        <div class="poster" id="poster">
                             <img src="img/ddp.jpg" alt="">
                             <p>Name: <span id="card_name">Utkarsh</span></p>
                             <p>Phone: <span id="card_phone">9876543456</span></p>
@@ -162,7 +163,6 @@
                     <input type="range" min="45" max="70" value="60" name="zoom" data-sizing="%"
                         class="slider zoom_slider" id="zoom_range">
                     <i class="fa fa-search-plus zoom_icon ml-2" aria-hidden="true"></i>
-                    <!-- <p>Value: <span id="demo"></span></p> -->
                 </div>
             </div>
         </div>
@@ -170,108 +170,62 @@
             <div class="inner rightsidebar__inner">
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
-                        <div class="form-group">
-                            <label for="file_name">File Name</label>
-                            <input type="text" class="form-control" id="file_name" value="untitled">
-                        </div>
-                        <div class="form-group">
-                            <label for="your_name">Your name</label>
-                            <input type="text" class="form-control" id="your_name" placeholder="Enter your name...">
-                        </div>
-                        <div class="form-group">
-                            <label for="phone_number">Phone Number</label>
-                            <input type="tel" class="form-control" id="phone_number"
-                                placeholder="Enter Phone number...">
-                        </div>
-                        <div class="form-group">
-                            <label for="Whatsapp_number">Whatsapp Number</label>
-                            <input type="tel" class="form-control" id="Whatsapp_number"
-                                placeholder="Enter Whatsapp number...">
-                        </div>
-                        <div class="form-group">
-                            <label for="facebook_link">Facebook Link</label>
-                            <input type="text" class="form-control" id="facebook_link"
-                                placeholder="Facebook.com/utkarshkumar123">
-                        </div>
-                        <div class="form-group">
-                            <label for="instagram_link">Instagram Link</label>
-                            <input type="text" class="form-control" id="instagram_link"
-                                placeholder="Instagram.com/utkarshkumar123">
-                        </div>
-                        <div class="form-group">
-                            <label for="twitter_link">Twitter Link</label>
-                            <input type="text" class="form-control" id="twitter_link"
-                                placeholder="Twitter.com/utkarshkumar123">
-                        </div>
+                        <%- include('../particles/editorDetails.ejs') -%>
                     </div>
                     <div class="tab-pane fade" id="templates" role="tabpanel" aria-labelledby="templates-tab">
-                        <div class="row">
-                            <% for (var i=1; i <=4; i++ ) { %>
-                                <div class="col-md-6 py-3 d-flex justify-content-center">
-                                    <div class="background__box">
-
-                                    </div>
-                                </div>
-                                <% } %>
-                        </div>
+                        <%- include('../particles/editorTemplates.ejs') -%>
                     </div>
                     <div class="tab-pane fade" id="backgrounds" role="tabpanel" aria-labelledby="backgrounds-tab">
-                        <div class="row">
-                            <% for (var i=1; i <=12; i++ ) { %>
-                                <div class="col-md-6 py-3 d-flex justify-content-center">
-                                    <div class="background__box">
-
-                                    </div>
+                        <%- include('../particles/editorBackgrounds.ejs') -%>
+                    </div>
+                    <div class="tab-pane fade" id="text" role="tabpanel" aria-labelledby="text-tab">
+                        <div class="form-group mb-4">
+                            <label for="fontSelect">Font</label>
+                            <select onchange="sendCommandArg('fontName', this.value);" class="form-control"
+                                id="fontSelect">
+                                <option value="Arial">Arial</option>
+                                <option value="Comic Sans MS">Comic Sans MS</option>
+                                <option value="Courier">Courier</option>
+                                <option value="Georgia">Georgia</option>
+                                <option value="Tohoma">Tohoma</option>
+                                <option value="Times New Roman">Times New Roman</option>
+                                <option value="Verdana">Verdana</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="fontSize">Font Size</label>
+                            <input type="range" class="form-control" id="fontSize" min="10" max="100" value="18"
+                                name="font-size" data-sizing="px" />
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="fontColor">Font Color
+                                <div class="d-flex justify-content-between">
+                                    <input onchange="sendCommandArg('foreColor', this.value);" type="color"
+                                        id="fontColor" class="form-control" />
+                                    <span>Color</span>
                                 </div>
-                                <% } %>
+                            </label>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label>Font Emphasize</label>
+                            <div class="d-flex justify-content-between">
+                                <button onclick="sendCmd('bold');" class="btn fa fa-bold"></button>
+                                <button onclick="sendCmd('italic');" class="btn fa fa-italic"></button>
+                                <button onclick="sendCmd('underline');" class="btn fa fa-underline"></button>
+                                <button onclick="sendCmd('strikeThrough');" class="btn fa fa-strikethrough"></button>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label>Font Alignment</label>
+                            <div class="d-flex justify-content-between">
+                                <button onclick="sendCmd('justifyRight');" class="btn fa fa-align-right"></button>
+                                <button onclick="sendCmd('justifyCenter');" class="btn fa fa-align-center"></button>
+                                <button onclick="sendCmd('justifyLeft');" class="btn fa fa-align-left"></button>
+                                <button onclick="sendCmd('justifyFull');" class="btn fa fa-align-justify"></button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">File Name</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1"
-                                placeholder="name@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Your name</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1"
-                                placeholder="name@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Phone Number</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1"
-                                placeholder="name@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Whatsapp Number</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1"
-                                placeholder="name@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Facebook Link</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1"
-                                placeholder="name@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Instagram Link</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1"
-                                placeholder="name@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Twitter Link</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1"
-                                placeholder="name@example.com">
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        ...
-                    </div>
-                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                        ...
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>

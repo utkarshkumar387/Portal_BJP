@@ -51,3 +51,15 @@ bindInputToElement(
     document.getElementById('twitter_link'),
     document.getElementById('card_twitter')
 );
+
+
+function enabledEditMode() {
+    document.querySelector('#poster').designMode = 'On';
+}
+
+function sendCmd(command) {
+    document.execCommand(command, false, null);
+}
+function sendCommandArg(command, arg) {
+    document.execCommand(command, false, arg);
+}
