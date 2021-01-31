@@ -22,6 +22,7 @@
     <!-- jquery script -->
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 
     <title>Welcome to Editor</title>
 </head>
@@ -143,16 +144,40 @@
         </div>
         <div class="item scroller workarea">
             <div class="inner box mt-4 mb-4">
-                <div class="layout" onload="enableEditMode();" contenteditable="True" id="layoutZoom">
-                    <div class="layout__inner px-3 py-3">
+                <div class="layout" style="background-image: url(img/back.jpg);" onload="enableEditMode();"
+                    contenteditable="True" id="layoutZoom">
+                    <div class="layout__inner">
                         <div class="poster" id="poster">
-                            <img src="img/ddp.jpg" alt="">
-                            <p>Name: <span id="card_name">Utkarsh</span></p>
-                            <p>Phone: <span id="card_phone">9876543456</span></p>
-                            <p>Whatsapp no.: <span id="card_whatsapp">9876543456</span></p>
-                            <p>Facebook: <span id="card_facebook">Facebook.com</span></p>
-                            <p>Instagram: <span id="card_instagram">Instagram.com</span></p>
-                            <p>Twitter: <span id="card_twitter">Twitter.com</span></p>
+                            <div class="drag header1"
+                                style="display: block; color: #fff; font-size: 48px; font-weight:900;">
+                                HAPPY REPUBLIC DAY
+                            </div>
+                            <div class="drag body1 mt-4"
+                                style="display: block; color: #fff; font-size: 32px; font-weight:900;">Freedom is worth
+                                if it makes people happy physically,
+                                mentally,
+                                socially and psychologically.</div>
+                            <img class="drag" src="img/ddp.jpg" alt="">
+                            <!-- <div class="drag" style="color: #fff;">Phone: <span id="card_phone">9876543456</span>
+                            </div>
+                            <div class="drag" style="display: inline-block; color: #fff;">Whatsapp no.: <span
+                                    id="card_whatsapp">9876543456</span></div>
+                            <div class="drag" style="display: inline-block; color: #fff;">Facebook: <span
+                                    id="card_facebook">Facebook.com</span></div>
+                            <div class="drag" style="display: inline-block; color: #fff;">Instagram: <span
+                                    id="card_instagram">Instagram.com</span></div>
+                            <div class="drag" style="display: inline-block; color: #fff;">Twitter: <span
+                                    id="card_twitter">Twitter.com</span></div> -->
+
+                            <!-- <img style="display:block;" class="resize drag" src="img/ddp.jpg" alt="">
+                            <div style="display:inline-block; border: 1px solid red;" class="resize drag">Name: <span
+                                    id="card_name">Utkarsh</span>
+                            </div>
+                            <div class="resize drag">Phone: <span id="card_phone">9876543456</span></div>
+                            <div class="resize drag">Whatsapp no.: <span id="card_whatsapp">9876543456</span></div>
+                            <div class="resize drag">Facebook: <span id="card_facebook">Facebook.com</span></div>
+                            <div class="resize drag">Instagram: <span id="card_instagram">Instagram.com</span></div> -->
+                            <!-- <div class="resize drag">Twitter: <span id="card_twitter">Twitter.com</span></div> -->
                         </div>
                     </div>
                 </div>
@@ -194,8 +219,8 @@
                         </div>
                         <div class="form-group mb-4">
                             <label for="fontSize">Font Size</label>
-                            <input type="range" class="form-control" id="fontSize" min="10" max="100" value="18"
-                                name="font-size" data-sizing="px" />
+                            <input onchange="sendCommandArg('fontSize', this.value)" type="range" class="form-control"
+                                id="fontSize" min="10" max="100" value="18" name="font-size" data-sizing="px" />
                         </div>
                         <div class="form-group mb-4">
                             <label for="fontColor">Font Color
