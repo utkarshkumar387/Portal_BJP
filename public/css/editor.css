@@ -1,5 +1,5 @@
 :root{
-    --zoom:0;
+    --zoom:60%;
 }
 
 *{
@@ -107,7 +107,7 @@ padding: 10px 32px;
 color: #FFFFFF !important;
 }
 .layout{
-    height: 842px;
+    height: 842px; 
     width: 595px;
     zoom: var(--zoom);
 }

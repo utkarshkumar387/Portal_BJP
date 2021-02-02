@@ -2,10 +2,13 @@ const zoom = document.querySelector('.editor_zoom input')
 zoom.addEventListener('change', zoomLayout);
 zoom.addEventListener('mouseover', zoomLayout);
 
+
 function zoomLayout() {
-    const suffix = this.dataset.sizing || '';
-    document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+    console.log(this.name, this.value);
+    document.documentElement.style.setProperty(`--${this.name}`, this.value + `%`);
 }
+window.onload = zoomLayout;
+
 
 
 function downloadPoster() {
