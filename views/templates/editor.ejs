@@ -23,7 +23,7 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- jquery script -->
     <!-- fontawesome -->
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <script src="https://kit.fontawesome.com/0610541dfc.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 
     <title>Welcome to Editor</title>
@@ -79,7 +79,7 @@
                     <li>
                         <a href="#homeSubmenu" class="align-items-center list" data-toggle="collapse"
                             aria-expanded="false" class="dropdown-toggle">
-                            <i class="fa fa-chevron-circle-down mb-2" aria-hidden="true" style="font-size: 20px;"></i>
+                            <i class="fa fa-chevron-circle-down mb-2" aria-hidden="true" style="font-size: 24px;"></i>
                             More
                         </a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
@@ -88,6 +88,13 @@
                                     aria-controls="text" aria-selected="false">
                                     <img src="img/icons/typo.png" class="mb-2" alt="">
                                     Text
+                                </a>
+                            </li>
+                            <li class="list__inner">
+                                <a href="#build" class="align-items-center" id="build-tab" data-toggle="tab" role="tab"
+                                    aria-controls="text" aria-selected="false">
+                                    <i class="fa fa-tools mb-2" aria-hidden="true" style="font-size: 24px;"></i>
+                                    Build
                                 </a>
                             </li>
                         </ul>
@@ -146,42 +153,23 @@
         </div>
         <div class="item scroller workarea">
             <div class="inner box mt-4 mb-4">
-                <div class="layout" style="background-image: url(img/back.jpg);" onload="enableEditMode();"
-                    id="layoutZoom">
-                    <div class="layout__inner">
-                        <div class="poster" id="poster">
-                            <div class="header1" style="display: block; color: #fff; font-size: 48px; font-weight:900;">
-                                HAPPY REPUBLIC DAY
-                            </div>
-                            <div class="body1 mt-4"
-                                style="display: block; color: #fff; font-size: 32px; font-weight:900;">
-                                Freedom is worth
-                                if it makes people happy physically,
-                                mentally,
-                                socially and psychologically.</div>
-                            <img class="" src="img/ddp.jpg" alt="">
-                            <!-- <div class="drag" style="color: #fff;">Phone: <span id="card_phone">9876543456</span>
-                            </div>
-                            <div class="drag" style="display: inline-block; color: #fff;">Whatsapp no.: <span
-                                    id="card_whatsapp">9876543456</span></div>
-                            <div class="drag" style="display: inline-block; color: #fff;">Facebook: <span
-                                    id="card_facebook">Facebook.com</span></div>
-                            <div class="drag" style="display: inline-block; color: #fff;">Instagram: <span
-                                    id="card_instagram">Instagram.com</span></div>
-                            <div class="drag" style="display: inline-block; color: #fff;">Twitter: <span
-                                    id="card_twitter">Twitter.com</span></div> -->
-
-                            <!-- <img style="display:block;" class="resize drag" src="img/ddp.jpg" alt="">
-                            <div style="display:inline-block; border: 1px solid red;" class="resize drag">Name: <span
-                                    id="card_name">Utkarsh</span>
-                            </div>
-                            <div class="resize drag">Phone: <span id="card_phone">9876543456</span></div>
-                            <div class="resize drag">Whatsapp no.: <span id="card_whatsapp">9876543456</span></div>
-                            <div class="resize drag">Facebook: <span id="card_facebook">Facebook.com</span></div>
-                            <div class="resize drag">Instagram: <span id="card_instagram">Instagram.com</span></div> -->
-                            <!-- <div class="resize drag">Twitter: <span id="card_twitter">Twitter.com</span></div> -->
-                        </div>
+                <div class="layout c-drop-zone"
+                    style="background-image: url(img/background.jpeg); background-repeat: no-repeat; background-size: contain;"
+                    onload="enableEditMode();" data-drop-zone id="layoutZoom">
+                    <!-- <div class="layout__inner">
+                        <div class="poster" id="poster"> -->
+                    <!-- <div class="header1 resize-drag"
+                        style="display: inline-block; color: #fff; font-size: 48px; font-weight:900;">
+                        HAPPY REPUBLIC DAY
                     </div>
+                    <div class="body1 mt-4 resize-drag"
+                        style="display: inline-block; color: #fff; font-size: 32px; font-weight:900;"
+                        contenteditable="false">
+                        Freedom is worth
+                        if it makes people happy physically,
+                        mentally,
+                        socially and psychologically.
+                    </div> -->
                 </div>
             </div>
             <div class="editor_zoom cardStyle mb-3">
@@ -204,6 +192,80 @@
                     </div>
                     <div class="tab-pane fade" id="backgrounds" role="tabpanel" aria-labelledby="backgrounds-tab">
                         <%- include('../particles/editorBackgrounds.ejs') -%>
+                    </div>
+                    <div class="tab-pane fade" id="build" role="tabpanel" aria-labelledby="build-tab">
+                        <div class="template__builder px-2 py-2">
+                            <template data-slide-type-template="text">
+                                <div class="template__text template resize-drag" contenteditable="false">
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic, obcaecati.
+                                </div>
+                            </template>
+                            <template data-slide-type-template="phone">
+                                <div class="template__phone template resize-drag">
+                                    <span><img class="icon_social" src="img/icons/phone_icon.png" alt="">
+                                    </span><span contenteditable="false">9876543210</span>
+                                </div>
+                            </template>
+                            <template data-slide-type-template="whatsapp">
+                                <div class="template__whatsapp template resize-drag">
+                                    <span><img class="icon_social" src="img/icons/whatsapp_icon.png" alt="">
+                                    </span><span contenteditable="false">9876543212</span>
+                                </div>
+                            </template>
+                            <template data-slide-type-template="facebook">
+                                <div class="template__facebook template resize-drag">
+                                    <span><img class="icon_social" src="img/icons/facebook_icon.png" alt="">
+                                    </span><span contenteditable="false">facebook.com/utkarsh123</span>
+                                </div>
+                            </template>
+                            <template data-slide-type-template="instagram">
+                                <div class="template__instagram template resize-drag">
+                                    <span><img class="icon_social" src="img/icons/insta_icon.png" alt="">
+                                    </span><span contenteditable="false">Instagram.com/utkarsh123</span>
+                                </div>
+                            </template>
+                            <template data-slide-type-template="twitter">
+                                <div class="template__twitter template resize-drag">
+                                    <span><img class="icon_social" src="img/icons/twitter_icon.png" alt="">
+                                    </span><span contenteditable="false">Twitter.com/utkarsh123</span>
+                                </div>
+                            </template>
+                            <template data-slide-type-template="your">
+                                <div class="template__twitter template resize-drag">
+                                    <img src="img/your_image.png" height="400" alt="">
+                                </div>
+                            </template>
+                            <h4>Components</h4>
+                            <hr>
+                            <div class="component__icon mb-4" data-slide-type="your" draggable="true">
+                                <i class="fa fa-image mr-2" aria-hidden="true"></i>
+                                Your Image
+                            </div>
+                            <div class="component__icon mb-4" data-slide-type="text" draggable="true">
+                                <i class="fa fa-font mr-2" aria-hidden="true"></i>
+                                Text
+                            </div>
+                            <div class="component__icon mb-4" data-slide-type="phone" draggable="true">
+                                <i class="fa fa-phone mr-2" aria-hidden="true"></i>
+                                Phone Number
+                            </div>
+                            <div class="component__icon mb-4" data-slide-type="whatsapp" draggable="true">
+                                <i class="fa fa-whatsapp mr-2" aria-hidden="true"></i>
+                                Whatsapp Number
+                            </div>
+                            <div class="component__icon mb-4" data-slide-type="facebook" draggable="true">
+                                <i class="fa fa-facebook-f mr-2"></i>
+                                Facebook Link
+                            </div>
+                            <div class="component__icon mb-4" data-slide-type="instagram" draggable="true">
+                                <i class="fa fa-instagram mr-2"></i>
+                                Instagram Link
+                            </div>
+                            <div class="component__icon mb-4" data-slide-type="twitter" draggable="true">
+                                <i class="fa fa-twitter mr-2"></i>
+                                Twitter Link
+                            </div>
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="text" role="tabpanel" aria-labelledby="text-tab">
                         <div class="form-group mb-4">

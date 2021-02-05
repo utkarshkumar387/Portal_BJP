@@ -1,7 +1,6 @@
 :root{
     --zoom:60%;
 }
-
 *{
     padding: 0;
     margin: 0;
@@ -109,6 +108,7 @@ color: #FFFFFF !important;
 .layout{
     height: 842px; 
     width: 595px;
+    overflow: hidden;
     zoom: var(--zoom);
 }
 .zoom_container{
@@ -150,4 +150,38 @@ color: #FFFFFF !important;
 }
 .wish__data{
     color: #1E6D51;
+}
+.grabbed{
+    border: 2px dashed #000000;
+}
+[draggable="true"] {
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    cursor: grab;
+}
+
+[draggable="true"]:active {
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+}
+.template__builder{
+    color: #fff;
+}
+.component__icon{
+    border: 1px solid #fff;
+    padding: 8px 12px;
+    border-radius: 10px;
+}
+.template__text{
+    font-size: 36px;
+    font-weight: 900;
+}
+.icon_social{
+    height: 28px;
+    width: 28px;
+}
+.template{
+    display: inline-block;
+    touch-action: none;
 }
