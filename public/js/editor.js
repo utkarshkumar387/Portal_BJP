@@ -146,10 +146,18 @@ window.dragMoveListener = dragMoveListener
 
 // let posterTags = document.getElementById('poster').querySelectorAll('div, img');
 
-let layer = document.querySelectorAll("[contenteditable=false]")
-for (var i = 0; i < layer.length; ++i) {
-    editableElements[i].setAttribute("contentEditable", true);
+let templateToggle = document.querySelectorAll('.template');
+document.addEventListener('dblclick', addDrag);
+document.addEventListener('click', removeDrag);
+function addDrag(e) {
+    e.target.closest('.template').classList.add('resize-drag')
 }
+function removeDrag(e) {
+    e.target.closest('.template').classList.remove('resize-drag')
+}
+// document.addEventListener('click', function (e) {
+//     e.target.classList.toggle('resize-drag');
+// })
 
 // document.addEventListener('click', function (e) {
 //     for (let i = 0; i < posterTags.length; i++) {
