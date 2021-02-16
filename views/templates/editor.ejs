@@ -56,10 +56,10 @@
             <div class="inner">
                 <ul class="list-unstyled components nav d-block" id="myTab" role="tablist">
                     <li class="d-flex justify-content-center list">
-                        <a class="nav-link align-items-center active" id="details-tab" data-toggle="tab" href="#details"
-                            role="tab" aria-controls="details" aria-selected="true">
-                            <img src="img/icons/details.png" class="mb-2" />
-                            Details
+                        <a class="nav-link align-items-center active" id="build-tab" data-toggle="tab" href="#build"
+                            role="tab" aria-controls="text" aria-selected="true">
+                            <i class="fa fa-tools mb-2" aria-hidden="true" style="font-size: 24px;"></i>
+                            Build
                         </a>
                     </li>
                     <li class="d-flex justify-content-center list">
@@ -84,10 +84,10 @@
                         </a>
                     </li>
                     <li class="d-flex justify-content-center list">
-                        <a class="nav-link align-items-center" id="build-tab" data-toggle="tab" href="#build" role="tab"
-                            aria-controls="text" aria-selected="false">
-                            <i class="fa fa-tools mb-2" aria-hidden="true" style="font-size: 24px;"></i>
-                            Build
+                        <a class="nav-link align-items-center" id="details-tab" data-toggle="tab" href="#details"
+                            role="tab" aria-controls="details" aria-selected="false">
+                            <img src="img/icons/details.png" class="mb-2" />
+                            Details
                         </a>
                     </li>
                 </ul>
@@ -112,7 +112,7 @@
         <div class="item scroller rightsidebar">
             <div class="inner rightsidebar__inner">
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
+                    <div class="tab-pane fade" id="details" role="tabpanel" aria-labelledby="details-tab">
                         <%- include('../particles/editorDetails.ejs') -%>
                     </div>
                     <div class="tab-pane fade" id="templates" role="tabpanel" aria-labelledby="templates-tab">
@@ -121,10 +121,10 @@
                     <div class="tab-pane fade" id="backgrounds" role="tabpanel" aria-labelledby="backgrounds-tab">
                         <%- include('../particles/editorBackgrounds.ejs') -%>
                     </div>
-                    <div class="tab-pane fade" id="build" role="tabpanel" aria-labelledby="build-tab">
+                    <div class="tab-pane fade show active" id="build" role="tabpanel" aria-labelledby="build-tab">
                         <div class="template__builder px-2 py-2">
                             <template data-slide-type-template="text">
-                                <div class="template__text template resize-drag" contenteditable="true">
+                                <div class="template__text template" contenteditable="true">
                                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic, obcaecati.
                                 </div>
                             </template>

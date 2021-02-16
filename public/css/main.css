@@ -326,6 +326,9 @@
     margin: 0;
     padding: 0;
 }
+.blogText{
+    min-height: 125px;
+}
 .home__complaints .card{
     margin: 16px 32px 32px 32px;
     padding: 32px;
@@ -702,6 +705,15 @@ text-decoration: none;
 .manager .badge img{
     height: 15px;
     width: 15px;
+}
+
+/* tags */
+.chosen-container-multi .chosen-choices{
+    border-radius: 5px;
+    padding: 5px 17px !important;
+    font-size: 18px;
+    background-image: none !important;
+    border: 1px solid #ced4da !important;
 }
 /* .manager{
     background-color: #F77B72;

@@ -13,13 +13,7 @@
                 <div class="glide">
                     <div class="glide__body">
                         <div class="glide__track" data-glide-el="track">
-                            <ul class="glide__slides">
-                                <% for (var i=1; i <=10; i++ ) { %>
-                                    <li class="glide__slide events__card">
-                                        <%- include('../particles/eventCard.ejs') -%>
-                                    </li>
-                                    <% } %>
-                            </ul>
+                            <ul class="glide__slides" id="eventBlock">
                         </div>
                     </div>
                     <div class="glide__arrows" data-glide-el="controls">
@@ -36,21 +30,18 @@
                 <div class="home__blogsHeader headerMain">
                     <p>Recent Blogs</p>
                 </div>
-                <div class="home__blogsCard blogsCard">
-                    <% for (var i=1; i <=3; i++ ) { %>
-                        <%- include('../particles/blogsCard.ejs') -%>
-                            <% } %>
+                <div class="home__blogsCard blogsCard" id="blogsBlock">
+
                 </div>
             </div>
             <div class="card home__complaints mt-4 cardStyle mb-5" id="home__complaints">
                 <div class="home__complaintsHeader headerMain">
                     <p>Recent Complaints</p>
                 </div>
-                <div class="home__complaintsCard blogsCard">
-                    <% for (var i=1; i <=3; i++ ) { %>
-                        <%- include('../particles/complaintsCard.ejs') -%>
-                            <% } %>
+                <div class="home__complaintsCard blogsCard" id="complaintsBlock">
+
                 </div>
             </div>
         </div>
     </div>
+    <script type="application/javascript" src="/js/index.js"></script>

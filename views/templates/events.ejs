@@ -11,12 +11,7 @@
                     <p>Upcoming Events</p>
                 </div>
                 <div class="events">
-                    <div class="row">
-                        <% for (var i=1; i <=6; i++ ) { %>
-                            <div class="col-md-4 events__card mb-4 px-3">
-                                <%- include('../particles/eventCard.ejs') -%>
-                            </div>
-                            <% } %>
+                    <div class="row" id="upcomingEventBlock">
                     </div>
                 </div>
             </div>
@@ -25,14 +20,10 @@
                     <p>Past Events</p>
                 </div>
                 <div class="events">
-                    <div class="row">
-                        <% for (var i=1; i <=12; i++ ) { %>
-                            <div class="col-md-4 events__card mb-4 px-3">
-                                <%- include('../particles/eventCard.ejs') -%>
-                            </div>
-                            <% } %>
+                    <div class="row" id="pastEventBlock">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script type="application/javascript" src="/js/contentEvents.js"></script>

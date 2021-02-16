@@ -267,7 +267,7 @@
                         <a class="edit__button">New Blog</a>
                     </div>
                 </div>
-                <div class="home__blogsCard blogsCard">
+                <div class="home__blogsCard blogsCard" id="profileBlogsBlock">
                     <% for (var i=1; i <=3; i++ ) { %>
                         <%- include('../particles/blogsCard.ejs') -%>
                             <% } %>
@@ -288,3 +288,4 @@
             </div>
         </div>
     </div>
+    <script type="application/javascript" src="/js/profile.js"></script>

@@ -147,14 +147,15 @@ window.dragMoveListener = dragMoveListener
 // let posterTags = document.getElementById('poster').querySelectorAll('div, img');
 
 let templateToggle = document.querySelectorAll('.template');
-document.addEventListener('dblclick', addDrag);
-document.addEventListener('click', removeDrag);
+document.addEventListener('drag', addDrag);
+// document.addEventListener('mouseup', removeDrag);
 function addDrag(e) {
     e.target.closest('.template').classList.add('resize-drag')
 }
-function removeDrag(e) {
-    e.target.closest('.template').classList.remove('resize-drag')
-}
+// function removeDrag(e) {
+//     console.log(e.target.closest('.template'));
+//     e.target.closest('.template').classList.remove('resize-drag')
+// }
 // document.addEventListener('click', function (e) {
 //     e.target.classList.toggle('resize-drag');
 // })
@@ -210,14 +211,13 @@ dropZone.addEventListener("dragenter", function (event) {
 
 }, false);
 
-dropZone.addEventListener("dragleave", function (event) {
+// dropZone.addEventListener("dragleave", function (event) {
 
-    event.target.classList.toggle("targeted");
+//     event.target.classList.toggle("targeted");
 
-}, false);
+// }, false);
 
 dropZone.addEventListener("drop", function (ev) {
-    // prevent default action (open as link for some elements)
     ev.preventDefault();
     var slideTemplate = document.querySelector('[data-slide-type-template="' + draggingType + '"');
     console.log('drop');

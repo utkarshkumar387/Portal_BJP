@@ -10,11 +10,9 @@
                 <div class="home__blogsHeader headerMain">
                     <p>Rejected Blogs</p>
                 </div>
-                <div class="home__blogsCard blogsCard">
-                    <% for (var i=1; i <=10; i++ ) { %>
-                        <%- include('../particles/blogsCard.ejs') -%>
-                            <% } %>
+                <div class="home__blogsCard blogsCard" id="allBlogsRejected">
                 </div>
             </div>
         </div>
     </div>
+    <script type="application/javascript" src="/js/contentBlogsRejected.js"></script>
