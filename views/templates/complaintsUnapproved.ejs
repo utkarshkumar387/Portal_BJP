@@ -21,11 +21,9 @@
                         </label>
                     </div>
                 </div>
-                <div class="home__complaintsCard blogsCard">
-                    <% for (var i=1; i <=10; i++ ) { %>
-                        <%- include('../particles/complaintsCard.ejs') -%>
-                            <% } %>
+                <div class="home__complaintsCard blogsCard" id="complaintsUnapproved">
                 </div>
             </div>
         </div>
     </div>
+    <script type="application/javascript" src="/js/complaintsUnapproved.js"></script>

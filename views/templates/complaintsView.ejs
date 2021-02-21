@@ -6,62 +6,45 @@
             </div>
         </div>
         <div class="col-md-9 home__content">
-            <div class="card home__complaints cardStyle" id="home__complaints">
+            <div class="card home__complaints cardStyle mb-4" id="home__complaints">
                 <div class="home__complaintsHeader headerMain">
-                    <p>Sub: <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, eaque? Numquam sunt
-                            modi adipisci
-                            incidunt!<p></p>
+                    <p>Sub: <span id="complaintSubTop">
+                            <p></p>
                 </div>
                 <div class="home__complaintsCard blogsCard">
                     <div class="complaintsData">
                         <div class="complaintsdata__top mb-4 d-flex">
-                            <p><b>8 JAN 2021</b></p>
+                            <p><b><span id="complaintDay"></span> <span id="complaintYearName"></span> <span
+                                        id="complaintYear"></span></b></p>
                             <p><b>Reference Number: <span>8767654343</span></b></p>
                         </div>
                         <p><b>To,</b></p>
-                        <p class="complaintsData__sent">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Doloremque sint veritatis vel totam quo repellat quaerat nesciunt in!</p>
-                        <p class="complaintsData__subject pb-3 pt-3"><b>Sub: <span>Lorem ipsum dolor sit amet
-                                    consectetur,
-                                    adipisicing elit. Facilis minus
-                                    eligendi qui exercitationem eum! Nihil.</span></b></p>
+                        <p class="complaintsData__sent" id="complaintAddressedTo"></p>
+                        <p class="complaintsData__subject pb-3 pt-3"><b>Sub: <span id="complaintSub"></span></b></p>
                         <p>Dear Sir,</p>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam id optio veniam aut
-                            provident, repudiandae, ea est doloribus voluptate quis maxime molestias repellendus ipsam,
-                            omnis et nisi. Cumque aliquam voluptatum nobis corporis fuga quo vel porro perspiciatis amet
-                            ipsum accusantium quos aliquid eaque minus delectus soluta, rem molestias, autem
-                            consequuntur aperiam architecto tempora? Saepe sed, est excepturi rerum a unde! Non nostrum
-                            eum cupiditate praesentium illum odit, laboriosam eaque voluptatum quia quidem blanditiis,
-                            sequi necessitatibus nisi. Quibusdam, doloremque? Voluptas adipisci repellendus cum ipsum
-                            nobis, nam dolorem voluptates aperiam modi labore hic quibusdam natus alias, optio obcaecati
-                            officia, quo inventore dolorum nostrum maiores porro odio expedita ex! Error ex odit
-                            molestiae deserunt ut. Magnam dicta aliquam dolor, quo reprehenderit totam ea molestiae
-                            possimus esse distinctio similique laudantium. Incidunt, deleniti explicabo excepturi ad est
-                            officiis. Aut eaque corrupti officiis, expedita quos ratione iusto atque fugiat at sed in
-                            inventore quam, neque ipsum totam? A ea odio autem, adipisci, tempora, perspiciatis iusto
-                            delectus itaque illo voluptate quibusdam quod voluptatem quo distinctio magni reprehenderit
-                            blanditiis nihil. In voluptates id debitis ipsam, possimus voluptatibus nulla laboriosam
-                            aspernatur eius odit velit sit repellendus magnam placeat, facere nam, quam facilis ratione
-                            inventore neque minima! Voluptas, quis neque!
+                        <p id="complaintBody">
                         </p>
                         <p>Thank You!</p>
-                        <p>Yours sincerly<br>Utkarsh</p>
+                        <p>Yours sincerly<br><span id="complainantName"></span></p>
                     </div>
-                    <div class="complaintsFooter">
-                        <div class="complaints__header">
+                    <div class="complaintsFooter blogsFooterPrivilege" id="footerPrivilege">
+                        <div class="complaints__header" id="complaintsHeader">
                             <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
                                 class="rounded-circle" alt="...">
                             <div class="complaints__sender">
-                                <b>Abhishek Varde</b>
-                                <p class="small">Pune, <span>Maharashtra</span>
+                                <strong><span id="complainantNameOuter"></span></strong>
+                                <p class="small"><span id="complainantDistrict"></span>, <span
+                                        id="complainantState"></span>
                                 </p>
                             </div>
-                            <%- include('../Atoms/priorityLow.ejs') -%>
+                            <div id="complaintDetailsPriorityBar"></div>
                         </div>
+                    </div>
+                    <div class="d-flex justify-content-between" id="privilegeButtons">
                     </div>
                 </div>
             </div>
-            <div class="card comments mt-4 cardStyle mb-4">
+            <!-- <div class="card comments cardStyle mb-4">
                 <div class="home__complaintsHeader headerMain">
                     <p>Comments</p>
                 </div>
@@ -117,16 +100,14 @@
                         <a class="postComment__button">Post Comment</a>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <div class="card home__complaints mt-4 cardStyle mb-5" id="home__complaints">
                 <div class="home__complaintsHeader headerMain">
                     <p>Recent Complaints</p>
                 </div>
-                <div class="home__complaintsCard blogsCard">
-                    <% for (var i=1; i <=3; i++ ) { %>
-                        <%- include('../particles/complaintsCard.ejs') -%>
-                            <% } %>
+                <div class="home__complaintsCard blogsCard" id="complaintViewBlogsBlock">
                 </div>
             </div>
         </div>
     </div>
+    <script type="application/javascript" src="/js/complaintView.js"></script>
