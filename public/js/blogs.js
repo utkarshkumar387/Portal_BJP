@@ -1,6 +1,6 @@
+let link = window.location.href.split('/');
 $(document).ready(function () {
     let contentBlogs = fetchContent('blogs');
-    // let contentBlogsRejected = fetchContent('blogs/rejected')
     let blogs = contentBlogs.message.blogs;
     console.log(blogs.length);
     if (contentBlogs.error == false) {

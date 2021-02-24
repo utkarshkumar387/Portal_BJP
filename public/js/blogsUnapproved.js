@@ -1,4 +1,4 @@
-//In blogs unapproved more than one data with different id is diaplayed
+let link = ['', '', '', 'blogsView'];
 $(document).ready(function () {
     let contentBlogsUnapproved = fetchContent('blogs/pending');
     console.log(contentBlogsUnapproved);

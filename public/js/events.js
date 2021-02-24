@@ -1,3 +1,4 @@
+let link = window.location.href.split('/');
 $(document).ready(function () {
     let contentEvents = fetchContent('events');
     let upcomingEvents = contentEvents.message.upcoming_events;
@@ -22,7 +23,7 @@ $(document).ready(function () {
                     </div>
                     <div class="card-footer footer">
                         <p>${upcomingEventDate[0]} ${upcomingEventDate[1]} ${upcomingEventDate[2]}</p>
-                        <a href="/eventsView">
+                        <a href="/eventsView/${pastEvents[i].id}/approved">
                             View Event
                             <span>
                                 <img src="img/icons/link.png" alt="">
@@ -51,7 +52,7 @@ $(document).ready(function () {
                     </div>
                     <div class="card-footer footer">
                         <p>${pastEventDate[0]} ${pastEventDate[1]} ${pastEventDate[2]}</p>
-                        <a href="/eventsView">
+                        <a href="/eventsView/${pastEvents[i].id}/approved">
                             View Event
                             <span>
                                 <img src="img/icons/link.png" alt="">

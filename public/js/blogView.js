@@ -1,7 +1,9 @@
 // const e = require("express");
 
 let link = window.location.href.split('/');
-let blog_id = link[4];
+console.log(link);
+// checkCookie(link);
+let blog_id = link[4], status;
 $(document).ready(() => {
     let blog;
     let blogDetails;
@@ -26,6 +28,7 @@ $(document).ready(() => {
     }
     if (blog.error == false) {
         status = blogDetails.status;
+        console.log(status);
         let authorName = `${blogDetails.user_id.first_name}` + ' ' + `${blogDetails.user_id.last_name}`;
         let blogDate = dateConverter(blogDetails.date);
         console.log(blogDate);
@@ -40,45 +43,45 @@ $(document).ready(() => {
         console.log(blogDate[0]);
 
         //appending blogs
-        for (var i = 0; i < recentBlogs.length; i++) {
-            let blogDate = dateConverter(recentBlogs[i].date);
-            let name = recentBlogs[i].user_id.first_name + ' ' + recentBlogs[i].user_id.last_name
-            let title = recentBlogs[i].title;
-            let description = recentBlogs[i].description;
-            let maxStringTitle = 20;
-            let maxStringDesc = 300;
-            let trimmedDataBlog = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
-            console.log(trimmedDataBlog);
+        //     for (var i = 0; i < recentBlogs.length; i++) {
+        //         let blogDate = dateConverter(recentBlogs[i].date);
+        //         let name = recentBlogs[i].user_id.first_name + ' ' + recentBlogs[i].user_id.last_name
+        //         let title = recentBlogs[i].title;
+        //         let description = recentBlogs[i].description;
+        //         let maxStringTitle = 20;
+        //         let maxStringDesc = 300;
+        //         let trimmedDataBlog = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
+        //         console.log(trimmedDataBlog);
 
-            $('#blogviewBlogsBlock').append(`
-        <div class="card cardStyle">
-        <div class="row g-0">
-        <div class="col-md-6">
-            <img class="blogsImg"
-                src="https://akm-img-a-in.tosshub.com/sites/dailyo/fb_feed_images/story_image/201708/bjpup-insta_083117051140.jpg"
-                alt="...">
-        </div>
-        <div class="col-md-6">
-            <div class="card-body">
-                <h5 class="card-title headerMain">${trimmedDataBlog.trimStringTitle}</h5>
-                <p class="card-text blogText">${trimmedDataBlog.trimStringDesc}</p>
-                </p>
-                <div class="card-footer footer">
-                    <p id="homePageBlogDate_id">${blogDate[0]} ${blogDate[1]} ${blogDate[2]} <i class="fa fa-circle" aria-hidden="true"></i><span
-                            id="homePageBlogAuthor_id">${name}</span></p>
-                    <a href="/blogsView/${recentBlogs[i].id}">
-                        View Blog
-                        <span>
-                            <img src="/img/icons/link.png" alt="">
-                        </span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-        `)
-        }
+        //         $('#blogviewBlogsBlock').append(`
+        //     <div class="card cardStyle">
+        //     <div class="row g-0">
+        //     <div class="col-md-6">
+        //         <img class="blogsImg"
+        //             src="https://akm-img-a-in.tosshub.com/sites/dailyo/fb_feed_images/story_image/201708/bjpup-insta_083117051140.jpg"
+        //             alt="...">
+        //     </div>
+        //     <div class="col-md-6">
+        //         <div class="card-body">
+        //             <h5 class="card-title headerMain">${trimmedDataBlog.trimStringTitle}</h5>
+        //             <p class="card-text blogText">${trimmedDataBlog.trimStringDesc}</p>
+        //             </p>
+        //             <div class="card-footer footer">
+        //                 <p id="homePageBlogDate_id">${blogDate[0]} ${blogDate[1]} ${blogDate[2]} <i class="fa fa-circle" aria-hidden="true"></i><span
+        //                         id="homePageBlogAuthor_id">${name}</span></p>
+        //                 <a href="/blogsView/${recentBlogs[i].id}">
+        //                     View Blog
+        //                     <span>
+        //                         <img src="/img/icons/link.png" alt="">
+        //                     </span>
+        //                 </a>
+        //             </div>
+        //         </div>
+        //     </div>
+        // </div>
+        // </div>
+        //     `)
+        //     }
     } else {
         console.log(blog.message);
     }
@@ -87,3 +90,4 @@ window.addEventListener('load', function checkStatus(status) {
     console.log(status);
     return status;
 })
+

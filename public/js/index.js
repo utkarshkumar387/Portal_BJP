@@ -1,3 +1,4 @@
+let link = ['', '', '', 'blogsView'];
 $(document).ready(function () {
     //index event slider
     let glide = new Glide('.glide', {
@@ -94,7 +95,7 @@ $(document).ready(function () {
             </div>
             <div class="card-footer footer">
                 <p>${complaintDate[0]} ${complaintDate[1]} ${complaintDate[2]}</p>
-                <a href="/complaintsView/${complaints[i].id}">
+                <a href="/complaintsView/${complaints[i].id}/approved">
                     View Complaint
                     <span>
                         <img src="img/icons/link.png" alt="">
@@ -119,16 +120,16 @@ $(document).ready(function () {
             <li class="glide__slide events__card">
                 <div class="card cardStyle">
                     <img src="https://images.livemint.com/img/2020/01/19/600x338/20190726221L_1564151885181_1579462418514.jpg"
-                    class="card-img-top" alt="...">
+ z                   class="card-img-top" alt="...">
                     <div class="card-body">
                         <p class="card-text">${trimmedDataEvent.trimStringTitle}</p>
                     </div>
                     <div class="card-footer footer">
                         <p>${eventDate[0]} ${eventDate[1]} ${eventDate[2]}</p>
-                        <a href="/eventsView/${events[i].id}">
+                        <a href="/eventsView/${events[i].id}/approved">
                             View Event
                             <span>
-                                <img src="img/icons/link.png" alt="">
+                                <img src="/img/icons/link.png" alt="">
                             </span>
                         </a>
                     </div>

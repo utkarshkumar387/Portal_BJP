@@ -1,4 +1,4 @@
 $(document).ready(function () {
-    let profile = fetchProfileData('member_profile');
+    let profile = getCookie('member_profile');
     console.log(profile);
 });  

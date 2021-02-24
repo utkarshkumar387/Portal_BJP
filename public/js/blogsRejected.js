@@ -1,3 +1,4 @@
+let link = ['', '', '', 'blogsView'];
 $(document).ready(function () {
     let contentBlogsRejected = fetchContent('blogs/rejected');
     console.log(contentBlogsRejected)

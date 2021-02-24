@@ -9,8 +9,8 @@
             <div class="card home__events cardStyle" id="home__events">
                 <div class="home__eventsHeader profileHeader headerMain d-flex py-4">
                     <div class="profile__headerData">
-                        <p class="profile__name">Utkarsh Kumar</p>
-                        <p class="profile__committeeDetails">Committee Member</p>
+                        <p class="profile__name" id="memberName">Utkarsh Kumar</p>
+                        <p class="profile__committeeDetails" id="memberCommitteName">Committee Member</p>
                     </div>
                     <div class="edit">
                         <a href="/profileEdit" class="edit__button">Edit Profile</a>
@@ -29,7 +29,7 @@
                                             <p>Username</p>
                                         </div>
                                         <div class="col-md-7">
-                                            <p>Utkarsh123</p>
+                                            <p id="memberUsername">Utkarsh123</p>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -37,7 +37,7 @@
                                             <p>Fullname</p>
                                         </div>
                                         <div class="col-md-7">
-                                            <p>Utkarsh Kumar</p>
+                                            <p id="memberFullname">Utkarsh Kumar</p>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -45,7 +45,7 @@
                                             <p>Email ID</p>
                                         </div>
                                         <div class="col-md-7">
-                                            <p>utkarsh@gmail.com</p>
+                                            <p id="memberEmail">utkarsh@gmail.com</p>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -53,7 +53,7 @@
                                             <p>Phone Number</p>
                                         </div>
                                         <div class="col-md-7">
-                                            <p>+987654321</p>
+                                            <p>+<span id="memberPhone"></span></p>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -61,7 +61,7 @@
                                             <p>Profession</p>
                                         </div>
                                         <div class="col-md-7">
-                                            <p>Marketing Head</p>
+                                            <p id="memberProfession">Marketing Head</p>
                                         </div>
                                     </div>
                                 </div>
@@ -96,7 +96,7 @@
                                             <p>Facebook</p>
                                         </div>
                                         <div class="col-md-7">
-                                            <a href="#">facebook.com/utkarsh123</a>
+                                            <a href="#" id="memberFacebookLink">facebook.com/utkarsh123</a>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -104,7 +104,7 @@
                                             <p>Instagram</p>
                                         </div>
                                         <div class="col-md-7">
-                                            <a href="#">Instagram.com/utkarsh123</a>
+                                            <a href="#" id="memberInstagramLink">Instagram.com/utkarsh123</a>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -112,7 +112,7 @@
                                             <p>Twitter</p>
                                         </div>
                                         <div class="col-md-7">
-                                            <a href="#">Twitter.com/utkarsh123</a>
+                                            <a href="#" id="memberTwitterLink">Twitter.com/utkarsh123</a>
                                         </div>
                                     </div>
                                 </div>
@@ -127,7 +127,7 @@
                                             <p>Voter ID card</p>
                                         </div>
                                         <div class="col-md-7">
-                                            <p>123 456 789</p>
+                                            <p id="memberVoterID">123 456 789</p>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -135,7 +135,7 @@
                                             <p>Adhar Card</p>
                                         </div>
                                         <div class="col-md-7">
-                                            <p>123 456 789</p>
+                                            <p id="memberaAdhar">123 456 789</p>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -143,7 +143,7 @@
                                             <p>PAN Card</p>
                                         </div>
                                         <div class="col-md-7">
-                                            <p>123 456 789</p>
+                                            <p id="memberPAN">123 456 789</p>
                                         </div>
                                     </div>
                                 </div>
@@ -165,25 +165,25 @@
                                                 <p>State</p>
                                             </div>
                                             <div class="col-md-7">
-                                                <p>Rajasthan</p>
+                                                <p id="memberState">Rajasthan</p>
                                             </div>
                                             <div class="col-md-5">
                                                 <p>District</p>
                                             </div>
                                             <div class="col-md-7">
-                                                <p>Balotra</p>
+                                                <p id="memberDistrict">Balotra</p>
                                             </div>
                                             <div class="col-md-5">
                                                 <p>Upkhand</p>
                                             </div>
                                             <div class="col-md-7">
-                                                <p>Text here</p>
+                                                <p id="memberUpkhand">Text here</p>
                                             </div>
                                             <div class="col-md-5">
                                                 <p>Tehsil</p>
                                             </div>
                                             <div class="col-md-7">
-                                                <p>Text here</p>
+                                                <p id="memberTehsil">Text here</p>
                                             </div>
                                         </div>
                                     </div>
@@ -193,7 +193,7 @@
                                                 <p>Lok Shabha Satra</p>
                                             </div>
                                             <div class="col-md-7">
-                                                <p>Text here</p>
+                                                <p id="memberLokSabha">Text here</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -201,7 +201,7 @@
                                                 <p>Vidhan Sabha Satra</p>
                                             </div>
                                             <div class="col-md-7">
-                                                <p>Text here</p>
+                                                <p id="memberVidhanSabha">Text here</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -209,7 +209,7 @@
                                                 <p>Panchayat Samiti</p>
                                             </div>
                                             <div class="col-md-7">
-                                                <p>Text here</p>
+                                                <p id="memberPanchayatSamiti">Text here</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -217,7 +217,7 @@
                                                 <p>Gram Panchayat</p>
                                             </div>
                                             <div class="col-md-7">
-                                                <p>Text here</p>
+                                                <p id="memberGramPanchayat">Text here</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -225,7 +225,7 @@
                                                 <p>Revenue Village</p>
                                             </div>
                                             <div class="col-md-7">
-                                                <p>Text here</p>
+                                                <p id="memberRevenueVillage">Text here</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -233,7 +233,7 @@
                                                 <p>Booth</p>
                                             </div>
                                             <div class="col-md-7">
-                                                <p>Text here</p>
+                                                <p id="memberBooth">Text here</p>
                                             </div>
                                         </div>
                                     </div>

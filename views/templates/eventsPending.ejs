@@ -11,14 +11,10 @@
                     <p>Unapproved Events</p>
                 </div>
                 <div class="events">
-                    <div class="row">
-                        <% for (var i=1; i <=12; i++ ) { %>
-                            <div class="col-md-4 events__card mb-4 px-3">
-                                <%- include('../particles/eventCard.ejs') -%>
-                            </div>
-                            <% } %>
+                    <div class="row" id="eventsPendingBlock">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script type="application/javascript" src="/js/eventsUnapproved.js"></script>

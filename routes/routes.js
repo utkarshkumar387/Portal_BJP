@@ -17,15 +17,18 @@ module.exports = function (app) {
         .get(function (req, res, next) {
             res.render('templates/privileges')
         })
-
     app.route('/eventsView/:id')
         .get(function (req, res, next) {
             res.render('templates/eventsView')
         })
-
-    app.route('/eventsUnapproved')
+    app.route('/eventsView/:id/:str')
         .get(function (req, res, next) {
-            res.render('templates/eventsUnapproved')
+            res.render('templates/eventsView')
+        })
+
+    app.route('/eventsPending')
+        .get(function (req, res, next) {
+            res.render('templates/eventsPending')
         })
 
     app.route('/eventsRejected')
@@ -33,9 +36,13 @@ module.exports = function (app) {
             res.render('templates/eventsRejected')
         })
 
-    app.route('/events')
+    app.route('/eventsApproved')
         .get(function (req, res, next) {
-            res.render('templates/events')
+            res.render('templates/eventsApproved')
+        })
+    app.route('/eventsForm')
+        .get(function (req, res, next) {
+            res.render('templates/eventsForm')
         })
 
     app.route('/editor')
@@ -52,9 +59,9 @@ module.exports = function (app) {
             res.render('templates/complaintsView')
         })
 
-    app.route('/complaintsUnapproved')
+    app.route('/complaintsPending')
         .get(function (req, res, next) {
-            res.render('templates/complaintsUnapproved')
+            res.render('templates/complaintsPending')
         })
 
     app.route('/complaintsRejected')
@@ -63,6 +70,10 @@ module.exports = function (app) {
         })
 
     app.route('/complaintsForm')
+        .get(function (req, res, next) {
+            res.render('templates/complaintsForm')
+        })
+    app.route('/complaintsForm/:id/:str')
         .get(function (req, res, next) {
             res.render('templates/complaintsForm')
         })
@@ -76,9 +87,17 @@ module.exports = function (app) {
             res.render('templates/blogForm')
         })
 
-    app.route('/complaints')
+    app.route('/complaintsApproved')
         .get(function (req, res, next) {
-            res.render('templates/complaints')
+            res.render('templates/complaintsApproved')
+        })
+    app.route('/complaintsView/:id')
+        .get(function (req, res, next) {
+            res.render('templates/conplaintsView')
+        })
+    app.route('/complaintsView/:id/:str')
+        .get(function (req, res, next) {
+            res.render('templates/complaintsView')
         })
 
     app.route('/committeeMy')
@@ -106,9 +125,9 @@ module.exports = function (app) {
             res.render('templates/blogsView')
         })
 
-    app.route('/blogsUnapproved')
+    app.route('/blogsPending')
         .get(function (req, res, next) {
-            res.render('templates/blogsUnapproved')
+            res.render('templates/blogsPending')
         })
 
     app.route('/blogsRejected')
@@ -116,8 +135,8 @@ module.exports = function (app) {
             res.render('templates/blogsRejected')
         })
 
-    app.route('/blogs')
+    app.route('/blogsApproved')
         .get(function (req, res, next) {
-            res.render('templates/blogs')
+            res.render('templates/blogsApproved')
         })
 }

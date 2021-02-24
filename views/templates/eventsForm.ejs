@@ -1,0 +1,82 @@
+<% layout('layout') %>
+    <div class="row mt-4 home">
+        <div class="col-md-3 sidemenu">
+            <div class="component">
+                <%- include('../particles/sidebarEvent.ejs') -%>
+            </div>
+        </div>
+        <div class="col-md-9 home__content">
+            <div class="card home__events cardStyle mb-4" id="home__events">
+                <div class="home__complaintForm headerMain">
+                    <p>Event Form</p>
+                </div>
+                <div class="profile__editData">
+                    <div class="profile__outer mt-2 mb-4">
+                        <div class="profile__inner px-5 mb-4">
+                            <div class="profile__innerHeader py-3">
+                                <p>Event Details</p>
+                            </div>
+                            <div class="form-group row">
+                                <label for="complainantPermanentAddress" class="col-sm-4 col-form-label">Event Title
+                                    <span>*</span></label>
+                                <div class="col-sm-8">
+                                    <textarea rows="3" class="form-control" id="complainantPermanentAddress"
+                                        placeholder="Enter Permanent Address"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="complaintAddress" class="col-sm-4 col-form-label">Complaint Subject
+                                    <span>*</span></label>
+                                <div class="col-sm-8">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <select class="form-control" id="exampleFormControlSelect2">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-control" id="exampleFormControlSelect2">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select class="form-control" id="exampleFormControlSelect2">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                document.getElementById('output').innerHTML = location.search;
+                                $(".chosen-select").chosen();
+                            </script>
+                        </div>
+                    </div>
+                    <div class="profile__outer mt-2 mb-4">
+                        <div class="profile__inner px-5 mb-4">
+                            <div class="profile__innerHeader py-3">
+                                <p>Event Description/Details (optional)</p>
+                            </div>
+                            <textarea name="" id="complaintBody" rows="20" style="width: 100%;"></textarea>
+                        </div>
+                    </div>
+                    <div class="profile__save px-5 mb-4 mt-4">
+                        <a onclick="complaintAdd()" href="">Add complaint</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

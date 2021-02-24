@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-9 home__content">
             <div class="card home__blogs mb-4 cardStyle" id="home__blogs">
-                <div class="home__blogsHeader headerMain">
+                <div class="home__blogsHeader headerMain" id="eventTitle">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi voluptatibus excepturi consectetur,
                         id quo optio!</p>
                 </div>
@@ -18,33 +18,32 @@
                     <div class="events__detail mb-2">
                         <div class="details row">
                             <div class="col-md-4">
-                                <p><b>Venue</b></p>
-                                <p><b>Date & Time</b></p>
-                                <p><b>Chief Guests</b></p>
+                                <p><strong>Venue: <span id="eventVenue"></span></strong></p>
+                                <p><strong>Date & Time: <span id="eventDate"></span></strong></p>
+                                <p><strong>Chief Guests: <span id="eventGuest"></span></strong></p>
                             </div>
                             <div class="col-md-8">
-                                <p>Leela Palace, Chennai</p>
-                                <p>Thurshday, 31 Dec 2020 | 06:30 PM</p>
-                                <p>Chief Guest Name</p>
+                                <p id="eventAddress"></p>
                             </div>
                         </div>
                     </div>
-                    <div class="events__organizer" id="footerPrivilege">
+                    <div class="events__organizer" id="footerPrivilegeEvent">
                         <div class="complaints__header">
                             <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
                                 class="rounded-circle" alt="...">
                             <div class="complaints__sender">
-                                <b>Abhishek Varde</b>
-                                <p class="small">Pune, <span>Maharashtra</span>
+                                <strong id="eventOrganizer"></strong>
+                                <p class="small"><span id="eventOrganizerDistrict"></span>, <span
+                                        id="eventOrganizerState"></span>
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-between blogsCard" id="privilegeButtons">
+                    <div class="d-flex justify-content-between" id="privilegeButtonsEvent">
                     </div>
                 </div>
             </div>
-            <div class="card home__events mb-5 cardStyle" id="home__events">
+            <!-- <div class="card home__events mb-5 cardStyle" id="home__events">
                 <div class="home__eventsHeader headerMain">
                     <p>Upcoming Events</p>
                 </div>
@@ -52,23 +51,20 @@
                     <div class="glide__body">
                         <div class="glide__track" data-glide-el="track">
                             <ul class="glide__slides">
-                                <% for (var i=1; i <=10; i++ ) { %>
-                                    <li class="glide__slide events__card">
-                                        <%- include('../particles/eventCard.ejs') -%>
-                                    </li>
-                                    <% } %>
+                                //add recent event slider here
                             </ul>
                         </div>
                     </div>
                     <div class="glide__arrows" data-glide-el="controls">
                         <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
-                            <img src="img/icons/prev.png" alt="">
+                            <img src="/img/icons/prev.png" alt="">
                         </button>
                         <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
                             <img src="img/icons/next.png" alt="">
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
+    <script type="application/javascript" src="/js/eventView.js"></script>

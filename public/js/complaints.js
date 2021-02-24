@@ -1,6 +1,8 @@
+let link = ['', '', '', 'blogsView'];
 $(document).ready(function () {
-    let contentComplaints = fetchContent('complaints');
-    let complaints = contentComplaints.message.complaints;
+    let contentComplaints = fetchContent('complaints/approved');
+    console.log(contentComplaints);
+    let complaints = contentComplaints.message.results;
 
     if (contentComplaints.error == false) {
         //appending complaints
@@ -28,10 +30,10 @@ $(document).ready(function () {
             </div>
             <div class="card-footer footer">
                 <p>${complaintDate[0]} ${complaintDate[1]} ${complaintDate[2]}</p>
-                <a href="/complaintsView/${complaints[i].id}">
+                <a href="/complaintsView/${complaints[i].id}/approved">
                     View Complaint
                     <span>
-                        <img src="img/icons/link.png" alt="">
+                        <img src="/img/icons/link.png" alt="">
                     </span>
                 </a>
             </div>

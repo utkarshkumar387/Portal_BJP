@@ -1,3 +1,4 @@
+let link = ['', '', '', 'complaintsView'];
 $(document).ready(function () {
     let contentComplaints = fetchContent('complaints/rejected');
     let complaints = contentComplaints.message.results;
@@ -29,7 +30,7 @@ $(document).ready(function () {
             </div>
             <div class="card-footer footer">
                 <p>${complaintDate[0]} ${complaintDate[1]} ${complaintDate[2]}</p>
-                <a href="/complaintsView/${complaints[i].id}/unapproved">
+                <a href="/complaintsView/${complaints[i].id}/rejected">
                     View Complaint
                     <span>
                         <img src="img/icons/link.png" alt="">
