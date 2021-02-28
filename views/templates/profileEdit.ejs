@@ -37,11 +37,35 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Husband's Name
-                                    (optional)</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="">
+                                <label for="memberGender" class="col-sm-4 col-form-label">Gender<span>*</span></label>
+                                <div class="col-sm-8" id="memberGender">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="gender" id="genderMale"
+                                            value="male">
+                                        <label class="form-check-label" for="genderMale">Male</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="gender" id="genderFemale"
+                                            value="female">
+                                        <label class="form-check-label" for="genderFemale">Female</label>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-4 col-form-label">Marital
+                                    Status<span>*</span></label>
+                                <div class="col-md-8">
+                                    <select name="marital_status" class="form-select form-control" id="marital_status">
+                                        <option value="">-Select Marital Status-</option>
+                                        <option value="Single">Single</option>
+                                        <option value="Married">Married</option>
+                                        <option value="Widowed">Widowed</option>
+                                        <option value="Separated">Separated</option>
+                                        <option value="Divorced">Divorced</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row" id="couple_status">
                             </div>
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-4 col-form-label">Email (optional)</label>
@@ -52,10 +76,29 @@
                             </div>
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-4 col-form-label">Phone Number
-                                    <span>*</span></label>
-                                <div class="col-sm-8">
-                                    <input type="tel" class="form-control" id="inputEmail3"
-                                        placeholder="+91-9876543210">
+                                    <span>*</span>
+                                </label>
+                                <div class="form-group col-md-8" id="allPhoneNumber">
+                                    <div class="form-group d-flex">
+                                        <input type="tel" class="form-control" id="inputEmail3"
+                                            placeholder="+91-9876543210">
+                                        <button onclick="addPhoneNumber()"
+                                            class="btn btn-outline-success ml-2 formButtonPhone">+</button>
+                                    </div>
+                                    <!-- <div class="col-sm-1">
+                                            <button onclick="addPhoneNumber()" class="btn btn-primary mr-4">+</button>
+                                        </div> -->
+                                    <!-- <div id="phoneNumber'+id+'" class="form-group row">
+                                        <div class="col-sm-10">
+                                            <input type="tel" class="form-control" id="phoneNumberField'+id+'"
+                                                placeholder="+91-9876543210">
+                                        </div>
+                                        <div class="col-sm-2 d-flex">
+                                            <button class="btn btn-primary mr-2">+</button>
+                                            <button onclick="removePhoneNumber('+id+')"
+                                                class="btn btn-danger">-</button>
+                                        </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -91,18 +134,23 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Permanent Address
+                                <label for="permanentAddress" class="col-sm-4 col-form-label">Permanent Address
                                     <span>*</span></label>
                                 <div class="col-sm-8">
-                                    <textarea rows="3" class="form-control" id="inputEmail3"
+                                    <textarea rows="3" class="form-control" id="permanentAddress"
                                         placeholder="Enter Permanent Address"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Residential Address
+                                <label for="residentialAddress" class="col-sm-4 col-form-label">Residential Address
                                     <span>*</span></label>
                                 <div class="col-sm-8">
-                                    <textarea rows="3" class="form-control" id="inputEmail3"
+                                    <div class="d-flex justify-content-end">
+                                        <button class="btn btn-outline-success mb-2 formButtonCopy"
+                                            id="addressCopy">Same as
+                                            permanent address</button>
+                                    </div>
+                                    <textarea rows="3" class="form-control" id="residentialAddress"
                                         placeholder="Enter Residential Address..."></textarea>
                                 </div>
                             </div>
@@ -117,73 +165,27 @@
                     </div>
                     <div class="profile__outer mt-2 mb-4">
                         <div class="profile__inner px-5 mb-4">
-                            <div class="profile__innerHeader py-3">
+                            <div class="profile__innerHeader py-3 d-flex">
                                 <p>Official Details</p>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">State <span>*</span></label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="">
+                                <label for="memberNationality"
+                                    class="col-sm-4 col-form-label">Nationality<span>*</span></label>
+                                <div class="col-sm-8" id="memberNationality">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="nationality"
+                                            id="nationalityIndian" value="male">
+                                        <label class="form-check-label" for="nationalityIndian">Indian</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="nationality"
+                                            id="nationalityNRI" value="female">
+                                        <label class="form-check-label" for="nationalityNRI">NRI</label>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Lok Sabha Satra
-                                    <span>*</span></label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Vidhan Sabha Satra
-                                    <span>*</span></label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">District <span>*</span></label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Upkhand <span>*</span></label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Tehsil <span>*</span></label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Panchayat Samiti
-                                    <span>*</span></label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Gram Panchayat
-                                    <span>*</span></label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Revenue Village
-                                    <span>*</span></label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Booth <span>*</span></label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="">
-                                </div>
+                            <div id="officialDetails">
+
                             </div>
                         </div>
                     </div>
@@ -285,3 +287,4 @@
             </div>
         </div>
     </div>
+    <script type="application/javascript" src="/js/profileEdit.js"></script>

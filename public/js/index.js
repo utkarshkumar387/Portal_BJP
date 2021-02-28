@@ -1,4 +1,9 @@
-let link = ['', '', '', 'blogsView'];
+// status
+// Pending = 1
+// Approved = 2
+// Reject = 3
+
+let link = ['', '', '', ''];
 $(document).ready(function () {
     //index event slider
     let glide = new Glide('.glide', {

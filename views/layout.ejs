@@ -71,20 +71,23 @@
                             <div class="home__header header">
                                 <p>Notifications <span>(15 New)</span></p>
                             </div>
-                            <% for (var i=1; i <=5; i++ ) { %>
-                                <a class="dropdown-item" href="#">
-                                    <div class="notification_item d-flex">
-                                        <img class="notification_icon" src="/img/icons/notification_icon.png" alt="">
-                                        <div class="notification_data">
-                                            <p><b>Utkarsh Kumar </b>posted an event that needs your approval.</p>
-                                            <div class="notification_time">
-                                                <img src="/img/icons/Time.png" alt="">
-                                                <small><span class="notification_timeItem">15 min</span> ago</small>
+                            <div class="scroller notification_bar">
+                                <% for (var i=1; i <=5; i++ ) { %>
+                                    <a class="dropdown-item" href="#">
+                                        <div class="notification_item d-flex">
+                                            <img class="notification_icon" src="/img/icons/notification_icon.png"
+                                                alt="">
+                                            <div class="notification_data">
+                                                <p><b>Utkarsh Kumar </b>posted an event that needs your approval.</p>
+                                                <div class="notification_time">
+                                                    <img src="/img/icons/Time.png" alt="">
+                                                    <small><span class="notification_timeItem">15 min</span> ago</small>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
-                                <% } %>
+                                    </a>
+                                    <% } %>
+                            </div>
                         </div>
                         <span class="navEndIcon">
                             <a href="/profile"><img src="/img/icons/Profile.png" /></a>

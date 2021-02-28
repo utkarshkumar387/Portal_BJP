@@ -669,7 +669,7 @@ opacity: 0.05;
 .committee__edit{
     background: #2979FF;
     border-radius: 40px;
-    color:  #D6D8E7 !important;
+    color:  #fff !important;
     text-decoration: none;
     padding: 8px 12px;
 }
@@ -866,6 +866,23 @@ text-decoration: none;
     visibility: hidden;
     transform:translateY(-100%);
     transition: all 0.3s 1s ease-out;
+  }
+  /*Add image button*/
+  .browseDesign{
+      height: 96px;
+      width: 100%;
+      background: #EFF0F7;
+border: 1px solid #A0A3BD;
+box-sizing: border-box;
+border-radius: 5px;
+  }
+  .formButtonPhone{
+      width: 40px;
+  }
+  .formButtonCopy{
+      border-radius: 25px !important;
+      font-size: 12px !important;
+      /* width: 100px; */
   }
 /* .manager{
     background-color: #F77B72;

@@ -52,19 +52,23 @@ $(document).ready(() => {
         }
         console.log(eventDetails);
         // let recentevents = event.message.recent_events;
-        console.log(eventDetails.date);
+        console.log(eventDetails.district, eventDetails.state);
         // let eventDate = dateConverter(eventDetails.date);
-        let eventOrganizerName = `${eventDetails.user_id.first_name}` + ' ' + `${eventDetails.user_id.last_name}`
+        let eventOrganizerName = `${eventDetails.user.first_name}` + ' ' + `${eventDetails.user.last_name}`
         // let priority = checkPriority(eventDetails.priority);
         // status = eventDetails.status;
         // console.log(status);
+        let eventDate = dateConverter(eventDetails.event_date);
+        let eventDateJoin = eventDate[0] + ' ' + eventDate[1] + ' ' + eventDate[2];
+
+        let eventTime = timeConverter(eventDetails.event_date);
 
 
         $('#eventTitle').html(eventDetails.title);
-        // $('#eventVenue').html(eventDetails.event_subject);
-        // $('#eventDate').html(eventDetails.event_subject);
-        // $('#eventGuest').html(eventOrganizerName);
-        // $('#eventAddress').html(complainantName);
+        $('#eventVenue').html(eventDetails.venue);
+        $('#eventDate').html(eventDateJoin);
+        $('#eventGuest').html(eventDetails.chief_guest);
+        $('#eventTime').html(eventTime);
         $('#eventOrganizer').html(eventOrganizerName);
         $('#eventOrganizerDistrict').html(eventDetails.district);
         $('#eventOrganizerState').html(eventDetails.state);

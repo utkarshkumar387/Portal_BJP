@@ -17,14 +17,36 @@
                     </div>
                     <div class="events__detail mb-2">
                         <div class="details row">
-                            <div class="col-md-4">
-                                <p><strong>Venue: <span id="eventVenue"></span></strong></p>
-                                <p><strong>Date & Time: <span id="eventDate"></span></strong></p>
-                                <p><strong>Chief Guests: <span id="eventGuest"></span></strong></p>
+                            <div class="col-md-6">
+                                <strong class="row">
+                                    <span class="col-md-4">
+                                        <p>Venue</p>
+                                    </span>
+                                    <span class="col-md-8">
+                                        <p id="eventVenue"></p>
+                                    </span>
+                                </strong>
+                                <strong class="row">
+                                    <span class="col-md-4">
+                                        <p>Date & Time</p>
+                                    </span>
+                                    <span class="col-md-8 d-flex">
+                                        <p class="mr-3" id="eventDate"></p>
+                                        <p id="eventTime"></p>
+                                    </span>
+                                </strong>
+                                <strong class="row">
+                                    <span class="col-md-4">
+                                        <p>Chief Guests</p>
+                                    </span>
+                                    <span class="col-md-8">
+                                        <p id="eventGuest"></p>
+                                    </span>
+                                </strong>
                             </div>
-                            <div class="col-md-8">
+                            <!-- <div class="col-md-8">
                                 <p id="eventAddress"></p>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="events__organizer" id="footerPrivilegeEvent">
@@ -39,7 +61,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-between" id="privilegeButtonsEvent">
+                    <div class="d-flex justify-content-between mb-2" id="privilegeButtonsEvent">
                     </div>
                 </div>
             </div>
