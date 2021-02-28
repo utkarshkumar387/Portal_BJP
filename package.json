@@ -1,7 +1,7 @@
 {
   "name": "portal_bjp",
   "version": "1.0.0",
-  "description": "",
+  "description": "BJP IT portal",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,5 +17,13 @@
     "express-fileupload": "^1.2.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/utkarshkumar387/Portal_BJP.git"
+  },
+  "optionalDependencies": [],
+  "engines": {
+    "node": "14.15.0"
   }
 }
