@@ -1,4 +1,5 @@
-let link = ['', '', '', ''];
+let link = window.location.href.split('/');
+// console.log(link[4]);
 $('#marital_status').on('change', selectMaritialStatus);
 $('#genderMale').on('change', selectMaritialStatus);
 $('#genderFemale').on('change', selectMaritialStatus);
@@ -86,161 +87,100 @@ function officialDetails() {
     if ($('#nationalityIndian').prop("checked")) {
         $('#officialDetails').append(`
             <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-4 col-form-label">State
+                                    <label for="getAllStates" class="col-sm-4 col-form-label">State
                                         <span>*</span></label>
                                         <div class="col-md-8">
-                                        <select name="marital_status" class="form-select form-control" id="marital_status">
-                                            <option value="">-Select State-</option>
-                                            <option value="Hinduism">Hinduism</option>
-                                            <option value="Islam">Islam</option>
-                                            <option value="Christianity">Christianity</option>
-                                            <option value="Sikhism">Sikhism</option>
-                                            <option value="Buddhism">Buddhism</option>
-                                            <option value="Jainism">Jainism</option>
+                                        <select name="getAllStates" class="form-select form-control" id="getAllStates">
                                         </select>
                                         </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-4 col-form-label">Lok Sabha Satra
+                                    <label for="getAllDistricts" class="col-sm-4 col-form-label">District
                                         <span>*</span></label>
                                         <div class="col-md-8">
-                                        <select name="marital_status" class="form-select form-control" id="marital_status">
-                                            <option value="">-Select Lok Sabha Satra-</option>
-                                            <option value="Hinduism">Hinduism</option>
-                                            <option value="Islam">Islam</option>
-                                            <option value="Christianity">Christianity</option>
-                                            <option value="Sikhism">Sikhism</option>
-                                            <option value="Buddhism">Buddhism</option>
-                                            <option value="Jainism">Jainism</option>
+                                        <select name="getAllDistricts" class="form-select form-control" id="getAllDistricts">
+                                        <option selected disabled>-Select District-</option>
                                         </select>
                                         </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-4 col-form-label">Vidhan Sabha Satra
+                                    <label for="parliamentConstituencies" class="col-sm-4 col-form-label">Lok Sabha Constituency
                                         <span>*</span></label>
                                         <div class="col-md-8">
-                                        <select name="marital_status" class="form-select form-control" id="marital_status">
-                                            <option value="">-Select Vidhan Sabha Satra-</option>
-                                            <option value="Hinduism">Hinduism</option>
-                                            <option value="Islam">Islam</option>
-                                            <option value="Christianity">Christianity</option>
-                                            <option value="Sikhism">Sikhism</option>
-                                            <option value="Buddhism">Buddhism</option>
-                                            <option value="Jainism">Jainism</option>
+                                        <select name="parliamentConstituencies" class="form-select form-control" id="parliamentConstituencies">
+                                        <option selected disabled>-Select Up Block Parliament Constituency-</option>
                                         </select>
                                         </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-4 col-form-label">District
+                                    <label for="legislativeAssemblyConstituencies" class="col-sm-4 col-form-label">Legislative Assembly Constituency
                                         <span>*</span></label>
                                         <div class="col-md-8">
-                                        <select name="marital_status" class="form-select form-control" id="marital_status">
-                                            <option value="">-Select District-</option>
-                                            <option value="Hinduism">Hinduism</option>
-                                            <option value="Islam">Islam</option>
-                                            <option value="Christianity">Christianity</option>
-                                            <option value="Sikhism">Sikhism</option>
-                                            <option value="Buddhism">Buddhism</option>
-                                            <option value="Jainism">Jainism</option>
+                                        <select name="legislativeAssemblyConstituencies" class="form-select form-control" id="legislativeAssemblyConstituencies">
+                                        <option selected disabled>-Select Legislative Assembly Constituency-</option>
                                         </select>
                                         </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-4 col-form-label">Upkhand
+                                    <label for="upBlockEducationConstituencies" class="col-sm-4 col-form-label">Up Block Education Constituency
                                         <span>*</span></label>
                                         <div class="col-md-8">
-                                        <select name="marital_status" class="form-select form-control" id="marital_status">
-                                            <option value="">-Select Upkhand-</option>
-                                            <option value="Hinduism">Hinduism</option>
-                                            <option value="Islam">Islam</option>
-                                            <option value="Christianity">Christianity</option>
-                                            <option value="Sikhism">Sikhism</option>
-                                            <option value="Buddhism">Buddhism</option>
-                                            <option value="Jainism">Jainism</option>
+                                        <select name="upBlockEducationConstituencies" class="form-select form-control" id="upBlockEducationConstituencies">
+                                        <option selected disabled>-Select Up Block Education Constituency-</option>
                                         </select>
                                         </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-4 col-form-label">Tehsil
+                                    <label for="townshipConstituencies" class="col-sm-4 col-form-label">Township Constituency
                                         <span>*</span></label>
                                         <div class="col-md-8">
-                                        <select name="marital_status" class="form-select form-control" id="marital_status">
-                                            <option value="">-Select Tehsil-</option>
-                                            <option value="Hinduism">Hinduism</option>
-                                            <option value="Islam">Islam</option>
-                                            <option value="Christianity">Christianity</option>
-                                            <option value="Sikhism">Sikhism</option>
-                                            <option value="Buddhism">Buddhism</option>
-                                            <option value="Jainism">Jainism</option>
+                                        <select name="townshipConstituencies" class="form-select form-control" id="townshipConstituencies">
+                                        <option selected disabled>-Select Township Constituency-</option>
                                         </select>
                                         </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-4 col-form-label">Panchayat Samiti
+                                    <label for="panchayatSamitis" class="col-sm-4 col-form-label">Panchayat Samiti
                                         <span>*</span></label>
                                         <div class="col-md-8">
-                                        <select name="marital_status" class="form-select form-control" id="marital_status">
-                                            <option value="">-Select Panchayat Samiti-</option>
-                                            <option value="Hinduism">Hinduism</option>
-                                            <option value="Islam">Islam</option>
-                                            <option value="Christianity">Christianity</option>
-                                            <option value="Sikhism">Sikhism</option>
-                                            <option value="Buddhism">Buddhism</option>
-                                            <option value="Jainism">Jainism</option>
+                                        <select name="panchayatSamitis" class="form-select form-control" id="panchayatSamitis">
+                                        <option selected disabled>-Select Panchayat Samiti-</option>
                                         </select>
                                         </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-4 col-form-label">Gram Panchayat
+                                    <label for="villageCouncils" class="col-sm-4 col-form-label">Village Council
                                         <span>*</span></label>
                                         <div class="col-md-8">
-                                        <select name="marital_status" class="form-select form-control" id="marital_status">
-                                            <option value="">-Select Gram Panchayat-</option>
-                                            <option value="Hinduism">Hinduism</option>
-                                            <option value="Islam">Islam</option>
-                                            <option value="Christianity">Christianity</option>
-                                            <option value="Sikhism">Sikhism</option>
-                                            <option value="Buddhism">Buddhism</option>
-                                            <option value="Jainism">Jainism</option>
+                                        <select name="villageCouncils" class="form-select form-control" id="villageCouncils">
+                                        <option selected disabled>-Select Village Council-</option>
                                         </select>
                                         </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-4 col-form-label">Revenue Village
+                                    <label for="revenueVilleges" class="col-sm-4 col-form-label">Revenue Village
                                         <span>*</span></label>
                                         <div class="col-md-8">
-                                        <select name="marital_status" class="form-select form-control" id="marital_status">
-                                            <option value="">-Select Revenue Village-</option>
-                                            <option value="Hinduism">Hinduism</option>
-                                            <option value="Islam">Islam</option>
-                                            <option value="Christianity">Christianity</option>
-                                            <option value="Sikhism">Sikhism</option>
-                                            <option value="Buddhism">Buddhism</option>
-                                            <option value="Jainism">Jainism</option>
+                                        <select name="revenueVilleges" class="form-select form-control" id="revenueVilleges">
+                                        <option selected disabled>-Select Revenue Village-</option>
                                         </select>
                                         </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-4 col-form-label">Booth
+                                    <label for="booths" class="col-sm-4 col-form-label">Booth
                                         <span>*</span></label>
                                         <div class="col-md-8">
-                                        <select name="marital_status" class="form-select form-control" id="marital_status">
-                                            <option value="">-Select Booth-</option>
-                                            <option value="Hinduism">Hinduism</option>
-                                            <option value="Islam">Islam</option>
-                                            <option value="Christianity">Christianity</option>
-                                            <option value="Sikhism">Sikhism</option>
-                                            <option value="Buddhism">Buddhism</option>
-                                            <option value="Jainism">Jainism</option>
+                                        <select name="booths" class="form-select form-control" id="booths">
+                                        <option selected disabled>-Select Booth-</option>
                                         </select>
                                         </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-4 col-form-label">Religion
+                                    <label for="allreligion" class="col-sm-4 col-form-label">Religion
                                         <span>*</span>
                                     </label>
                                     <div class="col-md-8">
-                                    <select name="marital_status" class="form-select form-control" id="marital_status">
+                                    <select name="allreligion" class="form-select form-control" id="allreligion">
                                         <option value="">-Select Religion-</option>
                                         <option value="Hinduism">Hinduism</option>
                                         <option value="Islam">Islam</option>
@@ -252,10 +192,10 @@ function officialDetails() {
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-4 col-form-label">Caste
+                                    <label for="allCaste" class="col-sm-4 col-form-label">Caste
                                         <span>*</span></label>
                                         <div class="col-md-8">
-                                        <select name="marital_status" class="form-select form-control" id="marital_status">
+                                        <select name="allCaste" class="form-select form-control" id="allCaste">
                                             <option value="">-Select Caste-</option>
                                             <option value="Hinduism">Hinduism</option>
                                             <option value="Islam">Islam</option>
@@ -268,7 +208,147 @@ function officialDetails() {
                                 </div>
             `)
     }
-    // else if($('#nationalityNRI').prop("checked")){
+    //appending states options
+    let states = fetchProfileData('get_states');
+    if (states.error == false) {
+        let allStates = states.message.states;
+        console.log(allStates);
+        for (let i = 0; i < allStates.length; i++) {
+            console.log(allStates[i].id, allStates[i].name);
+            $('#getAllStates').append(
+                `
+                <option>-Select State-</option>
+                <option value="${allStates[i].id}">${allStates[i].name}</option>
+            `
+            )
 
-    // };
+        }
+    }
+    document.getElementById('getAllStates').addEventListener('change', function () {
+        let state;
+        state = document.getElementById("getAllStates").value;
+        console.log(state);
+        let districts = fetchProfileDataById('get_districts', state);
+        console.log(districts);
+        if (districts.error == false) {
+            let allDistricts = districts.message.districts;
+            console.log(allDistricts);
+            for (let i = 0; i < allDistricts.length; i++) {
+                console.log(allDistricts[i].id, allDistricts[i].name);
+                $('#getAllDistricts').append(
+                    `
+                    <option value="${allDistricts[i].id}">${allDistricts[i].name}</option>
+                `
+                )
+
+            }
+        }
+    })
+    document.getElementById('getAllDistricts').addEventListener('change', function () {
+        let district;
+        district = document.getElementById('getAllDistricts').value;
+        console.log(district);
+        let districtDependent = fetchProfileDataById('get_district_dependent', district);
+        console.log('districtDependent');
+        if (districtDependent.error == false) {
+            // let allSelectTag = [];
+            let allofficialDetails = document.getElementById('officialDetails').getElementsByTagName('select');
+            console.log(allofficialDetails);
+            for (let i = 0; i < allofficialDetails.length; i++) {
+                let id;
+                id = allofficialDetails[i].getAttribute('id');
+                appendAllOptions(id);
+            }
+            var temp = districtDependent.message;
+            for (var temp1 in temp) {
+                var words = temp1.split('_');
+                for (var word in words) {
+                    if (word == 0) continue;
+                    words[word] = words[word].charAt(0).toUpperCase() + words[word].slice(1);
+                }
+                words = (words).join('');
+                for (var i = 0; i < temp[temp1].length; i++) {
+                    // console.log(temp[temp1][i].id);
+                    // console.log(temp[temp1][i].name);
+                    $('#' + words).append(
+                        `
+                            <option value="${temp[temp1][i].id}">${temp[temp1][i].name}</option>
+                        `
+                    )
+                }
+
+            }
+        }
+    })
 }
+//addending day in dob
+// for (let i = 1; i <= 31; i++) {
+//     $('#dobDay').append(
+//         `
+//         <option value="${i}">${i}</option>
+//         `
+//     )
+// }
+
+//post request to api
+function addMemberDetails() {
+    let allPhoneNumbers = [];
+    console.log(allPhoneNumbers);
+    let allPhoneNumbersInput = document.getElementById('allPhoneNumber').getElementsByTagName('input');
+    for (let i = 0; i < allPhoneNumbersInput.length; i++) {
+        let no = allPhoneNumbersInput[i].value;
+        allPhoneNumbers.push(no);
+    }
+    // console.log(document.getElementById('getAllStates').value);
+    let memberDetails = {
+        first_name: $('#memberFirstName').val(),
+        last_name: $('#memberLastName').val(),
+        father_name: $('#memberFatherName').val(),
+        // gender, maritial_status not present in api
+        // gender: $('#').val(),
+        email: $('#memberEmail').val(),
+        // phone_no_list: allPhoneNumbers,
+        dob: $('#memberDOB').val(),
+        blood_group: $('#memberBloodGrouop').val(),
+        anniversary: $('#memberAnniversary').val(),
+        permanent_address_line1: $('#permanentAddress').val(),
+        residence_address_line1: $('#residentialAddress').val(),
+        state_id: $('#getAllStates').val(),
+        district_id: $('#getAllDistricts').val(),
+        parliament_constituency_id: $('#parliamentConstituencies').val(),
+        legislative_assembly_constituency_id: $('#legislativeAssemblyConstituencies').val(),
+        up_block_education_constituency_id: $('#upBlockEducationConstituencies').val(),
+        township_constituency_id: $('#townshipConstituencies').val(),
+        panchayat_samiti_id: $('#panchayatSamitis').val(),
+        village_council_id: $('#villageCouncils').val(),
+        revenue_villege_id: $('#revenueVilleges').val(),
+        booth_id: $('#booths').val(),
+        voter_id_card: $('#voterIdCard').val(),
+        pan_card: $('#panCard').val(),
+        aadhar_card: $('#adharCard').val(),
+        facebook_link: $('#facebookLink').val(),
+        twitter_link: $('#twitterLink').val(),
+    }
+    console.log(memberDetails);
+
+    //can't able to do patch request
+    let id = link[4];
+    let memberDetailsData = patchProfileDataById('member_profile', id, memberDetails);
+
+    if (memberDetailsData.error == false) {
+        console.log('patch request done');
+        // window.location.reload();
+    } else {
+        console.log(memberDetails.message);
+    }
+
+}
+
+// parliamentConstituencies
+// legislativeAssemblyConstituencies
+// upBlockEducationConstituencies
+// townshipConstituencies
+// panchayatSamitis
+// villageCouncils
+// revenueVilleges
+// booths

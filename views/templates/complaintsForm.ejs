@@ -109,6 +109,27 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label for="blogTitle" class="col-sm-4 col-form-label">Blog Carousel
+                                    Images<span>*</span></label>
+                                <div class="col-sm-8">
+                                    <label for="browse" style="width: 100%;">
+                                        <div class="browseDesign d-flex">
+                                            <div class="d-flex browseDesign__files">
+                                                <div class="d-flex browseDesign__inner">
+                                                    <div class="upload__icon">
+                                                        <img src="/img/icons/uploadForm.png" alt="">
+                                                    </div>
+                                                    <p class="upload__para">
+                                                        Upload upto 5 Files</p>
+                                                    <input id="browse" type="file" multiple>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <div id="preview"></div>
+                                </div>
+                            </div>
                             <script>
                                 document.getElementById('output').innerHTML = location.search;
                                 $(".chosen-select").chosen();

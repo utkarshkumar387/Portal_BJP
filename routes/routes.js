@@ -7,8 +7,12 @@ module.exports = function (app) {
         .get(function (req, res, next) {
             res.render('templates/profileEdit')
         })
+    app.route('/profileEdit/:id')
+        .get(function (req, res, next) {
+            res.render('templates/profileEdit')
+        })
 
-    app.route('/profile')
+    app.route('/profile/:id')
         .get(function (req, res, next) {
             res.render('templates/profile')
         })
@@ -44,7 +48,10 @@ module.exports = function (app) {
         .get(function (req, res, next) {
             res.render('templates/eventsForm')
         })
-
+    app.route('/eventsForm/:id/:str')
+        .get(function (req, res, next) {
+            res.render('templates/eventsForm')
+        })
     app.route('/editor')
         .get(function (req, res, next) {
             res.render('templates/editor')
@@ -105,7 +112,7 @@ module.exports = function (app) {
             res.render('templates/committeeMy')
         })
 
-    app.route('/committeeClicked')
+    app.route('/committeeClicked/:id')
         .get(function (req, res, next) {
             res.render('templates/committeeClicked')
         })
@@ -138,5 +145,37 @@ module.exports = function (app) {
     app.route('/blogsApproved')
         .get(function (req, res, next) {
             res.render('templates/blogsApproved')
+        })
+    app.route('/test')
+        .get(function (req, res, next) {
+            res.render('templates/test')
+        })
+    app.route('/members/:str')
+        .get(function (req, res, next) {
+            res.render('templates/members')
+        })
+    app.route('/manageAdmins')
+        .get(function (req, res, next) {
+            res.render('templates/manageAdmins')
+        })
+    app.route('/manageCommittee')
+        .get(function (req, res, next) {
+            res.render('templates/manageCommittee')
+        })
+    app.route('/manageCommitteeSpecific')
+        .get(function (req, res, next) {
+            res.render('templates/manageCommitteeSpecific')
+        })
+    app.route('/manageMembers')
+        .get(function (req, res, next) {
+            res.render('templates/manageMembers')
+        })
+    app.route('/manageVerificationTeam')
+        .get(function (req, res, next) {
+            res.render('templates/manageVerificationTeam')
+        })
+    app.route('/committeeForm')
+        .get(function (req, res, next) {
+            res.render('templates/committeeForm')
         })
 }

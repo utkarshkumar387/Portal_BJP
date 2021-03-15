@@ -1,12 +1,9 @@
 var authorDetails, authorName, authorID;
-$(document).ready(() => {
-
-    authorDetails = JSON.parse(getCookie('member_profile'));
-    authorName = authorDetails.first_name + ' ' + authorDetails.last_name;
-    authorID = authorDetails.user_id;
-    console.log(authorName, authorID);
-    console.log(authorName);
-});
+authorDetails = JSON.parse(getCookie('member_profile'));
+authorName = authorDetails.first_name + ' ' + authorDetails.last_name;
+authorID = authorDetails.user_id;
+console.log(authorName, authorID);
+console.log(authorName);
 // "id": 11,
 //             "images": [],
 //             "solutions": [],

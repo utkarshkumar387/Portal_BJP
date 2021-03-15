@@ -1,19 +1,18 @@
 let link = ['', '', '', 'blogsView'];
-$(document).ready(function () {
-    let contentBlogsUnapproved = fetchContent('blogs/pending');
-    console.log(contentBlogsUnapproved);
-    if (contentBlogsUnapproved.error == false) {
-        let blogs = contentBlogsUnapproved.message.results;
-        console.log(blogs);
-        for (let i = 0; i < blogs.length; i++) {
-            let blogDate = dateConverter(blogs[i].date);
-            let title = blogs[i].title;
-            let description = blogs[i].description;
-            let maxStringTitle = 20;
-            let maxStringDesc = 300;
-            let trimmedDataBlog = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
-            console.log(trimmedDataBlog);
-            $('#allBlogsUnapproved').append(`
+let contentBlogsUnapproved = fetchContent('blogs/pending');
+console.log(contentBlogsUnapproved);
+if (contentBlogsUnapproved.error == false) {
+    let blogs = contentBlogsUnapproved.message.results;
+    console.log(blogs);
+    for (let i = 0; i < blogs.length; i++) {
+        let blogDate = dateConverter(blogs[i].date);
+        let title = blogs[i].title;
+        let description = blogs[i].description;
+        let maxStringTitle = 20;
+        let maxStringDesc = 300;
+        let trimmedDataBlog = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
+        console.log(trimmedDataBlog);
+        $('#allBlogsUnapproved').append(`
             <div class="card cardStyle">
                 <div class="row g-0">
                     <div class="col-md-6">
@@ -27,7 +26,7 @@ $(document).ready(function () {
                             <p class="card-text blogText">${trimmedDataBlog.trimStringDesc}</p>
                             <div class="card-footer footer">
                                 <p id="homePageBlogDate_id">${blogDate[0]} ${blogDate[1]} ${blogDate[2]} <i class="fa fa-circle" aria-hidden="true"></i><span
-                                    id="homePageBlogAuthor_id">${blogs[i].user_id.first_name} ${blogs[i].user_id.last_name}</span></p>
+                                    id="homePageBlogAuthor_id">${blogs[i].user.first_name} ${blogs[i].user.last_name}</span></p>
                                 <a href="/blogsView/${blogs[i].id}/${blogs[i].status}">
                                     View Blog
                                     <span>
@@ -40,8 +39,7 @@ $(document).ready(function () {
                 </div>
             </div>
             `)
-        }
-    } else {
-        console.log(contentBlogsUnapproved.message);
     }
-});
+} else {
+    console.log(contentBlogsUnapproved.message);
+}

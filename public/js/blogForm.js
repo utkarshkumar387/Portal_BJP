@@ -8,33 +8,43 @@ if (link.length == 4) {
 } else { //if greater than 4 execute it
     blogFunctionality.addEventListener('click', editBlog);
 }
-$(document).ready(() => {
-    if (link.length == 4) {
-        let cookieDetails = JSON.parse(getCookie('member_profile'));
-        // console.log(cookieDetails)
-        let authorName = cookieDetails.first_name + ' ' + cookieDetails.last_name
-        // console.log(authorName);
-        $('#blogAuthor').val(authorName);
-    } else if (link.length == 6) {
-        blogID = link[4];
-        status = link[5];
-        console.log(blogID, status);
-        switch (status) {
-            case 'approved':
-                let editBlogDetails = fetchContentByID('blogs', blogID);
-                // console.log(editBlogDetails);
-                if (editBlogDetails.error == false) {
-                    // console.log(editBlogDetails.message);
-                    // console.log(authorName);
-                    //change to name..... added email just to check
-                    $('#blogAuthor').val(editBlogDetails.message.user_id.email);
-                    $('#blogTitle').val(editBlogDetails.message.title);
-                    $('#blogBody').val(editBlogDetails.message.description);
-                }
-        }
-        console.log('Inside blog edit form');
+if (link.length == 4) {
+    let cookieDetails = JSON.parse(getCookie('member_profile'));
+    // console.log(cookieDetails)
+    let authorName = cookieDetails.first_name + ' ' + cookieDetails.last_name
+    // console.log(authorName);
+    $('#blogAuthor').val(authorName);
+} else if (link.length == 6) {
+    blogID = link[4];
+    status = link[5];
+    console.log(blogID, status);
+    let editBlogDetails;
+    switch (status) {
+        case '2':
+            editBlogDetails = fetchContentByID('blogs', blogID);
+            console.log(editBlogDetails);
+            break;
+        case '1':
+            editBlogDetails = fetchContentByID('blogs_unapproved', blogID);
+            console.log(editBlogDetails);
+            break;
+        case '3':
+            editBlogDetails = fetchContentByID('blogs_unapproved', blogID);
+            console.log(editBlogDetails);
+            break;
     }
-});
+    console.log('Inside blog edit form');
+    if (editBlogDetails.error == false) {
+        // console.log(editBlogDetails.message);
+        // console.log(authorName);
+        //change to name..... added email just to check
+        $('#blogAuthor').val(editBlogDetails.message.user.first_name + ' ' + editBlogDetails.message.user.last_name);
+        $('#blogTitle').val(editBlogDetails.message.title);
+        $('#blogBody').val(editBlogDetails.message.description);
+    }
+}
+
+document.getElementById('browse').addEventListener('change', imgBase64Converter)
 function addBlog() {
     authorDetails = JSON.parse(getCookie('member_profile'));
     authorName = authorDetails.first_name + ' ' + authorDetails.last_name;
@@ -42,23 +52,39 @@ function addBlog() {
     console.log($('#blogTitle').val());
     let data = {
         data: JSON.stringify({
-            blog_data:
+            event_data:
             {
-                // image: null,
                 user_id: authorID,
-                title: $('#blogTitle').val(),
-                description: $('#blogBody').val(),
-                status: 'pending'
+                title: $('#eventTitle').val(),
+                description: $('#eventBody').val(),
+                status: 1
             },
-            blog_data_images: JSON.stringify([
+            // event_data_images: JSON.stringify([
 
-            ])
+            // ])
         })
     }
+    // JSON.stringify({
+    //     blogs:
+    //         [
+    //             {
+    //                 user_id: authorID,
+    //                 title: $('#blogTitle').val(),
+    //                 description: $('#blogBody').val(),
+    //                 status: 1,
+    //             }
+    //         ],
+    //     blog_data_images: JSON.stringify([
+
+    //     ])
     console.log(data);
     let blogDetails = addContent('blogs', data);
-    window.location.replace('/blogs');
     console.log(blogDetails);
+    if (blogDetails.error == false) {
+        window.location.replace('/blogsApproved');
+    } else {
+        console.log(blogDetails.message);
+    }
 }
 function editBlog() {
     let data = {
@@ -70,10 +96,12 @@ function editBlog() {
 
     }
     console.log(data);
-    //no patch request in content/blogs/id or content/approved
-    let blogDetails = patchRequestByID('blogs/update_status', blogID, data);
+    let blogDetails = updateContent('blogs/update_status', blogID, data);
     console.log(blogDetails);
-    window.location.replace(`/blogsView/${blogID}/${status}`);
-    // console.log(blogDetails);
+    if (blogDetails.error == false) {
+        window.location.replace(`/blogsView/${blogID}/${status}`);
+    } else {
+        console.log(blogDetails.message);
+    }
 }
 

@@ -1,0 +1,48 @@
+<% layout('layout') %>
+    <!-- modal to submitting verification member privileges -->
+    <!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Do you want to save your changes?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="save__verification" onclick="saveVerificationPrivileges(this.id)"
+                        class="btn btn-primary">Save
+                        changes</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="row mt-4 home">
+        <div class="col-md-3 sidemenu">
+            <div class="component">
+                <%- include('../particles/sidebarAdmins.ejs') -%>
+            </div>
+        </div>
+        <div class="card col-md-9 mb-5">
+            <div class="home__blogsHeader headerMain d-flex justify-content-between align-items-center">
+                <p>Manage Verification Members</p>
+                <a href="/members/manageVerificationTeam" class="btn btn-success">Add manager</a>
+            </div>
+            <div class="committee__members">
+                <label class="search__box d-flex align-items-center mb-4" for="committee__membersSearch">
+                    <span class="serach__icon mr-3">
+                        <img src="img/icons/search.png" alt="">
+                    </span>
+                    <input id="committee__membersSearch" placeholder="Search" />
+                </label>
+                <div class="member__data" id="manageVerificationTeamBlock">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="application/javascript" src="/js/manageVerificationTeam.js"></script>

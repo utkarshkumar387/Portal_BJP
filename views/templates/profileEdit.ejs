@@ -23,17 +23,24 @@
                                 <p>Personal Details</p>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Full Name
+                                <label for="memberFirstName" class="col-sm-4 col-form-label">First Name
                                     <span>*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="">
+                                    <input type="text" class="form-control" id="memberFirstName" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Father's Name
+                                <label for="memberLastName" class="col-sm-4 col-form-label">Last Name
                                     <span>*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="">
+                                    <input type="text" class="form-control" id="memberLastName" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="memberFatherName" class="col-sm-4 col-form-label">Father's Name
+                                    <span>*</span></label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="memberFatherName" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -68,9 +75,9 @@
                             <div class="form-group row" id="couple_status">
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Email (optional)</label>
+                                <label for="memberEmail" class="col-sm-4 col-form-label">Email (optional)</label>
                                 <div class="col-sm-8">
-                                    <input type="email" class="form-control" id="inputEmail3"
+                                    <input type="email" class="form-control" id="memberEmail"
                                         placeholder="12345@xyz.com">
                                 </div>
                             </div>
@@ -80,7 +87,7 @@
                                 </label>
                                 <div class="form-group col-md-8" id="allPhoneNumber">
                                     <div class="form-group d-flex">
-                                        <input type="tel" class="form-control" id="inputEmail3"
+                                        <input type="tel" class="form-control" id="phoneNumberInitial"
                                             placeholder="+91-9876543210">
                                         <button onclick="addPhoneNumber()"
                                             class="btn btn-outline-success ml-2 formButtonPhone">+</button>
@@ -102,35 +109,24 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Date of Birth
+                                <label for="memberDOB" class="col-sm-4 col-form-label">Date of Birth
                                     <span>*</span></label>
-                                <div class="col-sm-2">
-                                    <input type="number" class="form-control" id="inputEmail3" placeholder="Day">
-                                </div>
-                                <div class="col-sm-4">
-                                    <input type="number" class="form-control" id="inputEmail3" placeholder="Month">
-                                </div>
-                                <div class="col-sm-2" style="padding-right: 15px;">
-                                    <input type="number" class="form-control" id="inputEmail3" placeholder="Year">
+                                <div class="col-md-8">
+                                    <input type="date" class="form-control" id="memberDOB">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Blood Group
+                                <label for="memberBloodGrouop" class="col-sm-4 col-form-label">Blood Group
                                     (optional)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="">
+                                    <input type="text" class="form-control" id="memberBloodGrouop" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Anniversary (optional)</label>
-                                <div class="col-sm-2">
-                                    <input type="number" class="form-control" id="inputEmail3" placeholder="Day">
-                                </div>
-                                <div class="col-sm-4">
-                                    <input type="number" class="form-control" id="inputEmail3" placeholder="Month">
-                                </div>
-                                <div class="col-sm-2" style="padding-right: 15px;">
-                                    <input type="number" class="form-control" id="inputEmail3" placeholder="Year">
+                                <label for="memberAnniversary" class="col-sm-4 col-form-label">Anniversary
+                                    (optional)</label>
+                                <div class="col-sm-8">
+                                    <input type="date" class="form-control" id="memberAnniversary">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -195,22 +191,22 @@
                                 <p>Identification Details</p>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Voter ID Card
+                                <label for="voterIdCard" class="col-sm-4 col-form-label">Voter ID Card
                                     (optional)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="">
+                                    <input type="text" class="form-control" id="voterIdCard" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Adhar Card (optional)</label>
+                                <label for="adharCard" class="col-sm-4 col-form-label">Adhar Card (optional)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="">
+                                    <input type="text" class="form-control" id="adharCard" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">PAN Card (optional)</label>
+                                <label for="panCard" class="col-sm-4 col-form-label">PAN Card (optional)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="">
+                                    <input type="text" class="form-control" id="panCard" placeholder="">
                                 </div>
                             </div>
                         </div>
@@ -221,37 +217,37 @@
                                 <p>Social Links</p>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Facebook (optional)</label>
+                                <label for="facebookLink" class="col-sm-4 col-form-label">Facebook (optional)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail3"
+                                    <input type="text" class="form-control" id="facebookLink"
                                         placeholder="Facebook.com/utkarsh123">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Instagram (optional)</label>
+                                <label for="instagramLink" class="col-sm-4 col-form-label">Instagram (optional)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail3"
+                                    <input type="text" class="form-control" id="instagramLink"
                                         placeholder="Instagram.com/utkarsh123">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Twitter (optional)</label>
+                                <label for="twitterLink" class="col-sm-4 col-form-label">Twitter (optional)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail3"
+                                    <input type="text" class="form-control" id="twitterLink"
                                         placeholder="Twitter.com/utkarsh123">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Linkedin (optional)</label>
+                                <label for="linkedinLink" class="col-sm-4 col-form-label">Linkedin (optional)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail3"
+                                    <input type="text" class="form-control" id="linkedinLink"
                                         placeholder="Linkedin.com/utkarsh123">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="profile__save px-5 mb-4 mt-4">
-                        <a href="">Save All Changes</a>
+                        <a onclick="addMemberDetails()">Save All Changes</a>
                     </div>
                 </div>
             </div>

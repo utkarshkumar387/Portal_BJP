@@ -1,19 +1,21 @@
 let link = window.location.href.split('/');
-$(document).ready(function () {
-    let contentEvents = fetchContent('events');
-    let upcomingEvents = contentEvents.message.upcoming_events;
-    let pastEvents = contentEvents.message.past_events;
+let contentEvents = fetchContent('events');
+let upcomingEvents = contentEvents.message.upcoming_events;
+console.log(upcomingEvents);
+let pastEvents = contentEvents.message.past_events;
+console.log(pastEvents);
 
-    if (contentEvents.error == false) {
-        for (let i = 0; i < upcomingEvents.length; i++) {
-            let upcomingEventDate = dateConverter(upcomingEvents[i].date);
-            let title = upcomingEvents[i].title;
-            let description = upcomingEvents[i].description;
-            let maxStringTitle = 20;
-            let maxStringDesc = 300;
-            let trimmedDataEvent = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
+if (contentEvents.error == false) {
+    for (let i = 0; i < upcomingEvents.length; i++) {
+        let upcomingEventDate = dateConverter(upcomingEvents[i].date);
+        let title = upcomingEvents[i].title;
+        let description = upcomingEvents[i].description;
+        let maxStringTitle = 20;
+        let maxStringDesc = 300;
+        let trimmedDataEvent = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
 
-            $('#upcomingEventBlock').append(`
+        //nothing is coming in upcoming event block
+        $('#upcomingEventBlock').append(`
             <div class="col-md-4 events__card mb-4 px-3">
                 <div class="card cardStyle">
                     <img src="https://images.livemint.com/img/2020/01/19/600x338/20190726221L_1564151885181_1579462418514.jpg"
@@ -23,7 +25,7 @@ $(document).ready(function () {
                     </div>
                     <div class="card-footer footer">
                         <p>${upcomingEventDate[0]} ${upcomingEventDate[1]} ${upcomingEventDate[2]}</p>
-                        <a href="/eventsView/${pastEvents[i].id}/approved">
+                        <a href="/eventsView/${upcomingEvents[i].id}/${upcomingEvents[i].status}">
                             View Event
                             <span>
                                 <img src="img/icons/link.png" alt="">
@@ -33,16 +35,16 @@ $(document).ready(function () {
                 </div>
             </div>
             `)
-        }
-        for (let i = 0; i < pastEvents.length; i++) {
-            let pastEventDate = dateConverter(pastEvents[i].date);
-            let title = pastEvents[i].title;
-            let description = pastEvents[i].description;
-            let maxStringTitle = 20;
-            let maxStringDesc = 300;
-            let trimmedDataEvent = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
+    }
+    for (let i = 0; i < pastEvents.length; i++) {
+        let pastEventDate = dateConverter(pastEvents[i].date);
+        let title = pastEvents[i].title;
+        let description = pastEvents[i].description;
+        let maxStringTitle = 20;
+        let maxStringDesc = 300;
+        let trimmedDataEvent = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
 
-            $('#pastEventBlock').append(`
+        $('#pastEventBlock').append(`
             <div class="col-md-4 events__card mb-4 px-3">
                 <div class="card cardStyle">
                     <img src="https://images.livemint.com/img/2020/01/19/600x338/20190726221L_1564151885181_1579462418514.jpg"
@@ -52,7 +54,7 @@ $(document).ready(function () {
                     </div>
                     <div class="card-footer footer">
                         <p>${pastEventDate[0]} ${pastEventDate[1]} ${pastEventDate[2]}</p>
-                        <a href="/eventsView/${pastEvents[i].id}/approved">
+                        <a href="/eventsView/${pastEvents[i].id}/${pastEvents[i].status}">
                             View Event
                             <span>
                                 <img src="img/icons/link.png" alt="">
@@ -62,8 +64,7 @@ $(document).ready(function () {
                 </div>
             </div>
             `)
-        }
-    } else {
-        console.log(contentEvents.message);
     }
-});
+} else {
+    console.log(contentEvents.message);
+}

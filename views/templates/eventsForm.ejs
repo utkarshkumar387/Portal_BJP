@@ -17,52 +17,62 @@
                                 <p>Event Details</p>
                             </div>
                             <div class="form-group row">
-                                <label for="complainantPermanentAddress" class="col-sm-4 col-form-label">Event Title
+                                <label for="eventTitle" class="col-sm-4 col-form-label">Event Title
                                     <span>*</span></label>
                                 <div class="col-sm-8">
-                                    <textarea rows="3" class="form-control" id="complainantPermanentAddress"
-                                        placeholder="Enter Permanent Address"></textarea>
+                                    <input class="form-control" id="eventTitle" placeholder="Title of event"></input>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="complaintAddress" class="col-sm-4 col-form-label">Complaint Subject
-                                    <span>*</span></label>
+                                <label for="eventDate" class="col-sm-4 col-form-label">Event Date
+                                    <span>*</span>
+                                </label>
                                 <div class="col-sm-8">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <select class="form-control" id="exampleFormControlSelect2">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <select class="form-control" id="exampleFormControlSelect2">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <select class="form-control" id="exampleFormControlSelect2">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                    <input type="date" class="form-control" id="eventDate">
                                 </div>
                             </div>
-                            <script>
-                                document.getElementById('output').innerHTML = location.search;
-                                $(".chosen-select").chosen();
-                            </script>
+                            <div class="form-group row">
+                                <label for="eventImages" class="col-sm-4 col-form-label">Event header
+                                    image <span>*</span></label>
+                                <div class="col-sm-8" id="eventImages">
+                                    <label for="browse" style="width: 100%;">
+                                        <div class="browseDesign d-flex">
+                                            <div class="d-flex browseDesign__image">
+                                                <div class="d-flex browseDesign__inner">
+                                                    <div class="upload__icon">
+                                                        <img src="/img/icons/uploadForm.png" alt="">
+                                                    </div>
+                                                    <p class="upload__para">
+                                                        Upload upto 5 images</p>
+                                                    <input id="browse" type="file" multiple>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <div id="preview"></div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="evnetAttachments" class="col-sm-4 col-form-label">Attachments
+                                    (optional)</label>
+                                <div class="col-sm-8" id="evnetAttachments">
+                                    <label for="browse" style="width: 100%;">
+                                        <div class="browseDesign d-flex">
+                                            <div class="d-flex browseDesign__files">
+                                                <div class="d-flex browseDesign__inner">
+                                                    <div class="upload__icon">
+                                                        <img src="/img/icons/uploadForm.png" alt="">
+                                                    </div>
+                                                    <p class="upload__para">
+                                                        Upload upto 5 Files</p>
+                                                    <input id="browse" type="file" multiple>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <div id="preview"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="profile__outer mt-2 mb-4">
@@ -70,13 +80,15 @@
                             <div class="profile__innerHeader py-3">
                                 <p>Event Description/Details (optional)</p>
                             </div>
-                            <textarea name="" id="complaintBody" rows="20" style="width: 100%;"></textarea>
+                            <textarea name="" class="px-2 py-2" id="eventBody" rows="20"
+                                style="width: 100%;"></textarea>
                         </div>
                     </div>
                     <div class="profile__save px-5 mb-4 mt-4">
-                        <a onclick="complaintAdd()" href="">Add complaint</a>
+                        <a id="addEditEventButton">Add Event</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script type="application/javascript" src="/js/eventsForm.js"></script>

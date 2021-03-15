@@ -6,8 +6,8 @@
             </div>
         </div>
         <div class="col-md-9 home__content">
-            <div class="card home__blogs mb-4 cardStyle" id="home__blogs">
-                <div class="home__blogsHeader headerMain" id="eventTitle">
+            <div class="card home__blogs mb-4 cardStyle">
+                <div class="home__blogsHeader headerMain" id="eventTitleView">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi voluptatibus excepturi consectetur,
                         id quo optio!</p>
                 </div>
@@ -23,7 +23,7 @@
                                         <p>Venue</p>
                                     </span>
                                     <span class="col-md-8">
-                                        <p id="eventVenue"></p>
+                                        <p id="eventVenueView"></p>
                                     </span>
                                 </strong>
                                 <strong class="row">
@@ -31,8 +31,8 @@
                                         <p>Date & Time</p>
                                     </span>
                                     <span class="col-md-8 d-flex">
-                                        <p class="mr-3" id="eventDate"></p>
-                                        <p id="eventTime"></p>
+                                        <p class="mr-3" id="eventDateView"></p>
+                                        <p id="eventTimeView"></p>
                                     </span>
                                 </strong>
                                 <strong class="row">
@@ -40,7 +40,7 @@
                                         <p>Chief Guests</p>
                                     </span>
                                     <span class="col-md-8">
-                                        <p id="eventGuest"></p>
+                                        <p id="eventGuestView"></p>
                                     </span>
                                 </strong>
                             </div>
@@ -54,9 +54,9 @@
                             <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
                                 class="rounded-circle" alt="...">
                             <div class="complaints__sender">
-                                <strong id="eventOrganizer"></strong>
-                                <p class="small"><span id="eventOrganizerDistrict"></span>, <span
-                                        id="eventOrganizerState"></span>
+                                <strong id="eventOrganizerView"></strong>
+                                <p class="small"><span id="eventOrganizerDistrictView"></span>, <span
+                                        id="eventOrganizerStateView"></span>
                                 </p>
                             </div>
                         </div>
@@ -65,15 +65,14 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="card home__events mb-5 cardStyle" id="home__events">
+            <div class="card home__events mb-5 cardStyle" id="home__events">
                 <div class="home__eventsHeader headerMain">
                     <p>Upcoming Events</p>
                 </div>
                 <div class="glide">
                     <div class="glide__body">
                         <div class="glide__track" data-glide-el="track">
-                            <ul class="glide__slides">
-                                //add recent event slider here
+                            <ul class="glide__slides" id="recentViewEventsBlock">
                             </ul>
                         </div>
                     </div>
@@ -82,11 +81,11 @@
                             <img src="/img/icons/prev.png" alt="">
                         </button>
                         <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
-                            <img src="img/icons/next.png" alt="">
+                            <img src="/img/icons/next.png" alt="">
                         </button>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
     <script type="application/javascript" src="/js/eventView.js"></script>

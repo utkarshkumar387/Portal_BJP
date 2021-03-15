@@ -8,36 +8,34 @@ if (link.length == 4) {
 } else { //if link array is greater than 4 execute it
     complaintFunctionality.addEventListener('click', editComplaint);
 }
-$(document).ready(() => {
-    if (link.length == 4) {
-        let cookieDetails = JSON.parse(getCookie('member_profile'));
-        console.log(cookieDetails)
-        let authorName = cookieDetails.first_name + ' ' + cookieDetails.last_name
-        console.log(authorName);
-        $('#complainantName').val(authorName);
-        $('#complainantPhone').val(cookieDetails.phone_no);
-        $('#complainantAddress').val(cookieDetails.permanent_address_line1 + cookieDetails.permanent_address_line2);
-        $('#complainantEmail').val(cookieDetails.email);
-    } else if (link.length == 6) {
-        complaintID = link[4];
-        status = link[5];
-        console.log(complaintID, status);
-        switch (status) {
-            case 'approved':
-                let editComplaintDetails = fetchContentByID('complaints', complaintID);
-                // console.log(editBlogDetails);
-                if (editComplaintDetails.error == false) {
-                    // console.log(editBlogDetails.message);
-                    // console.log(authorName);
-                    //change to name..... added email just to check
-                    $('#complaintAuthor').val(editComplaintDetails.message.user_id.email);
-                    $('#complaintTitle').val(editComplaintDetails.message.title);
-                    $('#complaintBody').val(editComplaintDetails.message.description);
-                }
-        }
-        console.log('Inside complaint edit form');
+if (link.length == 4) {
+    let cookieDetails = JSON.parse(getCookie('member_profile'));
+    console.log(cookieDetails)
+    let authorName = cookieDetails.first_name + ' ' + cookieDetails.last_name
+    console.log(authorName);
+    $('#complainantName').val(authorName);
+    $('#complainantPhone').val(cookieDetails.phone_no);
+    $('#complainantAddress').val(cookieDetails.permanent_address_line1 + cookieDetails.permanent_address_line2);
+    $('#complainantEmail').val(cookieDetails.email);
+} else if (link.length == 6) {
+    complaintID = link[4];
+    status = link[5];
+    console.log(complaintID, status);
+    switch (status) {
+        case 'approved':
+            let editComplaintDetails = fetchContentByID('complaints', complaintID);
+            // console.log(editBlogDetails);
+            if (editComplaintDetails.error == false) {
+                // console.log(editBlogDetails.message);
+                // console.log(authorName);
+                //change to name..... added email just to check
+                $('#complaintAuthor').val(editComplaintDetails.message.user_id.email);
+                $('#complaintTitle').val(editComplaintDetails.message.title);
+                $('#complaintBody').val(editComplaintDetails.message.description);
+            }
     }
-});
+    console.log('Inside complaint edit form');
+}
 function addComplaint() {
     authorDetails = JSON.parse(getCookie('member_profile'));
     authorName = authorDetails.first_name + ' ' + authorDetails.last_name;
@@ -74,7 +72,7 @@ function editComplaint() {
     }
     console.log(data);
     //no patch request in content/blogs/id or content/approved
-    let complaintDetails = patchRequestByID('complaints/update_status', complaintID, data);
+    let complaintDetails = updateContent('complaints/update_status', complaintID, data);
     console.log(complaintDetails);
     window.location.replace(`/complaintsView/${complaintID}/${status}`);
     // console.log(blogDetails);
