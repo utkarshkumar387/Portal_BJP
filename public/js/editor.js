@@ -224,3 +224,5 @@ dropZone.addEventListener("drop", function (ev) {
     var self = this;
     self.appendChild(slideTemplate.content.cloneNode(true));
 });
+
+

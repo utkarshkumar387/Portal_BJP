@@ -52,11 +52,14 @@ module.exports = function (app) {
         .get(function (req, res, next) {
             res.render('templates/eventsForm')
         })
-    app.route('/editor')
+    app.route('/editorCustom')
         .get(function (req, res, next) {
-            res.render('templates/editor')
+            res.render('templates/editorCustom')
         })
-
+    app.route('/editorNormal')
+        .get(function (req, res, next) {
+            res.render('templates/editorNormal')
+        })
     app.route('/blogsView/:id/:str')
         .get(function (req, res, next) {
             res.render('templates/blogsView')
@@ -168,7 +171,11 @@ module.exports = function (app) {
         })
     app.route('/manageMembers')
         .get(function (req, res, next) {
-            res.render('templates/manageMembers')
+            if (JSON.parse(req.cookies.privilege).admin_privilege != null) {
+                res.render('templates/manageMembers')
+            } else {
+                res.render('templates/accessDenied')
+            }
         })
     app.route('/manageVerificationTeam')
         .get(function (req, res, next) {
@@ -179,3 +186,4 @@ module.exports = function (app) {
             res.render('templates/committeeForm')
         })
 }
+

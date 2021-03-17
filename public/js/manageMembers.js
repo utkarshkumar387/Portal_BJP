@@ -118,6 +118,7 @@ function getButton(id, memberID) {
 }
 
 //filter already present admin from all members list
+let count = 0;
 for (let i = 0; i < allMembers.message.length; i++) {
     let exist = false;
     for (let j = 0; j < allMemberAdmins.message.length; j++) {
@@ -159,5 +160,11 @@ for (let i = 0; i < allMembers.message.length; i++) {
     </div>
         `
         )
+        count++;
     }
+}
+if (count == 0) {
+    $('#allMembersDataAdmins').append(`
+        <h2>No member to display</h2>
+    `)
 }

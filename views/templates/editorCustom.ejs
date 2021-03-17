@@ -1,0 +1,192 @@
+<% layout('editorLayout') %>
+    <div class="item scroller leftsidebar">
+        <div class="inner">
+            <ul class="list-unstyled components nav d-block" id="myTab" role="tablist">
+                <li class="d-flex justify-content-center list">
+                    <a class="nav-link align-items-center active" id="build-tab" data-toggle="tab" href="#build"
+                        role="tab" aria-controls="text" aria-selected="true">
+                        <i class="fa fa-tools mb-2" aria-hidden="true" style="font-size: 24px;"></i>
+                        Build
+                    </a>
+                </li>
+                <li class="d-flex justify-content-center list">
+                    <a class="nav-link align-items-center" id="templates-tab" data-toggle="tab" href="#templates"
+                        role="tab" aria-controls="templates" aria-selected="false">
+                        <img src="img/icons/template.png" class="mb-2" />
+                        Templates
+                    </a>
+                </li>
+                <li class="d-flex justify-content-center list">
+                    <a class="nav-link align-items-center" id="backgrounds-tab" data-toggle="tab" href="#backgrounds"
+                        role="tab" aria-controls="backgrounds" aria-selected="false">
+                        <img src="img/icons/background.png" class="mb-2" />
+                        Backgrounds
+                    </a>
+                </li>
+                <li class="d-flex justify-content-center list">
+                    <a class="nav-link align-items-center" id="text-tab" data-toggle="tab" href="#text" role="tab"
+                        aria-controls="text" aria-selected="false">
+                        <img src="img/icons/typo.png" class="mb-2" alt="">
+                        Text
+                    </a>
+                </li>
+                <li class="d-flex justify-content-center list">
+                    <a class="nav-link align-items-center" id="details-tab" data-toggle="tab" href="#details" role="tab"
+                        aria-controls="details" aria-selected="false">
+                        <img src="img/icons/details.png" class="mb-2" />
+                        Details
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="item scroller workarea">
+        <div class="inner box mt-4 mb-4">
+            <div class="layout c-drop-zone" onload="enableEditMode();" data-drop-zone id="layoutZoom">
+            </div>
+        </div>
+        <div class="editor_zoom cardStyle mb-3">
+            <div class="sliderContainer zoom_container">
+                <i class="fa fa-search-minus zoom_icon mr-2" aria-hidden="true"></i>
+                <input type="range" min="45" max="70" value="60" name="zoom" data-sizing="%" class="slider zoom_slider"
+                    id="zoom_range">
+                <i class="fa fa-search-plus zoom_icon ml-2" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+    <div class="item scroller rightsidebar">
+        <div class="inner rightsidebar__inner">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade" id="details" role="tabpanel" aria-labelledby="details-tab">
+                    <%- include('../particles/editorDetails.ejs') -%>
+                </div>
+                <div class="tab-pane fade" id="templates" role="tabpanel" aria-labelledby="templates-tab">
+                    <%- include('../particles/editorTemplates.ejs') -%>
+                </div>
+                <div class="tab-pane fade" id="backgrounds" role="tabpanel" aria-labelledby="backgrounds-tab">
+                    <%- include('../particles/editorBackgrounds.ejs') -%>
+                </div>
+                <div class="tab-pane fade show active" id="build" role="tabpanel" aria-labelledby="build-tab">
+                    <div class="template__builder px-2 py-2">
+                        <template data-slide-type-template="text">
+                            <div class="template__text template" contenteditable="true">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic, obcaecati.
+                            </div>
+                        </template>
+                        <template data-slide-type-template="phone">
+                            <div class="template__phone template resize-drag">
+                                <span><img class="icon_social" src="img/icons/phone_icon.png" alt="">
+                                </span><span contenteditable="true">9876543210</span>
+                            </div>
+                        </template>
+                        <template data-slide-type-template="whatsapp">
+                            <div class="template__whatsapp template resize-drag">
+                                <span><img class="icon_social" src="img/icons/whatsapp_icon.png" alt="">
+                                </span><span contenteditable="true">9876543212</span>
+                            </div>
+                        </template>
+                        <template data-slide-type-template="facebook">
+                            <div class="template__facebook template resize-drag">
+                                <span><img class="icon_social" src="img/icons/facebook_icon.png" alt="">
+                                </span><span contenteditable="true">facebook.com/utkarsh123</span>
+                            </div>
+                        </template>
+                        <template data-slide-type-template="instagram">
+                            <div class="template__instagram template resize-drag">
+                                <span><img class="icon_social" src="img/icons/insta_icon.png" alt="">
+                                </span><span contenteditable="true">Instagram.com/utkarsh123</span>
+                            </div>
+                        </template>
+                        <template data-slide-type-template="twitter">
+                            <div class="template__twitter template">
+                                <span><img class="icon_social" src="img/icons/twitter_icon.png" alt="">
+                                </span><span contenteditable="true">Twitter.com/utkarsh123</span>
+                            </div>
+                        </template>
+                        <template data-slide-type-template="your">
+                            <div class="template__twitter template resize-drag">
+                                <img src="img/your_image.png" height="400" alt="">
+                            </div>
+                        </template>
+                        <h4>Components</h4>
+                        <hr style="background-color: #fff !important;">
+                        <div class="component__icon mb-4" data-slide-type="your" draggable="true">
+                            <i class="fa fa-image mr-2" aria-hidden="true"></i>
+                            Your Image
+                        </div>
+                        <div class="component__icon mb-4" data-slide-type="text" draggable="true">
+                            <i class="fa fa-font mr-2" aria-hidden="true"></i>
+                            Text
+                        </div>
+                        <div class="component__icon mb-4" data-slide-type="phone" draggable="true">
+                            <i class="fa fa-phone mr-2" aria-hidden="true"></i>
+                            Phone Number
+                        </div>
+                        <div class="component__icon mb-4" data-slide-type="whatsapp" draggable="true">
+                            <i class="fa fa-whatsapp mr-2" aria-hidden="true"></i>
+                            Whatsapp Number
+                        </div>
+                        <div class="component__icon mb-4" data-slide-type="facebook" draggable="true">
+                            <i class="fa fa-facebook-f mr-2"></i>
+                            Facebook Link
+                        </div>
+                        <div class="component__icon mb-4" data-slide-type="instagram" draggable="true">
+                            <i class="fa fa-instagram mr-2"></i>
+                            Instagram Link
+                        </div>
+                        <div class="component__icon mb-4" data-slide-type="twitter" draggable="true">
+                            <i class="fa fa-twitter mr-2"></i>
+                            Twitter Link
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="text" role="tabpanel" aria-labelledby="text-tab">
+                    <div class="form-group mb-4">
+                        <label for="fontSelect">Font</label>
+                        <select onchange="sendCommandArg('fontName', this.value);" class="form-control" id="fontSelect">
+                            <option value="Arial">Arial</option>
+                            <option value="Comic Sans MS">Comic Sans MS</option>
+                            <option value="Courier">Courier</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Tohoma">Tohoma</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Aparajita">Aparajita</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="fontSize">Font Size</label>
+                        <input onchange="sendCommandArg('fontSize', this.value)" type="range" class="form-control"
+                            id="fontSize" min="10" max="100" value="18" name="font-size" data-sizing="px" />
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="fontColor">Font Color
+                            <div class="d-flex justify-content-between">
+                                <input onchange="sendCommandArg('foreColor', this.value);" type="color" id="fontColor"
+                                    class="form-control" />
+                                <span>Color</span>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label>Font Emphasize</label>
+                        <div class="d-flex justify-content-between">
+                            <button onclick="sendCmd('bold');" class="btn fa fa-bold"></button>
+                            <button onclick="sendCmd('italic');" class="btn fa fa-italic"></button>
+                            <button onclick="sendCmd('underline');" class="btn fa fa-underline"></button>
+                            <button onclick="sendCmd('strikeThrough');" class="btn fa fa-strikethrough"></button>
+                        </div>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label>Font Alignment</label>
+                        <div class="d-flex justify-content-between">
+                            <button onclick="sendCmd('justifyRight');" class="btn fa fa-align-right"></button>
+                            <button onclick="sendCmd('justifyCenter');" class="btn fa fa-align-center"></button>
+                            <button onclick="sendCmd('justifyLeft');" class="btn fa fa-align-left"></button>
+                            <button onclick="sendCmd('justifyFull');" class="btn fa fa-align-justify"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

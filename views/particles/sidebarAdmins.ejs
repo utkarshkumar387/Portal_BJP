@@ -10,9 +10,9 @@
         <li class="nav-item" id="manageCommittee">
             <a class="nav-link" data-link href="/manageCommittee">Manage Committee</a>
         </li>
-        <li class="nav-item" id="manageCommSpecific">
+        <!-- <li class="nav-item" id="manageCommSpecific">
             <a class="nav-link" data-link href="/manageCommitteeSpecific">Manage Committee Specific</a>
-        </li>
+        </li> -->
         <li class="nav-item" id="manageMembers">
             <a class="nav-link" data-link href="/manageMembers">Manage Members</a>
         </li>
@@ -30,14 +30,14 @@
             if (permissions.admin_privilege != null) {
                 $('#manageAdmins').css('display', 'block');
                 $('#manageCommittee').css('display', 'block');
-                $('#manageCommSpecific').css('display', 'block');
+                // $('#manageCommSpecific').css('display', 'block');
                 $('#manageMembers').css('display', 'block');
                 $('#manageVerificationTeam').css('display', 'block');
             }
-            if (permissions.committee_privilege != null) {
-                $('#manageCommSpecific').css('display', 'block');
-                // $('#manageCommittee').css('display', 'block');
-            }
+            // if (permissions.committee_privilege != null) {
+            //     $('#manageCommSpecific').css('display', 'block');
+            //     // $('#manageCommittee').css('display', 'block');
+            // }
             // if (permissions.committee_specific_privilege != null) {
             //     $('#manageCommSpecific').css('display', 'block');
             // }

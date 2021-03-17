@@ -65,6 +65,11 @@ line-height: 15px;
       max-width: 100px;
       background: #32324B;
   }
+  .leftsidebarNormal{
+    min-width: 300px;
+    max-width: 300px;
+    background: #32324B;
+  }
   .rightsidebar{
       min-width: 300px;
       max-width: 300px;
@@ -75,6 +80,9 @@ line-height: 15px;
   }
   .rightsidebar__inner label{
     color: #D6D8E7;
+  }
+  .leftsidebar__inner{
+    padding: 24px 32px;
   }
   .workarea{
       position: realative;
@@ -107,9 +115,10 @@ color: #FFFFFF !important;
 }
 .layout{
     height: 842px; 
-    width: 595px;
+    width: 842px;
     overflow: hidden;
     zoom: var(--zoom);
+    background-color: #fff;
 }
 .zoom_container{
     padding: 8px 12px;
@@ -184,4 +193,17 @@ color: #FFFFFF !important;
 .template{
     display: inline-block;
     touch-action: none;
+}
+.editorFooter{
+    position: absolute;
+    bottom: 0;
+    background: #32324B;
+    max-height: 150px;
+    min-height: 150px;
+    width: 100%;
+    /* z-index: -2; */
+}
+.editorNoraml__header{
+    color: #fff;
+    margin-left: 10px;
 }

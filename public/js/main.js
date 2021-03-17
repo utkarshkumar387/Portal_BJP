@@ -361,7 +361,7 @@ function checkCookie() {
     let verificationPrivilegeEvent;
     let verificationPrivilegeComplaint;
     console.log('member privilege is', memberPrivilege)
-    if (memberPrivilege != null || committeePrivilege != null || committeeSpecificPrivilege != null || verificationPrivilege != null || adminPrivilege != false) {
+    if (adminPrivilege != null) {
         $('#privilegesLink').css('display', 'block')
         getPrivilegesLink(memberPrivilege, committeePrivilege, committeeSpecificPrivilege, verificationPrivilege, adminPrivilege)
     }
@@ -650,6 +650,7 @@ function checkCookie() {
 if (getCookie('privilege') == '') {
     let memberProfile = fetchProfileData('member_profile');
     setCookie('privilege', JSON.stringify(memberProfile.message.member_privileges), 10);
+
 }
 
 if (getCookie('member_profile') == '') {
@@ -822,10 +823,11 @@ function getPrivilegesLink(memberPrivilege, committeePrivilege, committeeSpecifi
     } else if (committeePrivilege != null) {
         let privilegeLink = document.getElementById('privilegeLinkPage');
         privilegeLink.href = '/manageCommittee';
-    } else if (committeeSpecificPrivilege != null) {
-        let privilegeLink = document.getElementById('privilegeLinkPage');
-        privilegeLink.href = '/manageCommitteeSpecific';
-    } else if (verificationPrivilege != null) {
+    }
+    // else if (committeeSpecificPrivilege != null) {
+    //     let privilegeLink = document.getElementById('privilegeLinkPage');
+    //     privilegeLink.href = '/manageCommitteeSpecific';
+    else if (verificationPrivilege != null) {
         let privilegeLink = document.getElementById('privilegeLinkPage');
         privilegeLink.href = '/manageVerificationTeam';
     } else if (adminPrivilege == true) {
@@ -867,7 +869,12 @@ function mySearchFunction(input, members, memberName) {
 //     document.querySelector('body').classList.add("loaded")
 // });
 
+browser.runtime.onMessage.addListener(message => {
+    console.log("background: onMessage", message);
 
+    // Add this line:
+    return Promise.resolve("Dummy response to keep the console quiet");
+});
 
 // parliamentConstituencies
 // legislativeAssemblyConstituencies

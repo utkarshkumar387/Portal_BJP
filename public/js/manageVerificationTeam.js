@@ -1,12 +1,13 @@
 let link = ['', '', '', ''];
-let allMembers = fetchAllAdminData('verification');
-console.log(allMembers);
-if (allMembers.error == false) {
-    for (let i = 0; i < allMembers.message.length; i++) {
-        let memberName = allMembers.message[i].user.first_name + ' ' + allMembers.message[i].user.last_name;
+let allMembers = fetchProfileData('get_all_members');
+let allVerificationMember = fetchAllAdminData('verification');
+console.log(allVerificationMember);
+if (allVerificationMember.error == false) {
+    for (let i = 0; i < allVerificationMember.message.length; i++) {
+        let memberName = allVerificationMember.message[i].user.first_name + ' ' + allVerificationMember.message[i].user.last_name;
         let committeeName;
-        if (allMembers.message[i].committee_name != null) {
-            committeeName = allMembers.message[i].committee_name;
+        if (allVerificationMember.message[i].committee_name != null) {
+            committeeName = allVerificationMember.message[i].committee_name;
         } else {
             committeeName = 'Not in committee';
         }
@@ -19,7 +20,7 @@ if (allMembers.error == false) {
                     class="rounded-circle" alt="...">
                 <div class="complaints__sender">
                     <b>${memberName}</b>
-                    <p class="small">${allMembers.message[i].user.district}, <span>${allMembers.message[i].user.state}</span>
+                    <p class="small">${allVerificationMember.message[i].user.district}, <span>${allVerificationMember.message[i].user.state}</span>
                     </p>
                 </div>
             </div>
@@ -30,23 +31,23 @@ if (allMembers.error == false) {
                 <div class="member__permission btn-group dropright">
                     <img class="member__more dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false" src="img/icons/More.png" alt="">
-                        <div class="dropdown-menu" id="memberPermissionMenu${allMembers.message[i].id}">
+                        <div class="dropdown-menu" id="memberPermissionMenu${allVerificationMember.message[i].id}">
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="blogsPermission${allMembers.message[i].id}">
+                            <input type="checkbox" class="form-check-input" id="blogsPermission${allVerificationMember.message[i].id}">
                             <label class="form-check-label px-2"
-                                for="blogsPermission${allMembers.message[i].id}">Blogs</label>
+                                for="blogsPermission${allVerificationMember.message[i].id}">Blogs</label>
                         </div>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="eventsPermission${allMembers.message[i].id}">
+                            <input type="checkbox" class="form-check-input" id="eventsPermission${allVerificationMember.message[i].id}">
                             <label class="form-check-label px-2"
-                                for="eventsPermission${allMembers.message[i].id}">Events</label>
+                                for="eventsPermission${allVerificationMember.message[i].id}">Events</label>
                         </div>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="complaintsPermission${allMembers.message[i].id}">
+                            <input type="checkbox" class="form-check-input" id="complaintsPermission${allVerificationMember.message[i].id}">
                             <label class="form-check-label px-2"
-                                for="complaintsPermission${allMembers.message[i].id}">Complaints</label>
+                                for="complaintsPermission${allVerificationMember.message[i].id}">Complaints</label>
                         </div>
-                        <button style="width: 100%;" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="getButton(this.parentNode.id, ${allMembers.message[i].id})" class='btn btn-primary mt-3'>Submit</button>
+                        <button style="width: 100%;" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="getButton(this.parentNode.id, ${allVerificationMember.message[i].id})" class='btn btn-primary mt-3'>Submit</button>
                     </div>
                 </div>
             </div>
@@ -54,20 +55,20 @@ if (allMembers.error == false) {
     </div>
         `
         )
-        let verificationPrivilege = allMembers.message[i];
+        let verificationPrivilege = allVerificationMember.message[i];
         // let temp = { "temp": null };
         // console.log(temp['temp']);
         // console.log(verificationPrivilege);
         // console.log(verificationPrivilege != temp['temp']);
         if (verificationPrivilege != null) {
-            let manageBlog = allMembers.message[i].manage_blog;
-            let manageEvent = allMembers.message[i].manage_event;
-            let manageComplaint = allMembers.message[i].manage_complaint;
-            document.getElementById(`blogsPermission${allMembers.message[i].id}`).checked = manageBlog;
-            document.getElementById(`eventsPermission${allMembers.message[i].id}`).checked = manageEvent;
-            document.getElementById(`complaintsPermission${allMembers.message[i].id}`).checked = manageComplaint;
+            let manageBlog = allVerificationMember.message[i].manage_blog;
+            let manageEvent = allVerificationMember.message[i].manage_event;
+            let manageComplaint = allVerificationMember.message[i].manage_complaint;
+            document.getElementById(`blogsPermission${allVerificationMember.message[i].id}`).checked = manageBlog;
+            document.getElementById(`eventsPermission${allVerificationMember.message[i].id}`).checked = manageEvent;
+            document.getElementById(`complaintsPermission${allVerificationMember.message[i].id}`).checked = manageComplaint;
         }
-        $('.save__verification').attr('id', `submitMemberVerification${allMembers.message[i].id}`)
+        $('.save__verification').attr('id', `submitMemberVerification${allVerificationMember.message[i].id}`)
     }
 }
 //search members
@@ -111,4 +112,85 @@ function getButton(id, memberID) {
 // function saveVerificationPrivileges() {
 // }
 
+// allVerificationDataAdmin
+let count = 0;
+for (let i = 0; i < allMembers.message.length; i++) {
+    let exist = false;
+    for (let j = 0; j < allVerificationMember.message.length; j++) {
+        if (allMembers.message[i].id === allVerificationMember.message[j].user.id) {
+            // console.log(allMembers.message[i].id);
+            exist = true;
+        }
+    }
+    if (!exist) {
+        let memberName = allMembers.message[i].first_name + ' ' + allMembers.message[i].last_name
+        let committeeName;
+        if (allMembers.message[i].committee != null) {
+            committeeName = allMembers.message[i].committee.title;
+        } else {
+            committeeName = 'Not in committee';
+        }
 
+        $(`#allVerificationDataAdmin`).append(
+            `
+        <div class="card cardStyle mt-3 memberCard" id="memberCardAdmins">
+        <div class="complaints__header member__inner d-flex justify-content-between">
+            <div class="d-flex">
+                <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
+                    class="rounded-circle" alt="...">
+                <div class="complaints__sender">
+                    <b>${memberName}</b>
+                    <p class="small">${allMembers.message[i].district}, <span>${allMembers.message[i].state}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="member__committeeName px-5">
+                    <p>${committeeName}</p>
+                </div>
+                    <div class="form-check">
+                    <input type="checkbox" class="form-check-input btn-group dropdown-toggle dropright" onclick="openCheckboxDropdown(this.id)" id="checkbox${allMembers.message[i].id}">
+                    <select class="dropdown-menu contentPrivilege" id="memberPermissionMenu${allMembers.message[i].id}">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="blogsPermission${allMembers.message[i].id}">
+                            <label class="form-check-label px-2"
+                                for="blogsPermission${allMembers.message[i].id}">Blogs</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="eventsPermission${allMembers.message[i].id}">
+                            <label class="form-check-label px-2"
+                                for="eventsPermission${allMembers.message[i].id}">Events</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="complaintsPermission${allMembers.message[i].id}">
+                            <label class="form-check-label px-2"
+                                for="complaintsPermission${allMembers.message[i].id}">Complaints</label>
+                        </div>
+                        <button style="width: 100%;" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="getButton(this.parentNode.id, ${allMembers.message[i].id})" class='btn btn-primary mt-3'>Submit</button>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+        `
+        )
+        count++;
+    }
+
+}
+if (count == 0) {
+    $('#allVerificationDataAdmin').append(`
+        <h2>No member to display</h2>
+    `)
+}
+
+//slide toggle
+function openCheckboxDropdown(inputID) {
+    let selectedInput = document.getElementById(`${inputID}`);
+    if (selectedInput.checked == true) {
+        $(this).parents().
+    }
+}
+// function getMemberID() {
+
+// }

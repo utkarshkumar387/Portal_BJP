@@ -55,44 +55,6 @@ for (let i = 0; i < allAdmins.message.length; i++) {
 }
 
 let allMembers = fetchProfileData('get_all_members');
-// console.log(allMembers);
-// if (allMembers.error == false) {
-//     for (let i = 0; i < allMembers.message.length; i++) {
-//         let memberName = allMembers.message[i].first_name + ' ' + allMembers.message[i].last_name
-//         let committeeName;
-//         if (allMembers.message[i].committee != null) {
-//             committeeName = allMembers.message[i].committee.title;
-//         } else {
-//             committeeName = 'Not in committee';
-//         }
-
-//         $(`#allMembersDataAdmins`).append(
-//             `
-//         <div class="card cardStyle mt-3 memberCard" id="memberCardAdmins">
-//         <div class="complaints__header member__inner d-flex justify-content-between">
-//             <div class="d-flex">
-//                 <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
-//                     class="rounded-circle" alt="...">
-//                 <div class="complaints__sender">
-//                     <b>${memberName}</b>
-//                     <p class="small">${allMembers.message[i].district}, <span>${allMembers.message[i].state}</span>
-//                     </p>
-//                 </div>
-//             </div>
-//             <div class="d-flex">
-//                 <div class="member__committeeName px-5">
-//                     <p>${committeeName}</p>
-//                 </div>
-//                     <div class="form-check">
-//                     <input type="checkbox" class="form-check-input" onclick="getMemberID(this.id)" id="${allMembers.message[i].id}">
-//                 </div>
-//             </div>
-//         </div>
-//     </div>
-//         `
-//         )
-//     }
-// }
 // Search admins in manage admins
 let search = document.getElementById('committee__adminsMembersSearch');
 search.addEventListener('keyup', searchFunction);
@@ -175,15 +137,7 @@ function addAllMembersToList() {
     }
 }
 
-// [
-//     {
-//         "user_id": 1
-//     },
-//     {
-//         "user_id": 2
-//     }
-// ]
-
+let count = 0;
 for (let i = 0; i < allMembers.message.length; i++) {
     let exist = false;
     for (let j = 0; j < allAdmins.message.length; j++) {
@@ -226,8 +180,14 @@ for (let i = 0; i < allMembers.message.length; i++) {
     </div>
         `
         )
+        count++;
     }
 
+}
+if (count == 0) {
+    $('#allMembersDataAdmins').append(`
+        <h2>No member to display</h2>
+    `)
 }
 
 
