@@ -88,22 +88,23 @@ function addBlog() {
         console.log(blogDetails.message);
     }
 }
-// function editBlog() {
-//     let data = {
-//         // image: null,
-//         user_id: authorID,
-//         title: $('#blogTitle').val(),
-//         description: $('#blogBody').val(),
-//         status: status
+function editBlog() {
+    let data = {
+        // image: null,
+        user_id: authorID,
+        title: $('#blogTitle').val(),
+        description: $('#blogBody').val(),
+        status: status;
 
-//     }
-//     console.log(data);
-//     let blogDetails = updateContent('blogs/update_status', blogID, data);
-//     console.log(blogDetails);
-//     if (blogDetails.error == false) {
-//         window.location.replace(`/blogsView/${blogID}/${status}`);
-//     } else {
-//         console.log(blogDetails.message);
-//     }
-// }
+    }
+    console.log(data);
+    let blogDetails = updateContent('blogs/update_status', blogID, data);
+    console.log(blogDetails);
+    if (blogDetails.error == false) {
+        console.log('blog patch request done');
+        // window.location.replace(`/blogsView/${blogID}/${status}`);
+    } else {
+        console.log(blogDetails.message);
+    }
+}
 
