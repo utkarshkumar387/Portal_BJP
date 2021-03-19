@@ -48,16 +48,17 @@ document.getElementById('browse').addEventListener('change', imgBase64Converter)
 function addBlog() {
     authorDetails = JSON.parse(getCookie('member_profile'));
     authorName = authorDetails.first_name + ' ' + authorDetails.last_name;
-    authorID = authorDetails.user_id;
+    authorID = authorDetails.id;
+    console.log('author ID is', authorID);
     console.log($('#blogTitle').val());
     let data = {
         data: JSON.stringify({
-            event_data:
+            blog_data:
             {
                 user_id: authorID,
-                title: $('#eventTitle').val(),
-                description: $('#eventBody').val(),
-                status: 1
+                title: $('#blogTitle').val(),
+                description: $('#blogBody').val(),
+                status: '1'
             },
             // event_data_images: JSON.stringify([
 
@@ -81,27 +82,28 @@ function addBlog() {
     let blogDetails = addContent('blogs', data);
     console.log(blogDetails);
     if (blogDetails.error == false) {
+        // console.log('blog added');
         window.location.replace('/blogsApproved');
     } else {
         console.log(blogDetails.message);
     }
 }
-function editBlog() {
-    let data = {
-        // image: null,
-        user_id: authorID,
-        title: $('#blogTitle').val(),
-        description: $('#blogBody').val(),
-        status: status
+// function editBlog() {
+//     let data = {
+//         // image: null,
+//         user_id: authorID,
+//         title: $('#blogTitle').val(),
+//         description: $('#blogBody').val(),
+//         status: status
 
-    }
-    console.log(data);
-    let blogDetails = updateContent('blogs/update_status', blogID, data);
-    console.log(blogDetails);
-    if (blogDetails.error == false) {
-        window.location.replace(`/blogsView/${blogID}/${status}`);
-    } else {
-        console.log(blogDetails.message);
-    }
-}
+//     }
+//     console.log(data);
+//     let blogDetails = updateContent('blogs/update_status', blogID, data);
+//     console.log(blogDetails);
+//     if (blogDetails.error == false) {
+//         window.location.replace(`/blogsView/${blogID}/${status}`);
+//     } else {
+//         console.log(blogDetails.message);
+//     }
+// }
 

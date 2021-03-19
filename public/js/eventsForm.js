@@ -69,7 +69,7 @@ function addEvent() {
     let eventDetails = addContent('events', data);
     if (eventDetails.error == false) {
         console.log('event added')
-        window.location.replace('/eventsApproved');
+        // window.location.replace('/eventsApproved');
     } else {
         console.log(eventDetails.error);
         console.log(eventDetails.message);

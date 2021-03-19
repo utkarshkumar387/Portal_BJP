@@ -1,5 +1,5 @@
 let link = window.location.href.split('/');
-// console.log(link[4]);
+console.log(link[4]);
 $('#marital_status').on('change', selectMaritialStatus);
 $('#genderMale').on('change', selectMaritialStatus);
 $('#genderFemale').on('change', selectMaritialStatus);
@@ -181,7 +181,7 @@ function officialDetails() {
                                     </label>
                                     <div class="col-md-8">
                                     <select name="allreligion" class="form-select form-control" id="allreligion">
-                                        <option value="">-Select Religion-</option>
+                                        <option value="" selected disabled>-Select Religion-</option>
                                         <option value="Hinduism">Hinduism</option>
                                         <option value="Islam">Islam</option>
                                         <option value="Christianity">Christianity</option>
@@ -195,15 +195,7 @@ function officialDetails() {
                                     <label for="allCaste" class="col-sm-4 col-form-label">Caste
                                         <span>*</span></label>
                                         <div class="col-md-8">
-                                        <select name="allCaste" class="form-select form-control" id="allCaste">
-                                            <option value="">-Select Caste-</option>
-                                            <option value="Hinduism">Hinduism</option>
-                                            <option value="Islam">Islam</option>
-                                            <option value="Christianity">Christianity</option>
-                                            <option value="Sikhism">Sikhism</option>
-                                            <option value="Buddhism">Buddhism</option>
-                                            <option value="Jainism">Jainism</option>
-                                        </select>
+                                        <input name="allCaste" class="form-select form-control" id="allCaste">
                                         </div>
                                 </div>
             `)
@@ -214,7 +206,7 @@ function officialDetails() {
         let allStates = states.message.states;
         console.log(allStates);
         for (let i = 0; i < allStates.length; i++) {
-            console.log(allStates[i].id, allStates[i].name);
+            console.log('states id ', allStates[i].id, allStates[i].name);
             $('#getAllStates').append(
                 `
                 <option>-Select State-</option>
@@ -290,7 +282,61 @@ function officialDetails() {
 //     )
 // }
 
-//post request to api
+// post request to api
+let memberDetailsGet = fetchProfileDataById('member_profile', link[4]);
+console.log('Member details by id ', memberDetailsGet);
+if (memberDetailsGet.error == false) {
+    let memberData = memberDetailsGet.message.member_details;
+    console.log('gender of member ', memberData.gender);
+    if (memberData.gender == 1) {
+        console.log('inside gender male')
+        document.getElementById('genderMale').checked = true;
+        // $('#genderMale').prop("checked");
+    } else if (memberData.gender == 2) {
+        console.log('inside gender female')
+        document.getElementById('genderFemale').checked = true;
+    } else {
+        document.getElementById('genderMale').checked = true;
+    }
+
+    if (memberData.marital_status)
+
+        console.log(memberData.state_id.id);
+    // if(memberData.state_id.id == )
+    $('#memberFirstName').val(memberData.first_name);
+    $('#memberLastName').val(memberData.last_name);
+    $('#memberFatherName').val(memberData.father_name);
+    // $('#memberGender').val(memberData.father_name);
+    console.log('Maritial status is ', $('#marital_status option'));
+    $('#marital_status option').removeAttr('selected').filter(`[value=${memberData.marital_status}]`).attr('selected', true);
+    $('#memberEmail').val(memberData.email);
+    $('#memberDOB').val(memberData.dob);
+    $('#memberBloodGrouop').val(memberData.blood_group);
+    $('#memberAnniversary').val(memberData.anniversary);
+    $('#permanentAddress').val(memberData.permanent_address_line1);
+    $('#residentialAddress').val(memberData.residence_address_line1);
+    console.log($('#getAllStates option'));
+    $('#getAllStates option').removeAttr('selected').filter(`[value=${memberData.state_id.id}]`).attr('selected', true)
+    $('#getAllDistricts').val(memberData.district_id.name);
+    $('#parliamentConstituencies').val(memberData.parliament_constituency_id.name);
+    $('#legislativeAssemblyConstituencies').val(memberData.legislative_assembly_constituency_id.name);
+    $('#upBlockEducationConstituencies').val(memberData.up_block_education_constituency_id.name);
+    $('#townshipConstituencies').val(memberData.township_constituency_id.name);
+    $('#panchayatSamitis').val(memberData.panchayat_samiti_id.name);
+    $('#villageCouncils').val(memberData.village_council_id.name);
+    $('#revenueVilleges').val(memberData.village_council_id.name);
+    $('#booths').val(memberData.booth_id.name);
+    $('#allreligion').val(memberData.religion);
+    $('#allCaste').val(memberData.caste);
+    $('#voterIdCard').val(memberData.voter_id_card);
+    $('#adharCard').val(memberData.aadhar_card);
+    $('#panCard').val(memberData.pan_card);
+    $('#facebookLink').val(memberData.facebook_link);
+    $('#instagramLink').val(memberData.instagram_link);
+    $('#twitterLink').val(memberData.twitter_link);
+}
+
+//patch request to api
 function addMemberDetails() {
     let allPhoneNumbers = [];
     console.log(allPhoneNumbers);
@@ -299,13 +345,24 @@ function addMemberDetails() {
         let no = allPhoneNumbersInput[i].value;
         allPhoneNumbers.push(no);
     }
+
+    let genderInput;
+    let maleRadio = document.getElementById('genderMale').checked;
+    let femaleRadio = document.getElementById('genderFemale').checked;
+    if (maleRadio == true) {
+        genderInput = 1;
+    } else if (femaleRadio == true) {
+        genderInput = 2;
+    } else {
+        genderInput = 0;
+    }
+
     // console.log(document.getElementById('getAllStates').value);
     let memberDetails = {
         first_name: $('#memberFirstName').val(),
         last_name: $('#memberLastName').val(),
         father_name: $('#memberFatherName').val(),
-        // gender, maritial_status not present in api
-        // gender: $('#').val(),
+        gender: genderInput,
         email: $('#memberEmail').val(),
         // phone_no_list: allPhoneNumbers,
         dob: $('#memberDOB').val(),
@@ -328,12 +385,11 @@ function addMemberDetails() {
         aadhar_card: $('#adharCard').val(),
         facebook_link: $('#facebookLink').val(),
         twitter_link: $('#twitterLink').val(),
+        instagram_link: $('#instagramLink').val(),
     }
     console.log(memberDetails);
-
-    //can't able to do patch request
     let id = link[4];
-    let memberDetailsData = patchProfileDataById('member_profile', id, memberDetails);
+    let memberDetailsData = updateProfileDataById('edit_member_profile', id, memberDetails);
 
     if (memberDetailsData.error == false) {
         console.log('patch request done');
@@ -343,12 +399,3 @@ function addMemberDetails() {
     }
 
 }
-
-// parliamentConstituencies
-// legislativeAssemblyConstituencies
-// upBlockEducationConstituencies
-// townshipConstituencies
-// panchayatSamitis
-// villageCouncils
-// revenueVilleges
-// booths

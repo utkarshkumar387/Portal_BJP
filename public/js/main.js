@@ -1,7 +1,8 @@
-var main_url = "https://bjpbarmer.herokuapp.com/";
-// var main_url = "http://192.168.1.3:8001/";
+// var main_url = "https://bjpbarmer.herokuapp.com/";
+var main_url = "http://192.168.1.3:8000/";
 let headerParams = { 'Authorization': 'Token 45097245b8db006c8a069cf0f7fe89e83a5d1671' };
 //Ajax Request
+let loggedInUserId = null;
 function ajaxRequest(type, url, data, status) {
     if (typeof (data) == typeof ({})) {
         data = JSON.stringify(data);
@@ -158,7 +159,7 @@ function getProfileDataById(sub_url, id, type, data, status) {
     return ajaxRequest(type, url, data, status);
 }
 //requesting ajax to patch profile data by id
-function updateProfileDataById(sub_url, id, type, data, status) {
+function patchProfileDataById(sub_url, id, type, data, status) {
     if (sub_url == 'member') {
         sub_url = 'member';
     } else {
@@ -659,6 +660,10 @@ if (getCookie('member_profile') == '') {
     setCookie('member_profile', JSON.stringify(memberProfile.message.member_details), 10);
 }
 
+// console.log(getCookie('member_profile'));
+// console.log(JSON.parse(getCookie('member_profile')));
+loggedInUserId = JSON.parse(getCookie('member_profile')).id;
+
 $('#profileButton').attr('href', '/profile/' + JSON.parse(getCookie('member_profile')).id);
 
 
@@ -784,7 +789,7 @@ function pivilegeButtons(fName, status) {
     console.log(status);
     if (patchRequestBlog.error == false) {
         // console.log(`/${reqLink}${status}`)
-        // window.location.replace(`/${reqLink}${status}`);
+        window.location.replace(`/${reqLink}${status}`);
     }
 }
 
@@ -868,13 +873,6 @@ function mySearchFunction(input, members, memberName) {
 // window.addEventListener('load', function () {
 //     document.querySelector('body').classList.add("loaded")
 // });
-
-browser.runtime.onMessage.addListener(message => {
-    console.log("background: onMessage", message);
-
-    // Add this line:
-    return Promise.resolve("Dummy response to keep the console quiet");
-});
 
 // parliamentConstituencies
 // legislativeAssemblyConstituencies

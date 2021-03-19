@@ -928,6 +928,10 @@ text-decoration: none;
   #eventsPendingLink, #eventsRejectedLink, #complaintsPendingLink, #complaintsRejectedLink, #blogsPendingLink, #blogsRejectedLink, #privilegesLink, #manageAdmins, #manageCommittee, #manageCommSpecific, #manageMembers, #manageVerificationTeam{
       display: none;
   }
+  .badge_design{
+      background-color: #F77B72;
+      color: #fff;
+  }
 /* .manager{
     background-color: #F77B72;
     border-radius: 39px;

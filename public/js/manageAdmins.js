@@ -35,8 +35,10 @@ for (let i = 0; i < allAdmins.message.length; i++) {
                             <label class="form-check-label px-1"
                                 for="memberAdminsPermission${allAdmins.message[i].id}">Super Admin</label>
                         </div>
-                        <button style="width: 100%;" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="getButton(this.parentNode.id, ${allAdmins.message[i].id})" class='btn btn-primary mt-3'>Submit</button>
-
+                        <div class="d-flex mt-3">
+                            <button style="width: 100%;" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="deleteAdmin(${allAdmins.message[i].id}, ${allAdmins.message[i].user.id})" class='btn btn-danger'>Delete</button>
+                            <button style="width: 100%;" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="getButton(this.parentNode.parentNode.id, ${allAdmins.message[i].id})" class='btn btn-primary ml-2'>Submit</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -106,7 +108,7 @@ function getMemberID(id) {
     let memberClicked = document.getElementById(`${id}`)
     if (memberClicked.checked == true) {
         members.push(id);
-        list.push({ 'user_id': id, 'manage_admin': true });
+        list.push({ 'user_id': id });
     }
     else {
         for (let i = 0; i < members.length; i++) {
@@ -119,6 +121,23 @@ function getMemberID(id) {
     stringifyMemebers = JSON.stringify(list);
     // console.log(stringifyMemebers);
     // for (li in list) console.log(list[li]);
+}
+
+function deleteAdmin(adminID, userID) {
+    console.log(userID);
+    console.log(loggedInUserId);
+    console.log(userID == loggedInUserId);
+    if (userID == loggedInUserId) {
+        alert('You can not remove yourself from admin');
+        return;
+    }
+    let adminDelete = removePrivilegeByID('admin', adminID)
+    if (adminDelete.error == false) {
+        console.log('succed')
+        window.location.reload();
+    } else {
+        console.log(adminDelete.message);
+    }
 }
 
 function addAllMembersToList() {
@@ -172,7 +191,7 @@ for (let i = 0; i < allMembers.message.length; i++) {
                 <div class="member__committeeName px-5">
                     <p>${committeeName}</p>
                 </div>
-                    <div class="form-check">
+                <div class="form-check">
                     <input type="checkbox" class="form-check-input" onclick="getMemberID(this.id)" id="${allMembers.message[i].id}">
                 </div>
             </div>

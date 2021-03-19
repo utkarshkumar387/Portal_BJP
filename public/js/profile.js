@@ -143,7 +143,7 @@ if (profileDetails.error == false) {
         )
     }
 }
-
+$('#editButton').attr('href', `/profileEdit/${link[4]}`)
 // anniversary: "2021-02-01"
 // avatar: null
 // blood_group: "O+"

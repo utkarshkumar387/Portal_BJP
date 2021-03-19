@@ -185,5 +185,9 @@ module.exports = function (app) {
         .get(function (req, res, next) {
             res.render('templates/committeeForm')
         })
+    app.route('/login')
+        .get(function (req, res, next) {
+            res.render('templates/login')
+        })
 }
 
