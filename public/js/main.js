@@ -1,5 +1,5 @@
-// var main_url = "https://bjpbarmer.herokuapp.com/";
-var main_url = "http://192.168.1.3:8000/";
+var main_url = "https://bjpbarmer.herokuapp.com/";
+// var main_url = "http://192.168.1.3:8000/";
 let headerParams = { 'Authorization': 'Token 45097245b8db006c8a069cf0f7fe89e83a5d1671' };
 //Ajax Request
 let loggedInUserId = null;
