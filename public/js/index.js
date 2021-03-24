@@ -144,6 +144,7 @@ if (home.error == false) {
 }
 //mounting slider
 glide.mount();
+console.log('Token stored in cookie is :', getCookie('token'));
 
 
 

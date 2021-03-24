@@ -1,3 +1,5 @@
+let memberProfile = fetchProfileData('member_profile');
+console.log(memberProfile);
 let link = window.location.href.split('/');
 console.log(link[4]);
 $('#marital_status').on('change', selectMaritialStatus);
@@ -121,85 +123,87 @@ function officialDetails() {
                                         </select>
                                         </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="upBlockEducationConstituencies" class="col-sm-4 col-form-label">Up Block Education Constituency
-                                        <span>*</span></label>
-                                        <div class="col-md-8">
-                                        <select name="upBlockEducationConstituencies" class="form-select form-control" id="upBlockEducationConstituencies">
-                                        <option selected disabled>-Select Up Block Education Constituency-</option>
-                                        </select>
-                                        </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="townshipConstituencies" class="col-sm-4 col-form-label">Township Constituency
-                                        <span>*</span></label>
-                                        <div class="col-md-8">
-                                        <select name="townshipConstituencies" class="form-select form-control" id="townshipConstituencies">
-                                        <option selected disabled>-Select Township Constituency-</option>
-                                        </select>
-                                        </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="panchayatSamitis" class="col-sm-4 col-form-label">Panchayat Samiti
-                                        <span>*</span></label>
-                                        <div class="col-md-8">
-                                        <select name="panchayatSamitis" class="form-select form-control" id="panchayatSamitis">
-                                        <option selected disabled>-Select Panchayat Samiti-</option>
-                                        </select>
-                                        </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="villageCouncils" class="col-sm-4 col-form-label">Village Council
-                                        <span>*</span></label>
-                                        <div class="col-md-8">
-                                        <select name="villageCouncils" class="form-select form-control" id="villageCouncils">
-                                        <option selected disabled>-Select Village Council-</option>
-                                        </select>
-                                        </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="revenueVilleges" class="col-sm-4 col-form-label">Revenue Village
-                                        <span>*</span></label>
-                                        <div class="col-md-8">
-                                        <select name="revenueVilleges" class="form-select form-control" id="revenueVilleges">
-                                        <option selected disabled>-Select Revenue Village-</option>
-                                        </select>
-                                        </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="booths" class="col-sm-4 col-form-label">Booth
-                                        <span>*</span></label>
-                                        <div class="col-md-8">
-                                        <select name="booths" class="form-select form-control" id="booths">
-                                        <option selected disabled>-Select Booth-</option>
-                                        </select>
-                                        </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="allreligion" class="col-sm-4 col-form-label">Religion
-                                        <span>*</span>
-                                    </label>
-                                    <div class="col-md-8">
-                                    <select name="allreligion" class="form-select form-control" id="allreligion">
-                                        <option value="" selected disabled>-Select Religion-</option>
-                                        <option value="Hinduism">Hinduism</option>
-                                        <option value="Islam">Islam</option>
-                                        <option value="Christianity">Christianity</option>
-                                        <option value="Sikhism">Sikhism</option>
-                                        <option value="Buddhism">Buddhism</option>
-                                        <option value="Jainism">Jainism</option>
-                                    </select>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="allCaste" class="col-sm-4 col-form-label">Caste
-                                        <span>*</span></label>
-                                        <div class="col-md-8">
-                                        <input name="allCaste" class="form-select form-control" id="allCaste">
-                                        </div>
-                                </div>
             `)
     }
+
+    // <div class="form-group row">
+    //                                 <label for="upBlockEducationConstituencies" class="col-sm-4 col-form-label">Up Block Education Constituency
+    //                                     <span>*</span></label>
+    //                                     <div class="col-md-8">
+    //                                     <select name="upBlockEducationConstituencies" class="form-select form-control" id="upBlockEducationConstituencies">
+    //                                     <option selected disabled>-Select Up Block Education Constituency-</option>
+    //                                     </select>
+    //                                     </div>
+    //                             </div>
+    //                             <div class="form-group row">
+    //                                 <label for="townshipConstituencies" class="col-sm-4 col-form-label">Township Constituency
+    //                                     <span>*</span></label>
+    //                                     <div class="col-md-8">
+    //                                     <select name="townshipConstituencies" class="form-select form-control" id="townshipConstituencies">
+    //                                     <option selected disabled>-Select Township Constituency-</option>
+    //                                     </select>
+    //                                     </div>
+    //                             </div>
+    //                             <div class="form-group row">
+    //                                 <label for="panchayatSamitis" class="col-sm-4 col-form-label">Panchayat Samiti
+    //                                     <span>*</span></label>
+    //                                     <div class="col-md-8">
+    //                                     <select name="panchayatSamitis" class="form-select form-control" id="panchayatSamitis">
+    //                                     <option selected disabled>-Select Panchayat Samiti-</option>
+    //                                     </select>
+    //                                     </div>
+    //                             </div>
+    //                             <div class="form-group row">
+    //                                 <label for="villageCouncils" class="col-sm-4 col-form-label">Village Council
+    //                                     <span>*</span></label>
+    //                                     <div class="col-md-8">
+    //                                     <select name="villageCouncils" class="form-select form-control" id="villageCouncils">
+    //                                     <option selected disabled>-Select Village Council-</option>
+    //                                     </select>
+    //                                     </div>
+    //                             </div>
+    //                             <div class="form-group row">
+    //                                 <label for="revenueVilleges" class="col-sm-4 col-form-label">Revenue Village
+    //                                     <span>*</span></label>
+    //                                     <div class="col-md-8">
+    //                                     <select name="revenueVilleges" class="form-select form-control" id="revenueVilleges">
+    //                                     <option selected disabled>-Select Revenue Village-</option>
+    //                                     </select>
+    //                                     </div>
+    //                             </div>
+    //                             <div class="form-group row">
+    //                                 <label for="booths" class="col-sm-4 col-form-label">Booth
+    //                                     <span>*</span></label>
+    //                                     <div class="col-md-8">
+    //                                     <select name="booths" class="form-select form-control" id="booths">
+    //                                     <option selected disabled>-Select Booth-</option>
+    //                                     </select>
+    //                                     </div>
+    //                             </div>
+    //                             <div class="form-group row">
+    //                                 <label for="allreligion" class="col-sm-4 col-form-label">Religion
+    //                                     <span>*</span>
+    //                                 </label>
+    //                                 <div class="col-md-8">
+    //                                 <select name="allreligion" class="form-select form-control" id="allreligion">
+    //                                     <option value="" selected disabled>-Select Religion-</option>
+    //                                     <option value="Hinduism">Hinduism</option>
+    //                                     <option value="Islam">Islam</option>
+    //                                     <option value="Christianity">Christianity</option>
+    //                                     <option value="Sikhism">Sikhism</option>
+    //                                     <option value="Buddhism">Buddhism</option>
+    //                                     <option value="Jainism">Jainism</option>
+    //                                 </select>
+    //                                 </div>
+    //                             </div>
+    //                             <div class="form-group row">
+    //                                 <label for="allCaste" class="col-sm-4 col-form-label">Caste
+    //                                     <span>*</span></label>
+    //                                     <div class="col-md-8">
+    //                                     <input name="allCaste" class="form-select form-control" id="allCaste">
+    //                                     </div>
+    //                             </div>
+
     //appending states options
     let states = fetchProfileData('get_states');
     if (states.error == false) {
@@ -303,37 +307,41 @@ if (memberDetailsGet.error == false) {
 
         console.log(memberData.state_id.id);
     // if(memberData.state_id.id == )
-    $('#memberFirstName').val(memberData.first_name);
-    $('#memberLastName').val(memberData.last_name);
-    $('#memberFatherName').val(memberData.father_name);
-    // $('#memberGender').val(memberData.father_name);
-    console.log('Maritial status is ', $('#marital_status option'));
-    $('#marital_status option').removeAttr('selected').filter(`[value=${memberData.marital_status}]`).attr('selected', true);
-    $('#memberEmail').val(memberData.email);
-    $('#memberDOB').val(memberData.dob);
-    $('#memberBloodGrouop').val(memberData.blood_group);
-    $('#memberAnniversary').val(memberData.anniversary);
-    $('#permanentAddress').val(memberData.permanent_address_line1);
-    $('#residentialAddress').val(memberData.residence_address_line1);
-    console.log($('#getAllStates option'));
-    $('#getAllStates option').removeAttr('selected').filter(`[value=${memberData.state_id.id}]`).attr('selected', true)
-    $('#getAllDistricts').val(memberData.district_id.name);
-    $('#parliamentConstituencies').val(memberData.parliament_constituency_id.name);
-    $('#legislativeAssemblyConstituencies').val(memberData.legislative_assembly_constituency_id.name);
-    $('#upBlockEducationConstituencies').val(memberData.up_block_education_constituency_id.name);
-    $('#townshipConstituencies').val(memberData.township_constituency_id.name);
-    $('#panchayatSamitis').val(memberData.panchayat_samiti_id.name);
-    $('#villageCouncils').val(memberData.village_council_id.name);
-    $('#revenueVilleges').val(memberData.village_council_id.name);
-    $('#booths').val(memberData.booth_id.name);
-    $('#allreligion').val(memberData.religion);
-    $('#allCaste').val(memberData.caste);
-    $('#voterIdCard').val(memberData.voter_id_card);
-    $('#adharCard').val(memberData.aadhar_card);
-    $('#panCard').val(memberData.pan_card);
-    $('#facebookLink').val(memberData.facebook_link);
-    $('#instagramLink').val(memberData.instagram_link);
-    $('#twitterLink').val(memberData.twitter_link);
+    try {
+        $('#memberFirstName').val(memberData.first_name);
+        $('#memberLastName').val(memberData.last_name);
+        $('#memberFatherName').val(memberData.father_name);
+        // $('#memberGender').val(memberData.father_name);
+        console.log('Maritial status is ', $('#marital_status option'));
+        $('#marital_status option').removeAttr('selected').filter(`[value=${memberData.marital_status}]`).attr('selected', true);
+        $('#memberEmail').val(memberData.email);
+        $('#primaryPhoneNumber').val(memberData.phone_no);
+        $('#memberDOB').val(memberData.dob);
+        $('#memberBloodGrouop').val(memberData.blood_group);
+        $('#memberAnniversary').val(memberData.anniversary);
+        $('#permanentAddress').val(memberData.permanent_address_line1);
+        $('#residentialAddress').val(memberData.residence_address_line1);
+        // $('#getAllStates option').removeAttr('selected').filter(`[value=${memberData.state_id.id}]`).attr('selected', true)
+        $('#getAllDistricts').val(memberData.district_id.name);
+        $('#parliamentConstituencies').val(memberData.parliament_constituency_id.name);
+        $('#legislativeAssemblyConstituencies').val(memberData.legislative_assembly_constituency_id.name);
+        $('#upBlockEducationConstituencies').val(memberData.up_block_education_constituency_id.name);
+        $('#townshipConstituencies').val(memberData.township_constituency_id.name);
+        $('#panchayatSamitis').val(memberData.panchayat_samiti_id.name);
+        $('#villageCouncils').val(memberData.village_council_id.name);
+        $('#revenueVilleges').val(memberData.village_council_id.name);
+        $('#booths').val(memberData.booth_id.name);
+        $('#allreligion').val(memberData.religion);
+        $('#allCaste').val(memberData.caste);
+        $('#voterIdCard').val(memberData.voter_id_card);
+        $('#adharCard').val(memberData.aadhar_card);
+        $('#panCard').val(memberData.pan_card);
+        $('#facebookLink').val(memberData.facebook_link);
+        $('#instagramLink').val(memberData.instagram_link);
+        $('#twitterLink').val(memberData.twitter_link);
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 //patch request to api
@@ -392,8 +400,9 @@ function addMemberDetails() {
     let memberDetailsData = updateProfileDataById('edit_member_profile', id, memberDetails);
 
     if (memberDetailsData.error == false) {
+        setCookie('member_profile', JSON.stringify(memberProfile.message.member_details), 10);
         console.log('patch request done');
-        // window.location.reload();
+        window.location.reload();
     } else {
         console.log(memberDetails.message);
     }

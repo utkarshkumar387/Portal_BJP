@@ -1,6 +1,6 @@
 var main_url = "https://bjpbarmer.herokuapp.com/";
-// var main_url = "http://192.168.1.3:8000/";
-let headerParams = { 'Authorization': 'Token 45097245b8db006c8a069cf0f7fe89e83a5d1671' };
+// var main_url = "http://192.168.1.3:8002/";
+// let headerParams = { 'Authorization': 'Token 45097245b8db006c8a069cf0f7fe89e83a5d1671' };
 //Ajax Request
 let loggedInUserId = null;
 function ajaxRequest(type, url, data, status) {
@@ -12,15 +12,14 @@ function ajaxRequest(type, url, data, status) {
     let message = "";
     console.log('data is', data)
     console.log("calling for : " + url + " " + type);
+    // console.log(getCookie('token'));
     $.ajax({
         type: type,
         async: false,
         url: url,
         data: data,
-        headers: headerParams,
+        headers: { 'Authorization': getCookie('token') },
         contentType: "application/json; charset=utf-8",
-
-        // dataType: "json",
         success: function (data, textStatus, jqXHR) {
             if (jqXHR.status == status) {
                 error = false;
@@ -46,6 +45,15 @@ function fetchHomepageData(sub_url) {
     return getHomePageData(sub_url, "get", {}, 200);
 }
 //profile
+//post profile data
+function addProfileData(sub_url, data) {
+    return getProfileData(sub_url, "post", data, 201)
+}
+//post for member login
+function logInMemberData(sub_url, data) {
+    let url = main_url + sub_url + '/';
+    return ajaxRequest("post", url, data, 200)
+}
 //get profile data
 function fetchProfileData(sub_url) {
     return getProfileData(sub_url, "get", {}, 200)
@@ -132,6 +140,19 @@ function postPrivilegeRequest(sub_url, data) {
 // }
 
 //requesting ajax to get profile data
+function postProfileData(sub_url, type, data, status) {
+    if (sub_url == 'member') {
+        sub_url = 'member';
+    } else {
+        sub_url = `member/${sub_url}`
+    }
+    var type = type;
+    var url = main_url + sub_url + '/';
+    var data = data;
+    var status = status;
+    console.log(status)
+    return ajaxRequest(type, url, data, status);
+}
 function getProfileData(sub_url, type, data, status) {
     if (sub_url == 'member') {
         sub_url = 'member';
@@ -345,82 +366,93 @@ function getCookie(cname) {
 //To check cookie
 window.addEventListener('load', checkCookie);
 function checkCookie() {
-    var permissions = getCookie("privilege");
-    permissionsStringify = JSON.parse(permissions);
-    console.log(permissionsStringify);
-    let memberPrivilege = permissionsStringify.member_privilege;
-    let committeePrivilege = permissionsStringify.committee_privilege;
-    let committeeSpecificPrivilege = permissionsStringify.committee_specific_privilege;
-    let verificationPrivilege = permissionsStringify.verification_privilege;
-    let adminPrivilege;
-    if (permissionsStringify.admin_privilege != null) {
-        adminPrivilege = permissionsStringify.admin_privilege.manage_admin;
-    } else {
-        adminPrivilege = permissionsStringify.admin_privilege
-    }
-    let verificationPrivilegeBlog;
-    let verificationPrivilegeEvent;
-    let verificationPrivilegeComplaint;
-    console.log('member privilege is', memberPrivilege)
-    if (adminPrivilege != null) {
-        $('#privilegesLink').css('display', 'block')
-        getPrivilegesLink(memberPrivilege, committeePrivilege, committeeSpecificPrivilege, verificationPrivilege, adminPrivilege)
-    }
-    console.log(permissionsStringify.verification_privilege);
-    if (permissionsStringify.verification_privilege != null) {
-        verificationPrivilegeBlog = permissionsStringify.verification_privilege.manage_blog;
-        console.log(verificationPrivilegeBlog);
-        verificationPrivilegeEvent = permissionsStringify.verification_privilege.manage_event;
-        console.log(verificationPrivilegeEvent);
-        verificationPrivilegeComplaint = permissionsStringify.verification_privilege.manage_complaint;
-        console.log(verificationPrivilegeComplaint);
-    }
-    // console.log(status);
-    // console.log(memberPrivilege, committeePrivilege, committeeSpecificPrivilege, verificationPrivilege, verificationPrivilegeBlog, verificationPrivilegeEvent, verificationPrivilegeComplaint, adminPrivilege);
-    // console.log(sendLinkToChangeStatus, status);
-    let sendLinkToChangeStatus = link[3];
-    // if (sendLinkToChangeStatus == 'blogsView' || sendLinkToChangeStatus == 'eventsView' || sendLinkToChangeStatus == 'complaintsView') {
-    if (memberPrivilege == null && committeePrivilege == null && committeeSpecificPrivilege == null && verificationPrivilege == null && adminPrivilege == false) {
-        $('#footerLikeDislike').append(`
+    // let windowLink = window.location.href.split('/');
+    // let getLink = windowLink[3];
+    // if (getCookie('token') == "" && getLink != "logIn") {
+    //     window.location.replace('/logIn');
+    //     return;
+    // } else {
+    //     console.log('window link :', getLink);
+    // }
+
+    if (getCookie("token") == "" || getCookie("privilege") == "") return;
+    try {
+        var permissions = getCookie("privilege");
+        permissionsStringify = JSON.parse(permissions);
+        console.log(permissionsStringify);
+        let memberPrivilege = permissionsStringify.member_privilege;
+        let committeePrivilege = permissionsStringify.committee_privilege;
+        let committeeSpecificPrivilege = permissionsStringify.committee_specific_privilege;
+        let verificationPrivilege = permissionsStringify.verification_privilege;
+        let adminPrivilege;
+        if (permissionsStringify.admin_privilege != null) {
+            adminPrivilege = permissionsStringify.admin_privilege.manage_admin;
+        } else {
+            adminPrivilege = permissionsStringify.admin_privilege
+        }
+        let verificationPrivilegeBlog;
+        let verificationPrivilegeEvent;
+        let verificationPrivilegeComplaint;
+        console.log('member privilege is', memberPrivilege)
+        if (adminPrivilege != null) {
+            $('#privilegesLink').css('display', 'block')
+            getPrivilegesLink(memberPrivilege, committeePrivilege, committeeSpecificPrivilege, verificationPrivilege, adminPrivilege)
+        }
+        console.log(permissionsStringify.verification_privilege);
+        if (permissionsStringify.verification_privilege != null) {
+            verificationPrivilegeBlog = permissionsStringify.verification_privilege.manage_blog;
+            console.log(verificationPrivilegeBlog);
+            verificationPrivilegeEvent = permissionsStringify.verification_privilege.manage_event;
+            console.log(verificationPrivilegeEvent);
+            verificationPrivilegeComplaint = permissionsStringify.verification_privilege.manage_complaint;
+            console.log(verificationPrivilegeComplaint);
+        }
+        // console.log(status);
+        // console.log(memberPrivilege, committeePrivilege, committeeSpecificPrivilege, verificationPrivilege, verificationPrivilegeBlog, verificationPrivilegeEvent, verificationPrivilegeComplaint, adminPrivilege);
+        // console.log(sendLinkToChangeStatus, status);
+        let sendLinkToChangeStatus = link[3];
+        // if (sendLinkToChangeStatus == 'blogsView' || sendLinkToChangeStatus == 'eventsView' || sendLinkToChangeStatus == 'complaintsView') {
+        if (memberPrivilege == null && committeePrivilege == null && committeeSpecificPrivilege == null && verificationPrivilege == null && adminPrivilege == false) {
+            $('#footerLikeDislike').append(`
              <img class="mr-3" src="/img/icons/like.png" alt=""><img src="/img/icons/divider.png"
              alt=""><img class="ml-3" src="/img/icons/dislike.png" alt="">
              `);
-        $('#contentUpdateDate').append(`
+            $('#contentUpdateDate').append(`
             <p><b id="contentUpdatedD">Last Updated on: <span id="blogDay"></span>
                                         <span id="blogYearName"></span> <span id="blogYear"></span></b></p>
             `)
-    } else if (verificationPrivilege != null) {
-        console.log(sendLinkToChangeStatus);
-        //add or remove navigation links for permit and non-permit user for blogs, events & compalaints
-        if (verificationPrivilegeBlog == true) {
-            $('#eventsPendingLink, #eventsRejectedLink').css('display', 'block')
-        }
-        if (verificationPrivilegeComplaint == true) {
-            $('#complaintsPendingLink, #complaintsRejectedLink').css('display', 'block')
-        }
-        if (verificationPrivilegeEvent == true) {
-            $('#blogsPendingLink, #blogsRejectedLink').css('display', 'block')
-        }
-        //add or remove permission buttons inside blogsview, eventsview & complaintsview
-        console.log(sendLinkToChangeStatus);
-        switch (sendLinkToChangeStatus) {
-            case 'blogsView':
-                console.log('inside blog view');
-                if (verificationPrivilegeBlog == true) {
-                    console.log(sendLinkToChangeStatus, status);
-                    switch (status) {
-                        case 2:
-                            document.getElementById("footerPrivilege").classList.add("footerPrivilege");
-                            document.getElementById("privilegeButtons").classList.add("footerPrivilegeButtons");
-                            $('#footerLikeDislike').append(`
+        } else if (verificationPrivilege != null) {
+            console.log(sendLinkToChangeStatus);
+            //add or remove navigation links for permit and non-permit user for blogs, events & compalaints
+            if (verificationPrivilegeBlog == true) {
+                $('#eventsPendingLink, #eventsRejectedLink').css('display', 'block')
+            }
+            if (verificationPrivilegeComplaint == true) {
+                $('#complaintsPendingLink, #complaintsRejectedLink').css('display', 'block')
+            }
+            if (verificationPrivilegeEvent == true) {
+                $('#blogsPendingLink, #blogsRejectedLink').css('display', 'block')
+            }
+            //add or remove permission buttons inside blogsview, eventsview & complaintsview
+            console.log(sendLinkToChangeStatus);
+            switch (sendLinkToChangeStatus) {
+                case 'blogsView':
+                    console.log('inside blog view');
+                    if (verificationPrivilegeBlog == true) {
+                        console.log(sendLinkToChangeStatus, status);
+                        switch (status) {
+                            case 2:
+                                document.getElementById("footerPrivilege").classList.add("footerPrivilege");
+                                document.getElementById("privilegeButtons").classList.add("footerPrivilegeButtons");
+                                $('#footerLikeDislike').append(`
                              <img class="mr-3" src="/img/icons/like.png" alt=""><img src="/img/icons/divider.png"
                              alt=""><img class="ml-3" src="/img/icons/dislike.png" alt="">
                              `);
-                            $('#contentUpdateDate').append(`
+                                $('#contentUpdateDate').append(`
                             <p><b>Last Updated on: <span id="detailsBlogDay"></span>
                                                         <span id="detailsBlogYearName"></span> <span id="detailsBlogYear"></span></b></p>
                             `)
-                            $('#privilegeButtons').append(`
+                                $('#privilegeButtons').append(`
                             <div class="edit">
                                 <a href="/blogForm/${blog_id}/2" class="edit__button button__design">Edit Blog</a>
                             </div>
@@ -434,17 +466,17 @@ function checkCookie() {
                             </div>
                 
                             `)
-                            document.getElementById("rejectButton").addEventListener('click', function () {
-                                pivilegeButtons(sendLinkToChangeStatus, '3');
-                            })
-                            document.getElementById("approveButton").addEventListener('click', function () {
-                                pivilegeButtons(sendLinkToChangeStatus, '1');
-                            })
-                            break;
-                        case 1:
-                            document.getElementById("footerPrivilege").classList.add("footerPrivilege");
-                            document.getElementById("privilegeButtons").classList.add("footerPrivilegeButtons");
-                            $('#privilegeButtons').append(`
+                                document.getElementById("rejectButton").addEventListener('click', function () {
+                                    pivilegeButtons(sendLinkToChangeStatus, '3');
+                                })
+                                document.getElementById("approveButton").addEventListener('click', function () {
+                                    pivilegeButtons(sendLinkToChangeStatus, '1');
+                                })
+                                break;
+                            case 1:
+                                document.getElementById("footerPrivilege").classList.add("footerPrivilege");
+                                document.getElementById("privilegeButtons").classList.add("footerPrivilegeButtons");
+                                $('#privilegeButtons').append(`
                             <div class="edit">
                                 <a href="/blogForm/${blog_id}/1" class="edit__button button__design">Edit Blog</a>
                             </div>
@@ -457,17 +489,17 @@ function checkCookie() {
                                 </div>
                             </div>
                             `)
-                            document.getElementById("rejectButton").addEventListener('click', function () {
-                                pivilegeButtons(sendLinkToChangeStatus, '3');
-                            })
-                            document.getElementById("approveButton").addEventListener('click', function () {
-                                pivilegeButtons(sendLinkToChangeStatus, '2');
-                            })
-                            break;
-                        case 3:
-                            document.getElementById("footerPrivilege").classList.add("footerPrivilege");
-                            document.getElementById("privilegeButtons").classList.add("footerPrivilegeButtons");
-                            $('#privilegeButtons').append(`
+                                document.getElementById("rejectButton").addEventListener('click', function () {
+                                    pivilegeButtons(sendLinkToChangeStatus, '3');
+                                })
+                                document.getElementById("approveButton").addEventListener('click', function () {
+                                    pivilegeButtons(sendLinkToChangeStatus, '2');
+                                })
+                                break;
+                            case 3:
+                                document.getElementById("footerPrivilege").classList.add("footerPrivilege");
+                                document.getElementById("privilegeButtons").classList.add("footerPrivilegeButtons");
+                                $('#privilegeButtons').append(`
                             <div class="edit">
                                 <a href="/blogForm/${blog_id}/3" class="edit__button button__design">Edit Blog</a>
                             </div>
@@ -477,29 +509,29 @@ function checkCookie() {
                                 </div>
                             </div>
                             `)
-                            document.getElementById("approveButton").addEventListener('click', function () {
-                                pivilegeButtons(sendLinkToChangeStatus, '2');
-                            })
-                            break;
-                        default:
-                            $('#footerLikeDislike').append(`
+                                document.getElementById("approveButton").addEventListener('click', function () {
+                                    pivilegeButtons(sendLinkToChangeStatus, '2');
+                                })
+                                break;
+                            default:
+                                $('#footerLikeDislike').append(`
                              <img class="mr-3" src="/img/icons/like.png" alt=""><img src="/img/icons/divider.png"
                              alt=""><img class="ml-3" src="/img/icons/dislike.png" alt="">
                              `);
-                            $('#contentUpdateDate').append(`
+                                $('#contentUpdateDate').append(`
                             <p><b id="contentUpdatedD">Last Updated on: <span id="blogDay"></span>
                                                         <span id="blogYearName"></span> <span id="blogYear"></span></b></p>
                             `)
+                        }
                     }
-                }
-            case 'complaintsView':
-                if (verificationPrivilegeComplaint == true) {
-                    console.log(sendLinkToChangeStatus, status);
-                    switch (status) {
-                        case '2':
-                            document.getElementById("footerPrivilegeComplaint").classList.add("footerPrivilege");
-                            document.getElementById("privilegeButtonsComplaint").classList.add("footerPrivilegeButtons");
-                            $('#privilegeButtonsComplaint').append(`
+                case 'complaintsView':
+                    if (verificationPrivilegeComplaint == true) {
+                        console.log(sendLinkToChangeStatus, status);
+                        switch (status) {
+                            case '2':
+                                document.getElementById("footerPrivilegeComplaint").classList.add("footerPrivilege");
+                                document.getElementById("privilegeButtonsComplaint").classList.add("footerPrivilegeButtons");
+                                $('#privilegeButtonsComplaint').append(`
                                 <div class="edit">
                                 <a href="/complaintsForm/${complaint_id}/2" class="edit__button button__design">Edit Complaint</a>
                                 </div>
@@ -513,18 +545,18 @@ function checkCookie() {
                                 </div>
                 
                                 `)
-                            document.getElementById("rejectButton").addEventListener('click', function () {
-                                pivilegeButtons(sendLinkToChangeStatus, '3');
-                            })
-                            document.getElementById("approveButton").addEventListener('click', function () {
-                                pivilegeButtons(sendLinkToChangeStatus, '1');
-                            })
-                            break;
-                        case '1':
-                            document.getElementById("footerPrivilegeComplaint").classList.add("footerPrivilege");
-                            document.getElementById("privilegeButtonsComplaint").classList.add("footerPrivilegeButtons");
-                            console.log(sendLinkToChangeStatus);
-                            $('#privilegeButtonsComplaint').append(`
+                                document.getElementById("rejectButton").addEventListener('click', function () {
+                                    pivilegeButtons(sendLinkToChangeStatus, '3');
+                                })
+                                document.getElementById("approveButton").addEventListener('click', function () {
+                                    pivilegeButtons(sendLinkToChangeStatus, '1');
+                                })
+                                break;
+                            case '1':
+                                document.getElementById("footerPrivilegeComplaint").classList.add("footerPrivilege");
+                                document.getElementById("privilegeButtonsComplaint").classList.add("footerPrivilegeButtons");
+                                console.log(sendLinkToChangeStatus);
+                                $('#privilegeButtonsComplaint').append(`
                 <div class="edit">
                     <a href="/complaintsForm/${complaint_id}/1" class="edit__button button__design">Edit Complaint</a>
                 </div>
@@ -537,17 +569,17 @@ function checkCookie() {
                     </div>
                 </div>
                 `)
-                            document.getElementById("rejectButton").addEventListener('click', function () {
-                                pivilegeButtons(sendLinkToChangeStatus, '3');
-                            })
-                            document.getElementById("approveButton").addEventListener('click', function () {
-                                pivilegeButtons(sendLinkToChangeStatus, '2');
-                            })
-                            break;
-                        case '3':
-                            document.getElementById("footerPrivilegeComplaint").classList.add("footerPrivilege");
-                            document.getElementById("privilegeButtonsComplaint").classList.add("footerPrivilegeButtons");
-                            $('#privilegeButtonsComplaint').append(`
+                                document.getElementById("rejectButton").addEventListener('click', function () {
+                                    pivilegeButtons(sendLinkToChangeStatus, '3');
+                                })
+                                document.getElementById("approveButton").addEventListener('click', function () {
+                                    pivilegeButtons(sendLinkToChangeStatus, '2');
+                                })
+                                break;
+                            case '3':
+                                document.getElementById("footerPrivilegeComplaint").classList.add("footerPrivilege");
+                                document.getElementById("privilegeButtonsComplaint").classList.add("footerPrivilegeButtons");
+                                $('#privilegeButtonsComplaint').append(`
                 <div class="edit">
                     <a href="/complaintsForm/${complaint_id}/3" class="edit__button button__design">Edit Complaint</a>
                 </div>
@@ -557,23 +589,23 @@ function checkCookie() {
                     </div>
                 </div>
                 `)
-                            document.getElementById("approveButton").addEventListener('click', function () {
-                                pivilegeButtons(sendLinkToChangeStatus, '2');
-                            })
-                            break;
-                        default:
-                            console.log('No complaint view');
+                                document.getElementById("approveButton").addEventListener('click', function () {
+                                    pivilegeButtons(sendLinkToChangeStatus, '2');
+                                })
+                                break;
+                            default:
+                                console.log('No complaint view');
+                        }
                     }
-                }
-            case 'eventsView':
-                console.log('I have a privilege ', verificationPrivilegeEvent)
-                if (verificationPrivilegeEvent == true) {
-                    console.log(sendLinkToChangeStatus, status);
-                    switch (status) {
-                        case '2':
-                            document.getElementById("footerPrivilegeEvent").classList.add("footerPrivilege");
-                            document.getElementById("privilegeButtonsEvent").classList.add("footerPrivilegeButtons");
-                            $('#privilegeButtonsEvent').append(`
+                case 'eventsView':
+                    console.log('I have a privilege ', verificationPrivilegeEvent)
+                    if (verificationPrivilegeEvent == true) {
+                        console.log(sendLinkToChangeStatus, status);
+                        switch (status) {
+                            case '2':
+                                document.getElementById("footerPrivilegeEvent").classList.add("footerPrivilege");
+                                document.getElementById("privilegeButtonsEvent").classList.add("footerPrivilegeButtons");
+                                $('#privilegeButtonsEvent').append(`
                                 <div class="edit">
                                     <a href="/eventsForm/${event_id}/2" class="edit__button button__design">Edit Event</a>
                                 </div>
@@ -587,20 +619,20 @@ function checkCookie() {
                                 </div>
                     
                                 `)
-                            document.getElementById("rejectButton").addEventListener('click', function () {
-                                console.log('sending rejected link to privilege buttons', sendLinkToChangeStatus)
-                                pivilegeButtons(sendLinkToChangeStatus, '3');
-                            })
-                            document.getElementById("approveButton").addEventListener('click', function () {
-                                console.log('sending pending link to privilege buttons', sendLinkToChangeStatus)
-                                pivilegeButtons(sendLinkToChangeStatus, 1);
-                            })
-                            break;
-                        case '1':
-                            document.getElementById("footerPrivilegeEvent").classList.add("footerPrivilege");
-                            document.getElementById("privilegeButtonsEvent").classList.add("footerPrivilegeButtons");
-                            console.log(sendLinkToChangeStatus);
-                            $('#privilegeButtonsEvent').append(`
+                                document.getElementById("rejectButton").addEventListener('click', function () {
+                                    console.log('sending rejected link to privilege buttons', sendLinkToChangeStatus)
+                                    pivilegeButtons(sendLinkToChangeStatus, '3');
+                                })
+                                document.getElementById("approveButton").addEventListener('click', function () {
+                                    console.log('sending pending link to privilege buttons', sendLinkToChangeStatus)
+                                    pivilegeButtons(sendLinkToChangeStatus, 1);
+                                })
+                                break;
+                            case '1':
+                                document.getElementById("footerPrivilegeEvent").classList.add("footerPrivilege");
+                                document.getElementById("privilegeButtonsEvent").classList.add("footerPrivilegeButtons");
+                                console.log(sendLinkToChangeStatus);
+                                $('#privilegeButtonsEvent').append(`
                                 <div class="edit">
                                 <a href="/eventsForm/${event_id}/1" class="edit__button button__design">Edit Event</a>
                                 </div>
@@ -613,19 +645,19 @@ function checkCookie() {
                                 </div>
                                 </div>
                                 `)
-                            document.getElementById("rejectButton").addEventListener('click', function () {
-                                console.log('sending rejected link to privilege buttons', sendLinkToChangeStatus)
-                                pivilegeButtons(sendLinkToChangeStatus, 3);
-                            })
-                            document.getElementById("approveButton").addEventListener('click', function () {
-                                console.log('sending approved link to privilege buttons', sendLinkToChangeStatus)
-                                pivilegeButtons(sendLinkToChangeStatus, 2);
-                            })
-                            break;
-                        case '3':
-                            document.getElementById("footerPrivilegeEvent").classList.add("footerPrivilege");
-                            document.getElementById("privilegeButtonsEvent").classList.add("footerPrivilegeButtons");
-                            $('#privilegeButtonsEvent').append(`
+                                document.getElementById("rejectButton").addEventListener('click', function () {
+                                    console.log('sending rejected link to privilege buttons', sendLinkToChangeStatus)
+                                    pivilegeButtons(sendLinkToChangeStatus, 3);
+                                })
+                                document.getElementById("approveButton").addEventListener('click', function () {
+                                    console.log('sending approved link to privilege buttons', sendLinkToChangeStatus)
+                                    pivilegeButtons(sendLinkToChangeStatus, 2);
+                                })
+                                break;
+                            case '3':
+                                document.getElementById("footerPrivilegeEvent").classList.add("footerPrivilege");
+                                document.getElementById("privilegeButtonsEvent").classList.add("footerPrivilegeButtons");
+                                $('#privilegeButtonsEvent').append(`
                                 <div class="edit">
                                 <a href="/eventsForm/${event_id}/3" class="edit__button button__design">Edit Event</a>
                                 </div>
@@ -635,36 +667,45 @@ function checkCookie() {
                                 </div>
                                 </div>
                                 `)
-                            document.getElementById("approveButton").addEventListener('click', function () {
-                                console.log('sending approved link to privilege buttons', sendLinkToChangeStatus)
-                                pivilegeButtons(sendLinkToChangeStatus, 2);
-                            })
-                            break;
-                        default:
-                            console.log('No complaint view');
+                                document.getElementById("approveButton").addEventListener('click', function () {
+                                    console.log('sending approved link to privilege buttons', sendLinkToChangeStatus)
+                                    pivilegeButtons(sendLinkToChangeStatus, 2);
+                                })
+                                break;
+                            default:
+                                console.log('No complaint view');
+                        }
                     }
-                }
+            }
         }
+    } catch (err) {
+        console.log('error occured', err);
     }
+
     // }
 }
 if (getCookie('privilege') == '') {
     let memberProfile = fetchProfileData('member_profile');
-    setCookie('privilege', JSON.stringify(memberProfile.message.member_privileges), 10);
+    if (memberProfile.message.member_privileges) {
+        setCookie('privilege', JSON.stringify(memberProfile.message.member_privileges), 10);
+    }
 
 }
 
 if (getCookie('member_profile') == '') {
     let memberProfile = fetchProfileData('member_profile');
     console.log(memberProfile.message.member_details);
-    setCookie('member_profile', JSON.stringify(memberProfile.message.member_details), 10);
+    if (memberProfile.message.member_details) {
+        setCookie('member_profile', JSON.stringify(memberProfile.message.member_details), 10);
+    }
 }
 
 // console.log(getCookie('member_profile'));
 // console.log(JSON.parse(getCookie('member_profile')));
-loggedInUserId = JSON.parse(getCookie('member_profile')).id;
-
-$('#profileButton').attr('href', '/profile/' + JSON.parse(getCookie('member_profile')).id);
+if (getCookie('member_profile') != "") {
+    loggedInUserId = JSON.parse(getCookie('member_profile')).id;
+    $('#profileButton').attr('href', '/profile/' + JSON.parse(getCookie('member_profile')).id);
+}
 
 
 //functions for all pages
@@ -865,6 +906,24 @@ function mySearchFunction(input, members, memberName) {
     }
 }
 
+function logOutMemeber() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+    eraseCookie('token');
+    eraseCookie('privilege');
+    eraseCookie('member_profile');
+    window.location.replace('/logIn');
+
+}
+function eraseCookie(name) {
+    setCookie(name, "", -1);
+}
 // window.addEventListener('load', function () {
 //     getCookie = getCookie();
 

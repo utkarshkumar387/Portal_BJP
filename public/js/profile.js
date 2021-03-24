@@ -6,28 +6,32 @@ console.log(profileDetails);
 if (profileDetails.error == false) {
     let user = profileDetails.message.member_details;
     let userName = user.first_name + ' ' + user.last_name;
-    $('#memberUserName').html(user.email);
-    $('#memberFullname').html(userName);
-    $('#memberEmail').html(user.email);
-    //have to send multiple phone number in an array to get multiple phone number.
-    // $('#memberPhone').html(user.phone_no);
-    $('#memberProfession').html(user.profession);
-    $('#memberFacebookLink').html(user.facebook_link);
-    $('#memberInstagramLink').html();
-    $('#memberTwitterLink').html(user.twitter_link);
-    $('#memberVoterID').html(user.voter_id_card);
-    $('#memberaAdhar').html(user.aadhar_card);
-    $('#memberPAN').html(user.pan_card);
-    $('#memberState').html(user.state_id.name);
-    $('#memberDistrict').html(user.district_id.name);
-    $('#memberUpkhand').html();
-    $('#memberTehsil').html(user.parliament_constituency_id.name);
-    $('#memberVidhanSabha').html();
-    $('#memberPanchayatSamiti').html(user.panchayat_samiti_id.name);
-    $('#memberGramPanchayat').html(user.village_council_id.name);
-    $('#memberRevenueVillage').html(user.revenue_villege_id.name);
-    $('#memberBooth').html(user.booth_id.name);
-    $('#memberVidhanSabha').html(user.legislative_assembly_constituency_id.name);
+    try {
+        $('#memberUserName').html(user.email);
+        $('#memberFullname').html(userName);
+        $('#memberEmail').html(user.email);
+        //have to send multiple phone number in an array to get multiple phone number.
+        // $('#memberPhone').html(user.phone_no);
+        $('#memberProfession').html(user.profession);
+        $('#memberFacebookLink').html(user.facebook_link);
+        $('#memberInstagramLink').html();
+        $('#memberTwitterLink').html(user.twitter_link);
+        $('#memberVoterID').html(user.voter_id_card);
+        $('#memberaAdhar').html(user.aadhar_card);
+        $('#memberPAN').html(user.pan_card);
+        $('#memberState').html(user.state_id.name);
+        $('#memberDistrict').html(user.district_id.name);
+        // $('#memberUpkhand').html();
+        // $('#memberTehsil').html(user.parliament_constituency_id.name);
+        $('#memberVidhanSabha').html();
+        // $('#memberPanchayatSamiti').html(user.panchayat_samiti_id.name);
+        // $('#memberGramPanchayat').html(user.village_council_id.name);
+        // $('#memberRevenueVillage').html(user.revenue_villege_id.name);
+        // $('#memberBooth').html(user.booth_id.name);
+        $('#memberVidhanSabha').html(user.legislative_assembly_constituency_id.name);
+    } catch (err) {
+        console.log(err);
+    }
 
     let profileBlogs = profileDetails.message.blogs;
     console.log(profileBlogs);
@@ -35,17 +39,18 @@ if (profileDetails.error == false) {
     console.log(profileEvents);
     let profileComplaints = profileDetails.message.complaints;
     console.log(profileComplaints);
-    for (let i = 0; i < profileBlogs.length; i++) {
-        let blogDate = dateConverter(profileBlogs[i].date);
-        let name = profileBlogs[i].user.first_name + ' ' + profileBlogs[i].user.last_name
-        let title = profileBlogs[i].title;
-        let description = profileBlogs[i].description;
-        let maxStringTitle = 20;
-        let maxStringDesc = 300;
-        let trimmedDataBlog = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
-        console.log(trimmedDataBlog);
-        $('#profileBlogsBlock').append(
-            `
+    if (profileBlogs.length > 0) {
+        for (let i = 0; i < profileBlogs.length; i++) {
+            let blogDate = dateConverter(profileBlogs[i].date);
+            let name = profileBlogs[i].user.first_name + ' ' + profileBlogs[i].user.last_name
+            let title = profileBlogs[i].title;
+            let description = profileBlogs[i].description;
+            let maxStringTitle = 20;
+            let maxStringDesc = 300;
+            let trimmedDataBlog = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
+            console.log(trimmedDataBlog);
+            $('#profileBlogsBlock').append(
+                `
             <div class="card cardStyle">
         <div class="row g-0">
         <div class="col-md-6">
@@ -73,17 +78,21 @@ if (profileDetails.error == false) {
     </div>
     </div>
             `
-        )
+            )
+        }
+    } else {
+        $('#profileBlogsBlock').html("<h3>Not posted any blogs yet</h3>")
     }
-    for (let i = 0; i < profileEvents.length; i++) {
-        let eventDate = dateConverter(profileEvents[i].date);
-        let title = profileEvents[i].title;
-        let description = profileEvents[i].description;
-        let maxStringTitle = 20;
-        let maxStringDesc = 300;
-        let trimmedDataEvent = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
-        $('#profileEventsBlock').append(
-            `
+    if (profileEvents.length > 0) {
+        for (let i = 0; i < profileEvents.length; i++) {
+            let eventDate = dateConverter(profileEvents[i].date);
+            let title = profileEvents[i].title;
+            let description = profileEvents[i].description;
+            let maxStringTitle = 20;
+            let maxStringDesc = 300;
+            let trimmedDataEvent = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
+            $('#profileEventsBlock').append(
+                `
             <div class="col-md-4 events__card mb-4 px-3">
                 <div class="card cardStyle">
                     <img src="https://images.livemint.com/img/2020/01/19/600x338/20190726221L_1564151885181_1579462418514.jpg"
@@ -103,18 +112,22 @@ if (profileDetails.error == false) {
                 </div>
             </div>
             `
-        )
+            )
+        }
+    } else {
+        $('#profileEventsBlock').html("<h3>Not posted any events yet</h3>")
     }
-    for (let i = 0; i < profileComplaints.length; i++) {
-        let complaintDate = dateConverter(profileComplaints[i].date);
-        let title = profileComplaints[i].complaint_subject;
-        let maxStringTitle = 20;
-        let trimmedDataComplaint = titleDescTrimmer(title, description = '', maxStringTitle, maxStringDesc = 0);
-        console.log(trimmedDataComplaint);
-        let priority = checkPriority(profileComplaints[i].priority);
-        let name = profileComplaints[i].user.first_name + ' ' + profileComplaints[i].user.last_name;
-        $('#profileComplaintsBlock').append(
-            `
+    if (profileComplaints.length > 0) {
+        for (let i = 0; i < profileComplaints.length; i++) {
+            let complaintDate = dateConverter(profileComplaints[i].date);
+            let title = profileComplaints[i].complaint_subject;
+            let maxStringTitle = 20;
+            let trimmedDataComplaint = titleDescTrimmer(title, description = '', maxStringTitle, maxStringDesc = 0);
+            console.log(trimmedDataComplaint);
+            let priority = checkPriority(profileComplaints[i].priority);
+            let name = profileComplaints[i].user.first_name + ' ' + profileComplaints[i].user.last_name;
+            $('#profileComplaintsBlock').append(
+                `
             <div class="card cardStyle">
             <div class="complaints__header">
                 <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
@@ -140,7 +153,10 @@ if (profileDetails.error == false) {
             </div>
         </div>
             `
-        )
+            )
+        }
+    } else {
+        $('#profileComplaintsBlock').html("<h3>Not posted any complaints yet</h3>")
     }
 }
 $('#editButton').attr('href', `/profileEdit/${link[4]}`)

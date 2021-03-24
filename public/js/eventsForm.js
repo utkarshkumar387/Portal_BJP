@@ -1,4 +1,4 @@
-var authorDetails, authorName, authorID;
+let authorDetails, authorName, authorID, edittedEventUserID;
 let link = window.location.href.split('/');
 let eventID, eventFunctionality, status;
 console.log(link[4]);
@@ -20,20 +20,27 @@ if (link.length == 6) {
         case '2':
             editEventDetails = fetchContentByID('events', eventID);
             console.log(editEventDetails);
+            edittedEventUserID = editEventDetails.message.user_id;
+            console.log('edit event user id', edittedEventUserID);
             break;
         case '1':
             editEventDetails = fetchContentByID('events_unapproved', eventID);
             console.log(editEventDetails);
+            edittedEventUserID = editEventDetails.message.user_id;
+            console.log('edit event user id', edittedEventUserID);
             break;
         case '3':
             editEventDetails = fetchContentByID('events_unapproved', eventID);
             console.log(editEventDetails);
+            edittedEventUserID = editEventDetails.message.user_id;
+            console.log('edit event user id', edittedEventUserID);
             break;
     }
     console.log('Inside event edit form');
     if (editEventDetails.error == false) {
         // console.log(editeventDetails.message);
         // console.log(authorName);
+        console.log('event date is ', editEventDetails.message.event_date)
         $('#eventTitle').val(editEventDetails.message.title);
         $('#eventDate').val(editEventDetails.message.event_date);
         $('#eventBody').val(editEventDetails.message.description);
@@ -78,19 +85,20 @@ function addEvent() {
 function editEvent() {
     let data = {
         // image: null,
-        user_id: authorID,
+        user_id: edittedEventUserID,
         title: $('#eventTitle').val(),
-        event_data: $('#eventDate').val(),
+        event_date: $('#eventDate').val(),
         description: $('#eventBody').val(),
         status: '1'
 
     }
     console.log(data);
     //no patch request in content/events/id or content/approved
-    let eventDetails = updateContent('events', eventID, data);
+    let eventDetails = updateContent('events/content_update', eventID, data);
     console.log(eventDetails);
     if (eventDetails.error == false) {
-        window.location.replace(`/eventsView/${eventID}/${status}`);
+        console.log('event patch request done');
+        // window.location.replace(`/eventsView/${eventID}/${status}`);
     } else {
         console.log(eventDetails.message);
     }

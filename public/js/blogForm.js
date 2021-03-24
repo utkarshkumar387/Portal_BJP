@@ -1,6 +1,6 @@
 var authorDetails, authorName, authorID;
 let link = window.location.href.split('/');
-let blogID, blogFunctionality, status;
+let blogID, blogFunctionality, status, edittedBlogUserID;
 console.log(link.length);
 blogFunctionality = document.getElementById('addEditBlog');
 if (link.length == 4) {
@@ -22,15 +22,21 @@ if (link.length == 4) {
     switch (status) {
         case '2':
             editBlogDetails = fetchContentByID('blogs', blogID);
-            console.log(editBlogDetails);
+            console.log('edit blog detaila', editBlogDetails);
+            edittedBlogUserID = editBlogDetails.message.user_id;
+            console.log('edit blog user id', edittedBlogUserID);
             break;
         case '1':
             editBlogDetails = fetchContentByID('blogs_unapproved', blogID);
-            console.log(editBlogDetails);
+            console.log('edit blog detaila', editBlogDetails);
+            edittedBlogUserID = editBlogDetails.message.user_id;
+            console.log('edit blog user id', edittedBlogUserID);
             break;
         case '3':
             editBlogDetails = fetchContentByID('blogs_unapproved', blogID);
-            console.log(editBlogDetails);
+            console.log('edit blog detaila', editBlogDetails);
+            edittedBlogUserID = editBlogDetails.message.user_id;
+            console.log('edit blog user id', edittedBlogUserID);
             break;
     }
     console.log('Inside blog edit form');
@@ -91,18 +97,18 @@ function addBlog() {
 function editBlog() {
     let data = {
         // image: null,
-        user_id: authorID,
+        user_id: edittedBlogUserID,
         title: $('#blogTitle').val(),
         description: $('#blogBody').val(),
-        status: status;
+        status: status,
 
     }
     console.log(data);
-    let blogDetails = updateContent('blogs/update_status', blogID, data);
+    let blogDetails = updateContent('blogs/content_update', blogID, data);
     console.log(blogDetails);
     if (blogDetails.error == false) {
-        console.log('blog patch request done');
-        // window.location.replace(`/blogsView/${blogID}/${status}`);
+        // console.log('blog patch request done');
+        window.location.replace(`/blogsView/${blogID}/${status}`);
     } else {
         console.log(blogDetails.message);
     }

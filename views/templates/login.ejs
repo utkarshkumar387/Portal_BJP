@@ -4,34 +4,84 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="application/javascript" src="/js/main.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
 
-    <title>Welcome</title>
+    <title>Hello, world!</title>
 </head>
 
-<body style="background-color: #E5E5E5;">
-    <div class="container">
+<body>
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-7 d-flex justify-content-center align-items-center" style="height: 100vh;">
-                <img src="/img/icons/bjp_logo.png" />
-                <p class="ml-4" style="font-size: 28px; font-weight: bold; line-height: 32px;">The Party with a
-                    Difference
-                </p>
+            <div class="col-md-8 d-flex justify-content-center align-items-center"
+                style="height: 100vh;background-image: url('/img/loginBg.jpg');">
             </div>
-            <div class="col-md-4 d-flex justify-content-center align-items-center">
-                <div class="login__form">
-
+            <div class="col-md-4 loginSignupSection d-flex justify-content-center align-items-center">
+                <div class="signup" id="signupPage" style="display: none;">
+                    <div class="px-4">
+                        <img class="mb-4" src="/img/icons/bjp_logo.png" />
+                    </div>
+                    <div class="form-group mb-4">
+                        <input type="text" class="form-control" id="signUpFirstName" placeholder="First Name"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group mb-4">
+                        <input type="test" class="form-control" id="signUpLastName" placeholder="Last Name"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group mb-4">
+                        <input type="text" class="form-control" id="signUpPhoneNumber" placeholder="Phone Number"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group mb-4">
+                        <input type="password" class="form-control" placeholder="Password" id="signUpPassword"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <button type="button" onclick="signUpMember()" class="btn mt-3 joinBJP mb-3">Join
+                        BJP</button>
+                    <div class="d-flex justify-content-center">
+                        <small style="color:grey;">Already a Member? <span id="loginButton"
+                                style="color: #F58220; font-weight: bold; cursor: pointer;">Log In</span></small>
+                    </div>
+                    <!-- <a type=" button" href="/logIn" class="btn btn-primary mt-3">Already Member</a> -->
+                </div>
+                <div class="signup" id="loginPage">
+                    <div class="px-4">
+                        <img class="mb-4" src="/img/icons/bjp_logo.png" />
+                    </div>
+                    <div class="form-group mb-4">
+                        <input type="text" class="form-control" id="logInPhoneNumber" placeholder="Phone Number"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group mb-4">
+                        <input type="password" class="form-control" id="logInPassword" placeholder="Password"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <button type="button" onclick="logInMember()" class="btn mt-3 joinBJP mb-3">Let me In</button>
+                    <div class="d-flex justify-content-center">
+                        <small style="color:grey;">Want to join? <span id="signupButton"
+                                style="color: #F58220; font-weight: bold; cursor: pointer;">Sign up</span></small>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <script type="application/javascript" src="/js/logIn.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-    crossorigin="anonymous"></script>
 
 </html>
