@@ -1,6 +1,6 @@
 var main_url = "https://bjpbarmer.herokuapp.com/";
 // var main_url = "http://192.168.1.3:8002/";
-let headerParams = { 'Authorization': 'Token 45097245b8db006c8a069cf0f7fe89e83a5d1671' };
+// let headerParams = { 'Authorization': 'Token 45097245b8db006c8a069cf0f7fe89e83a5d1671' };
 //Ajax Request
 let loggedInUserId = null;
 function ajaxRequest(type, url, data, status) {
@@ -18,8 +18,8 @@ function ajaxRequest(type, url, data, status) {
         async: false,
         url: url,
         data: data,
-        headers: headerParams,
-        // headers: { 'Authorization': getCookie('token') },
+        // headers: headerParams,
+        headers: { 'Authorization': getCookie('token') },
         contentType: "application/json; charset=utf-8",
         success: function (data, textStatus, jqXHR) {
             if (jqXHR.status == status) {
