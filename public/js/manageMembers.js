@@ -40,6 +40,8 @@ if (allMemberAdmins.error == false) {
         //     document.getElementById(`memberUserPermission${allMemberAdmins.message[i].id}`).checked = false;
         // }
     }
+} else {
+    $('#manageMembersData').html('<h3>Please referesh your page</h3>')
 }
 
 function removePrivilege(id) {

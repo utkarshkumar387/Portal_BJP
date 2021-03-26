@@ -1,16 +1,17 @@
 let link = ['', '', '', ''];
 let allAdmins = fetchAllAdminData('admin_list');
 // console.log(allAdmins);
-for (let i = 0; i < allAdmins.message.length; i++) {
-    let adminName = allAdmins.message[i].user.first_name + ' ' + allAdmins.message[i].user.last_name;
-    let committeeName;
-    if (allAdmins.message[i].committee_name != null) {
-        committeeName = allAdmins.message[i].committee_name;
-    } else {
-        committeeName = 'Not in committee';
-    }
-    $('#manageAdminBlock').append(
-        `
+if (allAdmins.error == false) {
+    for (let i = 0; i < allAdmins.message.length; i++) {
+        let adminName = allAdmins.message[i].user.first_name + ' ' + allAdmins.message[i].user.last_name;
+        let committeeName;
+        if (allAdmins.message[i].committee_name != null) {
+            committeeName = allAdmins.message[i].committee_name;
+        } else {
+            committeeName = 'Not in committee';
+        }
+        $('#manageAdminBlock').append(
+            `
         <div class="card cardStyle mt-3 memberCard" id="memberCard">
         <div class="complaints__header member__inner d-flex justify-content-between">
             <div class="d-flex">
@@ -45,15 +46,18 @@ for (let i = 0; i < allAdmins.message.length; i++) {
         </div>
     </div>
         `
-    )
-    // document.getElementById(`memberAdminsPermission${allAdmins.message[i].id}`).checked = true;
+        )
+        // document.getElementById(`memberAdminsPermission${allAdmins.message[i].id}`).checked = true;
 
-    if (allAdmins.message[i].manage_admin == true) {
-        document.getElementById(`memberAdminsPermission${allAdmins.message[i].id}`).checked = true;
-    } else {
-        document.getElementById(`memberAdminsPermission${allAdmins.message[i].id}`).checked = false;
+        if (allAdmins.message[i].manage_admin == true) {
+            document.getElementById(`memberAdminsPermission${allAdmins.message[i].id}`).checked = true;
+        } else {
+            document.getElementById(`memberAdminsPermission${allAdmins.message[i].id}`).checked = false;
 
+        }
     }
+} else {
+    $('#manageAdminBlock').html('<h3>Please refresh your page</h3>');
 }
 
 let allMembers = fetchProfileData('get_all_members');
