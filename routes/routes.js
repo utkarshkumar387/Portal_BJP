@@ -3,7 +3,7 @@ module.exports = function (app) {
         if (req.cookies.token) {
             res.render('templates/index');
         } else {
-            res.render('templates/logIn')
+            res.render('templates/login')
         }
     })
 
@@ -12,7 +12,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/profileEdit')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
     app.route('/profileEdit/:id')
@@ -20,7 +20,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/profileEdit')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
 
@@ -29,7 +29,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/profile')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
             res.render('templates/profile')
         })
@@ -39,7 +39,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/privileges')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
     app.route('/eventsView/:id')
@@ -47,7 +47,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/eventsView')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
     app.route('/eventsView/:id/:str')
@@ -55,7 +55,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/eventsView')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
 
@@ -64,7 +64,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/eventsPending')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
 
@@ -73,7 +73,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/eventsRejected')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
 
@@ -82,7 +82,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/eventsApproved')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
     app.route('/eventsForm')
@@ -90,7 +90,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/eventsForm')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
     app.route('/eventsForm/:id/:str')
@@ -98,7 +98,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/eventsForm')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
     app.route('/editorCustom')
@@ -106,7 +106,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/editorCustom')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
     app.route('/editorNormal')
@@ -114,7 +114,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/editorNormal')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
     app.route('/blogsView/:id/:str')
@@ -122,7 +122,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/blogsView')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
     app.route('/complaintsView/:id')
@@ -130,7 +130,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/complaintsView')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
 
@@ -139,7 +139,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/complaintsPending')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
 
@@ -148,7 +148,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/complaintsRejected')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
 
@@ -157,7 +157,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/complaintsForm')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
     app.route('/complaintsForm/:id/:str')
@@ -165,7 +165,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/complaintsForm')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
 
@@ -174,7 +174,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/blogForm')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
     app.route('/blogForm')
@@ -182,7 +182,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/blogForm')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
 
@@ -191,7 +191,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/complaintsApproved')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
     app.route('/complaintsView/:id')
@@ -199,7 +199,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/conplaintsView')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
     app.route('/complaintsView/:id/:str')
@@ -207,7 +207,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/complaintsView')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
 
@@ -216,7 +216,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/committeeMy')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
 
@@ -225,7 +225,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/committeeClicked')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
 
@@ -234,7 +234,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/committees')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
 
@@ -243,7 +243,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/blogsView')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
 
@@ -252,7 +252,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/blogsView')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
 
@@ -261,7 +261,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/blogsPending')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
 
@@ -270,7 +270,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/blogsRejected')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
 
@@ -279,7 +279,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/blogsApproved')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
     // app.route('/test')
@@ -287,7 +287,7 @@ module.exports = function (app) {
     //         if (req.cookies.token) {
     //             res.render('templates/eventsPending')
     //         } else {
-    //             res.render('templates/notLogined');
+    //             res.render('templates/notlogined');
     //         }
     //         res.render('templates/test')
     //     })
@@ -296,7 +296,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/members')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
     app.route('/manageAdmins')
@@ -309,7 +309,7 @@ module.exports = function (app) {
                     res.render('templates/accessDenied')
                 }
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
     app.route('/manageCommittee')
@@ -322,7 +322,7 @@ module.exports = function (app) {
                     res.render('templates/accessDenied')
                 }
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
     app.route('/manageCommitteeSpecific')
@@ -335,7 +335,7 @@ module.exports = function (app) {
                     res.render('templates/accessDenied')
                 }
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
     app.route('/manageMembers')
@@ -349,7 +349,7 @@ module.exports = function (app) {
                     res.render('templates/accessDenied')
                 }
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
     app.route('/manageVerificationTeam')
@@ -363,7 +363,7 @@ module.exports = function (app) {
                     res.render('templates/accessDenied')
                 }
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
     app.route('/committeeForm')
@@ -371,7 +371,7 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.render('templates/committeeForm')
             } else {
-                res.render('templates/logIn')
+                res.render('templates/login')
             }
         })
     // app.route('/signUp')
@@ -379,9 +379,9 @@ module.exports = function (app) {
     //         res.render('templates/signUp')
     //     })
 
-    app.route('/logIn')
+    app.route('/login')
         .get(function (req, res, next) {
-            res.render('templates/logIn')
+            res.render('templates/login')
         })
 }
 
