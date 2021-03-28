@@ -40,7 +40,7 @@ if (home.error == false) {
         console.log(trimmedDataBlog);
 
         $('#blogsBlock').append(`
-        <div class="card cardStyle">
+        <div class="card cardStyle card_dark">
         <div class="row g-0">
         <div class="col-md-6">
             <img class="blogsImg"
@@ -80,7 +80,7 @@ if (home.error == false) {
         let name = complaints[i].user.first_name + ' ' + complaints[i].user.last_name;
 
         $('#complaintsBlock').append(`
-            <div class="card cardStyle">
+            <div class="card cardStyle card_dark">
             <div class="complaints__header">
                 <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
                     class="rounded-circle" alt="...">
@@ -120,7 +120,7 @@ if (home.error == false) {
         console.log(eventDate[0]);
         $('#eventBlock').append(`
             <li class="glide__slide events__card">
-                <div class="card cardStyle">
+                <div class="card cardStyle card_dark">
                     <img src="https://images.livemint.com/img/2020/01/19/600x338/20190726221L_1564151885181_1579462418514.jpg"
  z                   class="card-img-top" alt="...">
                     <div class="card-body">

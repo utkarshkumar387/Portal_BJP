@@ -376,7 +376,9 @@ function checkCookie() {
     //     console.log('window link :', getLink);
     // }
 
+    //if token and privilege cookis is not present then return.
     if (getCookie("token") == "" || getCookie("privilege") == "") return;
+
     try {
         var permissions = getCookie("privilege");
         permissionsStringify = JSON.parse(permissions);
@@ -394,12 +396,14 @@ function checkCookie() {
         let verificationPrivilegeBlog;
         let verificationPrivilegeEvent;
         let verificationPrivilegeComplaint;
-        console.log('member privilege is', memberPrivilege)
+
+        //set href link when clicked on navbar privilege
         if (adminPrivilege != null) {
             $('#privilegesLink').css('display', 'block')
             getPrivilegesLink(memberPrivilege, committeePrivilege, committeeSpecificPrivilege, verificationPrivilege, adminPrivilege)
         }
-        console.log(permissionsStringify.verification_privilege);
+
+        //If member has permission to privilege for blog, event & complaint then store its boolean value
         if (permissionsStringify.verification_privilege != null) {
             verificationPrivilegeBlog = permissionsStringify.verification_privilege.manage_blog;
             console.log(verificationPrivilegeBlog);
@@ -408,11 +412,8 @@ function checkCookie() {
             verificationPrivilegeComplaint = permissionsStringify.verification_privilege.manage_complaint;
             console.log(verificationPrivilegeComplaint);
         }
-        // console.log(status);
-        // console.log(memberPrivilege, committeePrivilege, committeeSpecificPrivilege, verificationPrivilege, verificationPrivilegeBlog, verificationPrivilegeEvent, verificationPrivilegeComplaint, adminPrivilege);
-        // console.log(sendLinkToChangeStatus, status);
+
         let sendLinkToChangeStatus = link[3];
-        // if (sendLinkToChangeStatus == 'blogsView' || sendLinkToChangeStatus == 'eventsView' || sendLinkToChangeStatus == 'complaintsView') {
         if (memberPrivilege == null && committeePrivilege == null && committeeSpecificPrivilege == null && verificationPrivilege == null && adminPrivilege == false) {
             $('#footerLikeDislike').append(`
              <img class="mr-3" src="/img/icons/like.png" alt=""><img src="/img/icons/divider.png"
@@ -422,38 +423,26 @@ function checkCookie() {
             <p><b id="contentUpdatedD">Last Updated on: <span id="blogDay"></span>
                                         <span id="blogYearName"></span> <span id="blogYear"></span></b></p>
             `)
-        } else if (verificationPrivilege != null) {
-            console.log(sendLinkToChangeStatus);
-            //add or remove navigation links for permit and non-permit user for blogs, events & compalaints
-            if (verificationPrivilegeBlog == true) {
-                $('#eventsPendingLink, #eventsRejectedLink').css('display', 'block')
-            }
-            if (verificationPrivilegeComplaint == true) {
-                $('#complaintsPendingLink, #complaintsRejectedLink').css('display', 'block')
-            }
-            if (verificationPrivilegeEvent == true) {
-                $('#blogsPendingLink, #blogsRejectedLink').css('display', 'block')
-            }
-            //add or remove permission buttons inside blogsview, eventsview & complaintsview
-            console.log(sendLinkToChangeStatus);
-            switch (sendLinkToChangeStatus) {
-                case 'blogsView':
-                    console.log('inside blog view');
-                    if (verificationPrivilegeBlog == true) {
-                        console.log(sendLinkToChangeStatus, status);
-                        switch (status) {
-                            case 2:
-                                document.getElementById("footerPrivilege").classList.add("footerPrivilege");
-                                document.getElementById("privilegeButtons").classList.add("footerPrivilegeButtons");
-                                $('#footerLikeDislike').append(`
+        }
+        //add or remove permission buttons inside blogsview, eventsview & complaintsview
+        switch (sendLinkToChangeStatus) {
+            case 'blogsView':
+                console.log('inside blog view');
+                if (verificationPrivilegeBlog == true) {
+                    console.log(sendLinkToChangeStatus, status);
+                    switch (status) {
+                        case 2:
+                            document.getElementById("footerPrivilege").classList.add("footerPrivilege");
+                            document.getElementById("privilegeButtons").classList.add("footerPrivilegeButtons");
+                            $('#footerLikeDislike').append(`
                              <img class="mr-3" src="/img/icons/like.png" alt=""><img src="/img/icons/divider.png"
                              alt=""><img class="ml-3" src="/img/icons/dislike.png" alt="">
                              `);
-                                $('#contentUpdateDate').append(`
+                            $('#contentUpdateDate').append(`
                             <p><b>Last Updated on: <span id="detailsBlogDay"></span>
                                                         <span id="detailsBlogYearName"></span> <span id="detailsBlogYear"></span></b></p>
                             `)
-                                $('#privilegeButtons').append(`
+                            $('#privilegeButtons').append(`
                             <div class="edit">
                                 <a href="/blogForm/${blog_id}/2" class="edit__button button__design">Edit Blog</a>
                             </div>
@@ -467,17 +456,17 @@ function checkCookie() {
                             </div>
                 
                             `)
-                                document.getElementById("rejectButton").addEventListener('click', function () {
-                                    pivilegeButtons(sendLinkToChangeStatus, '3');
-                                })
-                                document.getElementById("approveButton").addEventListener('click', function () {
-                                    pivilegeButtons(sendLinkToChangeStatus, '1');
-                                })
-                                break;
-                            case 1:
-                                document.getElementById("footerPrivilege").classList.add("footerPrivilege");
-                                document.getElementById("privilegeButtons").classList.add("footerPrivilegeButtons");
-                                $('#privilegeButtons').append(`
+                            document.getElementById("rejectButton").addEventListener('click', function () {
+                                pivilegeButtons(sendLinkToChangeStatus, '3');
+                            })
+                            document.getElementById("approveButton").addEventListener('click', function () {
+                                pivilegeButtons(sendLinkToChangeStatus, '1');
+                            })
+                            break;
+                        case 1:
+                            document.getElementById("footerPrivilege").classList.add("footerPrivilege");
+                            document.getElementById("privilegeButtons").classList.add("footerPrivilegeButtons");
+                            $('#privilegeButtons').append(`
                             <div class="edit">
                                 <a href="/blogForm/${blog_id}/1" class="edit__button button__design">Edit Blog</a>
                             </div>
@@ -490,17 +479,17 @@ function checkCookie() {
                                 </div>
                             </div>
                             `)
-                                document.getElementById("rejectButton").addEventListener('click', function () {
-                                    pivilegeButtons(sendLinkToChangeStatus, '3');
-                                })
-                                document.getElementById("approveButton").addEventListener('click', function () {
-                                    pivilegeButtons(sendLinkToChangeStatus, '2');
-                                })
-                                break;
-                            case 3:
-                                document.getElementById("footerPrivilege").classList.add("footerPrivilege");
-                                document.getElementById("privilegeButtons").classList.add("footerPrivilegeButtons");
-                                $('#privilegeButtons').append(`
+                            document.getElementById("rejectButton").addEventListener('click', function () {
+                                pivilegeButtons(sendLinkToChangeStatus, '3');
+                            })
+                            document.getElementById("approveButton").addEventListener('click', function () {
+                                pivilegeButtons(sendLinkToChangeStatus, '2');
+                            })
+                            break;
+                        case 3:
+                            document.getElementById("footerPrivilege").classList.add("footerPrivilege");
+                            document.getElementById("privilegeButtons").classList.add("footerPrivilegeButtons");
+                            $('#privilegeButtons').append(`
                             <div class="edit">
                                 <a href="/blogForm/${blog_id}/3" class="edit__button button__design">Edit Blog</a>
                             </div>
@@ -510,130 +499,130 @@ function checkCookie() {
                                 </div>
                             </div>
                             `)
-                                document.getElementById("approveButton").addEventListener('click', function () {
-                                    pivilegeButtons(sendLinkToChangeStatus, '2');
-                                })
-                                break;
-                            default:
-                                $('#footerLikeDislike').append(`
+                            document.getElementById("approveButton").addEventListener('click', function () {
+                                pivilegeButtons(sendLinkToChangeStatus, '2');
+                            })
+                            break;
+                        default:
+                            $('#footerLikeDislike').append(`
                              <img class="mr-3" src="/img/icons/like.png" alt=""><img src="/img/icons/divider.png"
                              alt=""><img class="ml-3" src="/img/icons/dislike.png" alt="">
                              `);
-                                $('#contentUpdateDate').append(`
+                            $('#contentUpdateDate').append(`
                             <p><b id="contentUpdatedD">Last Updated on: <span id="blogDay"></span>
                                                         <span id="blogYearName"></span> <span id="blogYear"></span></b></p>
                             `)
-                        }
                     }
-                case 'complaintsView':
-                    if (verificationPrivilegeComplaint == true) {
-                        console.log(sendLinkToChangeStatus, status);
-                        switch (status) {
-                            case '2':
-                                document.getElementById("footerPrivilegeComplaint").classList.add("footerPrivilege");
-                                document.getElementById("privilegeButtonsComplaint").classList.add("footerPrivilegeButtons");
-                                $('#privilegeButtonsComplaint').append(`
+                }
+            case 'complaintsView':
+                if (verificationPrivilegeComplaint == true) {
+                    console.log(sendLinkToChangeStatus, status);
+                    switch (status) {
+                        case '2':
+                            document.getElementById("footerPrivilegeComplaint").classList.add("footerPrivilege");
+                            document.getElementById("privilegeButtonsComplaint").classList.add("footerPrivilegeButtons");
+                            $('#privilegeButtonsComplaint').append(`
                                 <div class="edit">
-                                <a href="/complaintsForm/${complaint_id}/2" class="edit__button button__design">Edit Complaint</a>
+                                    <a href="/complaintsForm/${complaint_id}/2" class="edit__button button__design">Edit Complaint</a>
                                 </div>
                                 <div class="rejectApprove d-flex">
-                                <div class="reject mr-3">
-                                <a class="reject__button button__design" id="rejectButton">Reject</a>
-                                </div>
-                                <div class="approve">
-                                <a class="approve__button button__design" id="approveButton">Unapprove</a>
-                                </div>
+                                    <div class="reject mr-3">
+                                        <a class="reject__button button__design" id="rejectButton">Reject</a>
+                                    </div>
+                                    <div class="approve">
+                                        <a class="approve__button button__design" id="approveButton">Unapprove</a>
+                                    </div>
                                 </div>
                 
                                 `)
-                                document.getElementById("rejectButton").addEventListener('click', function () {
-                                    pivilegeButtons(sendLinkToChangeStatus, '3');
-                                })
-                                document.getElementById("approveButton").addEventListener('click', function () {
-                                    pivilegeButtons(sendLinkToChangeStatus, '1');
-                                })
-                                break;
-                            case '1':
-                                document.getElementById("footerPrivilegeComplaint").classList.add("footerPrivilege");
-                                document.getElementById("privilegeButtonsComplaint").classList.add("footerPrivilegeButtons");
-                                console.log(sendLinkToChangeStatus);
-                                $('#privilegeButtonsComplaint').append(`
-                <div class="edit">
-                    <a href="/complaintsForm/${complaint_id}/1" class="edit__button button__design">Edit Complaint</a>
-                </div>
-                <div class="rejectApprove d-flex">
-                    <div class="reject mr-3">
-                        <a class="reject__button button__design" id="rejectButton">Reject</a>
-                    </div>
-                    <div class="approve">
-                        <a class="approve__button button__design" id="approveButton">Approve</a>
-                    </div>
-                </div>
-                `)
-                                document.getElementById("rejectButton").addEventListener('click', function () {
-                                    pivilegeButtons(sendLinkToChangeStatus, '3');
-                                })
-                                document.getElementById("approveButton").addEventListener('click', function () {
-                                    pivilegeButtons(sendLinkToChangeStatus, '2');
-                                })
-                                break;
-                            case '3':
-                                document.getElementById("footerPrivilegeComplaint").classList.add("footerPrivilege");
-                                document.getElementById("privilegeButtonsComplaint").classList.add("footerPrivilegeButtons");
-                                $('#privilegeButtonsComplaint').append(`
-                <div class="edit">
-                    <a href="/complaintsForm/${complaint_id}/3" class="edit__button button__design">Edit Complaint</a>
-                </div>
-                <div class="rejectApprove d-flex">
-                    <div class="approve">
-                        <a class="approve__button button__design" id="approveButton">Approve</a>
-                    </div>
-                </div>
-                `)
-                                document.getElementById("approveButton").addEventListener('click', function () {
-                                    pivilegeButtons(sendLinkToChangeStatus, '2');
-                                })
-                                break;
-                            default:
-                                console.log('No complaint view');
-                        }
+                            document.getElementById("rejectButton").addEventListener('click', function () {
+                                pivilegeButtons(sendLinkToChangeStatus, '3');
+                            })
+                            document.getElementById("approveButton").addEventListener('click', function () {
+                                pivilegeButtons(sendLinkToChangeStatus, '1');
+                            })
+                            break;
+                        case '1':
+                            document.getElementById("footerPrivilegeComplaint").classList.add("footerPrivilege");
+                            document.getElementById("privilegeButtonsComplaint").classList.add("footerPrivilegeButtons");
+                            console.log(sendLinkToChangeStatus);
+                            $('#privilegeButtonsComplaint').append(`
+                                <div class="edit">
+                                    <a href="/complaintsForm/${complaint_id}/1" class="edit__button button__design">Edit Complaint</a>
+                                </div>
+                                <div class="rejectApprove d-flex">
+                                    <div class="reject mr-3">
+                                        <a class="reject__button button__design" id="rejectButton">Reject</a>
+                                    </div>
+                                    <div class="approve">
+                                        <a class="approve__button button__design" id="approveButton">Approve</a>
+                                    </div>
+                                </div>
+                                `)
+                            document.getElementById("rejectButton").addEventListener('click', function () {
+                                pivilegeButtons(sendLinkToChangeStatus, '3');
+                            })
+                            document.getElementById("approveButton").addEventListener('click', function () {
+                                pivilegeButtons(sendLinkToChangeStatus, '2');
+                            })
+                            break;
+                        case '3':
+                            document.getElementById("footerPrivilegeComplaint").classList.add("footerPrivilege");
+                            document.getElementById("privilegeButtonsComplaint").classList.add("footerPrivilegeButtons");
+                            $('#privilegeButtonsComplaint').append(`
+                                <div class="edit">
+                                    <a href="/complaintsForm/${complaint_id}/3" class="edit__button button__design">Edit Complaint</a>
+                                </div>
+                                <div class="rejectApprove d-flex">
+                                    <div class="approve">
+                                        <a class="approve__button button__design" id="approveButton">Approve</a>
+                                    </div>
+                                </div>
+                            `)
+                            document.getElementById("approveButton").addEventListener('click', function () {
+                                pivilegeButtons(sendLinkToChangeStatus, '2');
+                            })
+                            break;
+                        default:
+                            console.log('No complaint view');
                     }
-                case 'eventsView':
-                    console.log('I have a privilege ', verificationPrivilegeEvent)
-                    if (verificationPrivilegeEvent == true) {
-                        console.log(sendLinkToChangeStatus, status);
-                        switch (status) {
-                            case '2':
-                                document.getElementById("footerPrivilegeEvent").classList.add("footerPrivilege");
-                                document.getElementById("privilegeButtonsEvent").classList.add("footerPrivilegeButtons");
-                                $('#privilegeButtonsEvent').append(`
+                }
+            case 'eventsView':
+                console.log('I have a privilege ', verificationPrivilegeEvent)
+                if (verificationPrivilegeEvent == true) {
+                    console.log(sendLinkToChangeStatus, status);
+                    switch (status) {
+                        case '2':
+                            document.getElementById("footerPrivilegeEvent").classList.add("footerPrivilege");
+                            document.getElementById("privilegeButtonsEvent").classList.add("footerPrivilegeButtons");
+                            $('#privilegeButtonsEvent').append(`
                                 <div class="edit">
                                     <a href="/eventsForm/${event_id}/2" class="edit__button button__design">Edit Event</a>
                                 </div>
                                 <div class="rejectApprove d-flex">
-                                <div class="reject mr-3">
-                                <a class="reject__button button__design" id="rejectButton">Reject</a>
-                                </div>
-                                <div class="approve">
-                                <a class="approve__button button__design" id="approveButton">Unapprove</a>
-                                </div>
+                                    <div class="reject mr-3">
+                                        <a class="reject__button button__design" id="rejectButton">Reject</a>
+                                    </div>
+                                    <div class="approve">
+                                        <a class="approve__button button__design" id="approveButton">Unapprove</a>
+                                    </div>
                                 </div>
                     
                                 `)
-                                document.getElementById("rejectButton").addEventListener('click', function () {
-                                    console.log('sending rejected link to privilege buttons', sendLinkToChangeStatus)
-                                    pivilegeButtons(sendLinkToChangeStatus, '3');
-                                })
-                                document.getElementById("approveButton").addEventListener('click', function () {
-                                    console.log('sending pending link to privilege buttons', sendLinkToChangeStatus)
-                                    pivilegeButtons(sendLinkToChangeStatus, 1);
-                                })
-                                break;
-                            case '1':
-                                document.getElementById("footerPrivilegeEvent").classList.add("footerPrivilege");
-                                document.getElementById("privilegeButtonsEvent").classList.add("footerPrivilegeButtons");
-                                console.log(sendLinkToChangeStatus);
-                                $('#privilegeButtonsEvent').append(`
+                            document.getElementById("rejectButton").addEventListener('click', function () {
+                                console.log('sending rejected link to privilege buttons', sendLinkToChangeStatus)
+                                pivilegeButtons(sendLinkToChangeStatus, '3');
+                            })
+                            document.getElementById("approveButton").addEventListener('click', function () {
+                                console.log('sending pending link to privilege buttons', sendLinkToChangeStatus)
+                                pivilegeButtons(sendLinkToChangeStatus, 1);
+                            })
+                            break;
+                        case '1':
+                            document.getElementById("footerPrivilegeEvent").classList.add("footerPrivilege");
+                            document.getElementById("privilegeButtonsEvent").classList.add("footerPrivilegeButtons");
+                            console.log(sendLinkToChangeStatus);
+                            $('#privilegeButtonsEvent').append(`
                                 <div class="edit">
                                 <a href="/eventsForm/${event_id}/1" class="edit__button button__design">Edit Event</a>
                                 </div>
@@ -646,45 +635,56 @@ function checkCookie() {
                                 </div>
                                 </div>
                                 `)
-                                document.getElementById("rejectButton").addEventListener('click', function () {
-                                    console.log('sending rejected link to privilege buttons', sendLinkToChangeStatus)
-                                    pivilegeButtons(sendLinkToChangeStatus, 3);
-                                })
-                                document.getElementById("approveButton").addEventListener('click', function () {
-                                    console.log('sending approved link to privilege buttons', sendLinkToChangeStatus)
-                                    pivilegeButtons(sendLinkToChangeStatus, 2);
-                                })
-                                break;
-                            case '3':
-                                document.getElementById("footerPrivilegeEvent").classList.add("footerPrivilege");
-                                document.getElementById("privilegeButtonsEvent").classList.add("footerPrivilegeButtons");
-                                $('#privilegeButtonsEvent').append(`
+                            document.getElementById("rejectButton").addEventListener('click', function () {
+                                console.log('sending rejected link to privilege buttons', sendLinkToChangeStatus)
+                                pivilegeButtons(sendLinkToChangeStatus, 3);
+                            })
+                            document.getElementById("approveButton").addEventListener('click', function () {
+                                console.log('sending approved link to privilege buttons', sendLinkToChangeStatus)
+                                pivilegeButtons(sendLinkToChangeStatus, 2);
+                            })
+                            break;
+                        case '3':
+                            document.getElementById("footerPrivilegeEvent").classList.add("footerPrivilege");
+                            document.getElementById("privilegeButtonsEvent").classList.add("footerPrivilegeButtons");
+                            $('#privilegeButtonsEvent').append(`
                                 <div class="edit">
-                                <a href="/eventsForm/${event_id}/3" class="edit__button button__design">Edit Event</a>
+                                    <a href="/eventsForm/${event_id}/3" class="edit__button button__design">Edit Event</a>
                                 </div>
                                 <div class="rejectApprove d-flex">
-                                <div class="approve">
-                                <a class="approve__button button__design" id="approveButton">Approve</a>
-                                </div>
+                                    <div class="approve">
+                                        <a class="approve__button button__design" id="approveButton">Approve</a>
+                                    </div>
                                 </div>
                                 `)
-                                document.getElementById("approveButton").addEventListener('click', function () {
-                                    console.log('sending approved link to privilege buttons', sendLinkToChangeStatus)
-                                    pivilegeButtons(sendLinkToChangeStatus, 2);
-                                })
-                                break;
-                            default:
-                                console.log('No complaint view');
-                        }
+                            document.getElementById("approveButton").addEventListener('click', function () {
+                                console.log('sending approved link to privilege buttons', sendLinkToChangeStatus)
+                                pivilegeButtons(sendLinkToChangeStatus, 2);
+                            })
+                            break;
+                        default:
+                            console.log('No complaint view');
                     }
+                }
+        }
+        //adding and removing unapproved and rejected button acc. to privilege
+        if (verificationPrivilege != null || adminPrivilege != null) {
+            if (verificationPrivilegeBlog == true || adminPrivilege != null) {
+                $('#eventsPendingLink, #eventsRejectedLink').css('display', 'block')
+            }
+            if (verificationPrivilegeComplaint == true || adminPrivilege != null) {
+                $('#complaintsPendingLink, #complaintsRejectedLink').css('display', 'block')
+            }
+            if (verificationPrivilegeEvent == true || adminPrivilege != null) {
+                $('#blogsPendingLink, #blogsRejectedLink').css('display', 'block')
             }
         }
     } catch (err) {
         console.log('error occured', err);
     }
-
-    // }
 }
+
+//set privilege in cookie
 if (getCookie('privilege') == '') {
     let memberProfile = fetchProfileData('member_profile');
     if (memberProfile.message.member_privileges) {
@@ -693,6 +693,7 @@ if (getCookie('privilege') == '') {
 
 }
 
+//set member profile data in cookie
 if (getCookie('member_profile') == '') {
     let memberProfile = fetchProfileData('member_profile');
     console.log(memberProfile.message.member_details);
@@ -701,8 +702,7 @@ if (getCookie('member_profile') == '') {
     }
 }
 
-// console.log(getCookie('member_profile'));
-// console.log(JSON.parse(getCookie('member_profile')));
+//set member profile data in cookie
 if (getCookie('member_profile') != "") {
     loggedInUserId = JSON.parse(getCookie('member_profile')).id;
     $('#profileButton').attr('href', '/profile/' + JSON.parse(getCookie('member_profile')).id);
@@ -883,6 +883,7 @@ function getPrivilegesLink(memberPrivilege, committeePrivilege, committeeSpecifi
     }
 
 }
+//search members
 function mySearchFunction(input, members, memberName) {
     let filter, item, i, txtValue, memberSearch = input, memberBlock = members, memberCard = memberName;
     input = document.getElementById(`${memberSearch}`);
@@ -907,6 +908,7 @@ function mySearchFunction(input, members, memberName) {
     }
 }
 
+//log out member from their account
 function logOutMemeber() {
     var cookies = document.cookie.split(";");
 
@@ -925,15 +927,94 @@ function logOutMemeber() {
 function eraseCookie(name) {
     setCookie(name, "", -1);
 }
-// window.addEventListener('load', function () {
-//     getCookie = getCookie();
 
-// });
 //preloader
 window.addEventListener('load', function () {
     document.querySelector('body').classList.add("loaded")
 });
 
+
+//light and dark mode
+window.addEventListener('load', changeTheme);
+function changeTheme() {
+    let allCardBody;
+    let allCard;
+    let allCardFooter;
+    let allLink;
+    let allHeader;
+    allCardBody = document.querySelectorAll('.card_body_dark');
+    allCard = document.querySelectorAll('.card_dark');
+    allCardFooter = document.querySelectorAll('.card_dark .footer');
+    allLink = document.querySelectorAll('.nav-link');
+    allHeader = document.querySelectorAll('.header', '.headerMain');
+    console.log(allHeader);
+    if (localStorage.getItem('mode') === 'dark') {
+        let layoutBgDark;
+        layoutBgDark = document.querySelector('body');
+        layoutBgDark.classList.add('dark');
+        layoutBgDark.classList.remove('light');
+        console.log(allCard);
+        for (let i = 0; i < allCardBody.length; i++) {
+            allCardBody[i].classList.add('bg-dark');
+        }
+        for (let i = 0; i < allLink.length; i++) {
+            allLink[i].classList.add('link_dark');
+            allLink[i].classList.remove('link_light');
+        }
+        for (let i = 0; i < allHeader.length; i++) {
+            allHeader[i].classList.add('header_dark');
+            allHeader[i].classList.remove('header_light');
+        }
+        for (let i = 0; i < allCard.length; i++) {
+            allCard[i].classList.add('bg-secondary');
+            allCardFooter[i].classList.add('bg-secondary');
+            allCard[i].classList.remove('card_light');
+            allCardFooter[i].classList.remove('card_light');
+        }
+        console.log(allCardBody);
+    } else {
+        // let allCardBodyRemove;
+        let layoutBgLight;
+        layoutBgLight = document.querySelector('body');
+        layoutBgLight.classList.remove('dark');
+        layoutBgLight.classList.add('light');
+        console.log(allCardBody);
+        for (let i = 0; i < allCardBody.length; i++) {
+            allCardBody[i].classList.remove('bg-dark');
+        }
+        for (let i = 0; i < allLink.length; i++) {
+            allLink[i].classList.add('link_light');
+            allLink[i].classList.remove('link_dark');
+        }
+        for (let i = 0; i < allHeader.length; i++) {
+            allHeader[i].classList.add('header_light');
+            allHeader[i].classList.remove('header_dark');
+        }
+        for (let i = 0; i < allCard.length; i++) {
+            allCard[i].classList.remove('bg-secondary');
+            allCardFooter[i].classList.remove('bg-secondary');
+            allCard[i].classList.add('card_light');
+            allCardFooter[i].classList.add('card_light');
+        }
+        console.log(allCardBody);
+
+    }
+}
+
+//set mode name in local storage
+function ChangeThemeOnclick() {
+    localStorage.setItem('mode', (localStorage.getItem('mode') || 'dark') === 'dark' ? 'light' : 'dark');
+    changeTheme();
+}
+
+//get mode name from local storage to display changes
+document.addEventListener('DOMContentLoaded', (event) => {
+    ((localStorage.getItem('mode') || 'dark') === 'dark') ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark')
+})
+
+// function googleTranslateElementInit() {
+//     new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+// }
 // parliamentConstituencies
 // legislativeAssemblyConstituencies
 // upBlockEducationConstituencies

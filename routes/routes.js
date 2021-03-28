@@ -1,5 +1,6 @@
 module.exports = function (app) {
     app.get('/', function (req, res, next) {
+        res.clearCookie("privilege");
         if (req.cookies.token) {
             res.render('templates/index');
         } else {
