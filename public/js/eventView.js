@@ -63,7 +63,7 @@ if (events.error == false) {
             $('#recentViewEventsBlock').append(
                 `
                 <div class="col-md-4 events__card mb-4">
-                    <div class="card cardStyle">
+                    <div class="card card_dark cardStyle">
                         <img src="https://images.livemint.com/img/2020/01/19/600x338/20190726221L_1564151885181_1579462418514.jpg"
                         class="card-img-top" alt="...">
                         <div class="card-body">

@@ -13,7 +13,7 @@ if (allVerificationMember.error == false) {
         }
         $('#manageVerificationTeamBlock').append(
             `
-        <div class="card cardStyle memberCard" id="memberCard" style="margin-top: 35px">
+        <div class="card tab_dark cardStyle memberCard" id="memberCard" style="margin-top: 35px">
         <div class="allTags" style="position: absolute; margin-top: -25px">
                 <div class="d-flex">
                     <h6 class="px-1 py-1" id="blogsAdminBadge${allMembers.message[i].id}" style="display:none;"><span class="badge badge_design">Blogs</span></h6>

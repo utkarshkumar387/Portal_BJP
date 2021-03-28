@@ -954,14 +954,22 @@ text-decoration: none;
       width: 100%;
       font-weight: bold;
   }
-
+  a:hover{
+      color: #F58220 !important;
+  }
   /* dark mode */
   .dark {
-    background-color: rgb(30,34,39);
+    background-color: #1F1D2B;
     color: #DBDBDB;
   }
   .card_dark{
       color: #DBDBDB;
+    }
+    .card_darkMode{
+        background-color: #2D303E !important;
+    }
+    .card_body_darkMode{
+        background-color:#252836 !important;;
     }
     .link_dark{
         color: #DBDBDB;

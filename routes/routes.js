@@ -118,14 +118,6 @@ module.exports = function (app) {
                 res.render('templates/login')
             }
         })
-    app.route('/blogsView/:id/:str')
-        .get(function (req, res, next) {
-            if (req.cookies.token) {
-                res.render('templates/blogsView')
-            } else {
-                res.render('templates/login')
-            }
-        })
     app.route('/complaintsView/:id')
         .get(function (req, res, next) {
             if (req.cookies.token) {
@@ -241,6 +233,7 @@ module.exports = function (app) {
 
     app.route('/blogsView/:id')
         .get(function (req, res, next) {
+            res.clearCookie("privilege");
             if (req.cookies.token) {
                 res.render('templates/blogsView')
             } else {
@@ -250,6 +243,7 @@ module.exports = function (app) {
 
     app.route('/blogsView/:id/:str')
         .get(function (req, res, next) {
+            res.clearCookie("privilege");
             if (req.cookies.token) {
                 res.render('templates/blogsView')
             } else {

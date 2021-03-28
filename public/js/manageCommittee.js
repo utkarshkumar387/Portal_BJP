@@ -14,7 +14,7 @@ if (allCommitteePrivilegeMembers.error == false) {
         }
         $('#manageCommitteeBlock').append(
             `
-        <div class="card cardStyle mt-3 memberCard" id="memberCard">
+        <div class="card tab_dark cardStyle mt-3 memberCard" id="memberCard">
         <div class="complaints__header member__inner d-flex justify-content-between">
             <div class="d-flex">
                 <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
@@ -92,7 +92,7 @@ for (let i = 0; i < allMembers.message.length; i++) {
 
         $(`#allMembersToAddInCommittee`).append(
             `
-        <div class="card cardStyle mt-3 memberCard" id="memberCardAdmins">
+        <div class="card tab_dark cardStyle mt-3 memberCard" id="memberCardAdmins">
         <div class="complaints__header member__inner d-flex justify-content-between">
             <div class="d-flex">
                 <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"

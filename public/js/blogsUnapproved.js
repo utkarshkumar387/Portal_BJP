@@ -13,7 +13,7 @@ if (contentBlogsUnapproved.error == false) {
         let trimmedDataBlog = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
         console.log(trimmedDataBlog);
         $('#allBlogsUnapproved').append(`
-            <div class="card cardStyle">
+            <div class="card card_dark cardStyle">
                 <div class="row g-0">
                     <div class="col-md-6">
                         <img class="blogsImg"

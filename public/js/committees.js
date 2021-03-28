@@ -12,7 +12,7 @@ if (committees.error == false) {
         // https://images.livemint.com/img/2020/01/19/600x338/20190726221L_1564151885181_1579462418514.jpg
         $('#committeeBlock').append(`
         <div class="col-md-6 committee__card mb-4 px-3">
-            <div class="card cardStyle committee__poster">
+            <div class="card card_dark cardStyle committee__poster">
                 <img src="${committee[i].image == null ? 'https://images.livemint.com/img/2020/01/19/600x338/20190726221L_1564151885181_1579462418514.jpg' : main_url.substr(0, main_url.length - 1) + committee[i].image}"
                 class="card-img-top" alt="...">
                 <div class="card-body committee__body">

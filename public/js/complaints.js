@@ -12,7 +12,7 @@ if (contentComplaints.error == false) {
         let priority = checkPriority(complaints[i].priority);
 
         $('#allComplaintsBlock').append(`
-            <div class="card cardStyle">
+            <div class="card card_dark cardStyle">
             <div class="complaints__header">
                 <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
                     class="rounded-circle" alt="...">

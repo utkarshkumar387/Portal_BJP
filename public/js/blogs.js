@@ -12,7 +12,7 @@ if (contentBlogs.error == false) {
         let trimmedDataBlog = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
         console.log(blogs[i].status);
         $('#allBlogsBlock').append(`
-            <div class="card cardStyle" id="blogID_${blogs[i].id}">
+            <div class="card card_dark cardStyle" id="blogID_${blogs[i].id}">
         <div class="row g-0">
         <div class="col-md-6">
             <img class="blogsImg"

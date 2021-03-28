@@ -427,9 +427,7 @@ function checkCookie() {
         //add or remove permission buttons inside blogsview, eventsview & complaintsview
         switch (sendLinkToChangeStatus) {
             case 'blogsView':
-                console.log('inside blog view');
                 if (verificationPrivilegeBlog == true) {
-                    console.log(sendLinkToChangeStatus, status);
                     switch (status) {
                         case 2:
                             document.getElementById("footerPrivilege").classList.add("footerPrivilege");
@@ -516,7 +514,6 @@ function checkCookie() {
                 }
             case 'complaintsView':
                 if (verificationPrivilegeComplaint == true) {
-                    console.log(sendLinkToChangeStatus, status);
                     switch (status) {
                         case '2':
                             document.getElementById("footerPrivilegeComplaint").classList.add("footerPrivilege");
@@ -545,7 +542,6 @@ function checkCookie() {
                         case '1':
                             document.getElementById("footerPrivilegeComplaint").classList.add("footerPrivilege");
                             document.getElementById("privilegeButtonsComplaint").classList.add("footerPrivilegeButtons");
-                            console.log(sendLinkToChangeStatus);
                             $('#privilegeButtonsComplaint').append(`
                                 <div class="edit">
                                     <a href="/complaintsForm/${complaint_id}/1" class="edit__button button__design">Edit Complaint</a>
@@ -588,9 +584,7 @@ function checkCookie() {
                     }
                 }
             case 'eventsView':
-                console.log('I have a privilege ', verificationPrivilegeEvent)
                 if (verificationPrivilegeEvent == true) {
-                    console.log(sendLinkToChangeStatus, status);
                     switch (status) {
                         case '2':
                             document.getElementById("footerPrivilegeEvent").classList.add("footerPrivilege");
@@ -610,18 +604,15 @@ function checkCookie() {
                     
                                 `)
                             document.getElementById("rejectButton").addEventListener('click', function () {
-                                console.log('sending rejected link to privilege buttons', sendLinkToChangeStatus)
                                 pivilegeButtons(sendLinkToChangeStatus, '3');
                             })
                             document.getElementById("approveButton").addEventListener('click', function () {
-                                console.log('sending pending link to privilege buttons', sendLinkToChangeStatus)
                                 pivilegeButtons(sendLinkToChangeStatus, 1);
                             })
                             break;
                         case '1':
                             document.getElementById("footerPrivilegeEvent").classList.add("footerPrivilege");
                             document.getElementById("privilegeButtonsEvent").classList.add("footerPrivilegeButtons");
-                            console.log(sendLinkToChangeStatus);
                             $('#privilegeButtonsEvent').append(`
                                 <div class="edit">
                                 <a href="/eventsForm/${event_id}/1" class="edit__button button__design">Edit Event</a>
@@ -636,11 +627,9 @@ function checkCookie() {
                                 </div>
                                 `)
                             document.getElementById("rejectButton").addEventListener('click', function () {
-                                console.log('sending rejected link to privilege buttons', sendLinkToChangeStatus)
                                 pivilegeButtons(sendLinkToChangeStatus, 3);
                             })
                             document.getElementById("approveButton").addEventListener('click', function () {
-                                console.log('sending approved link to privilege buttons', sendLinkToChangeStatus)
                                 pivilegeButtons(sendLinkToChangeStatus, 2);
                             })
                             break;
@@ -658,7 +647,6 @@ function checkCookie() {
                                 </div>
                                 `)
                             document.getElementById("approveButton").addEventListener('click', function () {
-                                console.log('sending approved link to privilege buttons', sendLinkToChangeStatus)
                                 pivilegeButtons(sendLinkToChangeStatus, 2);
                             })
                             break;
@@ -937,16 +925,27 @@ window.addEventListener('load', function () {
 //light and dark mode
 window.addEventListener('load', changeTheme);
 function changeTheme() {
+    //main body where all card is shown
     let allCardBody;
+    //all card
     let allCard;
+    //all card footer
     let allCardFooter;
+    //all links
     let allLink;
+    //all headers of body
     let allHeader;
+    //all icons
+    let allIcon;
+    //all tabs where members are shown
+    let allTabs;
     allCardBody = document.querySelectorAll('.card_body_dark');
+    allTabs = document.querySelectorAll('.tab_dark');
     allCard = document.querySelectorAll('.card_dark');
     allCardFooter = document.querySelectorAll('.card_dark .footer');
     allLink = document.querySelectorAll('.nav-link');
-    allHeader = document.querySelectorAll('.header', '.headerMain');
+    allHeader = document.querySelectorAll('.header,.headerMain,.events__detail,.events__image');
+    allIcon = document.querySelectorAll('.icon_img');
     console.log(allHeader);
     if (localStorage.getItem('mode') === 'dark') {
         let layoutBgDark;
@@ -955,7 +954,13 @@ function changeTheme() {
         layoutBgDark.classList.remove('light');
         console.log(allCard);
         for (let i = 0; i < allCardBody.length; i++) {
-            allCardBody[i].classList.add('bg-dark');
+            allCardBody[i].classList.add('card_body_darkMode');
+        }
+        for (let i = 0; i < allTabs.length; i++) {
+            allTabs[i].classList.add('card_darkMode');
+        }
+        for (let i = 0; i < allIcon.length; i++) {
+            allIcon[i].style.filter = "invert(70%)";
         }
         for (let i = 0; i < allLink.length; i++) {
             allLink[i].classList.add('link_dark');
@@ -966,21 +971,26 @@ function changeTheme() {
             allHeader[i].classList.remove('header_light');
         }
         for (let i = 0; i < allCard.length; i++) {
-            allCard[i].classList.add('bg-secondary');
-            allCardFooter[i].classList.add('bg-secondary');
+            allCard[i].classList.add('card_darkMode');
+            allCardFooter[i].classList.add('card_darkMode');
             allCard[i].classList.remove('card_light');
             allCardFooter[i].classList.remove('card_light');
         }
         console.log(allCardBody);
     } else {
-        // let allCardBodyRemove;
         let layoutBgLight;
         layoutBgLight = document.querySelector('body');
         layoutBgLight.classList.remove('dark');
         layoutBgLight.classList.add('light');
         console.log(allCardBody);
         for (let i = 0; i < allCardBody.length; i++) {
-            allCardBody[i].classList.remove('bg-dark');
+            allCardBody[i].classList.remove('card_body_darkMode');
+        }
+        for (let i = 0; i < allTabs.length; i++) {
+            allTabs[i].classList.remove('card_darkMode');
+        }
+        for (let i = 0; i < allIcon.length; i++) {
+            allIcon[i].style.filter = "invert(0%)";
         }
         for (let i = 0; i < allLink.length; i++) {
             allLink[i].classList.add('link_light');
@@ -991,8 +1001,8 @@ function changeTheme() {
             allHeader[i].classList.remove('header_dark');
         }
         for (let i = 0; i < allCard.length; i++) {
-            allCard[i].classList.remove('bg-secondary');
-            allCardFooter[i].classList.remove('bg-secondary');
+            allCard[i].classList.remove('card_darkMode');
+            allCardFooter[i].classList.remove('card_darkMode');
             allCard[i].classList.add('card_light');
             allCardFooter[i].classList.add('card_light');
         }

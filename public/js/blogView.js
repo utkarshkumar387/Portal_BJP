@@ -10,7 +10,7 @@ switch (link[5]) {
         blog = fetchContentByID('blogs_with_recent', blog_id);
         blogDetails = blog.message.blog_details;
         recentBlogs = blog.message.recent_blogs;
-        console.log(recentBlogs);
+        console.log(blog);
         break;
     case '1':
         blog = fetchContentByID('blogs_unapproved', blog_id);
@@ -43,18 +43,19 @@ if (blog.error == false) {
     console.log(blogDate[0]);
 
     //appending recent blogs
-    for (var i = 0; i < recentBlogs.length; i++) {
-        let blogDate = dateConverter(recentBlogs[i].date);
-        let name = recentBlogs[i].user.first_name + ' ' + recentBlogs[i].user.last_name
-        let title = recentBlogs[i].title;
-        let description = recentBlogs[i].description;
-        let maxStringTitle = 20;
-        let maxStringDesc = 300;
-        let trimmedDataBlog = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
-        console.log(trimmedDataBlog);
+    if (link[5] == '2') {
+        for (var i = 0; i < recentBlogs.length; i++) {
+            let blogDate = dateConverter(recentBlogs[i].date);
+            let name = recentBlogs[i].user.first_name + ' ' + recentBlogs[i].user.last_name
+            let title = recentBlogs[i].title;
+            let description = recentBlogs[i].description;
+            let maxStringTitle = 20;
+            let maxStringDesc = 300;
+            let trimmedDataBlog = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
+            console.log(trimmedDataBlog);
 
-        $('#blogviewBlogsBlock').append(`
-        <div class="card cardStyle">
+            $('#blogviewBlogsBlock').append(`
+        <div class="card card_dark cardStyle">
         <div class="row g-0">
         <div class="col-md-6">
             <img class="blogsImg"
@@ -81,6 +82,9 @@ if (blog.error == false) {
     </div>
     </div>
         `)
+        }
+    } else {
+        console.log('recent blogs not available');
     }
 } else {
     console.log(blog.message);
