@@ -1,6 +1,6 @@
 let authorDetails, authorName, authorID, edittedEventUserID;
 let link = window.location.href.split('/');
-let eventID, eventFunctionality, status;
+let eventID, eventFunctionality, status, image64;
 console.log(link[4]);
 console.log(link.length);
 // eventFunctionality = document.getElementById('addEditEvent');
@@ -47,7 +47,7 @@ if (link.length == 6) {
     }
 }
 
-document.getElementById('browse').addEventListener('change', imgBase64Converter);
+// document.getElementById('browse').addEventListener('change', imgBase64Converter);
 
 function addEvent() {
     // can't able to send post request in events
@@ -67,9 +67,9 @@ function addEvent() {
                 description: $('#eventBody').val(),
                 status: '1'
             },
-            // event_data_images: JSON.stringify([
-
-            // ])
+            event_data_images: JSON.stringify([
+                image64
+            ])
         })
     }
     console.log(data);

@@ -1,7 +1,7 @@
 let link = window.location.href.split('/');
 let contentBlogs = fetchContent('blogs');
 let blogs = contentBlogs.message.blogs;
-console.log(blogs.length);
+console.log(contentBlogs);
 if (contentBlogs.error == false) {
     for (let i = 0; i < blogs.length; i++) {
         let blogDate = dateConverter(blogs[i].date);
@@ -11,12 +11,21 @@ if (contentBlogs.error == false) {
         let maxStringDesc = 300;
         let trimmedDataBlog = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
         console.log(blogs[i].status);
+        let blogImage;
+        if (blogs[i].images.length > 0) {
+            for (let j = 0; j < blogs[i].images.length; j++) {
+                console.log(blogs[i].images[j].image);
+                blogImage = `https://bjpbarmer.herokuapp.com${blogs[i].images[j].image}`;
+            }
+        } else {
+            blogImage = `https://akm-img-a-in.tosshub.com/sites/dailyo/fb_feed_images/story_image/201708/bjpup-insta_083117051140.jpg`;
+        }
         $('#allBlogsBlock').append(`
             <div class="card card_dark cardStyle" id="blogID_${blogs[i].id}">
         <div class="row g-0">
         <div class="col-md-6">
             <img class="blogsImg"
-                src="https://akm-img-a-in.tosshub.com/sites/dailyo/fb_feed_images/story_image/201708/bjpup-insta_083117051140.jpg"
+                src="${blogImage}"
                 alt="...">
         </div>
         <div class="col-md-6">

@@ -33,6 +33,16 @@ if (blog.error == false) {
     let blogDate = dateConverter(blogDetails.date);
     console.log(blogDate);
     $('#blogTitle').html(blogDetails.title);
+    if (blogDetails.images.length > 0) {
+        for (let j = 0; j < blogDetails.images.length; j++) {
+            console.log(blogDetails.images[j].image);
+            blogImage = `${blogDetails.images[j].image}`;
+        }
+    } else {
+        blogImage = `https://akm-img-a-in.tosshub.com/sites/dailyo/fb_feed_images/story_image/201708/bjpup-insta_083117051140.jpg`;
+    }
+    console.log('blog image to display ', blogImage)
+    $('#blogImage').attr('src', blogImage);
     $('#blogContent').html(blogDetails.description);
     $('#blogAuthorName').html(authorName);
     $('#blogDistrict').html(blogDetails.user.district);
@@ -53,13 +63,20 @@ if (blog.error == false) {
             let maxStringDesc = 300;
             let trimmedDataBlog = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
             console.log(trimmedDataBlog);
-
+            if (recentBlogs[i].images.length > 0) {
+                for (let j = 0; j < recentBlogs[i].images.length; j++) {
+                    console.log(recentBlogs[i].images[j].image);
+                    blogImage = `https://bjpbarmer.herokuapp.com${recentBlogs[i].images[j].image}`;
+                }
+            } else {
+                blogImage = `https://akm-img-a-in.tosshub.com/sites/dailyo/fb_feed_images/story_image/201708/bjpup-insta_083117051140.jpg`;
+            }
             $('#blogviewBlogsBlock').append(`
         <div class="card card_dark cardStyle">
         <div class="row g-0">
         <div class="col-md-6">
             <img class="blogsImg"
-                src="https://akm-img-a-in.tosshub.com/sites/dailyo/fb_feed_images/story_image/201708/bjpup-insta_083117051140.jpg"
+                src="${blogImage}"
                 alt="...">
         </div>
         <div class="col-md-6">

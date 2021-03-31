@@ -1,6 +1,6 @@
 var authorDetails, authorName, authorID;
 let link = window.location.href.split('/');
-let blogID, blogFunctionality, status, edittedBlogUserID;
+let blogID, blogFunctionality, status, edittedBlogUserID, image64;
 console.log(link.length);
 blogFunctionality = document.getElementById('addEditBlog');
 if (link.length == 4) {
@@ -50,7 +50,7 @@ if (link.length == 4) {
     }
 }
 
-document.getElementById('browse').addEventListener('change', imgBase64Converter)
+// document.getElementById('browse').addEventListener('change', imgBase64Converter)
 function addBlog() {
     authorDetails = JSON.parse(getCookie('member_profile'));
     authorName = authorDetails.first_name + ' ' + authorDetails.last_name;
@@ -66,9 +66,7 @@ function addBlog() {
                 description: $('#blogBody').val(),
                 status: '1'
             },
-            // event_data_images: JSON.stringify([
-
-            // ])
+            blog_data_images: JSON.stringify(convertedImage)
         })
     }
     // JSON.stringify({
@@ -84,7 +82,7 @@ function addBlog() {
     //     blog_data_images: JSON.stringify([
 
     //     ])
-    console.log(data);
+    console.log('data of added blog is ', data);
     let blogDetails = addContent('blogs', data);
     console.log(blogDetails);
     if (blogDetails.error == false) {
@@ -111,6 +109,52 @@ function editBlog() {
         window.location.replace(`/blogsView/${blogID}/${status}`);
     } else {
         console.log(blogDetails.message);
+    }
+}
+// function imgBase64Converter() {
+//     let preview = document.querySelector('#preview');
+//     let files = document.querySelector('input[type=file]').files;
+//     let count = 0;
+
+//     function readAndPreview(file) {
+//         // Make sure `file.name` matches our extensions criteria
+//         if (/\.(jpe?g|png|gif|pdf)$/i.test(file.name)) {
+//             let reader = new FileReader();
+
+//             reader.addEventListener("load", function () {
+//                 let image = new Image();
+//                 console.log(image);
+//                 image.height = 100;
+//                 image.title = file.name;
+//                 image.src = this.result;
+//                 preview.appendChild(image);
+//             }, false);
+
+//             reader.readAsDataURL(file);
+//         }
+//         console.log(file);
+//     }
+//     count++;
+//     if (files && count < 5) {
+//         [].forEach.call(files, readAndPreview);
+//     } else {
+//         alert('You can not able to add more images');
+//     }
+//     console.log(files);
+// }
+let convertedImage = [];
+function convertSingleBase64(input) {
+    image64 = null;
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            // console.log(e.target.result);
+            image64 = e.target.result;
+            $('#preview').attr('height', '100')
+            $('#preview').attr('src', `${e.target.result}`);
+            convertedImage.push({ "image": image64 });
+        }
+        reader.readAsDataURL(input.files[0]);
     }
 }
 

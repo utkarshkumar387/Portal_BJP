@@ -49,17 +49,18 @@ if (complaint.error == false) {
     $('#complaintYear').html(complaintDate[2]);
 
     //appending recent events
-    for (var i = 0; i < recentComplaints.length; i++) {
-        let recentComplaintsDate = dateConverter(recentComplaints[i].date);
-        let name = recentComplaints[i].user_full_name;
-        let title = recentComplaints[i].complaint_subject;
-        let maxStringTitle = 20;
-        console.log(title, maxStringTitle);
-        let trimmedDataComplaint = titleDescTrimmer(title, maxStringTitle);
-        let priority = checkPriority(recentComplaints[i].priority);
+    if (link[5] == '2') {
+        for (var i = 0; i < recentComplaints.length; i++) {
+            let recentComplaintsDate = dateConverter(recentComplaints[i].date);
+            let name = recentComplaints[i].user_full_name;
+            let title = recentComplaints[i].complaint_subject;
+            let maxStringTitle = 20;
+            console.log(title, maxStringTitle);
+            let trimmedDataComplaint = titleDescTrimmer(title, maxStringTitle);
+            let priority = checkPriority(recentComplaints[i].priority);
 
-        $('#complaintViewBlogsBlock').append(`
-        <div class="card cardStyle">
+            $('#complaintViewBlogsBlock').append(`
+        <div class="card card_dark cardStyle">
         <div class="complaints__header">
             <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
                 class="rounded-circle" alt="...">
@@ -84,6 +85,7 @@ if (complaint.error == false) {
         </div>
     </div>
                 `)
+        }
     }
 } else {
     console.log(complaint.message);

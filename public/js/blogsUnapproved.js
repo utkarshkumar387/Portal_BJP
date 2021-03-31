@@ -12,12 +12,20 @@ if (contentBlogsUnapproved.error == false) {
         let maxStringDesc = 300;
         let trimmedDataBlog = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
         console.log(trimmedDataBlog);
+        if (blogs[i].images.length > 0) {
+            for (let j = 0; j < blogs[i].images.length; j++) {
+                console.log(blogs[i].images[j].image);
+                blogImage = `${blogs[i].images[j].image}`;
+            }
+        } else {
+            blogImage = `https://akm-img-a-in.tosshub.com/sites/dailyo/fb_feed_images/story_image/201708/bjpup-insta_083117051140.jpg`;
+        }
         $('#allBlogsUnapproved').append(`
             <div class="card card_dark cardStyle">
                 <div class="row g-0">
                     <div class="col-md-6">
                         <img class="blogsImg"
-                        src="https://akm-img-a-in.tosshub.com/sites/dailyo/fb_feed_images/story_image/201708/bjpup-insta_083117051140.jpg"
+                        src="${blogImage}";
                         alt="...">
                     </div>
                     <div class="col-md-6">

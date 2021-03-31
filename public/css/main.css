@@ -1,6 +1,9 @@
 :root {
     --space: 2rem;
 }
+/* .row{
+    margin: 0 !important;
+} */
 *{
     margin: 0;
     padding: 0;
@@ -258,7 +261,9 @@
 .blogsCard .card .blogsImg{
     width: 100%;
     min-height: 250px;
-    object-fit: cover;
+    max-height: 250px;
+    object-fit:cover;
+    overflow: hidden !important;
     border-radius: 5px 0 0 5px;
 }
 .blogsCard{
@@ -324,7 +329,7 @@
     justify-content: space-between;
 }
 .footerPrivilege{
-    padding: 24px 32px 16px 32px;
+    /* padding: 24px 32px 16px 32px; */
     border-bottom: 1px #D6D8E7 solid;
 }
 .footerPrivilegeButtons{
@@ -976,6 +981,9 @@ text-decoration: none;
     }
     .header_dark{
         border-bottom: 1px #797b8a solid;
+    }
+    .dark_inputBox, .dark_inputBox input{
+        background-color: #dedfe6 !important;
     }
     /* light mode */
     .light{

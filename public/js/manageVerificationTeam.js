@@ -172,7 +172,7 @@ for (let i = 0; i < allMembers.message.length; i++) {
 
         $(`#allVerificationDataAdmin`).append(
             `
-        <div class="card cardStyle memberCard" id="memberCardAdmins" style="margin-top: 35px">
+        <div class="card cardStyle tab_dark memberCard" id="memberCardAdmins" style="margin-top: 35px">
             <div class="allTags" style="position: absolute; margin-top: -25px">
                 <div class="d-flex">
                     <h6 class="px-1 py-1" id="blogsBadge${allMembers.message[i].id}" style="display:none;"><span class="badge badge_design">Blogs</span></h6>

@@ -2,7 +2,7 @@ let link = ['', '', '', ''];
 let allMembers = fetchProfileData('get_all_members');
 let allCommitteePrivilegeMembers = fetchAllAdminData('committee');
 console.log(allMembers);
-console.log(allCommitteePrivilegeMembers);
+console.log('all manage committee memebers are ', allCommitteePrivilegeMembers);
 if (allCommitteePrivilegeMembers.error == false) {
     for (let i = 0; i < allCommitteePrivilegeMembers.message.length; i++) {
         let memberName = allCommitteePrivilegeMembers.message[i].user.first_name + ' ' + allCommitteePrivilegeMembers.message[i].user.last_name

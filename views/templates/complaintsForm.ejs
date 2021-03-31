@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="col-md-9 home__content">
-            <div class="card home__events cardStyle mb-4" id="home__events">
+            <div class="card card_body_dark home__events cardStyle mb-4" id="home__events">
                 <div class="home__complaintForm headerMain">
                     <p>Complaint Form</p>
                 </div>
@@ -21,7 +21,7 @@
                                     Name
                                     <span>*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" disabled id="complainantName"
+                                    <input type="text" class="form-control dark_box" disabled id="complainantName"
                                         placeholder="">
                                 </div>
                             </div>
@@ -30,7 +30,7 @@
                                     Email
                                     <span>*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="email" class="form-control" disabled id="complainantEmail"
+                                    <input type="email" class="form-control dark_box" disabled id="complainantEmail"
                                         placeholder="">
                                 </div>
                             </div>
@@ -38,7 +38,7 @@
                                 <label for="complainantPhone" class="col-sm-4 col-form-label">Complainant's Phone no.
                                     <span>*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" disabled id="complainantPhone"
+                                    <input type="text" class="form-control dark_box" disabled id="complainantPhone"
                                         placeholder="">
                                 </div>
                             </div>
@@ -46,7 +46,7 @@
                                 <label for="complainantAddress" class="col-sm-4 col-form-label">Complainant's Address
                                     <span>*</span></label>
                                 <div class="col-sm-8">
-                                    <textarea rows="3" class="form-control" disabled id="complainantAddress"
+                                    <textarea rows="3" class="form-control dark_box" disabled id="complainantAddress"
                                         placeholder="Enter Your Address"></textarea>
                                 </div>
                             </div>
@@ -62,8 +62,8 @@
                                     To<span>*</span></label>
                                 <div class="col-sm-8" id="chosenManager">
                                     <div id="output"></div>
-                                    <select class="form-select form-control chosen-select" name="tags[]" multiple
-                                        aria-label="Default select example" data-placeholder="Choose tags...">
+                                    <select class="form-select form-control chosen-select dark_box" name="tags[]"
+                                        multiple aria-label="Default select example" data-placeholder="Choose tags...">
                                         <option value="Abhishek">Abhishek</option>
                                         <option value="Utkarsh">Utkarsh</option>
                                         <option value="Barkath">Barkath</option>
@@ -77,7 +77,7 @@
                                 <label for="complaintAddress" class="col-sm-4 col-form-label">Complaint Subject
                                     <span>*</span></label>
                                 <div class="col-sm-8">
-                                    <textarea rows="3" class="form-control" id="complaintAddress"
+                                    <textarea rows="3" class="form-control dark_box" id="complaintAddress"
                                         placeholder="Enter Permanent Address"></textarea>
                                 </div>
                             </div>
@@ -85,7 +85,8 @@
                                 <label for="complaintPriority" class="col-sm-4 col-form-label">Complaint
                                     priority<span>*</span></label>
                                 <div class="col-sm-8">
-                                    <select class="form-select form-control" aria-label="Default select example">
+                                    <select class="form-select form-control dark_box"
+                                        aria-label="Default select example">
                                         <option selected>Select priority</option>
                                         <option value="Low">Low</option>
                                         <option value="Medium">Medium</option>
@@ -115,11 +116,11 @@
                                     Images<span>*</span></label>
                                 <div class="col-sm-8">
                                     <label for="browse" style="width: 100%;">
-                                        <div class="browseDesign d-flex">
+                                        <div class="browseDesign tab_dark d-flex">
                                             <div class="d-flex browseDesign__files">
                                                 <div class="d-flex browseDesign__inner">
                                                     <div class="upload__icon">
-                                                        <img src="/img/icons/uploadForm.png" alt="">
+                                                        <img class="icon_img" src="/img/icons/uploadForm.png" alt="">
                                                     </div>
                                                     <p class="upload__para">
                                                         Upload upto 5 Files</p>
@@ -142,7 +143,8 @@
                             <div class="profile__innerHeader py-3">
                                 <p>Complaint Body</p>
                             </div>
-                            <textarea name="" id="complaintBody" rows="20" style="width: 100%;"></textarea>
+                            <textarea class="dark_box" name="" id="complaintBody" rows="20"
+                                style="width: 100%;"></textarea>
                         </div>
                     </div>
                     <div class="profile__save px-5 mb-4 mt-4">

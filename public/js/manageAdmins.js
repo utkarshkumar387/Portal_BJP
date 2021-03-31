@@ -1,6 +1,6 @@
 let link = ['', '', '', ''];
 let allAdmins = fetchAllAdminData('admin_list');
-// console.log(allAdmins);
+console.log('All admins are ', allAdmins);
 if (allAdmins.error == false) {
     for (let i = 0; i < allAdmins.message.length; i++) {
         let adminName = allAdmins.message[i].user.first_name + ' ' + allAdmins.message[i].user.last_name;
@@ -61,6 +61,7 @@ if (allAdmins.error == false) {
 }
 
 let allMembers = fetchProfileData('get_all_members');
+console.log('all members are', allMembers);
 // Search admins in manage admins
 let search = document.getElementById('committee__adminsMembersSearch');
 search.addEventListener('keyup', searchFunction);

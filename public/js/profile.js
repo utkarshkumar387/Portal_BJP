@@ -66,7 +66,7 @@ if (profileDetails.error == false) {
                 <div class="card-footer footer">
                     <p id="homePageBlogDate_id">${blogDate[0]} ${blogDate[1]} ${blogDate[2]} <i class="fa fa-circle" aria-hidden="true"></i><span
                             id="homePageBlogAuthor_id">${name}</span></p>
-                    <a href="/blogsView/${profileBlogs[i].id}/approved">
+                    <a href="/blogsView/${profileBlogs[i].id}/1">
                         View Blog
                         <span>
                             <img src="/img/icons/link.png" alt="">
@@ -81,7 +81,16 @@ if (profileDetails.error == false) {
             )
         }
     } else {
-        $('#profileBlogsBlock').html("<h3>Not posted any blogs yet</h3>")
+        $('#profileBlogsBlock').append(
+            `
+            <div class="p-3 text-center">
+            <div class="mx-auto my-5">
+                <h5 class="font-weight-normal">No complaints added by you yet.</h5>
+                <small><i>Click on New Complaint button to add your new complaint.</i></small>
+            </div>
+        </div>
+            `
+        )
     }
     if (profileEvents.length > 0) {
         for (let i = 0; i < profileEvents.length; i++) {
@@ -102,7 +111,7 @@ if (profileDetails.error == false) {
                         </div>
                     <div class="card-footer footer">
                         <p><span>${eventDate[0]} ${eventDate[1]} ${eventDate[2]}</span></p>
-                        <a href="/eventsView/${profileEvents[i].id}/rejected">
+                        <a href="/eventsView/${profileEvents[i].id}/1">
                             View Event
                             <span>
                                 <img src="/img/icons/link.png" alt="">
@@ -115,7 +124,16 @@ if (profileDetails.error == false) {
             )
         }
     } else {
-        $('#profileEventsBlock').html("<h3>Not posted any events yet</h3>")
+        $('#profileEventsBlock').append(
+            `
+            <div class="p-3 w-100 text-center">
+                <div class="mx-auto my-5">
+                    <h5 class="font-weight-normal">No Events added by you yet.</h5>
+                    <small><i>Click on New Event button to add your new complaint.</i></small>
+                </div>
+            </div>
+            `
+        )
     }
     if (profileComplaints.length > 0) {
         for (let i = 0; i < profileComplaints.length; i++) {
@@ -144,7 +162,7 @@ if (profileDetails.error == false) {
             </div>
             <div class="card-footer footer">
                 <p>${complaintDate[0]} ${complaintDate[1]} ${complaintDate[2]}</p>
-                <a href="/complaintsView/${profileComplaints[i].id}/approved">
+                <a href="/complaintsView/${profileComplaints[i].id}/1">
                     View Complaint
                     <span>
                         <img src="/img/icons/link.png" alt="">
@@ -156,7 +174,14 @@ if (profileDetails.error == false) {
             )
         }
     } else {
-        $('#profileComplaintsBlock').html("<h3>Not posted any complaints yet</h3>")
+        $('#profileComplaintsBlock').append(`
+        <div class="p-3 text-center">
+            <div class="mx-auto my-5">
+                <h5 class="font-weight-normal">No complaints added by you yet.</h5>
+                <small><i>Click on New Complaint button to add your new complaint.</i></small>
+            </div>
+        </div>
+        `)
     }
 }
 $('#editButton').attr('href', `/profileEdit/${link[4]}`)
