@@ -2,7 +2,7 @@ module.exports = function (app) {
     app.get('/', function (req, res, next) {
         res.clearCookie("privilege");
         if (req.cookies.token) {
-            res.render('templates/index');
+            res.render('templates/index')
         } else {
             res.render('templates/login')
         }
