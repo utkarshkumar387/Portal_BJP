@@ -38,14 +38,21 @@ if (home.error == false) {
         let maxStringDesc = 300;
         let trimmedDataBlog = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
         console.log(trimmedDataBlog);
-
+        if (blogs[i].images.length > 0) {
+            for (let j = 0; j < blogs[i].images.length; j++) {
+                console.log(blogs[i].images[j].image);
+                blogImage = `https://bjpbarmer.herokuapp.com${blogs[i].images[j].image}`;
+            }
+        } else {
+            blogImage = `https://akm-img-a-in.tosshub.com/sites/dailyo/fb_feed_images/story_image/201708/bjpup-insta_083117051140.jpg`;
+        }
         $('#blogsBlock').append(`
         <div class="card cardStyle card_dark">
         <div class="row g-0">
         <div class="col-md-6">
             <img class="blogsImg"
-                src="https://akm-img-a-in.tosshub.com/sites/dailyo/fb_feed_images/story_image/201708/bjpup-insta_083117051140.jpg"
-                alt="...">
+                src="${blogImage}"
+                alt="Blog Image">
         </div>
         <div class="col-md-6">
             <div class="card-body">

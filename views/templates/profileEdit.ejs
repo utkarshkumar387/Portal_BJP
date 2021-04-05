@@ -9,8 +9,8 @@
             <div class="card card_body_dark home__events cardStyle" id="home__events">
                 <div class="home__eventsHeader headerMain d-flex align-items-center justify-content-between py-4">
                     <div class="profile__headerData">
-                        <p class="profile__name">Hi, <span>Utkarsh Kumar</span></p>
-                        <p class="profile__committeeDetails">Committee Member</p>
+                        <p class="profile__name">Hi, <span id="memberName"></span></p>
+                        <p class="profile__committeeDetails" id="memberCommitteeName"></p>
                     </div>
                     <div class="delete">
                         <a class="delete__button">Delete Profile</a>
@@ -26,21 +26,23 @@
                                 <label for="memberFirstName" class="col-sm-4 col-form-label">First Name
                                     <span>*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="memberFirstName" placeholder="">
+                                    <input type="text" class="form-control dark_box" id="memberFirstName"
+                                        placeholder="">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="memberLastName" class="col-sm-4 col-form-label">Last Name
                                     <span>*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="memberLastName" placeholder="">
+                                    <input type="text" class="form-control dark_box" id="memberLastName" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="memberFatherName" class="col-sm-4 col-form-label">Father's Name
                                     <span>*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="memberFatherName" placeholder="">
+                                    <input type="text" class="form-control dark_box" id="memberFatherName"
+                                        placeholder="">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -62,7 +64,8 @@
                                 <label for="marital_status" class="col-sm-4 col-form-label">Marital
                                     Status<span>*</span></label>
                                 <div class="col-md-8">
-                                    <select name="marital_status" class="form-select form-control" id="marital_status">
+                                    <select name="marital_status" class="form-select form-control dark_box"
+                                        id="marital_status">
                                         <option value="" disabled selected>-Select Marital Status-</option>
                                         <option value="1">Single</option>
                                         <option value="2">Married</option>
@@ -77,7 +80,7 @@
                             <div class="form-group row">
                                 <label for="memberEmail" class="col-sm-4 col-form-label">Email (optional)</label>
                                 <div class="col-sm-8">
-                                    <input type="email" class="form-control" id="memberEmail"
+                                    <input type="email" class="form-control dark_box" id="memberEmail"
                                         placeholder="12345@xyz.com">
                                 </div>
                             </div>
@@ -85,7 +88,7 @@
                                 <label for="primaryPhoneNumber" class="col-sm-4 col-form-label">Primary Phone
                                     Number</label>
                                 <div class="col-sm-8">
-                                    <input type="email" class="form-control" id="primaryPhoneNumber"
+                                    <input type="email" class="form-control dark_box" id="primaryPhoneNumber"
                                         placeholder="12345@xyz.com">
                                 </div>
                             </div>
@@ -95,7 +98,7 @@
                                 </label>
                                 <div class="form-group col-md-8" id="allPhoneNumber">
                                     <div class="form-group d-flex">
-                                        <input type="tel" class="form-control" id="phoneNumberInitial"
+                                        <input type="tel" class="form-control dark_box" id="phoneNumberInitial"
                                             placeholder="+91-9876543210">
                                         <button onclick="addPhoneNumber()"
                                             class="btn btn-outline-success ml-2 formButtonPhone">+</button>
@@ -120,28 +123,29 @@
                                 <label for="memberDOB" class="col-sm-4 col-form-label">Date of Birth
                                     <span>*</span></label>
                                 <div class="col-md-8">
-                                    <input type="date" class="form-control" id="memberDOB">
+                                    <input type="date" class="form-control dark_box" id="memberDOB">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="memberBloodGrouop" class="col-sm-4 col-form-label">Blood Group
                                     (optional)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="memberBloodGrouop" placeholder="">
+                                    <input type="text" class="form-control dark_box" id="memberBloodGrouop"
+                                        placeholder="">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="memberAnniversary" class="col-sm-4 col-form-label">Anniversary
                                     (optional)</label>
                                 <div class="col-sm-8">
-                                    <input type="date" class="form-control" id="memberAnniversary">
+                                    <input type="date" class="form-control dark_box" id="memberAnniversary">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="permanentAddress" class="col-sm-4 col-form-label">Permanent Address
                                     <span>*</span></label>
                                 <div class="col-sm-8">
-                                    <textarea rows="3" class="form-control" id="permanentAddress"
+                                    <textarea rows="3" class="form-control dark_box" id="permanentAddress"
                                         placeholder="Enter Permanent Address"></textarea>
                                 </div>
                             </div>
@@ -154,7 +158,7 @@
                                             id="addressCopy">Same as
                                             permanent address</button>
                                     </div>
-                                    <textarea rows="3" class="form-control" id="residentialAddress"
+                                    <textarea rows="3" class="form-control dark_box" id="residentialAddress"
                                         placeholder="Enter Residential Address..."></textarea>
                                 </div>
                             </div>
@@ -162,7 +166,7 @@
                                 <label for="inputEmail3" class="col-sm-4 col-form-label">Referral Code
                                     (optional)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="">
+                                    <input type="text" class="form-control dark_box" id="inputEmail3" placeholder="">
                                 </div>
                             </div>
                         </div>
@@ -178,18 +182,17 @@
                                 <div class="col-sm-8" id="memberNationality">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="nationality"
-                                            id="nationalityIndian" value="male">
+                                            id="nationalityIndian" value="1">
                                         <label class="form-check-label" for="nationalityIndian">Indian</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="nationality"
-                                            id="nationalityNRI" value="female">
+                                            id="nationalityNRI" value="2">
                                         <label class="form-check-label" for="nationalityNRI">NRI</label>
                                     </div>
                                 </div>
                             </div>
                             <div id="officialDetails">
-
                             </div>
                         </div>
                     </div>
@@ -202,19 +205,19 @@
                                 <label for="voterIdCard" class="col-sm-4 col-form-label">Voter ID Card
                                     (optional)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="voterIdCard" placeholder="">
+                                    <input type="text" class="form-control dark_box" id="voterIdCard" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="adharCard" class="col-sm-4 col-form-label">Adhar Card (optional)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="adharCard" placeholder="">
+                                    <input type="text" class="form-control dark_box" id="adharCard" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="panCard" class="col-sm-4 col-form-label">PAN Card (optional)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="panCard" placeholder="">
+                                    <input type="text" class="form-control dark_box" id="panCard" placeholder="">
                                 </div>
                             </div>
                         </div>
@@ -227,21 +230,21 @@
                             <div class="form-group row">
                                 <label for="facebookLink" class="col-sm-4 col-form-label">Facebook (optional)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="facebookLink"
+                                    <input type="text" class="form-control dark_box" id="facebookLink"
                                         placeholder="Facebook.com/utkarsh123">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="instagramLink" class="col-sm-4 col-form-label">Instagram (optional)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="instagramLink"
+                                    <input type="text" class="form-control dark_box" id="instagramLink"
                                         placeholder="Instagram.com/utkarsh123">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="twitterLink" class="col-sm-4 col-form-label">Twitter (optional)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="twitterLink"
+                                    <input type="text" class="form-control dark_box" id="twitterLink"
                                         placeholder="Twitter.com/utkarsh123">
                                 </div>
                             </div>
@@ -259,21 +262,24 @@
                             <p>Change Password</p>
                         </div>
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-4 col-form-label">Enter Old Password</label>
+                            <label for="oldPassword" class="col-sm-4 col-form-label">Enter Old Password</label>
                             <div class="col-sm-8">
-                                <input type="password" class="form-control" id="inputEmail3" placeholder="************">
+                                <input type="password" class="form-control dark_box" id="oldPassword"
+                                    placeholder="************">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-4 col-form-label">Enter New Password</label>
+                            <label for="newPassword" class="col-sm-4 col-form-label">Enter New Password</label>
                             <div class="col-sm-8">
-                                <input type="password" class="form-control" id="inputEmail3" placeholder="************">
+                                <input type="password" class="form-control dark_box" id="newPassword"
+                                    placeholder="************">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-4 col-form-label">Confirm New Password</label>
+                            <label for="confirmPassword" class="col-sm-4 col-form-label">Confirm New Password</label>
                             <div class="col-sm-8">
-                                <input type="password" class="form-control" id="inputEmail3" placeholder="************">
+                                <input type="password" class="form-control dark_box" id="confirmPassword"
+                                    placeholder="************">
                             </div>
                         </div>
                     </div>

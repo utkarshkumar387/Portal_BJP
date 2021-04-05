@@ -5,33 +5,32 @@ let profileDetails = fetchProfileDataById('member_profile', profileID);
 console.log(profileDetails);
 if (profileDetails.error == false) {
     let user = profileDetails.message.member_details;
+    console.log('User data is ', user);
     let userName = user.first_name + ' ' + user.last_name;
-    try {
-        $('#memberUserName').html(user.email);
-        $('#memberFullname').html(userName);
-        $('#memberEmail').html(user.email);
-        //have to send multiple phone number in an array to get multiple phone number.
-        // $('#memberPhone').html(user.phone_no);
-        $('#memberProfession').html(user.profession);
-        $('#memberFacebookLink').html(user.facebook_link);
-        $('#memberInstagramLink').html();
-        $('#memberTwitterLink').html(user.twitter_link);
-        $('#memberVoterID').html(user.voter_id_card);
-        $('#memberaAdhar').html(user.aadhar_card);
-        $('#memberPAN').html(user.pan_card);
-        $('#memberState').html(user.state_id.name);
-        $('#memberDistrict').html(user.district_id.name);
-        // $('#memberUpkhand').html();
-        // $('#memberTehsil').html(user.parliament_constituency_id.name);
-        $('#memberVidhanSabha').html();
-        // $('#memberPanchayatSamiti').html(user.panchayat_samiti_id.name);
-        // $('#memberGramPanchayat').html(user.village_council_id.name);
-        // $('#memberRevenueVillage').html(user.revenue_villege_id.name);
-        // $('#memberBooth').html(user.booth_id.name);
-        $('#memberVidhanSabha').html(user.legislative_assembly_constituency_id.name);
-    } catch (err) {
-        console.log(err);
-    }
+    $('#memberName').html(userName);
+    (user.committee_id) ? $('#memberCommitteName').html(user.committee_id.name) : $('#memberCommitteName').html('Not in committee');
+    $('#memberUserName').html(user.email);
+    $('#memberFullname').html(userName);
+    $('#memberEmail').html(user.email);
+    //have to send multiple phone number in an array to get multiple phone number.
+    $('#memberPhone').html(user.phone_no);
+    $('#memberProfession').html(user.profession);
+    $('#memberFacebookLink').html(user.facebook_link);
+    $('#memberInstagramLink').html(user.instagram_link);
+    $('#memberTwitterLink').html(user.twitter_link);
+    $('#memberVoterID').html(user.voter_id_card);
+    $('#memberaAdhar').html(user.aadhar_card);
+    $('#memberPAN').html(user.pan_card);
+    (user.state_id) ? $('#memberState').html(user.state_id.name) : $('#memberState').html('Not Available');
+    (user.district_id) ? $('#memberDistrict').html(user.district_id.name) : $('#memberDistrict').html('Not Available');
+    // $('#memberUpkhand').html();
+    // $('#memberTehsil').html(user.parliament_constituency_id.name);
+    (user.parliament_constituency_id) ? $('#memberLokSabha').html(user.parliament_constituency_id.name) : $('#memberLokSabha').html('Not Available');
+    // $('#memberPanchayatSamiti').html(user.panchayat_samiti_id.name);
+    // $('#memberGramPanchayat').html(user.village_council_id.name);
+    // $('#memberRevenueVillage').html(user.revenue_villege_id.name);
+    // $('#memberBooth').html(user.booth_id.name);
+    (user.legislative_assembly_constituency_id) ? $('#memberVidhanSabha').html(user.legislative_assembly_constituency_id.name) : $('#memberVidhanSabha').html('Not Available');
 
     let profileBlogs = profileDetails.message.blogs;
     console.log(profileBlogs);

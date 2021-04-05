@@ -26,7 +26,7 @@ if (contentBlogs.error == false) {
         <div class="col-md-6">
             <img class="blogsImg"
                 src="${blogImage}"
-                alt="...">
+                alt="Blog Image">
         </div>
         <div class="col-md-6">
             <div class="card-body">

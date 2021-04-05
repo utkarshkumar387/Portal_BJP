@@ -57,30 +57,32 @@ function addEvent() {
     // authorName = authorDetails.first_name + ' ' + authorDetails.last_name;
     authorID = authorDetails.user_id;
     console.log($('#eventTitle').val());
+    console.log(convertedImage);
     let data = {
         data: JSON.stringify({
             event_data:
             {
                 user_id: authorID,
                 title: $('#eventTitle').val(),
-                event_data: $('#eventDate').val(),
+                chief_guest: $('#eventChiefGuest').val(),
+                venue: $('#eventVenue').val(),
+                event_date: null,
+                // event_data: $('#eventDate').val(),
                 description: $('#eventBody').val(),
                 status: '1'
             },
-            event_data_images: JSON.stringify([
-                image64
-            ])
+            event_data_images: JSON.stringify(convertedImage)
         })
     }
     console.log(data);
-    let eventDetails = addContent('events', data);
-    if (eventDetails.error == false) {
-        console.log('event added')
-        // window.location.replace('/eventsApproved');
-    } else {
-        console.log(eventDetails.error);
-        console.log(eventDetails.message);
-    }
+    // let eventDetails = addContent('events', data);
+    // if (eventDetails.error == false) {
+    //     console.log('event added')
+    //     // window.location.replace('/eventsApproved');
+    // } else {
+    //     console.log(eventDetails.error);
+    //     console.log(eventDetails.message);
+    // }
 }
 function editEvent() {
     let data = {
@@ -101,6 +103,21 @@ function editEvent() {
         // window.location.replace(`/eventsView/${eventID}/${status}`);
     } else {
         console.log(eventDetails.message);
+    }
+}
+let convertedImage = [];
+function convertSingleBase64(input) {
+    image64 = null;
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            // console.log(e.target.result);
+            image64 = e.target.result;
+            $('#preview').attr('height', '100')
+            $('#preview').attr('src', `${e.target.result}`);
+            convertedImage.push({ "image": image64 });
+        }
+        reader.readAsDataURL(input.files[0]);
     }
 }
 

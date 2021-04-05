@@ -968,6 +968,7 @@ function changeTheme() {
     //all tabs where members are shown
     let allTabs;
     let allInputs;
+    let loader;
     allCardBody = document.querySelectorAll('.card_body_dark');
     allTabs = document.querySelectorAll('.tab_dark');
     allCard = document.querySelectorAll('.card_dark');
@@ -976,13 +977,18 @@ function changeTheme() {
     allHeader = document.querySelectorAll('.header,.headerMain,.events__detail,.events__image');
     allIcon = document.querySelectorAll('.icon_img');
     allInputs = document.querySelectorAll('.dark_box');
+    loader = document.querySelectorAll('.loader_dark');
     console.log(allHeader);
     if (localStorage.getItem('mode') === 'dark') {
         let layoutBgDark;
         layoutBgDark = document.querySelector('body');
         layoutBgDark.classList.add('dark');
         layoutBgDark.classList.remove('light');
+        // loader.classList.add('loader_darkMode');
         console.log(allCard);
+        for (let i = 0; i < loader.length; i++) {
+            loader[i].classList.add('loader_darkMode')
+        }
         for (let i = 0; i < allInputs.length; i++) {
             allInputs[i].classList.add('dark_inputBox');
         }
@@ -1016,6 +1022,10 @@ function changeTheme() {
         layoutBgLight.classList.remove('dark');
         layoutBgLight.classList.add('light');
         console.log(allCardBody);
+        // loader.classList.remove('loader_darkMode');
+        for (let i = 0; i < loader.length; i++) {
+            loader[i].classList.remove('loader_darkMode')
+        }
         for (let i = 0; i < allInputs.length; i++) {
             allInputs[i].classList.remove('dark_inputBox');
         }

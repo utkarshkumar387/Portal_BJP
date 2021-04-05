@@ -1,5 +1,22 @@
-let link = ['', '', '', 'eventsView'];
-let contentEvents = fetchContent('events/pending');
+let link = ['', '', '', ''];
+let contentEvents;
+if (document.getElementById('previousEvents').clicked == true) {
+    console.log('inside previous')
+    document.getElementById('previousEvents').addEventListener('click', function () {
+        let previousEventLink = contentEvents.message.previous.split('?').pop();
+        console.log(previousEventLink);
+        contentEvents = fetchContent(`events/pending/?${previousEventLink}`);
+    })
+} else if (document.getElementById('nextEvents').clicked == true) {
+    console.log('inside next');
+    document.getElementById('nextEvents').addEventListener('click', function () {
+        let nextEventLink = contentEvents.message.next.split('?').pop();
+        console.log(nextEventLink);
+        contentEvents = fetchContent(`events/pending/?${nextEventLink}`);
+    })
+} else {
+    contentEvents = fetchContent('events/pending');
+}
 let events = contentEvents.message.results;
 console.log(events);
 
