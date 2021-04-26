@@ -151,7 +151,15 @@ if (home.error == false) {
 }
 //mounting slider
 glide.mount();
-console.log('Token stored in cookie is :', getCookie('token'));
+// console.log('Token stored in cookie is :', getCookie('token'));
+let memberDetails = JSON.parse(getCookie('member_profile'));
+console.log('father name', memberDetails.father_name);
+if (memberDetails.father_name) {
+    console.log('inside alert block');
+    $('#alert').css('display', 'none');
+}
+let clickHere = document.getElementById('profileClickHere').setAttribute('href', `/profileEdit/${memberDetails.id}`);
+
 
 
 

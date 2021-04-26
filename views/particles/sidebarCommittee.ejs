@@ -4,12 +4,25 @@
     </div>
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" data-link href="/committees">All Committees</a>
+            <a class="nav-link" id="userCommittee" data-link>My Committee</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-link href="/committeeMy">My Committee</a>
+            <a class="nav-link" id="allCommittees" data-link href="/committees">All Committees</a>
         </li>
     </ul>
 </div>
 <%- include('../molecules/mode.ejs') -%>
     <%- include('../molecules/language.ejs') -%>
+        <script>
+            let memberDetails = getCookie('member_profile');
+            let memberPivilege = JSON.parse(getCookie('privilege'));
+            // console.log(memberPivilege);
+            if (memberPivilege.committee_privilege || memberPivilege.admin_privilege) {
+                $('#allCommittees').css('display', 'block');
+            } else {
+                $('#allCommittees').css('display', 'none');
+            }
+            let userCommitteeID = JSON.parse(memberDetails).committee_id;
+            $('#userCommittee').attr('href', `/committeeClicked/${userCommitteeID}`)
+            // let userCommitteeDetails = fetchCommitteeByID('committee', userCommitteeID);
+        </script>

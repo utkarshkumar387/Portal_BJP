@@ -52,15 +52,16 @@
 
             <div class="collapse navbar-collapse" id="navbarToggler">
                 <!-- mr-auto mt-2 mt-lg-0 -->
-                <ul class="navbar-nav">
+                <ul class="navbar-nav" id="navbarLinks">
                     <li class="nav-item">
-                        <a class="nav-link" data-link href="/">Home</a>
+                        <a class="nav-link" data-link href="/"><i class="fas fa-home"></i> Home</a>
                     </li>
                     <li class="nav-item" id="privilegesLink" onclick="getPrivilegesLink()">
-                        <a class="nav-link" id="privilegeLinkPage" data-link>Privileges</a>
+                        <a class="nav-link" id="privilegeLinkPage" data-link><i class="fas fa-user-lock"></i>
+                            Privileges</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-link href="/committees">Committees</a>
+                    <li class="nav-item" id="committeesLink">
+                        <a class="nav-link" id="committeesLayout" data-link><i class="fas fa-users"></i> Committees</a>
                     </li>
                 </ul>
             </div>
@@ -113,6 +114,17 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <!-- <script type="application/javascript" src="/js/index.js"></script> -->
     <!-- <script type="application/javascript" src="/js/mainTest.js"></script> -->
+    <script>
+        let memberDetailsLayout = JSON.parse(getCookie('member_profile'));
+        let committeeIDLayout = memberDetailsLayout.committee_id;
+        $('#committeesLayout').attr('href', `/committeeClicked/${committeeIDLayout}`);
+        console.log('father name is ', memberDetailsLayout.father_name);
+        if (!memberDetailsLayout.father_name) {
+            $('#committeesLayout').css('display', 'none');
+        } else {
+            $('#committeesLayout').css('display', 'block');
+        }
+    </script>
 
 </body>
 

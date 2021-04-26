@@ -82,7 +82,7 @@ function searchFunctionAddMembers() {
     let members1 = document.getElementById('allMembersDataAdmins').id;
     let memberName1 = document.getElementById('memberCardAdmins').id;
     console.log(input1, members1, memberName1);
-    mySearchFunction(input1, members1, memberName1);
+    mySearchFunction('inside add admin members ', input1, members1, memberName1);
 
 }
 

@@ -398,7 +398,9 @@ function checkCookie() {
     let verificationPrivilegeComplaint;
 
     //set href link when clicked on navbar privilege
+    console.log('admin privilege is ', adminPrivilege)
     if (adminPrivilege != null) {
+        //displaying privilege link according to cookie
         $('#privilegesLink').css('display', 'block')
         getPrivilegesLink(memberPrivilege, committeePrivilege, committeeSpecificPrivilege, verificationPrivilege, adminPrivilege)
     }
@@ -883,13 +885,11 @@ function getPrivilegesLink(memberPrivilege, committeePrivilege, committeeSpecifi
     if (memberPrivilege != null) {
         let privilegeLink = document.getElementById('privilegeLinkPage');
         privilegeLink.href = '/manageMembers';
-    } else if (committeePrivilege != null) {
-        let privilegeLink = document.getElementById('privilegeLinkPage');
-        privilegeLink.href = '/manageCommittee';
     }
-    // else if (committeeSpecificPrivilege != null) {
-    //     let privilegeLink = document.getElementById('privilegeLinkPage');
-    //     privilegeLink.href = '/manageCommitteeSpecific';
+    else if (committeeSpecificPrivilege != null) {
+        let privilegeLink = document.getElementById('privilegeLinkPage');
+        privilegeLink.href = '/manageCommitteeSpecific';
+    }
     else if (verificationPrivilege != null) {
         let privilegeLink = document.getElementById('privilegeLinkPage');
         privilegeLink.href = '/manageVerificationTeam';

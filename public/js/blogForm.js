@@ -52,6 +52,10 @@ if (link.length == 4) {
 
 // document.getElementById('browse').addEventListener('change', imgBase64Converter)
 function addBlog() {
+    let alerts = document.getElementById('blogValidations').querySelector('.alert');
+    if (alerts != null) {
+        alerts.remove()
+    }
     authorDetails = JSON.parse(getCookie('member_profile'));
     authorName = authorDetails.first_name + ' ' + authorDetails.last_name;
     authorID = authorDetails.id;
@@ -83,16 +87,23 @@ function addBlog() {
 
     //     ])
     console.log('data of added blog is ', data);
-    let blogDetails = addContent('blogs', data);
     console.log(blogDetails);
-    if (blogDetails.error == false) {
-        // console.log('blog added');
-        window.location.replace('/blogsApproved');
+    if (checkValidations() == true) {
+        let blogDetails = addContent('blogs', data);
+        if (blogDetails.error == false) {
+            window.location.replace('/blogsApproved');
+        } else {
+            console.log(blogDetails.message);
+        }
     } else {
-        console.log(blogDetails.message);
+        console.log('Enter correct details');
     }
 }
 function editBlog() {
+    let alerts = document.getElementById('blogValidations').querySelector('.alert');
+    if (alerts != null) {
+        alerts.remove()
+    }
     let data = {
         // image: null,
         user_id: edittedBlogUserID,
@@ -102,13 +113,17 @@ function editBlog() {
 
     }
     console.log(data);
-    let blogDetails = updateContent('blogs/content_update', blogID, data);
     console.log(blogDetails);
-    if (blogDetails.error == false) {
-        // console.log('blog patch request done');
-        window.location.replace(`/blogsView/${blogID}/${status}`);
+    if (checkValidations() == true) {
+        let blogDetails = updateContent('blogs/content_update', blogID, data);
+        if (blogDetails.error == false) {
+            // console.log('blog patch request done');
+            window.location.replace(`/blogsView/${blogID}/${status}`);
+        } else {
+            console.log(blogDetails.message);
+        }
     } else {
-        console.log(blogDetails.message);
+        console.log('Enter correct details');
     }
 }
 // function imgBase64Converter() {
@@ -155,6 +170,26 @@ function convertSingleBase64(input) {
             convertedImage.push({ "image": image64 });
         }
         reader.readAsDataURL(input.files[0]);
+    }
+}
+function checkValidations() {
+    let blogTitle = $('#blogTitle');
+    let blogBody = $('#blogBody');
+    if (blogTitle.val() == "") {
+        $('#blogValidations').append(`
+        <div class="alert alert-danger" role="alert">
+            Please enter blog title.
+        </div>
+        `)
+        return false;
+    }
+    if (blogBody.val() == "") {
+        $('#blogValidations').append(`
+        <div class="alert alert-danger" role="alert">
+            Please enter blog body.
+        </div>
+        `)
+        return false;
     }
 }
 

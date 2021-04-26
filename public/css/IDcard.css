@@ -1,0 +1,405 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+body{
+    margin: 0;
+    scroll-behavior: smooth;
+}
+/* navbar */
+.navbar{
+    /* height: 20px; */
+    background-color: #fff;
+    margin-bottom: 35px;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    border-bottom: 1px solid #D6D8E7;
+}
+.navbarButtons{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding: 0 32px;
+    width: 100%;
+}
+.downloadIDcard{
+    display: flex;
+    align-items: center;
+    padding: 10px 32px;
+    background-color: #F58220;
+    border: none;
+    color: #fff;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.downloadIDcard img{
+    margin-right: 5px;
+}
+.IDcard{
+    /* margin-top: 50px; */
+    display: flex;
+    justify-content: center;
+    align-content: cenetr;
+}
+.IDcard_front, .IDcard_back{
+    position: relative;
+    height: 660px;
+    width: 447px;
+    border: 1px solid black;
+    background-color: #fff;
+}
+/* id card front */
+.memberImage {
+    background-color: #fff;
+  height: 215px;
+  left: 116px;
+  position: absolute;
+  top: 148px;
+  width: 215px;
+  border-radius: 100%;
+  overflow: hidden;
+  /* transform: translate(-50%, -50%); */
+  /* object-fit: cover; */
+}
+.memberImage img{
+    height: 215px;
+    /* width: 215px; */
+    /* top: 50%;
+ left: 50%; */
+ transform: translate(-25%, 0%);
+ /* width: auto;
+ height: auto; */
+ /* min-width: 100%;
+ min-height: 100%; */
+}
+.group-5 {
+  align-items: flex-start;
+  display: flex;
+  height: 674px;
+  /* overflow: hidden; */
+  width: 446px;
+}
+.overlap-group {
+  height: 675px;
+  margin-top: -0.23px;
+  position: relative;
+  width: 447px;
+}
+.path-22 {
+  height: 428px;
+  left: 0px;
+  position: absolute;
+  top: 232px;
+  width: 447px;
+}
+.path-23 {
+  height: 317px;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  width: 447px;
+}
+.path-24 {
+  height: 291px;
+  width: 313px;
+  left: 67px;
+  position: absolute;
+  top: 0px;
+}
+.path-27 {
+  height: 121px;
+  left: 0px;
+  position: absolute;
+  top: 237px;
+  width: 447px;
+}
+.path-28 {
+  height: 97px;
+  left: 0px;
+  position: absolute;
+  top: 228px;
+  width: 447px;
+}
+.path-29 {
+  height: 355px;
+  left: 95px;
+  position: absolute;
+  top: 24px;
+  width: 257px;
+}
+.rectangle-3 {
+  height: 1px;
+  left: 223px;
+  position: absolute;
+  top: 337px;
+  width: 1px;
+}
+* {
+  box-sizing: border-box;
+}
+.bjpFrontLogo{
+    /* position: absolute; */
+    z-index: 2;
+}
+.bjpTitle{
+    /* position: absolute; */
+    color: #fff;
+    font-size: 22px;
+    font-weight: 500;
+    z-index: 2;
+    margin: 0 !important;
+    font-family: 'Roboto', sans-serif;
+}
+.bjpFrontTitle{
+    position: relative;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.bjpMemberTitle{
+    position: absolute;
+    margin-top: 310px;
+    z-index: 2;
+    width: 100%;
+
+}
+.bjpMemberName{
+    /* position: absolute; */
+    margin: 0 !important;
+    display:flex;
+    justify-content: center;
+    z-index: 2;
+    color: #fff;
+    font-size: 38px;
+    font-family: 'Roboto', sans-serif;
+    /* font-weight: lighter; */
+}
+.bjpMemberCommittee{
+    /* position: absolute; */
+    margin-top: 10px;
+    display:flex;
+    justify-content: center;
+    z-index: 2;
+    color: #F58220;
+    font-size: 28px;
+    font-family: 'Roboto', sans-serif;
+    font-weight:300;
+}
+.bjpMemberDetail{
+    /* position: absolute; */
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px 50px 10px 50px;
+    z-index: 2;
+    color: #fff;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    /* font-weight: lighter; */
+}
+.bjpMemberDetail__phone{
+    display: flex;
+}
+.bjpMemberDetail__membership{
+    margin-top: 6px;
+    display: flex;
+}
+.bjpMemberDetail__DOB{
+    margin-top: 6px;
+    display: flex;
+}
+.field{
+    display: flex;
+    justify-content:flex-end;
+    width: 50%;
+    margin-right: 15px;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+
+}
+.input{
+    display: flex;
+    width: 50%;
+    margin-left: 15px;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+}
+/* id card back */
+  .ellipse-1 {
+    height: 215px;
+    left: 84px;
+    position: absolute;
+    top: 260px;
+    width: 215px;
+  }
+  .group-1 {
+    height: 588px;
+    left: 0px;
+    padding: 36.8px 29px;
+    top: 0px;
+  }
+  .group-2 {
+    align-items: flex-start;
+    display: flex;
+    height: 588px;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 375px;
+  }
+  .group-4 {
+    height: 152px;
+    left: 148px;
+    position: absolute;
+    top: 332px;
+  }
+  .overlap-group {
+    position: relative;
+  }
+  .overlap-group2 {
+    position: relative;
+  }
+  .path-1 {
+    height: 428px;
+    left: -30px;
+    position: absolute;
+    top: -38px;
+    width: 447px;
+    transform: rotate(180deg);
+  }
+  .path-2 {
+    height: 240px;
+    left: 0px;
+    position: absolute;
+    top: 274px;
+    width: 317px;
+  }
+  .path-3 {
+    height: 291px;
+    width: 313px;    
+    left: 35px;
+    position: absolute;
+    top: 331px;
+    transform: rotate(180deg);
+  }
+  .path-6 {
+    height: 118px;
+    left: -29px;
+    position: absolute;
+    top: 272px;
+    width: 446px;
+    transform: rotate(180deg);
+
+  }
+  .path-7 {
+    height: 97px;
+    left: -28px;
+    position: absolute;
+    top: 301px;
+    width: 446px;
+    transform: rotate(180deg);
+  }
+  .path-8 {
+    height: 355px;
+    left: 63px;
+    position: absolute;
+    top: 245px;
+    width: 257px;
+    transform: rotate(180deg);
+  }
+  .rectangle-1 {
+    height: 1px;
+    left: 158px;
+    position: absolute;
+    top: 257px;
+    width: 1px;
+  }
+  .text-1 {
+    left: 52px;
+    letter-spacing: 0px;
+    position: absolute;
+    top: 30px;
+  }
+  .text-2 {
+    left: 55px;
+    letter-spacing: 0px;
+    position: absolute;
+    top: 511px;
+  }
+  .segoeui-regular-normal-white-14px {
+    color: white;
+    font-family: "Segoe UI-Regular", Helvetica;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+  }
+  .bjpCardTerms{
+      position: absolute;
+      z-index: 2;
+      width: 100%;
+      padding: 0 5px; 
+      font-family: "Segoe UI-Regular", Helvetica;
+      color: #fff;
+      font-weight: lighter;
+    }
+    ul {
+        margin-bottom: 25px;
+    }
+    ul h3{
+        font-size: 14px;
+    }
+    ul li{
+        margin-bottom: 4px;
+        font-size: 12px;
+        /* font-weight: lighter; */
+
+    }
+    .bjpCardNote{
+        padding: 0 48px;
+        margin-top: 525px;
+        position: absolute;
+        color: #fff;
+        z-index: 2;
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        /* font-weight: lighter; */
+
+    }
+    ul h4, .bjpCardNote h4{
+        font-size: 16px;
+    }
+/* bottom alert */
+.alert_IDcard{
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  /* display: fixed; */
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  background-color: red;
+}
+.alertStrip{
+  color: #fff;
+  padding: 5px 0;
+  font-size: 14px;
+}
+.topButton a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  right: 20px;
+  bottom: 40px;
+  background-color: red;
+  border-radius: 50px;
+
+}
+.topButton img{
+  height: 30px;
+}

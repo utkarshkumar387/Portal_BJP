@@ -32,10 +32,13 @@ if (committeeDetails.error == false) {
                 <img class="member__more dropleft" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" src="/img/icons/More.png"
                     alt="">
-                <div class="dropdown-menu">
-                    <h6 class="dropdown-header">Dropdown header</h6>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-menu tab_dark">
+                    <div class="dropdown-item">
+                        <button class="btn btn-danger" style="width: 100%;">Delete</button>
+                    </div>
+                    <div class="dropdown-item">
+                        <button class="btn btn-warning" style="width: 100%;">Appoint Leader</button>
+                    </div>
                 </div>
             </div>
         </div>

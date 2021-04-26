@@ -155,6 +155,7 @@ function getButton(id, memberID) {
 let count = 0;
 for (let i = 0; i < allMembers.message.length; i++) {
     let exist = false;
+    console.log('all verification team users', allVerificationMember.message);
     for (let j = 0; j < allVerificationMember.message.length; j++) {
         if (allMembers.message[i].id === allVerificationMember.message[j].user.id) {
             // console.log(allMembers.message[i].id);

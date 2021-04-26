@@ -50,6 +50,10 @@ if (link.length == 6) {
 // document.getElementById('browse').addEventListener('change', imgBase64Converter);
 
 function addEvent() {
+    let alerts = document.getElementById('eventValidations').querySelector('.alert');
+    if (alerts != null) {
+        alerts.remove()
+    }
     // can't able to send post request in events
     console.log('inside add event function');
     authorDetails = JSON.parse(getCookie('member_profile'));
@@ -75,16 +79,22 @@ function addEvent() {
         })
     }
     console.log(data);
-    // let eventDetails = addContent('events', data);
-    // if (eventDetails.error == false) {
-    //     console.log('event added')
-    //     // window.location.replace('/eventsApproved');
-    // } else {
-    //     console.log(eventDetails.error);
-    //     console.log(eventDetails.message);
-    // }
+    if (checkEventValidations() == true) {
+        let eventDetails = addContent('events', data);
+        if (eventDetails.error == false) {
+            console.log('event added')
+            window.location.replace('/eventsApproved');
+        } else {
+            console.log(eventDetails.error);
+            console.log(eventDetails.message);
+        }
+    }
 }
 function editEvent() {
+    let alerts = document.getElementById('blogValidations').querySelector('.alert');
+    if (alerts != null) {
+        alerts.remove()
+    }
     let data = {
         // image: null,
         user_id: edittedEventUserID,
@@ -96,13 +106,15 @@ function editEvent() {
     }
     console.log(data);
     //no patch request in content/events/id or content/approved
-    let eventDetails = updateContent('events/content_update', eventID, data);
-    console.log(eventDetails);
-    if (eventDetails.error == false) {
-        console.log('event patch request done');
-        // window.location.replace(`/eventsView/${eventID}/${status}`);
-    } else {
-        console.log(eventDetails.message);
+    if (checkEventValidations() == true) {
+        let eventDetails = updateContent('events/content_update', eventID, data);
+        console.log(eventDetails);
+        if (eventDetails.error == false) {
+            console.log('event patch request done');
+            // window.location.replace(`/eventsView/${eventID}/${status}`);
+        } else {
+            console.log(eventDetails.message);
+        }
     }
 }
 let convertedImage = [];
@@ -119,5 +131,35 @@ function convertSingleBase64(input) {
         }
         reader.readAsDataURL(input.files[0]);
     }
+}
+function checkEventValidations() {
+    let eventCheckTitle = $('#eventTitle');
+    let evnetCheckChiefGuest = $('#eventChiefGuest');
+    let eventCheckVenue = $('#eventVenue');
+    if (eventCheckTitle.val() == "") {
+        $('#eventValidations').append(`
+            <div class="alert alert-danger" role="alert">
+                Please enter event title.
+            </div>
+        `)
+        return false;
+    }
+    if (evnetCheckChiefGuest.val() == "") {
+        $('#eventValidations').append(`
+            <div class="alert alert-danger" role="alert">
+                Please enter event's chief Guest.
+            </div>
+        `)
+        return false;
+    }
+    if (eventCheckVenue.val() == "") {
+        $('#eventValidations').append(`
+            <div class="alert alert-danger" role="alert">
+                Please enter events venue.
+            </div>
+        `)
+        return false;
+    }
+    return true;
 }
 

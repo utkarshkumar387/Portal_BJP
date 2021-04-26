@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/IDcard.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body style="background: #E5E5E5;">
+    <div class="alert_IDcard">
+        <div class="alertStrip">
+            <strong>Note: Be on top while downloding.</strong>
+        </div>
+        <div class="topButton">
+            <a href="#"><img src="/img/icons/up_arrow.png" alt=""></a>
+        </div>
+    </div>
+    <!-- navbar -->
+    <nav class="navbar">
+        <div class="navbarButtons">
+            <a class="navbar-brand ml-4" href="#"><img src="img/icons/bjp_logo.png" /></a>
+            <button type="button" class="btn downloadIDcard" data-toggle="modal" data-target="#exampleModalCenter"><img
+                    class="mr-2" src="img/icons/download_file.png" />Download</button>
+        </div>
+    </nav>
+    <!-- modal to select format of image -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">In which format you want to download ?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body d-flex">
+                    Select your preferred format to download your ID card automatically.
+                    <!-- <button class="btn btn-primary" onclick="downloadPoster(type='jpg')">JPG</button>
+                    <button class="btn btn-primary ml-2" onclick="downloadPoster(type='png')">PNG</button> -->
+                    <!-- <button class="btn btn-primary ml-2" onclick="downloadPosterPDF(type='pdf')">PDF</button> -->
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" onclick="downloadPoster(type='jpg')">JPG</button>
+                    <button class="btn btn-primary ml-2" onclick="downloadPoster(type='png')">PNG</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="IDcard">
+        <div class="d-flex mb-5" id="IDcard">
+            <div class="IDcard_front">
+                <div class="group-5">
+                    <div class="overlap-group">
+                        <div class="bjpFrontTitle">
+                            <img class="bjpFrontLogo" src="/img/IDcard/logoFront.png" />
+                            <p class="bjpTitle">Bhartiya janta party</p>
+                        </div>
+                        <div class="bjpMemberTitle">
+                            <div>
+                                <p class="bjpMemberName" id="memberName">Narendra Modi</p>
+                                <p class="bjpMemberCommittee" id="memberCommittee">Coding Hub</p>
+                                <div class="bjpMemberDetail">
+                                    <div class="bjpMemberDetail__phone">
+                                        <div class="field">
+                                            Phone Number
+                                        </div>
+                                        <div class="input" id="memberPhoneNo">
+                                            9876543212
+                                        </div>
+                                    </div>
+                                    <div class="bjpMemberDetail__membership">
+                                        <div class="field">
+                                            Membership ID
+                                        </div>
+                                        <div class="input" id="memberMembershipID">
+                                            565434
+                                        </div>
+                                    </div>
+                                    <div class="bjpMemberDetail__DOB">
+                                        <div class="field">
+                                            Date of Birth
+                                        </div>
+                                        <div class="input" id="memberDOB">
+                                            06/12/1997
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <img class="path-22" src="/img/IDcard/rectGreen.png" />
+                        <img class="path-24" src="/img/IDcard/rectOrangeShade.png" />
+                        <img class="path-27" src="/img/IDcard/rectGreenShade.png" />
+                        <img class="path-28" src="/img/IDcard/orangeBorder.png" />
+                        <img class="path-29" src="/img/IDcard/orangeOval.png" />
+                        <div class="memberImage">
+                            <img class="ellipse-2" src="/img/ddp.jpg" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="IDcard_back">
+                <div class="group-1">
+                    <div class="overlap-group2">
+                        <div class="bjpCardTerms">
+                            <ul>
+                                <h4>Terms and conditions :</h4>
+                                <li>
+                                    The use of this card is governed by BJP. </li>
+                                <li>
+                                    This card should be used for official
+                                    purposes only and should be presented
+                                    upon request by any officials. </li>
+                                <li>
+                                    This ID card is valid till 04-12-2021. </li>
+                            </ul>
+                            <ul>
+                                <h4>BJP Contact Details :</h4>
+                                <li>
+                                    Email - example@abcxyz.com </li>
+                                <li>
+                                    Phone - +91-1234567890 </li>
+                            </ul>
+                        </div>
+                        <div class="bjpCardNote">
+                            <h4>Please Note :</h4>
+                            This card is the property of BJP to whom it
+                            must be returned upon request or if found.
+                        </div>
+                        <img class="path-1" src="/img/IDcard/rectGreen.png" />
+                        <img class="path-3" src="/img/IDcard/rectOrangeShade.png" />
+                        <img class="path-6" src="/img/IDcard/rectGreenShade.png" />
+                        <img class="path-7" src="/img/IDcard/orangeBorder.png" />
+                        <img class="path-8" src="/img/IDcard/orangeOval.png" />
+                        <img class="ellipse-1" src="/img/IDcard/whiteCircle.png" />
+                    </div>
+                </div>
+                <img class="group-4" src="/img/IDcard/logoBack.png" />
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script type="application/javascript" src="/js/html2canvas.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script type="application/javascript" src="/js/main.js"></script>
+<script type="application/javascript" src="/js/IDcard.js"></script>
+
+</html>

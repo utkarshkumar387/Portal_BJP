@@ -310,6 +310,11 @@ if (memberDetailsGet.error == false) {
 
 //patch request to api
 function addMemberDetails() {
+    let alerts = document.getElementById('validationAlert').querySelector('.alert');
+    if (alerts != null) {
+        alerts.remove()
+    }
+    // $('#validationAlert').remove('.alert');
     let allPhoneNumbers = [];
     console.log(allPhoneNumbers);
     let allPhoneNumbersInput = document.getElementById('allPhoneNumber').getElementsByTagName('input');
@@ -330,8 +335,9 @@ function addMemberDetails() {
     }
 
     // console.log(document.getElementById('getAllStates').value);
+    let formData;
     let memberDetails = {
-        avatar: formData,
+        avatar: null,
         first_name: $('#memberFirstName').val(),
         last_name: $('#memberLastName').val(),
         father_name: $('#memberFatherName').val(),
@@ -362,16 +368,19 @@ function addMemberDetails() {
         instagram_link: $('#instagramLink').val(),
     }
     console.log(memberDetails);
-    // let id = link[4];
-    // let memberDetailsData = updateProfileDataById('edit_member_profile', id, memberDetails);
-
-    // if (memberDetailsData.error == false) {
-    //     setCookie('member_profile', JSON.stringify(memberProfile.message.member_details), 10);
-    //     console.log('patch request done');
-    //     window.location.reload();
-    // } else {
-    //     console.log(memberDetails.message);
-    // }
+    let id = link[4];
+    if (formValidation() == true) {
+        let memberDetailsData = updateProfileDataById('edit_member_profile', id, memberDetails);
+        if (memberDetailsData.error == false) {
+            setCookie('member_profile', JSON.stringify(memberProfile.message.member_details), 10);
+            console.log('patch request done');
+            window.location.replace(`/profile/${id}`);
+        } else {
+            console.log(memberDetails.message);
+        }
+    } else {
+        console.log('Enter correct details');
+    }
 
 }
 
@@ -424,4 +433,91 @@ function imageURL(input) {
         }
         reader.readAsDataURL(input.files[0]);
     }
+}
+
+function formValidation() {
+    let userFirstName = $('#memberFirstName');
+    let userLastName = $('#memberLastName');
+    let userFatherName = $('#memberFatherName');
+    let userGender = document.getElementById('genderMale').checked || document.getElementById('genderFemale').checked;
+    console.log('check user gender ', userGender)
+    let userMaritalStatus = $('#marital_status');
+    let userPrimaryNumber = $('#primaryPhoneNumber');
+    let userDOB = $('#memberDOB');
+    let userPermanentAddress = $('#permanentAddress');
+    let userResidentialAddress = $('#residentialAddress');
+    if (userFirstName.val() == "") {
+        $('#validationAlert').append(`
+        <div class="alert alert-danger" role="alert">
+            Please enter your First Name.
+        </div>
+        `)
+        return false;
+    }
+    if (userLastName.val() == "") {
+        $('#validationAlert').append(`
+        <div class="alert alert-danger" role="alert">
+            Please enter your Last Name.
+        </div>
+        `)
+        return false;
+    }
+    if (userFatherName.val() == "") {
+        $('#validationAlert').append(`
+        <div class="alert alert-danger" role="alert">
+            Please enter your Father's Name.
+        </div>
+        `)
+        return false;
+    }
+    if (userGender == false) {
+        $('#validationAlert').append(`
+        <div class="alert alert-danger" role="alert">
+            Please select your Gender.
+        </div>
+        `)
+        return false;
+    }
+    if (userMaritalStatus.selectedIndex < 1) {
+        $('#validationAlert').append(`
+        <div class="alert alert-danger" role="alert">
+            Please select your Marital Status.
+        </div>
+        `)
+        return false;
+    }
+    if (userPrimaryNumber.val() == "") {
+        $('#validationAlert').append(`
+        <div class="alert alert-danger" role="alert">
+            Please select your Primary Number.
+        </div>
+        `)
+        return false;
+    }
+    if (userDOB.val() == "") {
+        $('#validationAlert').append(`
+        <div class="alert alert-danger" role="alert">
+            Please enter your Date of birth.
+        </div>
+        `)
+        return false;
+    }
+    if (userPermanentAddress.val() == "") {
+        $('#validationAlert').append(`
+        <div class="alert alert-danger" role="alert">
+            Please enter your Permanent Address.
+        </div>
+        `)
+        return false;
+    }
+    if (userResidentialAddress.val() == "") {
+        $('#validationAlert').append(`
+        <div class="alert alert-danger" role="alert">
+            Please enter your Residential Address.
+        </div>
+        `)
+        return false;
+    }
+
+    return true;
 }

@@ -27,12 +27,12 @@ module.exports = function (app) {
 
     app.route('/profile/:id')
         .get(function (req, res, next) {
+            res.clearCookie("member_profile");
             if (req.cookies.token) {
                 res.render('templates/profile')
             } else {
                 res.render('templates/login')
             }
-            res.render('templates/profile')
         })
 
     app.route('/privileges')
@@ -206,13 +206,22 @@ module.exports = function (app) {
 
     app.route('/committeeMy')
         .get(function (req, res, next) {
+            res.clearCookie("member_profile");
             if (req.cookies.token) {
                 res.render('templates/committeeMy')
             } else {
                 res.render('templates/login')
             }
         })
-
+    app.route('/committeeMy/:id')
+        .get(function (req, res, next) {
+            res.clearCookie("member_profile");
+            if (req.cookies.token) {
+                res.render('templates/committeeMy')
+            } else {
+                res.render('templates/login')
+            }
+        })
     app.route('/committeeClicked/:id')
         .get(function (req, res, next) {
             if (req.cookies.token) {
@@ -350,10 +359,12 @@ module.exports = function (app) {
     app.route('/manageVerificationTeam')
         .get(function (req, res, next) {
             if (req.cookies.token) {
+                console.log((req.cookies.privilege).admin_privilege)
                 res.clearCookie("privilege");
                 if (JSON.parse(req.cookies.privilege).admin_privilege != null) {
                     res.render('templates/manageVerificationTeam')
-                } else {
+                }
+                else {
                     // res.clearCookie("privilege");
                     res.render('templates/accessDenied')
                 }
@@ -377,6 +388,10 @@ module.exports = function (app) {
     app.route('/login')
         .get(function (req, res, next) {
             res.render('templates/login')
+        })
+    app.route('/IDcard')
+        .get(function (req, res, next) {
+            res.render('templates/IDcard')
         })
 }
 

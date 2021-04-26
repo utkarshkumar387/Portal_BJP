@@ -12,6 +12,12 @@ if (allAdmins.error == false) {
 } else {
     console.log(allAdmins.message);
 }
+let userDetails = JSON.parse(getCookie('member_profile'));
+console.log('member detail is ', userDetails);
+$('#complainantName').val(userDetails.first_name + ' ' + userDetails.last_name);
+$('#complainantEmail').val(userDetails.email);
+$('#complainantPhone').val(userDetails.phone_no);
+$('#complainantAddress').val(userDetails.residence_address_line1);
 // let chosenManagers = document.getElementById('chosenManager');
 // let allChosenManagers = chosenManagers.
 //     console.log(chosenManagers);
