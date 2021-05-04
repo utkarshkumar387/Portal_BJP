@@ -87,7 +87,7 @@ function addBlog() {
 
     //     ])
     console.log('data of added blog is ', data);
-    console.log(blogDetails);
+    // console.log(blogDetails);
     if (checkValidations() == true) {
         let blogDetails = addContent('blogs', data);
         if (blogDetails.error == false) {
@@ -191,5 +191,6 @@ function checkValidations() {
         `)
         return false;
     }
+    return true;
 }
 

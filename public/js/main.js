@@ -19,8 +19,14 @@ function ajaxRequest(type, url, data, status) {
         url: url,
         data: data,
         // headers: headerParams,
-        headers: { 'Authorization': getCookie('token') },
         contentType: "application/json; charset=utf-8",
+        headers: {
+            Accept: "application/json; charset=utf-8",
+            'Authorization': getCookie('token'),
+            'Content-Type': 'application/json; charset=utf-8'
+        },
+        crossDomain: true,
+        dataType: "json",
         success: function (data, textStatus, jqXHR) {
             if (jqXHR.status == status) {
                 error = false;
@@ -241,6 +247,20 @@ function getCommittee(sub_url, type, data, status) {
     }
     var type = type;
     var url = main_url + sub_url + '/';
+    var data = data;
+    var status = status;
+    return ajaxRequest(type, url, data, status);
+}
+//requesting ajax to poist committee data
+//not in use right now
+function postCommitteeMemberbyID(sub_url, id, type, data, status) {
+    if (sub_url == 'committee') {
+        sub_url = 'committee';
+    } else {
+        sub_url = `committee/${sub_url}`
+    }
+    var type = type;
+    var url = main_url + sub_url + '/' + id + '/';
     var data = data;
     var status = status;
     return ajaxRequest(type, url, data, status);
@@ -770,16 +790,20 @@ function titleDescTrimmer(title, description, maxStringTitle, maxStringDesc) {
 //checking priority of complaints
 function checkPriority(priority) {
     let priorityBar;
-    if (priority == 'low') {
+    console.log(priority);
+    if (priority == 'low' || priority == 'Low') {
+        console.log('inside low priority')
         priorityBar = `<div class="priority priority_low">
         <span class="badge rounded-pill"><img src="/img/icons/Tag.png"> Priority:<span class="priority_set">Low</span></span>
     </div>`
-    } else if (priority == 'medium') {
+    } else if (priority == 'medium' || priority == 'Medium') {
+        console.log('inside medium priority')
         priorityBar = `<div class="priority priority_mid">
         <span class="badge rounded-pill"><img src="/img/icons/Tag.png"> Priority:
             <span class="priority_set">Medium</span></span>
     </div>`
-    } else if (priority == 'high') {
+    } else if (priority == 'high' || priority == 'High') {
+        console.log('inside high priority')
         priorityBar = `<div class="priority priority_high">
         <span class="badge rounded-pill"><img src="/img/icons/Tag.png"> Priority:
             <span class="priority_set">High</span></span>

@@ -44,6 +44,14 @@ if (events.error == false) {
         eventDateJoin = 'Not available';
     }
     // console.log(eventDetails);
+    if (eventDetails.images.length > 0) {
+        for (let j = 0; j < eventDetails.images.length; j++) {
+            console.log(eventDetails.images[j].image);
+            eventImage = `${eventDetails.images[j].image}`;
+        }
+    } else {
+        eventImage = `https://pbs.twimg.com/media/D3KmHyIWAAAcdSh.jpg`;
+    }
     $('#eventTitleView').html(eventDetails.title);
     $('#eventVenueView').html(eventVenue);
     $('#eventDateView').html(eventDateJoin);
@@ -52,6 +60,7 @@ if (events.error == false) {
     $('#eventOrganizerView').html(eventOrganizerName);
     $('#eventOrganizerDistrictView').html(eventDetails.user.district);
     $('#eventOrganizerStateView').html(eventDetails.user.state);
+    $('#eventImage').attr('src', eventImage)
 
     //appending recent events
     if (link[5] == '2') {

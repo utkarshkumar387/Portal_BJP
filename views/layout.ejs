@@ -120,9 +120,11 @@
         $('#committeesLayout').attr('href', `/committeeClicked/${committeeIDLayout}`);
         console.log('father name is ', memberDetailsLayout.father_name);
         if (!memberDetailsLayout.father_name) {
-            $('#committeesLayout').css('display', 'none');
+            $('#committeesLink').css('display', 'none');
+            $('#privilegeLinkPage').css('display', 'none');
         } else {
-            $('#committeesLayout').css('display', 'block');
+            $('#committeesLink').css('display', 'block');
+            $('#privilegeLinkPage').css('display', 'block');
         }
     </script>
 

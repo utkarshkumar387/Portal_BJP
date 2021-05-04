@@ -99,6 +99,8 @@ function editEvent() {
         // image: null,
         user_id: edittedEventUserID,
         title: $('#eventTitle').val(),
+        chief_guest: $('#eventChiefGuest').val(),
+        venue: $('#eventVenue').val(),
         event_date: $('#eventDate').val(),
         description: $('#eventBody').val(),
         status: '1'

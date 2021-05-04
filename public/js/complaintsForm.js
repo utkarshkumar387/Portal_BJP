@@ -60,31 +60,80 @@ $('#complainantAddress').val(userDetails.residence_address_line1);
 //     }
 //     console.log('Inside complaint edit form');
 // }
-// function addComplaint() {
-//     authorDetails = JSON.parse(getCookie('member_profile'));
-//     authorName = authorDetails.first_name + ' ' + authorDetails.last_name;
-//     authorID = authorDetails.user_id;
-//     console.log($('#complaintTitle').val());
-//     let data = {
-//         data: JSON.stringify({
-//             blog_data:
-//             {
-//                 // image: null,
-//                 user_id: authorID,
-//                 title: $('#complaintTitle').val(),
-//                 description: $('#complaintBody').val(),
-//                 status: 'pending'
-//             },
-//             complaint_data_images: JSON.stringify([
+function addComplaint() {
+    authorDetails = JSON.parse(getCookie('member_profile'));
+    authorName = authorDetails.first_name + ' ' + authorDetails.last_name;
+    authorID = authorDetails.user_id;
+    let authorEmail = authorDetails.email;
+    let authorAddress = authorDetails.residence_address_line1;
+    let authorNumber = authorDetails.phone_no;
+    let data = {
+        data: JSON.stringify({
+            complaint_data:
+            {
+                // image: null,
+                solutions: [],
+                user_id: authorID,
+                user: {},
+                user_full_name: authorName,
+                user_email: authorEmail,
+                user_phone_no: authorNumber,
+                user_address: authorAddress,
+                complaint_address: "",
+                complaint_subject: $('#complaintSubject').val(),
+                complaint_body: $('#complaintBody').val(),
+                tagged_members: [],
+                priority: $('#complaintPriority').val(),
+                likes: [],
+                dis_likes: [],
+                status: 'pending'
+            },
+            complaint_data_images: JSON.stringify([
 
-//             ])
-//         })
-//     }
-//     console.log(data);
-//     let complaintDetails = addContent('complaints', data);
-//     window.location.replace('/complaints');
-//     console.log(complaintDetails);
-// }
+            ])
+        })
+    }
+    console.log(data)
+    // window.location.replace('/complaints');
+    // if (checkEventValidations() == true) {
+    let complaintDetails = addContent('complaints', data);
+    console.log(complaintDetails);
+    if (complaintDetails.error == false) {
+        // console.log('complaints added')
+        window.location.replace('/complaintsApproved');
+    } else {
+        console.log(complaintDetails.error);
+        console.log(complaintDetails.message);
+    }
+    // }
+}
+// "images": [],
+//             "solutions": [],
+//             "user": {
+//                 "id": 1,
+//                 "phone_no": "7541079745",
+//                 "first_name": "Utkarsh",
+//                 "last_name": "Kumar",
+//                 "email": "abc@gmail.com",
+//                 "state": "Rajasthan",
+//                 "district": "Barmer",
+//                 "avatar": null
+//             },
+//             "user_full_name": "Kapil sharma",
+//             "user_email": "uyt@gmail.com",
+//             "user_phone_no": "8678769785",
+//             "user_address": "jhsh ois  uo uopo s s",
+//             "complaint_address": "shls  sfsoos;o;ksoseuoeueo u oe  ueuoeuo eo",
+//             "complaint_subject": "ydius   yo sodps",
+//             "complaint_body": "sydo su poeipo ps psu ps",
+//             "tagged_members": [],
+//             "date": "2021-03-09T09:19:53.215416Z",
+//             "status": 2,
+//             "has_image": false,
+//             "priority": "high",
+//             "likes": [],
+//             "dis_likes": [],
+//             "user_id": 1
 // function editComplaint() {
 //     let data = {
 //         // image: null,

@@ -61,7 +61,6 @@ if (allAdmins.error == false) {
 }
 
 let allMembers = fetchProfileData('get_all_members');
-console.log('all members are', allMembers);
 // Search admins in manage admins
 let search = document.getElementById('committee__adminsMembersSearch');
 search.addEventListener('keyup', searchFunction);
@@ -76,13 +75,14 @@ function searchFunction() {
 
 //search members in add manager modal
 let searchMembers = document.getElementById('committee__membersAddSearch');
+console.log('all searched members ', searchMembers);
 searchMembers.addEventListener('keyup', searchFunctionAddMembers);
 function searchFunctionAddMembers() {
     let input1 = document.getElementById('committee__membersAddSearch').id;
     let members1 = document.getElementById('allMembersDataAdmins').id;
     let memberName1 = document.getElementById('memberCardAdmins').id;
     console.log(input1, members1, memberName1);
-    mySearchFunction('inside add admin members ', input1, members1, memberName1);
+    // mySearchFunction('inside add admin members ', input1, members1, memberName1);
 
 }
 
@@ -155,8 +155,10 @@ function addAllMembersToList() {
     console.log('data to post', data);
     let addMemberAdmins = postPrivilegeRequest('admin_create', data);
     if (addMemberAdmins.error == false) {
+        // console.log('member added')
         window.location.reload();
     } else {
+        // console.log('member cannot able to added');
         console.log(addMemberAdmins.messsage);
     }
 }
