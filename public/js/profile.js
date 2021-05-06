@@ -6,21 +6,22 @@ console.log(profileDetails);
 if (profileDetails.error == false) {
     let user = profileDetails.message.member_details;
     console.log('User data is ', user);
-    let userName = user.first_name + ' ' + user.last_name;
+    let userName;
+    (user.first_name || user.last_name) ? userName = user.first_name + ' ' + user.last_name : userName = 'Not available';
     $('#memberName').html(userName);
-    (user.committee_id) ? $('#memberCommitteName').html(user.committee_id.name) : $('#memberCommitteName').html('Not in committee');
+    (user.committee) ? $('#memberCommitteName').html(user.committee.title) : $('#memberCommitteName').html('Not in committee');
     $('#memberUserName').html(user.email);
     $('#memberFullname').html(userName);
-    $('#memberEmail').html(user.email);
+    (user.email) ? $('#memberEmail').html(user.email) : $('#memberEmail').html('Not available');
     //have to send multiple phone number in an array to get multiple phone number.
     $('#memberPhone').html(user.phone_no);
     $('#memberProfession').html(user.profession);
-    $('#memberFacebookLink').html(user.facebook_link);
-    $('#memberInstagramLink').html(user.instagram_link);
-    $('#memberTwitterLink').html(user.twitter_link);
-    $('#memberVoterID').html(user.voter_id_card);
-    $('#memberaAdhar').html(user.aadhar_card);
-    $('#memberPAN').html(user.pan_card);
+    (user.facebook_link) ? $('#memberFacebookLink').html(user.facebook_link) : $('#memberFacebookLink').html('Not available');
+    (user.instagram_link) ? $('#memberInstagramLink').html(user.instagram_link) : $('#memberInstagramLink').html('Not available');
+    (user.twitter_link) ? $('#memberTwitterLink').html(user.twitter_link) : $('#memberTwitterLink').html('Not available');
+    (user.voter_id_card) ? $('#memberVoterID').html(user.voter_id_card) : $('#memberVoterID').html('Not available');
+    (user.aadhar_card) ? $('#memberaAdhar').html(user.aadhar_card) : $('#memberaAdhar').html('Not available');
+    (user.pan_card) ? $('#memberPAN').html(user.pan_card) : $('#memberPAN').html('Not available');
     (user.state_id) ? $('#memberState').html(user.state_id.name) : $('#memberState').html('Not Available');
     (user.district_id) ? $('#memberDistrict').html(user.district_id.name) : $('#memberDistrict').html('Not Available');
     // $('#memberUpkhand').html();
@@ -184,45 +185,3 @@ if (profileDetails.error == false) {
     }
 }
 $('#editButton').attr('href', `/profileEdit/${link[4]}`)
-// anniversary: "2021-02-01"
-// avatar: null
-// blood_group: "O+"
-// booth_id: {id: 1, name: "Khatri colony", district_id: 1}
-// committee_id: 1
-// committee_leader_of: null
-// date_joined: "2021-02-27T16:13:21.623264Z"
-// dis_liked_blogs: []
-// dis_liked_complaints: []
-// dis_liked_events: []
-// district_id: {id: 1, name: "Barmer", state_id: 1}
-// dob: "2020-03-17"
-// email: "xyz@gmail.com"
-// father_name: "Jhon doe"
-// first_name: "Utkarsh"
-// gram_panchayat_id: {id: 1, name: "Balotra", district_id: 1}
-// husband_name: null
-// id: 7
-// is_superuser: true
-// last_login: "2021-02-28T12:46:23Z"
-// last_name: "kumar"
-// legislative_assembly_constituency_id: {id: 1, name: "Barmer Jodhpur", district_id: 1}
-// liked_blogs: []
-// liked_complaints: []
-// liked_events: []
-// panchayat_samiti_id: {id: 1, name: "Balotra", district_id: 1}
-// parliament_constituency_id: {id: 1, name: "Barmer Jodhpur", district_id: 1}
-// permanent_address_city: "pune"
-// permanent_address_district: "pune"
-// permanent_address_line1: "I don't Know"
-// permanent_address_line2: "don't ask me"
-// phone_no: "7541079745"
-// pin_code: "411046"
-// residence_address_city: "pune"
-// residence_address_district: "pune"
-// residence_address_line1: "Again I don't Know"
-// residence_address_line2: "don't ask me"
-// revenue_villege_id: {id: 1, name: "Pachpadra", district_id: 1}
-// state_id: {id: 1, name: "Rajasthan"}
-// township_constituency_id: {id: 1, name: "Pachpadra", district_id: 1}
-// up_block_education_constituency_id: {id: 1, name: "Pachpadra", district_id: 1}
-

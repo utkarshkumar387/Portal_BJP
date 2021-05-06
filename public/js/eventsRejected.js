@@ -11,11 +11,19 @@ if (contentEvents.error == false) {
         let maxStringTitle = 20;
         let trimmedDataEvent = titleDescTrimmer(title, description = '', maxStringTitle, maxStringDesc = 0);
         // let priority = checkPriority(events[i].priority);
-
+        let eventImage;
+        if (events[i].images.length > 0) {
+            for (let j = 0; j < events[i].images.length; j++) {
+                console.log(events[i].images[j].image);
+                eventImage = `${events[i].images[j].image}`;
+            }
+        } else {
+            eventImage = `https://images.livemint.com/img/2020/01/19/600x338/20190726221L_1564151885181_1579462418514.jpg`;
+        }
         $('#eventsRejectedBlock').append(`
             <div class="col-md-4 events__card mb-4 px-3">
                 <div class="card card_dark cardStyle">
-                    <img src="https://images.livemint.com/img/2020/01/19/600x338/20190726221L_1564151885181_1579462418514.jpg"
+                    <img src=${eventImage}
                     class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-text">${trimmedDataEvent.trimStringTitle}</p>

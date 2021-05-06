@@ -14,7 +14,8 @@ function signUpMember() {
         setCookie('token', `Token ${response.message.token}`, 10);
         window.location.replace('/');
     } else {
-        console.log(response);
+        alert('This number is already present please sign up with any another number.');
+        console.log(response.message);
     }
 }
 
@@ -33,6 +34,7 @@ function logInMember() {
         // console.log(getCookie('token'));
         window.location.replace('/');
     } else {
+        alert('This number is not registered. Please Sign up before Log In.');
         console.log(response.message);
     }
 }

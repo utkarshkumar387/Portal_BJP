@@ -56,8 +56,9 @@
                     <li class="nav-item">
                         <a class="nav-link" data-link href="/"><i class="fas fa-home"></i> Home</a>
                     </li>
-                    <li class="nav-item" id="privilegesLink" onclick="getPrivilegesLink()">
-                        <a class="nav-link" id="privilegeLinkPage" data-link><i class="fas fa-user-lock"></i>
+                    <li class="nav-item" id="privilegesLink">
+                        <a class="nav-link" id="privilegeLinkPage" href="/manageMembers" data-link><i
+                                class="fas fa-user-lock"></i>
                             Privileges</a>
                     </li>
                     <li class="nav-item" id="committeesLink">
@@ -116,15 +117,18 @@
     <!-- <script type="application/javascript" src="/js/mainTest.js"></script> -->
     <script>
         let memberDetailsLayout = JSON.parse(getCookie('member_profile'));
-        let committeeIDLayout = memberDetailsLayout.committee_id;
-        $('#committeesLayout').attr('href', `/committeeClicked/${committeeIDLayout}`);
-        console.log('father name is ', memberDetailsLayout.father_name);
         if (!memberDetailsLayout.father_name) {
             $('#committeesLink').css('display', 'none');
-            $('#privilegeLinkPage').css('display', 'none');
+            $('#privilegesLink').css('display', 'none');
         } else {
-            $('#committeesLink').css('display', 'block');
-            $('#privilegeLinkPage').css('display', 'block');
+            if (memberDetailsLayout.committee) {
+                $('#committeesLink').css('display', 'block');
+                let committeeIDLayout = memberDetailsLayout.committee.id;
+                $('#committeesLayout').attr('href', `/committeeClicked/${committeeIDLayout}`);
+            } else {
+                $('#committeesLink').css('display', 'none');
+            }
+            $('#privilegesLink').css('display', 'block');
         }
     </script>
 

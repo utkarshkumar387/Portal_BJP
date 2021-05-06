@@ -41,7 +41,7 @@ if (home.error == false) {
         if (blogs[i].images.length > 0) {
             for (let j = 0; j < blogs[i].images.length; j++) {
                 console.log(blogs[i].images[j].image);
-                blogImage = `https://bjpbarmer.herokuapp.com${blogs[i].images[j].image}`;
+                blogImage = `${blogs[i].images[j].image}`;
             }
         } else {
             blogImage = `https://akm-img-a-in.tosshub.com/sites/dailyo/fb_feed_images/story_image/201708/bjpup-insta_083117051140.jpg`;
@@ -118,6 +118,7 @@ if (home.error == false) {
     // why event is getting appended again and again
     for (var i = 0; i < events.length; i++) {
         let eventDate = dateConverter(events[i].date);
+        let eventImage;
         let title = events[i].title;
         let description = events[i].description;
         let maxStringTitle = 20;
@@ -125,10 +126,18 @@ if (home.error == false) {
         let trimmedDataEvent = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
         console.log(trimmedDataEvent);
         console.log(eventDate[0]);
+        if (events[i].images.length > 0) {
+            for (let j = 0; j < events[i].images.length; j++) {
+                console.log(events[i].images[j].image);
+                eventImage = `${events[i].images[j].image}`;
+            }
+        } else {
+            eventImage = `https://akm-img-a-in.tosshub.com/sites/dailyo/fb_feed_images/story_image/201708/bjpup-insta_083117051140.jpg`;
+        }
         $('#eventBlock').append(`
             <li class="glide__slide events__card">
                 <div class="card cardStyle card_dark">
-                    <img src="https://images.livemint.com/img/2020/01/19/600x338/20190726221L_1564151885181_1579462418514.jpg"
+                    <img src=${eventImage}
  z                   class="card-img-top" alt="...">
                     <div class="card-body">
                         <p class="card-text">${trimmedDataEvent.trimStringTitle}</p>

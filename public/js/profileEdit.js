@@ -93,6 +93,7 @@ function officialDetails() {
                                         <span>*</span></label>
                                         <div class="col-md-8">
                                         <select name="getAllStates" class="form-select form-control" id="getAllStates">
+                                        <option selected disabled >-Select State-</option>
                                         </select>
                                         </div>
                                 </div>
@@ -220,7 +221,6 @@ function officialDetails() {
             console.log('states id ', allStates[i].id, allStates[i].name);
             $('#getAllStates').append(
                 `
-                <option>-Select State-</option>
                 <option value="${allStates[i].id}">${allStates[i].name}</option>
             `
             )
@@ -367,20 +367,20 @@ function addMemberDetails() {
         twitter_link: $('#twitterLink').val(),
         instagram_link: $('#instagramLink').val(),
     }
-    console.log(memberDetails);
+    console.log('patch request details in profile edit is ', memberDetails);
     let id = link[4];
-    if (formValidation() == true) {
-        let memberDetailsData = updateProfileDataById('edit_member_profile', id, memberDetails);
-        if (memberDetailsData.error == false) {
-            setCookie('member_profile', JSON.stringify(memberProfile.message.member_details), 10);
-            console.log('patch request done');
-            window.location.replace(`/profile/${id}`);
-        } else {
-            console.log(memberDetails.message);
-        }
-    } else {
-        console.log('Enter correct details');
-    }
+    // if (formValidation() == true) {
+    //     let memberDetailsData = updateProfileDataById('edit_member_profile', id, memberDetails);
+    //     if (memberDetailsData.error == false) {
+    //         setCookie('member_profile', JSON.stringify(memberProfile.message.member_details), 10);
+    //         console.log('patch request done');
+    //         window.location.replace(`/profile/${id}`);
+    //     } else {
+    //         console.log(memberDetails.message);
+    //     }
+    // } else {
+    //     console.log('Enter correct details');
+    // }
 
 }
 

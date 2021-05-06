@@ -8,8 +8,15 @@ console.log(committeeDetails);
 let committee = committeeDetails.message.committee_data;
 if (committeeDetails.error == false) {
     console.log(committee);
-    let committeeLeader = committee.leader.first_name + ' ' + committee.leader.last_name;
-    let committeeLeaderAddress = committee.leader.district + ', ' + committee.leader.state;
+    let committeeLeader;
+    let committeeLeaderAddress;
+    if (committee.leader) {
+        committeeLeader = committee.leader.first_name + ' ' + committee.leader.last_name;
+        committeeLeaderAddress = committee.leader.district + ', ' + committee.leader.state;
+    } else {
+        committeeLeader = 'No leader';
+        committeeLeaderAddress = 'Place';
+    }
     console.log(committeeLeader, committeeLeaderAddress);
     $('#committeeName').html(committee.title);
     $('#committeeDesc').html(committee.description);
