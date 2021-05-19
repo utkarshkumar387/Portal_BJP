@@ -146,7 +146,7 @@ function checkEventValidations() {
         `)
         return false;
     }
-    if (evnetCheckChiefGuest.val() == "") {
+    if (eventCheckChiefGuest.val() == "") {
         $('#eventValidations').append(`
             <div class="alert alert-danger" role="alert">
                 Please enter event's chief Guest.

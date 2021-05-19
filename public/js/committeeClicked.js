@@ -113,13 +113,16 @@ function addAllMembersToList() {
     // console.log(data);
     let data = stringifyMemebers;
     console.log('data to post', data);
-    let addMemberAdmins = postPrivilegeRequest('committee', data);
+    let addMemberAdmins = addCommitteeMembers('add_members_to_committee', committeeID, data);
+    console.log('error while adding committee members', addMemberAdmins.error);
+    console.log('committee in which we want to insert members ', committeeID);
+    console.log('members whow we want to insert ', data);
     if (addMemberAdmins.error == false) {
         console.log('member added in committee successfully');
         // window.location.reload();
     } else {
         console.log('Error occured');
-        console.log(addMemberAdmins.messsage);
+        console.log(addMemberAdmins);
     }
 }
 let count = 0;

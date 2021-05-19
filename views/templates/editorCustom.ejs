@@ -1,57 +1,45 @@
 <% layout('editorLayout') %>
     <div class="item scroller leftsidebar">
-        <div class="inner">
-            <ul class="list-unstyled components nav d-block" id="myTab" role="tablist">
-                <li class="d-flex justify-content-center list">
-                    <a class="nav-link align-items-center active" id="build-tab" data-toggle="tab" href="#build"
-                        role="tab" aria-controls="text" aria-selected="true">
-                        <i class="fa fa-tools mb-2" aria-hidden="true" style="font-size: 24px;"></i>
-                        Build
-                    </a>
-                </li>
-                <li class="d-flex justify-content-center list">
-                    <a class="nav-link align-items-center" id="templates-tab" data-toggle="tab" href="#templates"
-                        role="tab" aria-controls="templates" aria-selected="false">
-                        <img src="img/icons/template.png" class="mb-2" />
-                        Templates
-                    </a>
-                </li>
-                <li class="d-flex justify-content-center list">
-                    <a class="nav-link align-items-center" id="backgrounds-tab" data-toggle="tab" href="#backgrounds"
-                        role="tab" aria-controls="backgrounds" aria-selected="false">
-                        <img src="img/icons/background.png" class="mb-2" />
-                        Backgrounds
-                    </a>
-                </li>
-                <li class="d-flex justify-content-center list">
-                    <a class="nav-link align-items-center" id="text-tab" data-toggle="tab" href="#text" role="tab"
-                        aria-controls="text" aria-selected="false">
-                        <img src="img/icons/typo.png" class="mb-2" alt="">
-                        Text
-                    </a>
-                </li>
-                <li class="d-flex justify-content-center list">
-                    <a class="nav-link align-items-center" id="details-tab" data-toggle="tab" href="#details" role="tab"
-                        aria-controls="details" aria-selected="false">
-                        <img src="img/icons/details.png" class="mb-2" />
-                        Details
-                    </a>
-                </li>
-            </ul>
-        </div>
+        <ul class="list-unstyled components nav d-block" id="myTab" role="tablist">
+            <li class="d-flex justify-content-center list">
+                <a class="nav-link align-items-center active" id="build-tab" data-toggle="tab" href="#build" role="tab"
+                    aria-controls="text" aria-selected="true">
+                    <i class="fa fa-tools mb-2" aria-hidden="true" style="font-size: 24px;"></i>
+                    Build
+                </a>
+            </li>
+            <li class="d-flex justify-content-center list">
+                <a class="nav-link align-items-center" id="templates-tab" data-toggle="tab" href="#templates" role="tab"
+                    aria-controls="templates" aria-selected="false">
+                    <img src="img/icons/template.png" class="mb-2" />
+                    Templates
+                </a>
+            </li>
+            <li class="d-flex justify-content-center list">
+                <a class="nav-link align-items-center" id="backgrounds-tab" data-toggle="tab" href="#backgrounds"
+                    role="tab" aria-controls="backgrounds" aria-selected="false">
+                    <img src="img/icons/background.png" class="mb-2" />
+                    Backgrounds
+                </a>
+            </li>
+            <!-- <li class="d-flex justify-content-center list">
+                <a class="nav-link align-items-center" id="text-tab" data-toggle="tab" href="#text" role="tab"
+                    aria-controls="text" aria-selected="false">
+                    <img src="img/icons/typo.png" class="mb-2" alt="">
+                    Text
+                </a>
+            </li> -->
+            <li class="d-flex justify-content-center list">
+                <a class="nav-link align-items-center" id="details-tab" data-toggle="tab" href="#details" role="tab"
+                    aria-controls="details" aria-selected="false">
+                    <img src="img/icons/details.png" class="mb-2" />
+                    Details
+                </a>
+            </li>
+        </ul>
     </div>
-    <div class="item scroller workarea">
-        <div class="inner box mt-4 mb-4">
-            <div class="layout c-drop-zone" onload="enableEditMode();" data-drop-zone id="layoutZoom">
-            </div>
-        </div>
-        <div class="editor_zoom cardStyle mb-3">
-            <div class="sliderContainer zoom_container">
-                <i class="fa fa-search-minus zoom_icon mr-2" aria-hidden="true"></i>
-                <input type="range" min="45" max="70" value="60" name="zoom" data-sizing="%" class="slider zoom_slider"
-                    id="zoom_range">
-                <i class="fa fa-search-plus zoom_icon ml-2" aria-hidden="true"></i>
-            </div>
+    <div class="layout mt-4" style="position: relative;">
+        <div style="width: 100%; height: 100%;" id="layoutZoom">
         </div>
     </div>
     <div class="item scroller rightsidebar">
@@ -68,6 +56,152 @@
                 </div>
                 <div class="tab-pane fade show active" id="build" role="tabpanel" aria-labelledby="build-tab">
                     <div class="template__builder px-2 py-2">
+                        <h4>Components</h4>
+                        <hr style="background-color: #fff !important;">
+                        <ul class="nav sidebar flex-column" id="nav_accordion">
+                            <li class="nav-item has-submenu">
+                                <a class="nav-link" href="#" id="foot1"> Footer </a>
+                                <ul class="collapse">
+                                    <div class="nav-link d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <input name="MyColorPicker" type="color" id="ColorPicker1" />
+                                        </div>
+                                        <button class="btn btn-primary" onclick="changeColor()">Apply</button>
+                                    </div>
+                                    <!-- <li><a class="nav-link" href="#">Submenu item 1 </a></li>
+                                    <li><a class="nav-link" href="#">Submenu item 2 </a></li>
+                                    <li><a class="nav-link" href="#">Submenu item 3 </a> </li> -->
+                                </ul>
+                            </li>
+                            <li class="nav-item has-submenu">
+                                <a class="nav-link" href="#"> Social Media links </a>
+                                <ul class="collapse">
+                                    <div class="nav-link">
+                                        <div class="mb-3 form-check">
+                                            <input type="checkbox" class="form-check-input"
+                                                onchange="socialMediaFacebook(this)" id="facebookCheckbox">
+                                            <label class="form-check-label" for="exampleCheck1">Facebook</label>
+                                        </div>
+                                        <div class="mb-3 form-check">
+                                            <input type="checkbox" class="form-check-input"
+                                                onchange="socialMediaInstagram(this)" id="instagramCheckbox">
+                                            <label class="form-check-label" for="exampleCheck1">Instagram</label>
+                                        </div>
+                                        <div class="mb-3 form-check">
+                                            <input type="checkbox" class="form-check-input"
+                                                onchange="socialMediaTwitter(this)" id="twitterCheckbox">
+                                            <label class="form-check-label" for="exampleCheck1">Twitter</label>
+                                        </div>
+                                        <div class="mb-3 form-check">
+                                            <input type="checkbox" class="form-check-input"
+                                                onchange="socialMediaWhatsapp(this)" id="whatsappCheckbox">
+                                            <label class="form-check-label" for="exampleCheck1">whatsapp</label>
+                                        </div>
+                                    </div>
+                                </ul>
+                            </li>
+                            <li class="nav-item has-submenu">
+                                <a class="nav-link" href="#" id="foot1"> Your Image </a>
+                                <ul class="collapse">
+                                    <div class="nav-link">
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="radio" onchange="addImage()"
+                                                name="yourImage" id="imageRightLarge">
+                                            <label class="form-check-label" for="imageRightLarge">
+                                                Right aligned large
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="radio" onchange="addImage()"
+                                                name="yourImage" id="imageRightSmall">
+                                            <label class="form-check-label" for="imageRightSmall">
+                                                Right aligned small
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="radio" onchange="addImage()"
+                                                name="yourImage" id="imageLeftLarge">
+                                            <label class="form-check-label" for="imageLeftLarge">
+                                                Left aligned large
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="radio" onchange="addImage()"
+                                                name="yourImage" id="imageLeftSmall">
+                                            <label class="form-check-label" for="imageLeftSmall">
+                                                Left aligned small
+                                            </label>
+                                        </div>
+                                    </div>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"> Other link </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- <div class="template__builder px-2 py-2">
+                        <h4>Components</h4>
+                        <hr style="background-color: #fff !important;">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left" type="button"
+                                            data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                            aria-controls="collapseOne">
+                                            Footer
+                                        </button>
+                                    </h2>
+                                </div>
+
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                    data-parent="#accordionExample">
+                                    <button id="foot1">Footer 1</button>
+                                    <button id="foot2">Footer 1</button>
+                                    <button id="foot3">Footer 1</button>
+                                    <button id="foot4">Footer 1</button>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                            data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                            aria-controls="collapseTwo">
+                                            Your Name
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                    data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        Some placeholder content for the second accordion panel. This panel is hidden by
+                                        default.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                            data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                                            aria-controls="collapseThree">
+                                            Social Media Links
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                    data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        And lastly, the placeholder content for the third and final accordion panel.
+                                        This panel is hidden by default.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="template__builder px-2 py-2">
                         <template data-slide-type-template="text">
                             <div class="template__text template" contenteditable="true">
                                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic, obcaecati.
@@ -138,7 +272,7 @@
                             <i class="fa fa-twitter mr-2"></i>
                             Twitter Link
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="tab-pane fade" id="text" role="tabpanel" aria-labelledby="text-tab">
                     <div class="form-group mb-4">

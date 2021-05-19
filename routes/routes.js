@@ -387,6 +387,9 @@ module.exports = function (app) {
 
     app.route('/login')
         .get(function (req, res, next) {
+            res.clearCookie("privilege");
+            res.clearCookie("member_profile");
+            res.clearCookie("token");
             res.render('templates/login')
         })
     app.route('/IDcard')

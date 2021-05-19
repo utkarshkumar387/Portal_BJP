@@ -1,19 +1,110 @@
-//selecting zoom input
-const zoom = document.querySelector('.editor_zoom input')
-//executing zoom with change function
-zoom.addEventListener('change', zoomLayout);
-//executing zoom with mouseover function
-zoom.addEventListener('mouseover', zoomLayout);
-//zoom in and zoom out
-function zoomLayout() {
-    console.log(this.name, this.value);
-    document.documentElement.style.setProperty(`--${this.name}`, this.value + `%`);
+//sidebar
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('.sidebar .nav-link').forEach(function (element) {
+
+        element.addEventListener('click', function (e) {
+
+            let nextEl = element.nextElementSibling;
+            let parentEl = element.parentElement;
+
+            if (nextEl) {
+                e.preventDefault();
+                let mycollapse = new bootstrap.Collapse(nextEl);
+
+                if (nextEl.classList.contains('show')) {
+                    mycollapse.hide();
+                } else {
+                    mycollapse.show();
+                    var opened_submenu = parentEl.parentElement.querySelector('.submenu.show');
+                    if (opened_submenu) {
+                        new bootstrap.Collapse(opened_submenu);
+                    }
+                }
+            }
+        }); // addEventListener
+    }) // forEach
+});
+
+//change footer color
+function changeColor() {
+    document.getElementById("testElem1").style.backgroundColor =
+        document.getElementById("ColorPicker1").value;
+}
+
+//Add social media links
+//add facebook id
+function socialMediaFacebook(checkbox) {
+    if (checkbox.checked == true) {
+        $('#testElem1').append(`<div id="facebookID" style="color: #fff; margin: 5px;">/utkarsh123@</div>`);
+    } else {
+        $('#facebookID').remove();
+    }
+}
+
+//add instagram id
+function socialMediaInstagram(checkbox) {
+    if (checkbox.checked == true) {
+        $('#testElem1').append(`<div id="instagramID" style="color: #fff; margin: 5px;">/utkarsh123@</div>`);
+    } else {
+        $('#instagramID').remove();
+    }
+}
+
+//add twitter id
+function socialMediaTwitter(checkbox) {
+    if (checkbox.checked == true) {
+        $('#testElem1').append(`<div id="twitterID" style="color: #fff; margin: 5px;">/utkarsh123@</div>`);
+    } else {
+        $('#twitterID').remove();
+    }
+}
+
+//add whatsapp number
+function socialMediaWhatsapp(checkbox) {
+    if (checkbox.checked == true) {
+        $('#testElem1').append(`<div id="whatsappID" style="color: #fff; margin: 5px;">/utkarsh123@</div>`);
+    } else {
+        $('#whatsappID').remove();
+    }
+}
+
+//Add your image
+function addImage() {
+    // console.log($('#imageRightLarge')[0]);
+    $('.yourPersonalImage').remove();
+    if ($('#imageRightLarge')[0].checked) {
+        $('#layoutZoom').append(`
+        <div class="yourPersonalImage" style="position: absolute; bottom: 0; right: 10px;">
+        <img src="/img/your_image.png" height="250" alt="your image">
+    </div>
+        `);
+    } else if ($('#imageRightSmall')[0].checked) {
+        $('#layoutZoom').append(`
+        <div class="yourPersonalImage" style="position: absolute; bottom: 0; right: 10px;">
+                <img src="/img/your_image.png" height="200" alt="your image">
+            </div>
+        `);
+    } else if ($('#imageLeftLarge')[0].checked) {
+        $('#layoutZoom').append(`
+        <div class="yourPersonalImage" style="position: absolute; bottom: 0; left: 10px;">
+                <img src="/img/your_image.png" height="250" alt="your image">
+            </div>
+        `);
+    } else if ($('#imageLeftSmall')[0].checked) {
+        $('#layoutZoom').append(`
+        <div class="yourPersonalImage" style="position: absolute; bottom: 0; left: 10px;">
+                <img src="/img/your_image.png" height="200" alt="your image">
+            </div>
+        `);
+    } else {
+        console.log('Nothing to display')
+    }
 }
 
 //convert html to png image
 function downloadPoster() {
     var container = document.getElementById("layoutZoom");
-    html2canvas(container, { allowTaint: false }).then(function (canvas) {
+    html2canvas(container, { letterRendering: 1, allowTaint: true }).then(function (canvas) {
 
         var link = document.createElement("a");
         document.body.appendChild(link);
@@ -31,6 +122,13 @@ const bindInputToElement = (inputEl, elementEl) => {
         elementEl.textContent = inputEl.value;
     });
 }
+
+//Adding footer
+$('#foot1').on('click', function () {
+    $('.testElem').remove();
+    $('#layoutZoom').append($('<div id="testElem1" style="position: absolute; z-index: 1; background-color: black; width: 100%; min-height: 20px; bottom: 0;" class="testElem d-flex justify-content-center"></div>'));
+});
+
 
 //binding entered data
 bindInputToElement(
@@ -73,156 +171,4 @@ function sendCmd(command) {
 function sendCommandArg(command, arg) {
     document.execCommand(command, false, arg);
 }
-
-//draggable and resizable
-interact('.resize-drag')
-    .resizable({
-        // resize from all edges and corners
-        edges: { left: false, right: false, bottom: false, top: false },
-
-        listeners: {
-            move(event) {
-                var target = event.target
-                var x = (parseFloat(target.getAttribute('data-x')) || 0)
-                var y = (parseFloat(target.getAttribute('data-y')) || 0)
-
-                // update the element's style
-                target.style.width = event.rect.width + 'px'
-                target.style.height = event.rect.height + 'px'
-
-                // translate when resizing from top or left edges
-                x += event.deltaRect.left
-                y += event.deltaRect.top
-
-                target.style.webkitTransform = target.style.transform =
-                    'translate(' + x + 'px,' + y + 'px)'
-
-                target.setAttribute('data-x', x)
-                target.setAttribute('data-y', y)
-            }
-        },
-        modifiers: [
-            // keep the edges inside the parent
-            interact.modifiers.restrictEdges({
-                outer: 'parent'
-            }),
-        ],
-
-        inertia: true,
-        endOnly: true
-    })
-    .draggable({
-        listeners: {
-            // call this function on every dragmove event
-
-            move: dragMoveListener,
-        },
-        inertia: true,
-        modifiers: [
-            interact.modifiers.restrictRect({
-                restriction: 'parent',
-                endOnly: false
-            })
-        ]
-    })
-function dragMoveListener(event) {
-    var target = event.target
-    // keep the dragged position in the data-x/data-y attributes
-    var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
-    var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
-
-    // translate the element
-    target.style.webkitTransform =
-        target.style.transform =
-        'translate(' + x + 'px, ' + y + 'px)'
-
-    // update the posiion attributes
-    target.setAttribute('data-x', x)
-    target.setAttribute('data-y', y)
-}
-
-// this function is used later in the resizing and gesture demos
-window.dragMoveListener = dragMoveListener
-
-// let posterTags = document.getElementById('poster').querySelectorAll('div, img');
-
-let templateToggle = document.querySelectorAll('.template');
-document.addEventListener('drag', addDrag);
-// document.addEventListener('mouseup', removeDrag);
-function addDrag(e) {
-    e.target.closest('.template').classList.add('resize-drag')
-}
-// function removeDrag(e) {
-//     console.log(e.target.closest('.template'));
-//     e.target.closest('.template').classList.remove('resize-drag')
-// }
-// document.addEventListener('click', function (e) {
-//     e.target.classList.toggle('resize-drag');
-// })
-
-// document.addEventListener('click', function (e) {
-//     for (let i = 0; i < posterTags.length; i++) {
-//         if (posterTags[i].getAttribute('class') == e.target.className) {
-//             console.log(posterTags[i].getAttribute('class'), e.target.className);
-//             console.log("yeahhhh");
-//             e.target.classList.toggle('grabbed');
-//         } else {
-//             console.log(posterTags[i].getAttribute('class'));
-//             console.log(e.target);
-//             console.log("Nope");
-//         }
-//     }
-//     console.log(e.target.className);
-// });
-
-let draggingType;
-
-let itemTypes = document.querySelectorAll("[data-slide-type]");
-console.log(itemTypes);
-let len = itemTypes.length;
-
-for (let i = 0; i < len; i++) {
-    let itemType = itemTypes[i];
-    let slideType;
-
-    console.log(itemType);
-    itemType.addEventListener("dragstart", function (ev) {
-        let self = this;
-        slideType = self.getAttribute("data-slide-type");
-        draggingType = slideType;
-        console.log(slideType);
-    });
-}
-
-var dropZone = document.querySelector("[data-drop-zone]");
-console.log(dropZone);
-dropZone.addEventListener("dragover", function (event) {
-
-    // prevent default to allow drop
-    event.preventDefault();
-}, false);
-dropZone.addEventListener("dragenter", function (event) {
-    console.log(this);
-    // highlight potential drop target when the draggable element enters it
-    if (this.className == "c-drop-zone") {
-        console.log("enter");
-        event.target.classList.toggle("targeted");
-    }
-
-}, false);
-
-// dropZone.addEventListener("dragleave", function (event) {
-
-//     event.target.classList.toggle("targeted");
-
-// }, false);
-
-dropZone.addEventListener("drop", function (ev) {
-    ev.preventDefault();
-    var slideTemplate = document.querySelector('[data-slide-type-template="' + draggingType + '"');
-    console.log('drop');
-    var self = this;
-    self.appendChild(slideTemplate.content.cloneNode(true));
-});
-
 

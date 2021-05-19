@@ -31,17 +31,19 @@ function ajaxRequest(type, url, data, status) {
             if (jqXHR.status == status) {
                 error = false;
                 message = data;
-                console.log(error);
-                console.log(message);
+                console.log('message recieved during ajax call ', message);
             }
             console.log('my status code is ', status);
         },
         error: function (xhr, status, error) {
             message = xhr.responseText;
-            console.log('error', message)
+            // console.log('error', JSON.parse(message).detail);
+            if (JSON.parse(message).detail == 'Invalid token.') {
+                console.log('inside error');
+                location.replace('/login');
+            }
         }
     });
-
     return { "error": error, "message": message };
 }
 
@@ -105,9 +107,10 @@ function fetchCommittee(sub_url) {
 function fetchCommitteeByID(sub_url, id) {
     return getCommitteeByID(sub_url, id, "get", {}, 200)
 }
-//post committee data by ID
-function addCommitteeByID(sub_url) {
-    return postCommitteeByID(sub_url, "get", {}, 200)
+//post committee member data by to add members
+//in use
+function addCommitteeMembers(sub_url, id, data) {
+    return postCommitteeMembers(sub_url, "post", id, data, 200)
 }
 //post committee data by ID
 function updateCommitteeByID(sub_url) {
@@ -253,7 +256,7 @@ function getCommittee(sub_url, type, data, status) {
 }
 //requesting ajax to poist committee data
 //not in use right now
-function postCommitteeMemberbyID(sub_url, id, type, data, status) {
+function postCommitteeMembers(sub_url, type, id, data, status) {
     if (sub_url == 'committee') {
         sub_url = 'committee';
     } else {
@@ -905,24 +908,24 @@ function pivilegeButtons(fName, status) {
 // }
 
 //get privilege link when clicked on privilege link on navbar.
-function getPrivilegesLink(memberPrivilege, committeePrivilege, committeeSpecificPrivilege, verificationPrivilege, adminPrivilege) {
-    if (memberPrivilege != null) {
-        let privilegeLink = document.getElementById('privilegeLinkPage');
-        privilegeLink.href = '/manageMembers';
-    }
-    else if (committeeSpecificPrivilege != null) {
-        let privilegeLink = document.getElementById('privilegeLinkPage');
-        privilegeLink.href = '/manageCommitteeSpecific';
-    }
-    else if (verificationPrivilege != null) {
-        let privilegeLink = document.getElementById('privilegeLinkPage');
-        privilegeLink.href = '/manageVerificationTeam';
-    } else if (adminPrivilege == true) {
-        let privilegeLink = document.getElementById('privilegeLinkPage');
-        privilegeLink.href = '/manageAdmins';
-    }
+// function getPrivilegesLink(memberPrivilege, committeePrivilege, committeeSpecificPrivilege, verificationPrivilege, adminPrivilege) {
+//     if (memberPrivilege != null) {
+//         let privilegeLink = document.getElementById('privilegeLinkPage');
+//         privilegeLink.href = '/manageMembers';
+//     }
+//     else if (committeeSpecificPrivilege != null) {
+//         let privilegeLink = document.getElementById('privilegeLinkPage');
+//         privilegeLink.href = '/manageCommitteeSpecific';
+//     }
+//     else if (verificationPrivilege != null) {
+//         let privilegeLink = document.getElementById('privilegeLinkPage');
+//         privilegeLink.href = '/manageVerificationTeam';
+//     } else if (adminPrivilege == true) {
+//         let privilegeLink = document.getElementById('privilegeLinkPage');
+//         privilegeLink.href = '/manageAdmins';
+//     }
 
-}
+// }
 //search members
 function mySearchFunction(input, members, memberName) {
     let filter, item, i, txtValue, memberSearch = input, memberBlock = members, memberCard = memberName;
