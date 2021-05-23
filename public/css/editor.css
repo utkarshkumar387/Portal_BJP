@@ -135,9 +135,6 @@ color: #FFFFFF !important;
     min-height: 500px;
     background-color: #fff;
 }
-.zoom_container{
-    padding: 8px 12px;
-}
 .editor_zoom{
     /* background: #4b4343; */
     background-color: rgba(237,240,242,.7);
@@ -221,4 +218,8 @@ color: #FFFFFF !important;
 .editorNoraml__header{
     color: #fff;
     margin-left: 10px;
+}
+.html2canvas-container{ 
+    width: 100% !important; 
+    height: 100% !important; 
 }

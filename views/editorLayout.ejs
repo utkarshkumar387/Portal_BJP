@@ -35,29 +35,31 @@
 </head>
 
 <body style="background-color: #E5E5E5;">
-    <nav class="navbar sticky-top navbar-expand-lg editor__navbar justify-content-between">
-        <div class="navbar__left d-flex align-items-center">
-            <a class="editor__back"><img src="img/icons/back.png" /></a>
-            <a class="navbar-brand ml-4" href="#"><img src="img/icons/bjp_logo.png" /></a>
-        </div>
-        <div class="Navbar-end navbar__right">
-            <div class="d-flex align-items-center">
-                <!-- <a class="ml-4"><img src="img/icons/save.png"></a>
-                <a class="ml-4"><img src="img/icons/undo.png"></a>
-                <a class="ml-4"><img src="img/icons/delete.png"></a> -->
-                <a class="button__download ml-4 d-flex align-items-center" onclick="downloadPoster()"
-                    id="download-button"><img class="mr-2" src="img/icons/download_file.png" />Download</a>
-                <a class="button__share ml-4 d-flex align-items-center"><img class="mr-2"
-                        src="img/icons/share_file.png" />Share</a>
+    <div class="sticky-top">
+        <nav class="navbar navbar-expand-lg editor__navbar justify-content-between">
+            <div class="navbar__left d-flex align-items-center">
+                <a class="editor__back"><img src="img/icons/back.png" /></a>
+                <a class="navbar-brand ml-4" href="#"><img src="img/icons/bjp_logo.png" /></a>
             </div>
+            <div class="Navbar-end navbar__right">
+                <div class="d-flex align-items-center">
+                    <a class="ml-4" onclick="getTemplate()"><img src="img/icons/save.png"></a>
+                    <!-- <a class="ml-4"><img src="img/icons/undo.png"></a>
+                    <a class="ml-4"><img src="img/icons/delete.png"></a> -->
+                    <a class="button__download ml-4 d-flex align-items-center" onclick="downloadPoster()"
+                        id="download-button"><img class="mr-2" src="img/icons/download_file.png" />Download</a>
+                    <a class="button__share ml-4 d-flex align-items-center"><img class="mr-2"
+                            src="img/icons/share_file.png" />Share</a>
+                </div>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+                aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+        <div class="d-flex justify-content-between">
+            <%- body -%>
         </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
-            aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </nav>
-    <div class="container-fluid d-flex justify-content-between">
-        <%- body -%>
     </div>
     <!-- Option 1: Bootstrap Bundle with Popper -->
 
