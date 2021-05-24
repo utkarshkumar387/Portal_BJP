@@ -1,0 +1,60 @@
+<% layout('layout') %>
+    <% layout('layout') %>
+        <div class="row mt-4 home">
+            <div class="col-md-3 sidemenu">
+                <div class="component">
+                    <%- include('../../particles/sidebarCommittee.ejs') -%>
+                </div>
+            </div>
+            <div class="col-md-9 myCommittee">
+                <div class="card card_body_dark cardStyle myCommittee__card mb-3">
+                    <img src="https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2020/01/bjp-cec-1579191185.jpg"
+                        alt="">
+                    <div class="myCommittee__data">
+                        <h3 id="myCommitteeName"></h3>
+                        <p class="mt-4" id="myCommitteeDescription"></p>
+                    </div>
+                </div>
+                <div class="card cardStyle card_body_dark mb-5">
+                    <div class="home__blogsHeader headerMain">
+                        <p>Committee Members</p>
+                    </div>
+                    <div class="committee__members">
+                        <label class="search__box d-flex align-items-center mb-4" for="committee__membersSearch">
+                            <span class="serach__icon mr-3">
+                                <img src="/img/icons/search.png" alt="">
+                            </span>
+                            <input id="committee__membersSearch" placeholder="Search" />
+                        </label>
+                        <div class="member__data">
+                            <div class="card cardStyle tab_dark mt-3">
+                                <div class="complaints__header member__inner d-flex justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                        <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
+                                            class="rounded-circle" alt="...">
+                                        <div class="complaints__sender mr-5">
+                                            <b>Abhishek Varde</b>
+                                            <p class="small">Pune, <span>Maharashtra</span>
+                                            </p>
+                                        </div>
+                                        <%- include('../../Atoms/manager.ejs') -%>
+                                    </div>
+                                    <div>
+                                        <a class="member__button mr-3" href="">View</a>
+                                        <img class="member__more dropleft" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false" src="/img/icons/More.png" alt="">
+                                        <div class="dropdown-menu">
+                                            <h6 class="dropdown-header">Dropdown header</h6>
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="allCommitteeMembers"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="application/javascript" src="/js/committee/committeeMy.js"></script>

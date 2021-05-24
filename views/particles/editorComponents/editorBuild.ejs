@@ -1,0 +1,213 @@
+<div class="template__builder px-2 py-2">
+    <h4>Components</h4>
+    <hr style="background-color: #fff !important;">
+    <ul class="nav sidebar flex-column" id="nav_accordion">
+        <li class="nav-item has-submenu">
+            <a class="nav-link" href="#" id="foot1"> Footer </a>
+            <ul class="collapse">
+                <div class="nav-link d-flex justify-content-between align-items-center">
+                    <div>
+                        <input name="MyColorPicker" type="color" id="footerColorPicker" />
+                    </div>
+                    <button class="btn btn-primary"
+                        onclick="changeColor('testElem', 'footerColorPicker')">Apply</button>
+                </div>
+                <!-- <li><a class="nav-link" href="#">Submenu item 1 </a></li>
+                <li><a class="nav-link" href="#">Submenu item 2 </a></li>
+                <li><a class="nav-link" href="#">Submenu item 3 </a> </li> -->
+            </ul>
+        </li>
+        <li class="nav-item has-submenu">
+            <a class="nav-link" href="#"> Social Media links </a>
+            <ul class="collapse">
+                <div class="nav-link">
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" onchange="socialMediaFacebook(this)"
+                            id="facebookCheckbox">
+                        <label class="form-check-label" for="exampleCheck1">Facebook</label>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" onchange="socialMediaInstagram(this)"
+                            id="instagramCheckbox">
+                        <label class="form-check-label" for="exampleCheck1">Instagram</label>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" onchange="socialMediaTwitter(this)"
+                            id="twitterCheckbox">
+                        <label class="form-check-label" for="exampleCheck1">Twitter</label>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" onchange="socialMediaWhatsapp(this)"
+                            id="whatsappCheckbox">
+                        <label class="form-check-label" for="exampleCheck1">whatsapp</label>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <input name="MyColorPicker" type="color" id="socialMediaColorPicker" />
+                        </div>
+                        <button class="btn btn-primary"
+                            onclick="changeTextColor('socialMedia', 'socialMediaColorPicker')">Apply</button>
+                    </div>
+                    <div class="form-group mb-4">
+                        <select onchange="editFontFamily('socialMedia', this.value);" class="form-control"
+                            id="socialMediaFontSelect">
+                            <option value="Arial">Arial</option>
+                            <option value="Comic Sans MS">Comic Sans MS</option>
+                            <option value="Courier">Courier</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Tohoma">Tohoma</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Aparajita">Aparajita</option>
+                        </select>
+                    </div>
+                </div>
+            </ul>
+        </li>
+        <li class="nav-item has-submenu">
+            <a class="nav-link" href="#" id="userProfileImage"> Profile Image </a>
+            <ul class="collapse">
+                <div class="nav-link">
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" onchange="addImage()" name="yourImage"
+                            id="imageNone">
+                        <label class="form-check-label" for="imageNone">
+                            None
+                        </label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" onchange="addImage()" name="yourImage"
+                            id="imageRightLarge">
+                        <label class="form-check-label" for="imageRightLarge">
+                            Right aligned large
+                        </label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" onchange="addImage()" name="yourImage"
+                            id="imageRightSmall">
+                        <label class="form-check-label" for="imageRightSmall">
+                            Right aligned small
+                        </label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" onchange="addImage()" name="yourImage"
+                            id="imageLeftLarge">
+                        <label class="form-check-label" for="imageLeftLarge">
+                            Left aligned large
+                        </label>
+                    </div>
+                </div>
+            </ul>
+        </li>
+        <li class="nav-item has-submenu">
+            <a class="nav-link" href="#" id="userName">Name</a>
+            <ul class="collapse">
+                <div class="nav-link">
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" onchange="addName()" name="yourName"
+                            id="nameRightAligned">
+                        <label class="form-check-label" for="nameRightAligned">
+                            Right aligned
+                        </label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" onchange="addName()" name="yourName"
+                            id="nameLeftAligned">
+                        <label class="form-check-label" for="nameLeftAligned">
+                            Left aligned
+                        </label>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <input name="MyColorPicker" type="color" id="nameColorPicker" />
+                        </div>
+                        <button class="btn btn-primary"
+                            onclick="changeTextColor('userName', 'nameColorPicker')">Apply</button>
+                    </div>
+                    <div class="form-group mb-4">
+                        <select onchange="editFontFamily('userName', this.value);" class="form-control"
+                            id="nameFontSelect">
+                            <option value="Arial">Arial</option>
+                            <option value="Comic Sans MS">Comic Sans MS</option>
+                            <option value="Courier">Courier</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Tohoma">Tohoma</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Aparajita">Aparajita</option>
+                        </select>
+                    </div>
+                </div>
+            </ul>
+        </li>
+        <li class="nav-item has-submenu">
+            <a class="nav-link" href="#" id="userDesignation">Designation</a>
+            <ul class="collapse">
+                <div class="nav-link">
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" onchange="setDesignation()" name="yourDesignation"
+                            id="showDesignation">
+                        <label class="form-check-label" for="showDesignation">
+                            Show
+                        </label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" onchange="setDesignation()" name="yourDesignation"
+                            id="hideDesignation">
+                        <label class="form-check-label" for="hideDesignation">
+                            Hide
+                        </label>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <input name="MyColorPicker" type="color" id="designationColorPicker" />
+                        </div>
+                        <button class="btn btn-primary"
+                            onclick="changeTextColor('userPost', 'designationColorPicker')">Apply</button>
+                    </div>
+                    <div class="form-group mb-4">
+                        <select onchange="editFontFamily('userPost', this.value);" class="form-control"
+                            id="designationFontSelect">
+                            <option value="Arial">Arial</option>
+                            <option value="Comic Sans MS">Comic Sans MS</option>
+                            <option value="Courier">Courier</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Tohoma">Tohoma</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Aparajita">Aparajita</option>
+                        </select>
+                    </div>
+                </div>
+            </ul>
+        </li>
+        <li class="nav-item has-submenu">
+            <a class="nav-link" href="#" id="userBusinessLogo"> Business Logo </a>
+            <ul class="collapse">
+                <div class="nav-link">
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" onchange="addBusinessLogo()" name="yourImage"
+                            id="logoNone">
+                        <label class="form-check-label" for="logoNone">
+                            None
+                        </label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" onchange="addBusinessLogo()" name="yourImage"
+                            id="logoRightAligned">
+                        <label class="form-check-label" for="logoRightAligned">
+                            Right aligned
+                        </label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" onchange="addBusinessLogo()" name="yourImage"
+                            id="logoLeftAligned">
+                        <label class="form-check-label" for="logoLeftAligned">
+                            Left aligned
+                        </label>
+                    </div>
+                </div>
+            </ul>
+        </li>
+    </ul>
+</div>

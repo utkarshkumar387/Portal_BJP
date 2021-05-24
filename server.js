@@ -1,5 +1,4 @@
 var express = require('express');
-var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var ejs = require('ejs');
 var expressLayouts = require('express-ejs-layouts');
@@ -15,11 +14,6 @@ app.use(express.static(__dirname + '/public'));
 app.engine('ejs', engine);
 app.set('views', './views');
 app.set('view engine', 'ejs');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
 app.use(morgan('dev'));
 
 require('./routes/routes')(app);

@@ -223,3 +223,6 @@ color: #FFFFFF !important;
     width: 100% !important; 
     height: 100% !important; 
 }
+.colorpick-eyedropper-input-trigger {
+    display: none;
+}

@@ -425,7 +425,6 @@ function checkCookie() {
     if (adminPrivilege != null) {
         //displaying privilege link according to cookie
         $('#privilegesLink').css('display', 'block')
-        getPrivilegesLink(memberPrivilege, committeePrivilege, committeeSpecificPrivilege, verificationPrivilege, adminPrivilege)
     }
 
     //If member has permission to privilege for blog, event & complaint then store its boolean value
@@ -437,7 +436,7 @@ function checkCookie() {
         verificationPrivilegeComplaint = permissionsStringify.verification_privilege.manage_complaint;
         console.log(verificationPrivilegeComplaint);
     }
-
+    console
     let sendLinkToChangeStatus = link[3];
     if (memberPrivilege == null && committeePrivilege == null && committeeSpecificPrivilege == null && verificationPrivilege == null && adminPrivilege == false) {
         $('#footerLikeDislike').append(`

@@ -1,0 +1,21 @@
+<% layout('layout') %>
+    <% layout('layout') %>
+        <div class="row mt-4 home">
+            <div class="col-md-3 sidemenu">
+                <div class="component">
+                    <%- include('../../particles/sidebarCommittee.ejs') -%>
+                </div>
+            </div>
+            <div class="col-md-9 home__content mb-5">
+                <div class="card card_body_dark">
+                    <div class="home__blogsHeader headerMain">
+                        <p>All Committees</p>
+                    </div>
+                    <div class="events">
+                        <div class="row" id="committeeBlock">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="application/javascript" src="/js/committee/committees.js"></script>
