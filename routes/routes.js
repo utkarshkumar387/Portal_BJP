@@ -4,7 +4,7 @@ module.exports = function (app) {
         if (req.cookies.token) {
             res.render('templates/index')
         } else {
-            res.render('templates/login')
+            res.render('templates/logIn')
         }
     })
 
