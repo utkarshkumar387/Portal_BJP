@@ -1,0 +1,29 @@
+<% layout('layout') %>
+    <div class="row mt-4 home">
+        <div class="col-md-3 sidemenu">
+            <div class="component">
+                <%- include('../particles/sidebarComplaints.ejs') -%>
+            </div>
+        </div>
+        <div class="col-md-9 home__content">
+            <div class="card home__complaints card_body_dark cardStyle mb-5" id="home__complaints">
+                <div class="home__complaintsHeader complaints__Sorting headerMain">
+                    <p>Unapproved Complaints</p>
+                    <!-- <div class="sorting">
+                        <label for="exampleFormControlSelect1">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>Sort By</option>
+                                <option>One week</option>
+                                <option>One month</option>
+                                <option>Three months</option>
+                                <option>Six month</option>
+                            </select>
+                        </label>
+                    </div> -->
+                </div>
+                <div class="home__complaintsCard blogsCard" id="complaintsUnapproved">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="application/javascript" src="/js/complaints/complaintsUnapproved.js"></script>

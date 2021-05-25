@@ -1,0 +1,110 @@
+<% layout('editorLayout') %>
+    <div class="item scroller leftsidebar">
+        <ul class="list-unstyled components nav d-block" id="myTab" role="tablist">
+            <li class="d-flex justify-content-center list">
+                <a class="nav-link align-items-center active" id="build-tab" data-toggle="tab" href="#build" role="tab"
+                    aria-controls="text" aria-selected="true">
+                    <i class="fa fa-tools mb-2" aria-hidden="true" style="font-size: 24px;"></i>
+                    Build
+                </a>
+            </li>
+            <li class="d-flex justify-content-center list">
+                <a class="nav-link align-items-center" id="templates-tab" data-toggle="tab" href="#templates" role="tab"
+                    aria-controls="templates" aria-selected="false">
+                    <img src="img/icons/template.png" class="mb-2" />
+                    Templates
+                </a>
+            </li>
+            <li class="d-flex justify-content-center list">
+                <a class="nav-link align-items-center" id="backgrounds-tab" data-toggle="tab" href="#backgrounds"
+                    role="tab" aria-controls="backgrounds" aria-selected="false">
+                    <img src="img/icons/background.png" class="mb-2" />
+                    Backgrounds
+                </a>
+            </li>
+            <!-- <li class="d-flex justify-content-center list">
+                <a class="nav-link align-items-center" id="text-tab" data-toggle="tab" href="#text" role="tab"
+                    aria-controls="text" aria-selected="false">
+                    <img src="img/icons/typo.png" class="mb-2" alt="">
+                    Text
+                </a>
+            </li> -->
+            <li class="d-flex justify-content-center list">
+                <a class="nav-link align-items-center" id="details-tab" data-toggle="tab" href="#details" role="tab"
+                    aria-controls="details" aria-selected="false">
+                    <img src="img/icons/details.png" class="mb-2" />
+                    Details
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="layout d-flex mt-5" style="position: relative;" id="layoutCanvas">
+        <div id="layoutInner"
+            style="height: 500px; width: 500px; background: url('img/happy_diwali.jpg') no-repeat center;">
+        </div>
+    </div>
+    <div class="item scroller rightsidebar">
+        <div class="inner rightsidebar__inner">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade" id="details" role="tabpanel" aria-labelledby="details-tab">
+                    <%- include('../particles/editorComponents/editorDetails.ejs') -%>
+                </div>
+                <div class="tab-pane fade" id="templates" role="tabpanel" aria-labelledby="templates-tab">
+                    <%- include('../particles/editorComponents/editorTemplates.ejs') -%>
+                </div>
+                <div class="tab-pane fade" id="backgrounds" role="tabpanel" aria-labelledby="backgrounds-tab">
+                    <%- include('../particles/editorComponents/editorBackgrounds.ejs') -%>
+                </div>
+                <div class="tab-pane fade show active" id="build" role="tabpanel" aria-labelledby="build-tab">
+                    <%- include('../particles/editorComponents/editorBuild.ejs') -%>
+                </div>
+                <div class="tab-pane fade" id="text" role="tabpanel" aria-labelledby="text-tab">
+                    <div class="form-group mb-4">
+                        <label for="fontSelect">Font</label>
+                        <select onchange="sendCommandArg('fontName', this.value);" class="form-control" id="fontSelect">
+                            <option value="Arial">Arial</option>
+                            <option value="Comic Sans MS">Comic Sans MS</option>
+                            <option value="Courier">Courier</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Tohoma">Tohoma</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Aparajita">Aparajita</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="fontSize">Font Size</label>
+                        <input onchange="sendCommandArg('fontSize', this.value)" type="range" class="form-control"
+                            id="fontSize" min="10" max="100" value="18" name="font-size" data-sizing="px" />
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="fontColor">Font Color
+                            <div class="d-flex justify-content-between">
+                                <input onchange="sendCommandArg('foreColor', this.value);" type="color" id="fontColor"
+                                    class="form-control" />
+                                <span>Color</span>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label>Font Emphasize</label>
+                        <div class="d-flex justify-content-between">
+                            <button onclick="sendCmd('bold');" class="btn fa fa-bold"></button>
+                            <button onclick="sendCmd('italic');" class="btn fa fa-italic"></button>
+                            <button onclick="sendCmd('underline');" class="btn fa fa-underline"></button>
+                            <button onclick="sendCmd('strikeThrough');" class="btn fa fa-strikethrough"></button>
+                        </div>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label>Font Alignment</label>
+                        <div class="d-flex justify-content-between">
+                            <button onclick="sendCmd('justifyRight');" class="btn fa fa-align-right"></button>
+                            <button onclick="sendCmd('justifyCenter');" class="btn fa fa-align-center"></button>
+                            <button onclick="sendCmd('justifyLeft');" class="btn fa fa-align-left"></button>
+                            <button onclick="sendCmd('justifyFull');" class="btn fa fa-align-justify"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
