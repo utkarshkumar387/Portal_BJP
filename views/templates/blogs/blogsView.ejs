@@ -1,0 +1,56 @@
+<% layout('layout') %>
+    <div class="row mt-4 home">
+        <div class="col-md-3 sidemenu">
+            <div class="component">
+                <%- include('../../particles/sidebarBlog.ejs') -%>
+            </div>
+        </div>
+        <div class="col-md-9 home__content">
+            <div class="card card_body_dark home__blogs mb-5 cardStyle">
+                <div class="home__blogsHeader headerMain">
+                    <p id="blogTitle"></p>
+                </div>
+                <div class="home__blogsCard blogsCard">
+                    <div class="blogsData">
+                        <img id="blogImage" alt="Blog Image">
+                        <p class="mt-4" id="blogContent"></p>
+                    </div>
+                    <div class="blogsAttachmnets">
+                        <div class="row">
+                            <div class="col-md-4">
+
+                            </div>
+                            <div class="col-md-8">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blogsFooter row" style="margin:0 !important;" id="footerPrivilege">
+                        <div class="complaints__header col-md-4">
+                            <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
+                                class="rounded-circle" alt="...">
+                            <div class="complaints__sender">
+                                <strong id="blogAuthorName"></strong>
+                                <p class="small"><span id="blogDistrict"></span>, <span id="blogState"></span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="blogsDate col-md-4" id="contentUpdateDate">
+                        </div>
+                        <div class="d-flex footerLikeDislike col-md-4 justify-content-end" id="footerLikeDislike">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between" id="privilegeButtons">
+                    </div>
+                </div>
+            </div>
+            <div class="card card_body_dark home__blogs mb-5 cardStyle" id="home__blogs">
+                <div class="home__blogsHeader headerMain">
+                    <p>Recent Blogs</p>
+                </div>
+                <div class="home__blogsCard blogsCard" id="blogviewBlogsBlock">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="application/javascript" src="/js/blogs/blogView.js"></script>

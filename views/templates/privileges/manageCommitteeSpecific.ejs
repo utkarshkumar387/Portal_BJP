@@ -1,0 +1,26 @@
+<% layout('layout') %>
+    <div class="row mt-4 home">
+        <div class="col-md-3 sidemenu">
+            <div class="component">
+                <%- include('../../particles/sidebarAdmins.ejs') -%>
+            </div>
+        </div>
+        <div class="card col-md-9 mb-5">
+            <div class="home__blogsHeader headerMain d-flex justify-content-between align-items-center">
+                <p>Manage Committee Specific</p>
+                <a href="/members/manageCommSpecific" class="btn btn-success">Add manager</a>
+            </div>
+            <div class="committee__members">
+                <label class="search__box d-flex align-items-center mb-4" for="committee__membersSearch">
+                    <span class="serach__icon mr-3">
+                        <img src="/img/icons/search.png" alt="">
+                    </span>
+                    <input id="committee__membersSearch" placeholder="Search" />
+                </label>
+                <div class="member__data" id="manageComSpecificBlock">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script type="application/javascript" src="/js/privileges/manageComSpecific.js"></script>

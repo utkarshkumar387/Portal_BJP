@@ -1,0 +1,24 @@
+<% layout('editorLayout') %>
+    <div class="item scroller leftsidebarNormal">
+        <div class="inner leftsidebar__inner">
+            <h4 class="editorNoraml__header">Templates</h4>
+            <hr style="background-color: #fff !important;">
+
+            <%- include('../../particles/editorTemplates.ejs') -%>
+        </div>
+    </div>
+    <div class="item scroller workarea">
+        <div class="inner box mt-4 mb-4">
+            <div class="layout c-drop-zone" onload="enableEditMode();" data-drop-zone id="layoutZoom">
+            </div>
+        </div>
+    </div>
+    <div class="item scroller rightsidebar">
+        <div class="inner rightsidebar__inner">
+            <h4 class="editorNoraml__header">Backgrounds</h4>
+            <hr style="background-color: #fff !important;">
+            <%- include('../../particles/editorBackgrounds.ejs') -%>
+        </div>
+    </div>
+    </div>
+    <script type="application/javascript" src="/js/editorNormalAbhishek.js"></script>

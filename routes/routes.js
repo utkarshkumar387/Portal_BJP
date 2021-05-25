@@ -2,7 +2,7 @@ module.exports = function (app) {
     app.get('/', function (req, res, next) {
         res.clearCookie("privilege");
         if (req.cookies.token) {
-            res.render('templates/index')
+            res.render('templates/homepage/index')
         } else {
             res.render('templates/authentication/logIn')
         }
@@ -11,7 +11,7 @@ module.exports = function (app) {
     app.route('/profileEdit')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/profileEdit')
+                res.render('templates/profile/profileEdit')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -19,7 +19,7 @@ module.exports = function (app) {
     app.route('/profileEdit/:id')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/profileEdit')
+                res.render('templates/profile/profileEdit')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -29,7 +29,7 @@ module.exports = function (app) {
         .get(function (req, res, next) {
             res.clearCookie("member_profile");
             if (req.cookies.token) {
-                res.render('templates/profile')
+                res.render('templates/profile/profile')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -46,7 +46,7 @@ module.exports = function (app) {
     app.route('/eventsView/:id')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/eventsView')
+                res.render('templates/events/eventsView')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -54,7 +54,7 @@ module.exports = function (app) {
     app.route('/eventsView/:id/:str')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/eventsView')
+                res.render('templates/events/eventsView')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -63,7 +63,7 @@ module.exports = function (app) {
     app.route('/eventsPending')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/eventsPending')
+                res.render('templates/events/eventsPending')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -72,7 +72,7 @@ module.exports = function (app) {
     app.route('/eventsRejected')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/eventsRejected')
+                res.render('templates/events/eventsRejected')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -81,7 +81,7 @@ module.exports = function (app) {
     app.route('/eventsApproved')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/eventsApproved')
+                res.render('templates/events/eventsApproved')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -89,7 +89,7 @@ module.exports = function (app) {
     app.route('/eventsForm')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/eventsForm')
+                res.render('templates/events/eventsForm')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -97,7 +97,7 @@ module.exports = function (app) {
     app.route('/eventsForm/:id/:str')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/eventsForm')
+                res.render('templates/events/eventsForm')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -105,7 +105,7 @@ module.exports = function (app) {
     app.route('/editorCustom')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/editorCustom')
+                res.render('templates/editor/editorCustom')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -113,7 +113,7 @@ module.exports = function (app) {
     app.route('/editorNormal')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/editorNormal')
+                res.render('templates/editor/editorNormal')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -121,7 +121,7 @@ module.exports = function (app) {
     app.route('/complaintsView/:id')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/complaintsView')
+                res.render('templates/complaints/complaintsView')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -130,7 +130,7 @@ module.exports = function (app) {
     app.route('/complaintsPending')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/complaintsPending')
+                res.render('templates/complaints/complaintsPending')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -139,7 +139,7 @@ module.exports = function (app) {
     app.route('/complaintsRejected')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/complaintsRejected')
+                res.render('templates/complaints/complaintsRejected')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -165,7 +165,7 @@ module.exports = function (app) {
     app.route('/blogForm/:id/:str')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/blogForm')
+                res.render('templates/blogs/blogForm')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -173,7 +173,7 @@ module.exports = function (app) {
     app.route('/blogForm')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/blogForm')
+                res.render('templates/blogs/blogForm')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -182,7 +182,7 @@ module.exports = function (app) {
     app.route('/complaintsApproved')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/complaintsApproved')
+                res.render('templates/complaints/complaintsApproved')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -198,7 +198,7 @@ module.exports = function (app) {
     app.route('/complaintsView/:id/:str')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/complaintsView')
+                res.render('templates/complaints/complaintsView')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -208,7 +208,7 @@ module.exports = function (app) {
         .get(function (req, res, next) {
             res.clearCookie("member_profile");
             if (req.cookies.token) {
-                res.render('templates/committeeMy')
+                res.render('templates/committee/committeeMy')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -217,7 +217,7 @@ module.exports = function (app) {
         .get(function (req, res, next) {
             res.clearCookie("member_profile");
             if (req.cookies.token) {
-                res.render('templates/committeeMy')
+                res.render('templates/committee/committeeMy')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -225,7 +225,7 @@ module.exports = function (app) {
     app.route('/committeeClicked/:id')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/committeeClicked')
+                res.render('templates/committee/committeeClicked')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -234,7 +234,7 @@ module.exports = function (app) {
     app.route('/committees')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/committees')
+                res.render('templates/committee/committees')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -244,7 +244,7 @@ module.exports = function (app) {
         .get(function (req, res, next) {
             res.clearCookie("privilege");
             if (req.cookies.token) {
-                res.render('templates/blogsView')
+                res.render('templates/blogs/blogsView')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -254,7 +254,7 @@ module.exports = function (app) {
         .get(function (req, res, next) {
             res.clearCookie("privilege");
             if (req.cookies.token) {
-                res.render('templates/blogsView')
+                res.render('templates/blogs/blogsView')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -263,7 +263,7 @@ module.exports = function (app) {
     app.route('/blogsPending')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/blogsPending')
+                res.render('templates/blogs/blogsPending')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -272,7 +272,7 @@ module.exports = function (app) {
     app.route('/blogsRejected')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/blogsRejected')
+                res.render('templates/blogs/blogsRejected')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -281,7 +281,7 @@ module.exports = function (app) {
     app.route('/blogsApproved')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/blogsApproved')
+                res.render('templates/blogs/blogsApproved')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -289,7 +289,7 @@ module.exports = function (app) {
     // app.route('/test')
     //     .get(function (req, res, next) {
     //         if (req.cookies.token) {
-    //             res.render('templates/eventsPending')
+    //             res.render('templates/events/eventsPending')
     //         } else {
     //             res.render('templates/notlogIned');
     //         }
@@ -308,9 +308,9 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.clearCookie("privilege");
                 if (JSON.parse(req.cookies.privilege).admin_privilege != null) {
-                    res.render('templates/manageAdmins')
+                    res.render('templates/privileges/manageAdmins')
                 } else {
-                    res.render('templates/accessDenied')
+                    res.render('templates/accessDenied/accessDenied')
                 }
             } else {
                 res.render('templates/authentication/logIn')
@@ -321,9 +321,9 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.clearCookie("privilege");
                 if (JSON.parse(req.cookies.privilege).admin_privilege != null) {
-                    res.render('templates/manageCommittee')
+                    res.render('templates/privileges/manageCommittee')
                 } else {
-                    res.render('templates/accessDenied')
+                    res.render('templates/accessDenied/accessDenied')
                 }
             } else {
                 res.render('templates/authentication/logIn')
@@ -334,9 +334,9 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.clearCookie("privilege");
                 if (JSON.parse(req.cookies.privilege).admin_privilege != null) {
-                    res.render('templates/manageCommitteeSpecific')
+                    res.render('templates/privileges/manageCommitteeSpecific')
                 } else {
-                    res.render('templates/accessDenied')
+                    res.render('templates/accessDenied/accessDenied')
                 }
             } else {
                 res.render('templates/authentication/logIn')
@@ -347,10 +347,10 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.clearCookie("privilege");
                 if (JSON.parse(req.cookies.privilege).admin_privilege != null) {
-                    res.render('templates/manageMembers')
+                    res.render('templates/privileges/manageMembers')
                 } else {
                     // res.clearCookie("privilege");
-                    res.render('templates/accessDenied')
+                    res.render('templates/accessDenied/accessDenied')
                 }
             } else {
                 res.render('templates/authentication/logIn')
@@ -361,11 +361,11 @@ module.exports = function (app) {
             if (req.cookies.token) {
                 res.clearCookie("privilege");
                 if (JSON.parse(req.cookies.privilege).admin_privilege != null) {
-                    res.render('templates/manageVerificationTeam')
+                    res.render('templates/privileges/manageVerificationTeam')
                 }
                 else {
                     // res.clearCookie("privilege");
-                    res.render('templates/accessDenied')
+                    res.render('templates/accessDenied/accessDenied')
                 }
             } else {
                 res.render('templates/authentication/logIn')
@@ -374,7 +374,7 @@ module.exports = function (app) {
     app.route('/committeeForm')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/committeeForm')
+                res.render('templates/committee/committeeForm')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -393,7 +393,7 @@ module.exports = function (app) {
         })
     app.route('/IDcard')
         .get(function (req, res, next) {
-            res.render('templates/IDcard')
+            res.render('templates/IDcard/IDcard')
         })
 }
 

@@ -1,0 +1,49 @@
+<% layout('layout') %>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content card_body_dark" id="memberListAddAdmin">
+                <div class="home__blogsHeader headerMain">
+                    <p>Add member Manager</p>
+                </div>
+                <div class="committee__members">
+                    <label class="search__box d-flex align-items-center mb-4" for="committee__membersAddSearch">
+                        <span class="serach__icon mr-3">
+                            <img src="/img/icons/search.png" alt="">
+                        </span>
+                        <input id="committee__membersAddSearch" placeholder="Search" />
+                    </label>
+                    <div class="member__data" id="allMembersDataAdmins">
+                    </div>
+                    <button style="width: 100%;" onclick="addAllMembersToList()" type="button" data-toggle="modal"
+                        data-target="#exampleModalCenter" class='btn btn-primary mt-3'>Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4 home">
+        <div class="col-md-3 sidemenu">
+            <div class="component">
+                <%- include('../../particles/sidebarAdmins.ejs') -%>
+            </div>
+        </div>
+        <div class="card cardStyle card_body_dark col-md-9 mb-5">
+            <div class="home__blogsHeader headerMain d-flex justify-content-between align-items-center">
+                <p>Manage Members</p>
+                <button href="/members/manageMembers" class="btn btn-success" data-toggle="modal"
+                    data-target=".bd-example-modal-lg">Add Admin</button>
+            </div>
+            <div class="committee__members">
+                <label class="search__box d-flex align-items-center mb-4" for="committee__membersSearch">
+                    <span class="serach__icon mr-3">
+                        <img src="/img/icons/search.png" alt="">
+                    </span>
+                    <input id="committee__membersSearch" placeholder="Search" />
+                </label>
+                <div class="member__data" id="manageMembersData">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script type="application/javascript" src="/js/privileges/manageMembers.js"></script>

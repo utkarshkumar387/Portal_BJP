@@ -1,0 +1,276 @@
+<% layout('layout') %>
+    <div class="row mt-4 home">
+        <div class="col-md-3 sidemenu">
+            <div class="component">
+                <%- include('../../particles/sidebarProfile.ejs') -%>
+            </div>
+        </div>
+        <div class="col-md-9 home__content">
+            <div class="card card_body_dark home__events cardStyle" id="home__events">
+                <div class="home__eventsHeader profileHeader headerMain d-flex py-4">
+                    <div class="profile__headerData">
+                        <p class="profile__name" id="memberName"></p>
+                        <p class="profile__committeeDetails" id="memberCommitteName"></p>
+                    </div>
+                    <div class="edit">
+                        <a id="editButton" class="edit__button">Edit Profile</a>
+                    </div>
+                </div>
+                <div class="profile__details">
+                    <div class="profile__about row">
+                        <div class="col-md-6">
+                            <div class="card tab_dark cardStyle mt-4 px-3 py-3">
+                                <div class="profile__header">
+                                    <p><b>ABOUT</b></p>
+                                </div>
+                                <div class="mt-4">
+                                    <!-- <div class="row">
+                                        <div class="col-md-5">
+                                            <p>Username</p>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <p id="memberUsername"></p>
+                                        </div>
+                                    </div> -->
+                                    <div class="row">
+                                        <div class="col-md-6 title">
+                                            <p><i class="fas fa-user"></i> Full Name</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p id="memberFullname"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 title">
+                                            <p><i class="fas fa-at"></i> Email ID</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p id="memberEmail"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 title">
+                                            <p><i class="fas fa-phone-alt"></i> Phone Number</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>+<span id="memberPhone"></span></p>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="row">
+                                        <div class="col-md-5">
+                                            <p>Profession</p>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <p id="memberProfession"></p>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card tab_dark cardStyle mt-4 px-3 py-3">
+                                <div class="profile__header">
+                                    <p><b>IDENTIFICATION DETAILS</b></p>
+                                </div>
+                                <div class="mt-4">
+                                    <div class="row">
+                                        <div class="col-md-6 title">
+                                            <p><i class="fas fa-address-card"></i> Voter ID card</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p id="memberVoterID"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 title">
+                                            <p><i class="fas fa-id-card"></i> Adhar Card</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p id="memberaAdhar"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 title">
+                                            <p><i class="fas fa-id-card"></i> PAN Card</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p id="memberPAN"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile__social">
+                        <div class="card tab_dark cardStyle px-3 py-3">
+                            <div class="profile__header">
+                                <p><b>SOCIAL LINKS</b></p>
+                            </div>
+                            <div class="mt-4">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p><i class="fab fa-facebook"></i> Facebook Link</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <a href="#" id="memberFacebookLink"></a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p><i class="fab fa-instagram"></i> Instagram Link</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <a href="#" id="memberInstagramLink"></a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p><i class="fab fa-twitter"></i> Twitter Link</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <a href="#" id="memberTwitterLink"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile__detailsMore">
+                    <div class="profile__detailsOfficial">
+                        <div class="card tab_dark cardStyle mt-4 px-3 py-3">
+                            <div class="profile__header mt-4">
+                                <p><b>OFFICIAL DETAILS</b></p>
+                            </div>
+                            <div class="mt-4">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p><i class="fas fa-map-marker-alt"></i> State</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <p id="memberState"></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p><i class="fas fa-map-pin"></i> District</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <p id="memberDistrict"></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p><i class="fas fa-building"></i> Lok Shabha constituency</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <p id="memberLokSabha"></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p><i class="fas fa-city"></i> legislative assembly constituency</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <p id="memberVidhanSabha"></p>
+                                    </div>
+                                </div>
+                                <!-- <div class="row">
+                                    <div class="col-md-5">
+                                        <p>Panchayat Samiti</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <p id="memberPanchayatSamiti"></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p>Village council</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <p id="memberGramPanchayat"></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p>Revenue Village</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <p id="memberRevenueVillage"></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p>Parliament constituency</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <p id="memberTehsil"></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p>Subdivision</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <p id="memberUpkhand"></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p>Administrative division</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <p id="memberTehsil"></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p>Booth</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <p id="memberBooth"></p>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card card_body_dark cardStyle mt-4">
+                <div class="home__blogsHeader headerMain d-flex align-items-center justify-content-between py-4">
+                    <p>My Events</p>
+                    <div class="edit">
+                        <a class="edit__button" href="/eventsForm">New Event</a>
+                    </div>
+                </div>
+                <div class="events">
+                    <div class="row" id="profileEventsBlock">
+                        <!-- <% for (var i=1; i <=6; i++ ) { %>
+                            <div class="col-md-4 events__card mb-4 px-3">
+                            </div>
+                            <% } %> -->
+                    </div>
+                </div>
+            </div>
+            <div class="card card_body_dark home__blogs mt-4 cardStyle" id="home__blogs">
+                <div class="home__blogsHeader headerMain d-flex align-items-center justify-content-between py-4">
+                    <p>My Blogs</p>
+                    <div class="edit">
+                        <a class="edit__button" href="/blogForm">New Blog</a>
+                    </div>
+                </div>
+                <div class="home__blogsCard blogsCard" id="profileBlogsBlock">
+                </div>
+            </div>
+            <div class="card card_body_dark home__complaints mt-4 cardStyle mb-5" id="home__complaints">
+                <div class="home__blogsHeader headerMain d-flex align-items-center justify-content-between py-4">
+                    <p>My Complaints</p>
+                    <div class="edit">
+                        <a class="edit__button" href="/complaintsForm">New Complaint</a>
+                    </div>
+                </div>
+                <div class="home__complaintsCard blogsCard" id="profileComplaintsBlock">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="application/javascript" src="/js/profile/profile.js"></script>
