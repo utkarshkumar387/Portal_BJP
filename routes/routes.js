@@ -7,7 +7,6 @@ module.exports = function (app) {
             res.render('templates/authentication/logIn')
         }
     })
-
     app.route('/profileEdit')
         .get(function (req, res, next) {
             if (req.cookies.token) {
@@ -24,7 +23,6 @@ module.exports = function (app) {
                 res.render('templates/authentication/logIn')
             }
         })
-
     app.route('/profile/:id')
         .get(function (req, res, next) {
             res.clearCookie("member_profile");
@@ -34,7 +32,6 @@ module.exports = function (app) {
                 res.render('templates/authentication/logIn')
             }
         })
-
     // app.route('/privileges')
     //     .get(function (req, res, next) {
     //         if (req.cookies.token) {
@@ -59,7 +56,6 @@ module.exports = function (app) {
                 res.render('templates/authentication/logIn')
             }
         })
-
     app.route('/eventsPending')
         .get(function (req, res, next) {
             if (req.cookies.token) {
@@ -68,7 +64,6 @@ module.exports = function (app) {
                 res.render('templates/authentication/logIn')
             }
         })
-
     app.route('/eventsRejected')
         .get(function (req, res, next) {
             if (req.cookies.token) {
@@ -77,7 +72,6 @@ module.exports = function (app) {
                 res.render('templates/authentication/logIn')
             }
         })
-
     app.route('/eventsApproved')
         .get(function (req, res, next) {
             if (req.cookies.token) {
