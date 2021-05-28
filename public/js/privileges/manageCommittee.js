@@ -1,6 +1,6 @@
 let link = ['', '', '', ''];
-let allMembers = fetchProfileData('get_all_members');
-let allCommitteePrivilegeMembers = fetchAllAdminData('committee');
+let allMembers = getRequest.member('get_all_members');
+let allCommitteePrivilegeMembers = getRequest.admin('committee');
 console.log(allMembers);
 console.log('all manage committee memebers are ', allCommitteePrivilegeMembers);
 if (allCommitteePrivilegeMembers.error == false) {
@@ -39,7 +39,7 @@ if (allCommitteePrivilegeMembers.error == false) {
 }
 
 function removePrivilege(id) {
-    let response = removePrivilegeByID('committee', id);
+    let response = deleteRequest.admin('committee', id);
     console.log(response);
     if (!response.error) {
         window.location.reload();
@@ -154,8 +154,8 @@ function addAllMembersToList() {
     // let data = allMembers;
     // console.log(data);
     let data = stringifyMemebers;
-    console.log('data to post', data);
-    let addCommitteePrivilege = postPrivilegeRequest('committee', data);
+    // console.log('data to post', data);
+    let addCommitteePrivilege = postRequest.admin('committee', data);
     if (addCommitteePrivilege.error == false) {
         window.location.reload();
     } else {

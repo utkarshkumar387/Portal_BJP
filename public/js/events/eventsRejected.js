@@ -1,7 +1,7 @@
 let link = ['', '', '', 'eventsView'];
-let contentEvents = fetchContent('events/rejected');
+let contentEvents = getRequest.content('events/rejected');
 let events = contentEvents.message.results;
-console.log(events);
+// console.log(events);
 
 if (contentEvents.error == false) {
     //appending Events
@@ -14,7 +14,7 @@ if (contentEvents.error == false) {
         let eventImage;
         if (events[i].images.length > 0) {
             for (let j = 0; j < events[i].images.length; j++) {
-                console.log(events[i].images[j].image);
+                // console.log(events[i].images[j].image);
                 eventImage = `${events[i].images[j].image}`;
             }
         } else {

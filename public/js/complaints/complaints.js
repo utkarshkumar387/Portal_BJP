@@ -1,6 +1,6 @@
 let link = ['', '', '', 'blogsView'];
-let contentComplaints = fetchContent('complaints/approved');
-console.log(contentComplaints);
+let contentComplaints = getRequest.content('complaints/approved');
+// console.log(contentComplaints);
 let complaints = contentComplaints.message.results;
 if (contentComplaints.error == false) {
     //appending complaints

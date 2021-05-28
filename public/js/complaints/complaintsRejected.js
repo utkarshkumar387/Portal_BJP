@@ -1,7 +1,7 @@
 let link = ['', '', '', 'complaintsView'];
-let contentComplaints = fetchContent('complaints/rejected');
+let contentComplaints = getRequest.content('complaints/rejected');
 let complaints = contentComplaints.message.results;
-console.log(complaints);
+// console.log(complaints);
 
 if (contentComplaints.error == false) {
     //appending complaints

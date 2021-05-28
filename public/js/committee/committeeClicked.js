@@ -1,13 +1,13 @@
 let link = window.location.href.split('/');
-let allMembers = fetchProfileData('get_all_members');
+let allMembers = getRequest.member('get_all_members');
 console.log('all members in add members in committee are ', allMembers);
 // console.log(link);
 let committeeID = link[4];
-let committeeDetails = fetchCommitteeByID(`committee`, committeeID);
+let committeeDetails = getRequest.committee(`committee`, committeeID);
 console.log(committeeDetails);
 let committee = committeeDetails.message.committee_data;
 if (committeeDetails.error == false) {
-    console.log(committee);
+    // console.log(committee);
     let committeeLeader;
     let committeeLeaderAddress;
     if (committee.leader) {
@@ -17,7 +17,7 @@ if (committeeDetails.error == false) {
         committeeLeader = 'No leader';
         committeeLeaderAddress = 'Place';
     }
-    console.log(committeeLeader, committeeLeaderAddress);
+    // console.log(committeeLeader, committeeLeaderAddress);
     $('#committeeName').html(committee.title);
     $('#committeeDesc').html(committee.description);
     (committee.image) ? $('.committeeImage').attr('src', `${committee.image}`) : $('.committeeImage').attr('src', 'https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2020/01/bjp-cec-1579191185.jpg')
@@ -62,7 +62,7 @@ function searchFunction() {
     let input1 = document.getElementById('committee__membersSearch').id;
     let members1 = document.getElementById('committeeMemberBlock').id;
     let memberName1 = document.getElementById('memberCard').id;
-    console.log(input1, members1, memberName1);
+    // console.log(input1, members1, memberName1);
     mySearchFunction(input1, members1, memberName1);
 }
 // function mySearchFunction(input, members, memberName) {
@@ -113,11 +113,11 @@ function addAllMembersToList() {
     // let data = allMembers;
     // console.log(data);
     let data = stringifyMemebers;
-    console.log('data to post', data);
-    let addMemberAdmins = addCommitteeMembers('add_members_to_committee', committeeID, data);
-    console.log('error while adding committee members', addMemberAdmins.error);
-    console.log('committee in which we want to insert members ', committeeID);
-    console.log('members whow we want to insert ', data);
+    // console.log('data to post', data);
+    let addMemberAdmins = postRequest.committee('add_members_to_committee', committeeID, data);
+    // console.log('error while adding committee members', addMemberAdmins.error);
+    // console.log('committee in which we want to insert members ', committeeID);
+    // console.log('members whow we want to insert ', data);
     if (addMemberAdmins.error == false) {
         console.log('member added in committee successfully');
         // window.location.reload();

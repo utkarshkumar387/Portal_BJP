@@ -1,6 +1,6 @@
 //get and split link from here
 let link = window.location.href.split('/');
-console.log(link);
+// console.log(link);
 var event_id = link[4], status;
 status = link[5];
 let events;
@@ -9,19 +9,19 @@ let eventDetails;
 //case(2) = approved; case(1) = pending; case(3) = rejected; 
 switch (link[5]) {
     case '2':
-        events = fetchContentByID('event_with_recent', event_id);
+        events = getRequest.content('event_with_recent', event_id);
         eventDetails = events.message.event_details;
         recentEvents = events.message.recent_events;
-        console.log('recent events are', recentEvents);
+        // console.log('recent events are', recentEvents);
         break;
     case '1':
-        events = fetchContentByID('events_unapproved', event_id);
+        events = getRequest.content('events_unapproved', event_id);
         eventDetails = events.message;
-        console.log('data from events unapproved', eventDetails);
+        // console.log('data from events unapproved', eventDetails);
         $('#home__events').css('display', 'none');
         break;
     case '3':
-        events = fetchContentByID('events_unapproved', event_id);
+        events = getRequest.content('events_unapproved', event_id);
         eventDetails = events.message;
         $('#home__events').css('display', 'none');
         break;
@@ -47,7 +47,7 @@ if (events.error == false) {
     // console.log(eventDetails);
     if (eventDetails.images.length > 0) {
         for (let j = 0; j < eventDetails.images.length; j++) {
-            console.log(eventDetails.images[j].image);
+            // console.log(eventDetails.images[j].image);
             eventImage = `${eventDetails.images[j].image}`;
         }
     } else {

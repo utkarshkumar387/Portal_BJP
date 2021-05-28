@@ -1,9 +1,9 @@
 let link = ['', '', '', 'blogsView'];
-let contentBlogsUnapproved = fetchContent('blogs/pending');
-console.log(contentBlogsUnapproved);
+let contentBlogsUnapproved = getRequest.content('blogs/pending');
+// console.log(contentBlogsUnapproved);
 if (contentBlogsUnapproved.error == false) {
     let blogs = contentBlogsUnapproved.message.results;
-    console.log(blogs);
+    // console.log(blogs);
     for (let i = 0; i < blogs.length; i++) {
         let blogDate = dateConverter(blogs[i].date);
         let title = blogs[i].title;
@@ -11,7 +11,7 @@ if (contentBlogsUnapproved.error == false) {
         let maxStringTitle = 20;
         let maxStringDesc = 300;
         let trimmedDataBlog = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
-        console.log(trimmedDataBlog);
+        // console.log(trimmedDataBlog);
         if (blogs[i].images.length > 0) {
             for (let j = 0; j < blogs[i].images.length; j++) {
                 console.log(blogs[i].images[j].image);

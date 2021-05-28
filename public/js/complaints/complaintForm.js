@@ -2,8 +2,8 @@ var authorDetails, authorName, authorID;
 authorDetails = JSON.parse(getCookie('member_profile'));
 authorName = authorDetails.first_name + ' ' + authorDetails.last_name;
 authorID = authorDetails.user_id;
-console.log(authorName, authorID);
-console.log(authorName);
+// console.log(authorName, authorID);
+// console.log(authorName);
 // "id": 11,
 //             "images": [],
 //             "solutions": [],
@@ -43,7 +43,7 @@ function addBlog() {
             }
         })
     }
-    let complaintDetails = addContent('complaints', data);
+    let complaintDetails = postRequest.content('complaints', data);
     console.log(complaintDetails);
 }
 

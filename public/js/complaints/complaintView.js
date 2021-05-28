@@ -1,28 +1,28 @@
 //split link
 let link = window.location.href.split('/');
-console.log(link);
+// console.log(link);
 var complaint_id = link[4], status;
 status = link[5];
 let complaint;
 let complaintDetails;
 let recentBlogs;
-console.log(status);
+// console.log(status);
 //switching api link acc to status
 switch (status) {
     case '2':
-        complaint = fetchContentByID('complaints_with_recent', complaint_id);
-        console.log(complaint);
+        complaint = getRequest.content('complaints_with_recent', complaint_id);
+        // console.log(complaint);
         complaintDetails = complaint.message.complaint_details;
         recentComplaints = complaint.message.recent_complaints;
-        console.log(recentComplaints);
+        // console.log(recentComplaints);
         break;
     case '1':
-        complaint = fetchContentByID('complaints_unapproved', complaint_id);
+        complaint = getRequest.content('complaints_unapproved', complaint_id);
         complaintDetails = complaint.message
         $('#home__complaints').css('display', 'none');
         break;
     case '3':
-        complaint = fetchContentByID('complaints_unapproved', complaint_id);
+        complaint = getRequest.content('complaints_unapproved', complaint_id);
         complaintDetails = complaint.message
         $('#home__complaints').css('display', 'none');
         break;
@@ -55,7 +55,7 @@ if (complaint.error == false) {
             let name = recentComplaints[i].user_full_name;
             let title = recentComplaints[i].complaint_subject;
             let maxStringTitle = 20;
-            console.log(title, maxStringTitle);
+            // console.log(title, maxStringTitle);
             let trimmedDataComplaint = titleDescTrimmer(title, maxStringTitle);
             let priority = checkPriority(recentComplaints[i].priority);
 

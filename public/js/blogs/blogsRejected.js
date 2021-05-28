@@ -1,9 +1,9 @@
 let link = ['', '', '', 'blogsView'];
-let contentBlogsRejected = fetchContent('blogs/rejected');
-console.log(contentBlogsRejected)
+let contentBlogsRejected = getRequest.content('blogs/rejected');
+// console.log(contentBlogsRejected)
 if (contentBlogsRejected.error == false) {
     let blogs = contentBlogsRejected.message.results;
-    console.log(blogs);
+    // console.log(blogs);
     for (let i = 0; i < blogs.length; i++) {
         let blogDate = dateConverter(blogs[i].date);
         let title = blogs[i].title;
@@ -11,7 +11,7 @@ if (contentBlogsRejected.error == false) {
         let maxStringTitle = 20;
         let maxStringDesc = 300;
         let trimmedDataBlog = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
-        console.log(trimmedDataBlog);
+        // console.log(trimmedDataBlog);
         $('#allBlogsRejected').append(`
             <div class="card card_dark cardStyle">
                 <div class="row g-0">

@@ -1,7 +1,7 @@
 let link = ['', '', '', ''];
-let allMemberAdmins = fetchAllAdminData('member');
-let allMembers = fetchProfileData('get_all_members');
-console.log('all manage members', allMemberAdmins);
+let allMemberAdmins = getRequest.admin('member');
+let allMembers = getRequest.member('get_all_members');
+// console.log('all manage members', allMemberAdmins);
 if (allMemberAdmins.error == false) {
     for (let i = 0; i < allMemberAdmins.message.length; i++) {
         let memberName = allMemberAdmins.message[i].user.first_name + ' ' + allMemberAdmins.message[i].user.last_name;
@@ -45,8 +45,8 @@ if (allMemberAdmins.error == false) {
 }
 
 function removePrivilege(id) {
-    let response = removePrivilegeByID('member', id);
-    console.log(response);
+    let response = deleteRequest.admin('member', id);
+    // console.log(response);
     if (!response.error) {
         window.location.reload();
     }
@@ -63,7 +63,7 @@ function searchFunction() {
     let input1 = document.getElementById('committee__membersSearch').id;
     let members1 = document.getElementById('manageMembersData').id;
     let memberName1 = document.getElementById('memberCard').id;
-    console.log(input1, members1, memberName1);
+    // console.log(input1, members1, memberName1);
     mySearchFunction(input1, members1, memberName1);
 }
 
@@ -85,7 +85,7 @@ function getMemberID(id) {
         }
     }
     stringifyMemebers = JSON.stringify(list);
-    console.log(stringifyMemebers);
+    // console.log(stringifyMemebers);
     // for (li in list) console.log(list[li]);
 }
 
@@ -96,8 +96,8 @@ function addAllMembersToList() {
     // let data = allMembers;
     // console.log(data);
     let data = stringifyMemebers;
-    console.log('data to post', data);
-    let addMemberAdmins = postPrivilegeRequest('member', data);
+    // console.log('data to post', data);
+    let addMemberAdmins = postRequest.admin('member', data);
     if (addMemberAdmins.error == false) {
         window.location.reload();
     } else {
@@ -110,7 +110,7 @@ function getButton(id, memberID) {
     let memberPermissionMenu = document.getElementById(`${id}`);
     let input = memberPermissionMenu.querySelector('input');
     if (input.checked == false) {
-        let adminStatus = removePrivilegeByID('member', memberID);
+        let adminStatus = deleteRequest.admin('member', memberID);
         if (adminStatus.error == false) {
             window.location.reload();
         } else {

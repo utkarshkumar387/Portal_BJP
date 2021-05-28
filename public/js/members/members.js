@@ -1,8 +1,8 @@
 let link = ['', '', '', ''];
 let privilegeLink = window.location.href.split('/');
-console.log(privilegeLink[4]);
+// console.log(privilegeLink[4]);
 let allMembers = fetchProfileData('get_all_members');
-console.log(allMembers);
+// console.log(allMembers);
 if (allMembers.error == false) {
     for (let i = 0; i < allMembers.message.length; i++) {
         let memberName = allMembers.message[i].first_name + ' ' + allMembers.message[i].last_name
@@ -88,6 +88,6 @@ function searchFunction() {
     let input1 = document.getElementById('committee__membersSearch').id;
     let members1 = document.getElementById('manageCommitteeBlock').id;
     let memberName1 = document.getElementById('memberCard').id;
-    console.log(input1, members1, memberName1);
+    // console.log(input1, members1, memberName1);
     mySearchFunction(input1, members1, memberName1);
 }

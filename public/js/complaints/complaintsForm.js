@@ -1,5 +1,5 @@
 let link = window.location.href.split('/');
-let allAdmins = fetchAllAdminData('admin_list');
+let allAdmins = getRequest.admin('admin_list');
 console.log('all admins are ', allAdmins);
 if (allAdmins.error == false) {
     for (let i = 0; i < allAdmins.message.length; i++) {
@@ -145,7 +145,7 @@ function addComplaint() {
 //     }
 //     console.log(data);
 //     //no patch request in content/blogs/id or content/approved
-//     let complaintDetails = updateContent('complaints/update_status', complaintID, data);
+//     let complaintDetails = patchRequest.content('complaints/update_status', complaintID, data);
 //     console.log(complaintDetails);
 //     window.location.replace(`/complaintsView/${complaintID}/${status}`);
 //     // console.log(blogDetails);

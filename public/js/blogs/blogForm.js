@@ -1,7 +1,7 @@
 var authorDetails, authorName, authorID;
 let link = window.location.href.split('/');
 let blogID, blogFunctionality, status, edittedBlogUserID, image64;
-console.log(link.length);
+// console.log(link.length);
 blogFunctionality = document.getElementById('addEditBlog');
 if (link.length == 4) {
     blogFunctionality.addEventListener('click', addBlog);
@@ -17,26 +17,26 @@ if (link.length == 4) {
 } else if (link.length == 6) {
     blogID = link[4];
     status = link[5];
-    console.log(blogID, status);
+    // console.log(blogID, status);
     let editBlogDetails;
     switch (status) {
         case '2':
-            editBlogDetails = fetchContentByID('blogs', blogID);
-            console.log('edit blog detaila', editBlogDetails);
+            editBlogDetails = getRequest.content('blogs', blogID);
+            // console.log('edit blog detaila', editBlogDetails);
             edittedBlogUserID = editBlogDetails.message.user_id;
-            console.log('edit blog user id', edittedBlogUserID);
+            // console.log('edit blog user id', edittedBlogUserID);
             break;
         case '1':
-            editBlogDetails = fetchContentByID('blogs_unapproved', blogID);
-            console.log('edit blog detaila', editBlogDetails);
+            editBlogDetails = getRequest.content('blogs_unapproved', blogID);
+            // console.log('edit blog detaila', editBlogDetails);
             edittedBlogUserID = editBlogDetails.message.user_id;
-            console.log('edit blog user id', edittedBlogUserID);
+            // console.log('edit blog user id', edittedBlogUserID);
             break;
         case '3':
-            editBlogDetails = fetchContentByID('blogs_unapproved', blogID);
-            console.log('edit blog detaila', editBlogDetails);
+            editBlogDetails = getRequest.content('blogs_unapproved', blogID);
+            // console.log('edit blog detaila', editBlogDetails);
             edittedBlogUserID = editBlogDetails.message.user_id;
-            console.log('edit blog user id', edittedBlogUserID);
+            // console.log('edit blog user id', edittedBlogUserID);
             break;
     }
     console.log('Inside blog edit form');
@@ -59,8 +59,8 @@ function addBlog() {
     authorDetails = JSON.parse(getCookie('member_profile'));
     authorName = authorDetails.first_name + ' ' + authorDetails.last_name;
     authorID = authorDetails.id;
-    console.log('author ID is', authorID);
-    console.log($('#blogTitle').val());
+    // console.log('author ID is', authorID);
+    // console.log($('#blogTitle').val());
     let data = {
         data: JSON.stringify({
             blog_data:
@@ -86,10 +86,10 @@ function addBlog() {
     //     blog_data_images: JSON.stringify([
 
     //     ])
-    console.log('data of added blog is ', data);
+    // console.log('data of added blog is ', data);
     // console.log(blogDetails);
     if (checkValidations() == true) {
-        let blogDetails = addContent('blogs', data);
+        let blogDetails = postRequest.content('blogs', data);
         if (blogDetails.error == false) {
             window.location.replace('/blogsApproved');
         } else {
@@ -115,7 +115,7 @@ function editBlog() {
     console.log(data);
     console.log(blogDetails);
     if (checkValidations() == true) {
-        let blogDetails = updateContent('blogs/content_update', blogID, data);
+        let blogDetails = patchRequest.content('blogs/content_update', blogID, data);
         if (blogDetails.error == false) {
             // console.log('blog patch request done');
             window.location.replace(`/blogsView/${blogID}/${status}`);

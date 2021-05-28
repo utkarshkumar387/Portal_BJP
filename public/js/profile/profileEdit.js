@@ -1,7 +1,7 @@
-let memberProfile = fetchProfileData('member_profile');
-console.log(memberProfile);
+let memberProfile = getRequest.member('member_profile');
+// console.log(memberProfile);
 let link = window.location.href.split('/');
-console.log(link[4]);
+// console.log(link[4]);
 $('#marital_status').on('change', selectMaritialStatus);
 $('#genderMale').on('change', selectMaritialStatus);
 $('#genderFemale').on('change', selectMaritialStatus);
@@ -9,8 +9,8 @@ $('#genderFemale').on('change', selectMaritialStatus);
 function selectMaritialStatus() {
     var maritalStatus = $('#marital_status').find(":selected").text();
     var genderStatus = $('#genderMale').prop("checked");
-    console.log(maritalStatus);
-    console.log(genderStatus);
+    // console.log(maritalStatus);
+    // console.log(genderStatus);
     $('#couple_status').empty();
     if (maritalStatus == 'Married') {
         if ($('#genderMale').prop("checked")) {
@@ -59,7 +59,7 @@ function removePhoneNumber(id) {
     $("#phoneNumber" + id).remove();
     const index = phoneNumberArray.indexOf(id);
     if (index > -1) {
-        console.log('enjoy kro');
+        // console.log('enjoy kro');
         phoneNumberArray.splice(index, 1);
     }
     // for (var i = 0; i < phoneNumberArray.length; i++) {
@@ -75,7 +75,7 @@ let addressCopy = document.getElementById('addressCopy');
 addressCopy.addEventListener('click', copyAddress);
 function copyAddress() {
     let permanentAddress = document.getElementById('permanentAddress');
-    console.log(permanentAddress.value);
+    // console.log(permanentAddress.value);
     let residentialAddress = document.getElementById('residentialAddress');
     residentialAddress.value = permanentAddress.value;
 
@@ -213,12 +213,12 @@ function officialDetails() {
     // </div>
 
     //appending states options
-    let states = fetchProfileData('get_states');
+    let states = getRequest.member('get_states');
     if (states.error == false) {
         let allStates = states.message.states;
-        console.log(allStates);
+        // console.log(allStates);
         for (let i = 0; i < allStates.length; i++) {
-            console.log('states id ', allStates[i].id, allStates[i].name);
+            // console.log('states id ', allStates[i].id, allStates[i].name);
             $('#getAllStates').append(
                 `
                 <option value="${allStates[i].id}">${allStates[i].name}</option>
@@ -230,14 +230,14 @@ function officialDetails() {
     document.getElementById('getAllStates').addEventListener('change', function () {
         let state;
         state = document.getElementById("getAllStates").value;
-        console.log(state);
-        let districts = fetchProfileDataById('get_districts', state);
-        console.log(districts);
+        // console.log(state);
+        let districts = getRequest.member('get_districts', state);
+        // console.log(districts);
         if (districts.error == false) {
             let allDistricts = districts.message.districts;
-            console.log(allDistricts);
+            // console.log(allDistricts);
             for (let i = 0; i < allDistricts.length; i++) {
-                console.log(allDistricts[i].id, allDistricts[i].name);
+                // console.log(allDistricts[i].id, allDistricts[i].name);
                 $('#getAllDistricts').append(
                     `
                     <option value="${allDistricts[i].id}">${allDistricts[i].name}</option>
@@ -251,30 +251,30 @@ function officialDetails() {
 }
 
 // post request to api
-let memberDetailsGet = fetchProfileDataById('member_profile', link[4]);
-console.log('Member details by id ', memberDetailsGet);
+let memberDetailsGet = getRequest.member('member_profile', link[4]);
+// console.log('Member details by id ', memberDetailsGet);
 if (memberDetailsGet.error == false) {
     let memberData = memberDetailsGet.message.member_details;
-    console.log('gender of member ', memberData.gender);
+    // console.log('gender of member ', memberData.gender);
     if (memberData.gender == 1) {
-        console.log('inside gender male')
+        // console.log('inside gender male')
         document.getElementById('genderMale').checked = true;
         // $('#genderMale').prop("checked");
     } else if (memberData.gender == 2) {
-        console.log('inside gender female')
+        // console.log('inside gender female')
         document.getElementById('genderFemale').checked = true;
     } else {
         document.getElementById('genderMale').checked = true;
     }
 
-    console.log('member data is', memberData);
+    // console.log('member data is', memberData);
     $('#memberName').html(memberData.first_name + ' ' + memberData.last_name);
     (memberData.committee_id) ? $('#memberCommitteeName').html(memberData.committee_id.name) : $('#memberCommitteeName').html('Not in committee');
     $('#memberFirstName').val(memberData.first_name);
     $('#memberLastName').val(memberData.last_name);
     $('#memberFatherName').val(memberData.father_name);
     // $('#memberGender').val(memberData.father_name);
-    console.log('Maritial status is ', $('#marital_status option'));
+    // console.log('Maritial status is ', $('#marital_status option'));
     $('#marital_status option').removeAttr('selected').filter(`[value=${memberData.marital_status}]`).attr('selected', true);
     $('#memberEmail').val(memberData.email);
     $('#primaryPhoneNumber').val(memberData.phone_no);
@@ -316,7 +316,7 @@ function addMemberDetails() {
     }
     // $('#validationAlert').remove('.alert');
     let allPhoneNumbers = [];
-    console.log(allPhoneNumbers);
+    // console.log(allPhoneNumbers);
     let allPhoneNumbersInput = document.getElementById('allPhoneNumber').getElementsByTagName('input');
     for (let i = 0; i < allPhoneNumbersInput.length; i++) {
         let no = allPhoneNumbersInput[i].value;
@@ -367,10 +367,10 @@ function addMemberDetails() {
         twitter_link: $('#twitterLink').val(),
         instagram_link: $('#instagramLink').val(),
     }
-    console.log('patch request details in profile edit is ', memberDetails);
+    // console.log('patch request details in profile edit is ', memberDetails);
     let id = link[4];
     // if (formValidation() == true) {
-    //     let memberDetailsData = updateProfileDataById('edit_member_profile', id, memberDetails);
+    //     let memberDetailsData = patchRequest.member('edit_member_profile', id, memberDetails);
     //     if (memberDetailsData.error == false) {
     //         setCookie('member_profile', JSON.stringify(memberProfile.message.member_details), 10);
     //         console.log('patch request done');
@@ -387,13 +387,13 @@ function addMemberDetails() {
 function districtDependentOptions() {
     let district;
     district = document.getElementById('getAllDistricts').value;
-    console.log(district);
-    let districtDependent = fetchProfileDataById('get_district_dependent', district);
-    console.log('districtDependent');
+    // console.log(district);
+    let districtDependent = getRequest.member('get_district_dependent', district);
+    // console.log('districtDependent');
     if (districtDependent.error == false) {
         // let allSelectTag = [];
         let allofficialDetails = document.getElementById('officialDetails').getElementsByTagName('select');
-        console.log(allofficialDetails);
+        // console.log(allofficialDetails);
         for (let i = 0; i < allofficialDetails.length; i++) {
             let id;
             id = allofficialDetails[i].getAttribute('id');
@@ -423,7 +423,7 @@ function districtDependentOptions() {
 function imageURL(input) {
     formData = new FormData();
     formData.append('file', input.files[0]);
-    console.log('input is ', input.files[0])
+    // console.log('input is ', input.files[0])
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
@@ -440,7 +440,7 @@ function formValidation() {
     let userLastName = $('#memberLastName');
     let userFatherName = $('#memberFatherName');
     let userGender = document.getElementById('genderMale').checked || document.getElementById('genderFemale').checked;
-    console.log('check user gender ', userGender)
+    // console.log('check user gender ', userGender)
     let userMaritalStatus = $('#marital_status');
     let userPrimaryNumber = $('#primaryPhoneNumber');
     let userDOB = $('#memberDOB');

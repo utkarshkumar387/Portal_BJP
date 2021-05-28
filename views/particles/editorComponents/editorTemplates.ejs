@@ -2,7 +2,12 @@
     <% for (var i=1; i <=4; i++ ) { %>
         <div class="col-md-6 py-3 d-flex justify-content-center">
             <div class="background__box">
-
+                <div id="testElem1"
+                    style="position: absolute; z-index: 1; background-color: black; width:100%; min-height: calc(1.25em/5); bottom: 0;"
+                    class="testElem d-flex justify-content-around flex-wrap"></div>
+                <div class="yourPersonalImage" style="position: absolute; bottom: 0; right: 10px;">
+                    <img src="/img/your_image.png" style="height: calc(12.5em/5);" alt="your image">
+                </div>
             </div>
         </div>
         <% } %>

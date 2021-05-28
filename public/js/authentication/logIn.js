@@ -52,6 +52,22 @@ function logInMemberData(sub_url, data) {
     let url = main_url + sub_url + '/';
     return ajaxRequest("post", url, data, 200)
 }
+function addProfileData(sub_url, data) {
+    return getProfileData(sub_url, "post", data, 201)
+}
+function getProfileData(sub_url, type, data, status) {
+    if (sub_url == 'member') {
+        sub_url = 'member';
+    } else {
+        sub_url = `member/${sub_url}`
+    }
+    var type = type;
+    var url = main_url + sub_url + '/';
+    var data = data;
+    var status = status;
+    console.log(status)
+    return ajaxRequest(type, url, data, status);
+}
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);

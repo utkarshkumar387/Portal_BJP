@@ -1,4 +1,4 @@
-let contentComplaints = fetchContent('complaints');
+let contentComplaints = getRequest.content('complaints');
 let complaints = contentComplaints.message.complaints;
 
 if (contentComplaints.error == false) {

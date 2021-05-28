@@ -1,7 +1,7 @@
 let link = window.location.href.split('/');
-let contentBlogs = fetchContent('blogs');
+let contentBlogs = getRequest.content('blogs');
 let blogs = contentBlogs.message.blogs;
-console.log(contentBlogs);
+// console.log(contentBlogs);
 if (contentBlogs.error == false) {
     for (let i = 0; i < blogs.length; i++) {
         let blogDate = dateConverter(blogs[i].date);
@@ -10,11 +10,11 @@ if (contentBlogs.error == false) {
         let maxStringTitle = 20;
         let maxStringDesc = 300;
         let trimmedDataBlog = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
-        console.log(blogs[i].status);
+        // console.log(blogs[i].status);
         let blogImage;
         if (blogs[i].images.length > 0) {
             for (let j = 0; j < blogs[i].images.length; j++) {
-                console.log(blogs[i].images[j].image);
+                // console.log(blogs[i].images[j].image);
                 blogImage = `${blogs[i].images[j].image}`;
             }
         } else {

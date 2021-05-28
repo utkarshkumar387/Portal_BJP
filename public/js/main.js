@@ -47,317 +47,97 @@ function ajaxRequest(type, url, data, status) {
     return { "error": error, "message": message };
 }
 
-//homepage
-//get home page data
-//in use
-function fetchHomepageData(sub_url) {
-    return getHomePageData(sub_url, "get", {}, 200);
-}
-//profile
-//post profile data
-function addProfileData(sub_url, data) {
-    return getProfileData(sub_url, "post", data, 201)
-}
-//post for member login
-function logInMemberData(sub_url, data) {
-    let url = main_url + sub_url + '/';
-    return ajaxRequest("post", url, data, 200)
-}
-//get profile data
-function fetchProfileData(sub_url) {
-    return getProfileData(sub_url, "get", {}, 200)
-}
-//get profile data by id
-function fetchProfileDataById(sub_url, id) {
-    return getProfileDataById(sub_url, id, "get", {}, 200)
-}
-//patch patch profile data by id
-function updateProfileDataById(sub_url, id, data) {
-    return patchProfileDataById(sub_url, id, "patch", data, 200)
-}
-//content
-//get content data of blogs, events, complaints,etc
-//in use
-function fetchContent(sub_url) {
-    return getContent(sub_url, "get", {}, 200)
-}
-//get content data by id of blogs, events, complaints, etc
-//in use
-function fetchContentByID(sub_url, id) {
-    return getContentByID(sub_url, "get", id, {}, 200)
-}
-//add content data
-//in use
-function addContent(sub_url, data) {
-    return postContent(sub_url, "post", data, 200);
-}
-//patch content data
-//in use
-function updateContent(sub_url, id, data) {
-    return patchContent(sub_url, id, "patch", data, 200);
-}
-//committee
-//get committee data
-//in use
-function fetchCommittee(sub_url) {
-    return getCommittee(sub_url, "get", {}, 200)
-}
-//get committee data by ID
-//in use
-function fetchCommitteeByID(sub_url, id) {
-    return getCommitteeByID(sub_url, id, "get", {}, 200)
-}
-//post committee member data by to add members
-//in use
-function addCommitteeMembers(sub_url, id, data) {
-    return postCommitteeMembers(sub_url, "post", id, data, 200)
-}
-//post committee data by ID
-function updateCommitteeByID(sub_url) {
-    return patchCommitteeByID(sub_url, "get", {}, 200)
-}
-//admin
-//get all admin
-function fetchAllAdminData(sub_url) {
-    return getAllAdminData(sub_url, "get", {}, 200)
-}
-//Patch request functions
-function updateAdminDataByID(sub_url, id, data) {
-    return patchAdminDataByID(sub_url, "patch", id, data, 200)
-}
-//patch request to content by id
-//in use
-function patchRequestByID(sub_url, id, data) {
-    return upadateVerificationStatus(sub_url, "patch", id, data, 200)
-}
-//patch request to content by id
-function patchViewRequestByID(sub_url, id, data) {
-    return upadateContentStatus(sub_url, "patch", id, data, 200)
-}
+//all get requests
+class getRequests {
+    constructor() {
+        this.type = 'get';
+        this.status = 200;
+        this.data = {};
+    }
+    homepage(sub_url) {
+        let homepageUrl = main_url + sub_url + '/';
+        return ajaxRequest(this.type, homepageUrl, this.data, this.status);
+    }
+    member(sub_url, id = null) {
+        (sub_url == 'member') ? sub_url = 'member' : sub_url = `member/${sub_url}`;
+        let memberUrl;
+        (id == null) ? memberUrl = main_url + sub_url + '/' : memberUrl = main_url + sub_url + '/' + id + '/';
+        return ajaxRequest(this.type, memberUrl, this.data, this.status);
+    }
+    content(sub_url, id = null) {
+        (sub_url == 'content') ? sub_url = 'content' : sub_url = `content/${sub_url}`;
+        let contentUrl;
+        (id == null) ? contentUrl = main_url + sub_url + '/' : contentUrl = main_url + sub_url + '/' + id + '/';
+        return ajaxRequest(this.type, contentUrl, this.data, this.status);
+    }
+    committee(sub_url, id = null) {
+        (sub_url == 'committee') ? sub_url = 'committee' : sub_url = `committee/${sub_url}`;
+        let committeeUrl;
+        (id == null) ? committeeUrl = main_url + sub_url + '/' : committeeUrl = main_url + sub_url + '/' + id + '/';
+        return ajaxRequest(this.type, committeeUrl, this.data, this.status);
+    }
+    admin(sub_url) {
+        let adminUrl = main_url + 'privilege/' + sub_url + '/';
+        return ajaxRequest(this.type, adminUrl, this.data, this.status);
+    }
 
-//delete request by id
-//in use
-function removePrivilegeByID(sub_url, id) {
-    return deletePrivilegeStatusByID(sub_url, "delete", id, 204)
 }
-//post request to privilege
-function postPrivilegeRequest(sub_url, data) {
-    return addPrivilegeStatus(sub_url, "post", data, 201)
-}
-//patch request to content by id
-// function patchRequestMembers(sub_url, id, data) {
-//     return upadateVerificationStatus(sub_url, "patch", id, data, 200)
-// }
-
-//requesting ajax to get profile data
-function postProfileData(sub_url, type, data, status) {
-    if (sub_url == 'member') {
-        sub_url = 'member';
-    } else {
-        sub_url = `member/${sub_url}`
+//all post requests
+class postRequests {
+    constructor() {
+        this.type = 'post';
+        this.status = 201;
     }
-    var type = type;
-    var url = main_url + sub_url + '/';
-    var data = data;
-    var status = status;
-    console.log(status)
-    return ajaxRequest(type, url, data, status);
-}
-function getProfileData(sub_url, type, data, status) {
-    if (sub_url == 'member') {
-        sub_url = 'member';
-    } else {
-        sub_url = `member/${sub_url}`
+    content(sub_url, data) {
+        let contentUrl = main_url + 'content/' + sub_url + '/';
+        return ajaxRequest(this.type, contentUrl, data, this.status);
     }
-    var type = type;
-    var url = main_url + sub_url + '/';
-    var data = data;
-    var status = status;
-    console.log(status)
-    return ajaxRequest(type, url, data, status);
-}
-//requesting ajax to get profile data by id
-function getProfileDataById(sub_url, id, type, data, status) {
-    if (sub_url == 'member') {
-        sub_url = 'member';
-    } else {
-        sub_url = `member/${sub_url}`
+    committee(sub_url, id, data) {
+        (sub_url == 'committee') ? sub_url = 'committee' : sub_url = `committee/${sub_url}`;
+        let committeeUrl = main_url + sub_url + '/' + id + '/';
+        return ajaxRequest(this.type, committeeUrl, data, this.status);
     }
-    var type = type;
-    var url = main_url + sub_url + '/' + id + '/';
-    var data = data;
-    var status = status;
-    return ajaxRequest(type, url, data, status);
-}
-//requesting ajax to patch profile data by id
-function patchProfileDataById(sub_url, id, type, data, status) {
-    if (sub_url == 'member') {
-        sub_url = 'member';
-    } else {
-        sub_url = `member/${sub_url}`
+    admin(sub_url, data) {
+        let adminUrl = main_url + 'privilege/' + sub_url + '/';
+        return ajaxRequest(this.type, adminUrl, data, this.status);
     }
-    var type = type;
-    var url = main_url + sub_url + '/' + id + '/';
-    var data = data;
-    var status = status;
-    return ajaxRequest(type, url, data, status);
 }
-//requesting ajax to get home page data
-//in use
-function getHomePageData(sub_url, type, data, status) {
-    var type = type;
-    var url = main_url + sub_url + '/';
-    var data = data;
-    var status = status;
-    return ajaxRequest(type, url, data, status);
-}
-//requesting ajax to get content data
-//in use
-function getContent(sub_url, type, data, status) {
-    if (sub_url == 'content') {
-        sub_url = 'content';
-    } else {
-        sub_url = `content/${sub_url}`
+//all patch requests
+class patchRequests {
+    constructor() {
+        this.type = 'patch';
+        this.status = 200;
     }
-    var type = type;
-    var url = main_url + sub_url + '/';
-    var data = data;
-    var status = status;
-    return ajaxRequest(type, url, data, status);
-}
-
-//requesting ajax to get content data by id
-//in use
-function getContentByID(sub_url, type, id, data, status) {
-    if (sub_url == 'content') {
-        sub_url = 'content';
-    } else {
-        sub_url = `content/${sub_url}`
+    member(sub_url, id, data) {
+        (sub_url == 'member') ? sub_url = 'member' : sub_url = `member/${sub_url}`;
+        let memberUrl = main_url + sub_url + '/' + id + '/';
+        return ajaxRequest(this.type, memberUrl, data, this.status);
     }
-    var type = type;
-    var url = main_url + sub_url + '/' + id + '/';
-    var data = data;
-    var status = status;
-    return ajaxRequest(type, url, data, status);
-}
-//requesting ajax to get committee data
-//in use
-function getCommittee(sub_url, type, data, status) {
-    if (sub_url == 'committee') {
-        sub_url = 'committee';
-    } else {
-        sub_url = `committee/${sub_url}`
+    content(sub_url, id, data) {
+        let contentUrl = main_url + 'content/' + sub_url + '/' + id + '/';
+        return ajaxRequest(this.type, contentUrl, data, this.status);
     }
-    var type = type;
-    var url = main_url + sub_url + '/';
-    var data = data;
-    var status = status;
-    return ajaxRequest(type, url, data, status);
-}
-//requesting ajax to poist committee data
-//not in use right now
-function postCommitteeMembers(sub_url, type, id, data, status) {
-    if (sub_url == 'committee') {
-        sub_url = 'committee';
-    } else {
-        sub_url = `committee/${sub_url}`
+    admin(sub_url, id, data) {
+        let adminUrl = main_url + 'privilege/' + sub_url + '/' + id + '/';
+        return ajaxRequest(this.type, adminUrl, data, this.status);
     }
-    var type = type;
-    var url = main_url + sub_url + '/' + id + '/';
-    var data = data;
-    var status = status;
-    return ajaxRequest(type, url, data, status);
 }
-//requesting ajax to get committee data by ID
-//in use
-function getCommitteeByID(sub_url, id, type, data, status) {
-    var type = type;
-    var url = main_url + sub_url + '/' + id + '/';
-    var data = data;
-    var status = status;
-    return ajaxRequest(type, url, data, status);
+//all delete requests
+class deteteRequests {
+    constructor() {
+        this.type = 'delete';
+        this.status = 204;
+        this.data = {};
+    }
+    admin(sub_url, id) {
+        let adminUrl = main_url + 'privilege/' + sub_url + '/' + id + '/';
+        return ajaxRequest(this.type, adminUrl, this.data, this.status);
+    }
 }
-//requesting ajax to update status
-function upadateStatus(sub_url, type, id, data, status) {
-    var type = type;
-    var url = main_url + 'content/' + sub_url + '/' + id + '/';
-    var data = data;
-    var status = status;
-    return ajaxRequest(type, url, data, status);
-}
-// removeVerificationStatus
-function removePrivilegeVerificationStatus(sub_url, type, id, status) {
-    var type = type;
-    var url = main_url + 'privilege/' + sub_url + '/' + id + '/';
-    var status = status;
-    console.log(status)
-    return ajaxRequest(type, url, {}, status);
-}
-//requesting ajax to get admins
-function getAllAdminData(sub_url, type, data, status) {
-    var type = type;
-    var url = main_url + 'privilege/' + sub_url + '/';
-    var data = data;
-    var status = status;
-    return ajaxRequest(type, url, data, status);
-}
-//requesting ajax to delete admins
-function deletePrivilegeStatusByID(sub_url, type, id, status) {
-    var type = type;
-    var url = main_url + 'privilege/' + sub_url + '/' + id + '/';
-    var status = status;
-    return ajaxRequest(type, url, {}, status);
-}
-//requesting ajax to update status
-function upadateVerificationStatus(sub_url, type, id, data, status) {
-    var type = type;
-    var url = main_url + 'privilege/' + sub_url + '/' + id + '/';
-    var data = data;
-    var status = status;
-    return ajaxRequest(type, url, data, status);
-}
-function upadateContentStatus(sub_url, type, id, data, status) {
-    var type = type;
-    var url = main_url + 'content/' + sub_url + '/' + id + '/';
-    var data = data;
-    var status = status;
-    return ajaxRequest(type, url, data, status);
-}
-function addPrivilegeStatus(sub_url, type, data, status) {
-    var type = type;
-    var url = main_url + 'privilege/' + sub_url + '/';
-    var data = data;
-    var status = status;
-    console.log(data);
-    return ajaxRequest(type, url, data, status);
-}
-//requesting ajax to post content 
-//in use
-function postContent(sub_url, type, data, status) {
-    var type = type;
-    var url = main_url + 'content/' + sub_url + '/';
-    var data = data;
-    var status = status;
-    return ajaxRequest(type, url, data, status);
-}
-//requesting ajax to patch content
-//in use
-function patchContent(sub_url, id, type, data, status) {
-    console.log('event id ', id);
-    var type = type;
-    var url = main_url + 'content/' + sub_url + '/' + id + '/';
-    var data = data;
-    var status = status;
-    return ajaxRequest(type, url, data, status);
-}
-//requesting ajax to update status
-function upadatePrivilegeStatus(sub_url, type, id, data, status) {
-    var type = type;
-    var url = main_url + 'privilege/' + sub_url + '/' + id + '/';
-    var data = data;
-    var status = status;
-    return ajaxRequest(type, url, data, status);
-}
+let getRequest = new getRequests();
+let postRequest = new postRequests();
+let patchRequest = new patchRequests();
+let deleteRequest = new deleteRequets();
 //function to check status and return it
 function checkStatus(status) {
     console.log(status);
@@ -708,7 +488,7 @@ function checkCookie() {
 
 //set privilege in cookie
 if (getCookie('privilege') == '') {
-    let memberProfile = fetchProfileData('member_profile');
+    let memberProfile = getRequest.member('member_profile');
     if (memberProfile.message.member_privileges) {
         setCookie('privilege', JSON.stringify(memberProfile.message.member_privileges), 10);
     }
@@ -717,7 +497,7 @@ if (getCookie('privilege') == '') {
 
 //set member profile data in cookie
 if (getCookie('member_profile') == '') {
-    let memberProfile = fetchProfileData('member_profile');
+    let memberProfile = getRequest.member('member_profile');
     console.log(memberProfile.message.member_details);
     if (memberProfile.message.member_details) {
         setCookie('member_profile', JSON.stringify(memberProfile.message.member_details), 10);
@@ -774,7 +554,7 @@ function timeConverter(time) {
 function titleDescTrimmer(title, description, maxStringTitle, maxStringDesc) {
     let trimStringTitle = title;
     let trimStringDesc = description;
-    console.log(trimStringTitle, trimStringDesc)
+    // console.log(trimStringTitle, trimStringDesc)
     if (title.length > maxStringTitle) {
         trimStringTitle = title.substr(0, maxStringTitle) + '...';
     }
@@ -794,18 +574,18 @@ function checkPriority(priority) {
     let priorityBar;
     console.log(priority);
     if (priority == 'low' || priority == 'Low') {
-        console.log('inside low priority')
+        // console.log('inside low priority')
         priorityBar = `<div class="priority priority_low">
         <span class="badge rounded-pill"><img src="/img/icons/Tag.png"> Priority:<span class="priority_set">Low</span></span>
     </div>`
     } else if (priority == 'medium' || priority == 'Medium') {
-        console.log('inside medium priority')
+        // console.log('inside medium priority')
         priorityBar = `<div class="priority priority_mid">
         <span class="badge rounded-pill"><img src="/img/icons/Tag.png"> Priority:
             <span class="priority_set">Medium</span></span>
     </div>`
     } else if (priority == 'high' || priority == 'High') {
-        console.log('inside high priority')
+        // console.log('inside high priority')
         priorityBar = `<div class="priority priority_high">
         <span class="badge rounded-pill"><img src="/img/icons/Tag.png"> Priority:
             <span class="priority_set">High</span></span>

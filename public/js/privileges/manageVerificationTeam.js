@@ -1,7 +1,7 @@
 let link = ['', '', '', ''];
-let allMembers = fetchProfileData('get_all_members');
-let allVerificationMember = fetchAllAdminData('verification');
-console.log(allVerificationMember);
+let allMembers = getRequest.member('get_all_members');
+let allVerificationMember = getRequest.admin('verification');
+// console.log(allVerificationMember);
 if (allVerificationMember.error == false) {
     for (let i = 0; i < allVerificationMember.message.length; i++) {
         let memberName = allVerificationMember.message[i].user.first_name + ' ' + allVerificationMember.message[i].user.last_name;
@@ -74,7 +74,7 @@ if (allVerificationMember.error == false) {
             let manageBlog = allVerificationMember.message[i].manage_blog;
             let manageEvent = allVerificationMember.message[i].manage_event;
             let manageComplaint = allVerificationMember.message[i].manage_complaint;
-            console.log('verification team privileges', manageBlog, manageEvent, manageComplaint);
+            // console.log('verification team privileges', manageBlog, manageEvent, manageComplaint);
             document.getElementById(`blogsPermission${allVerificationMember.message[i].id}`).checked = manageBlog;
             document.getElementById(`eventsPermission${allVerificationMember.message[i].id}`).checked = manageEvent;
             document.getElementById(`complaintsPermission${allVerificationMember.message[i].id}`).checked = manageComplaint;
@@ -104,7 +104,7 @@ function searchFunction() {
     let input1 = document.getElementById('committee__membersSearch').id;
     let members1 = document.getElementById('manageVerificationTeamBlock').id;
     let memberName1 = document.getElementById('memberCard').id;
-    console.log(input1, members1, memberName1);
+    // console.log(input1, members1, memberName1);
     mySearchFunction(input1, members1, memberName1);
 }
 
@@ -112,7 +112,7 @@ function searchFunction() {
 // console.log(memberVerification);
 //status change of privilege
 function deleteMemberContentPrivilege(memberID) {
-    let deleteVerificationMembers = removePrivilegeByID('verification', memberID)
+    let deleteVerificationMembers = deleteRequest.admin('verification', memberID)
     if (deleteVerificationMembers.error == false) {
         window.location.reload();
     } else {
@@ -121,7 +121,7 @@ function deleteMemberContentPrivilege(memberID) {
 }
 
 function getButton(id, memberID) {
-    console.log(id, memberID);
+    // console.log(id, memberID);
     let memberPermissionMenu = document.getElementById(`${id}`);
     let allInputs = memberPermissionMenu.querySelectorAll('input');
     let check;
@@ -130,15 +130,15 @@ function getButton(id, memberID) {
         check = allInputs[i].checked
         allChecks.push(check);
     }
-    console.log(allChecks);
+    // console.log(allChecks);
     let data = {
         manage_blog: allChecks[0],
         manage_event: allChecks[1],
         manage_complaint: allChecks[2]
     }
-    console.log(data);
+    // console.log(data);
     if (data.manage_blog || data.manage_event || data.manage_complaint) {
-        let patchVerificationMembers = patchRequestByID('verification', memberID, data);
+        let patchVerificationMembers = patchRequest.admin('verification', memberID, data);
         if (patchVerificationMembers.error == false) {
             window.location.reload();
         } else {
@@ -155,7 +155,7 @@ function getButton(id, memberID) {
 let count = 0;
 for (let i = 0; i < allMembers.message.length; i++) {
     let exist = false;
-    console.log('all verification team users', allVerificationMember.message);
+    // console.log('all verification team users', allVerificationMember.message);
     for (let j = 0; j < allVerificationMember.message.length; j++) {
         if (allMembers.message[i].id === allVerificationMember.message[j].user.id) {
             // console.log(allMembers.message[i].id);
@@ -258,7 +258,7 @@ function checkMemberPermission(id) {
         $('#eventsPermissionAdd' + id).prop("checked"),
         $('#complaintsPermissionAdd' + id).prop("checked"),
     );
-    console.log($('#blogsPermissionAdd' + id).prop("checked"));
+    // console.log($('#blogsPermissionAdd' + id).prop("checked"));
 }
 function modify_data(id, blog, event, complaint) {
     delete permissionList[id];
@@ -271,13 +271,13 @@ function modify_data(id, blog, event, complaint) {
             'manage_complaint': complaint,
         };
     }
-    console.log(permissionList);
+    // console.log(permissionList);
 }
 function addAllPermittedMembersToList() {
     let list = [];
     for (i in permissionList) list.push(permissionList[i]);
-    console.log(list);
-    let postPermissionList = postPrivilegeRequest('verification', list);
+    // console.log(list);
+    let postPermissionList = postRequest.admin('verification', list);
     if (postPermissionList.error == false) {
         // console.log('succed')
         window.location.reload();

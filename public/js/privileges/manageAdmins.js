@@ -1,6 +1,6 @@
 let link = ['', '', '', ''];
-let allAdmins = fetchAllAdminData('admin_list');
-console.log('All admins are ', allAdmins);
+let allAdmins = getRequest.admin('admin_list');
+// console.log('All admins are ', allAdmins);
 if (allAdmins.error == false) {
     for (let i = 0; i < allAdmins.message.length; i++) {
         let adminName = allAdmins.message[i].user.first_name + ' ' + allAdmins.message[i].user.last_name;
@@ -60,7 +60,7 @@ if (allAdmins.error == false) {
     $('#manageAdminBlock').html('<h3>Please refresh your page</h3>');
 }
 
-let allMembers = fetchProfileData('get_all_members');
+let allMembers = getRequest.member('get_all_members');
 // Search admins in manage admins
 let search = document.getElementById('committee__adminsMembersSearch');
 search.addEventListener('keyup', searchFunction);
@@ -68,37 +68,37 @@ function searchFunction() {
     let input1 = document.getElementById('committee__adminsMembersSearch').id;
     let members1 = document.getElementById('manageAdminBlock').id;
     let memberName1 = document.getElementById('memberCard').id;
-    console.log(input1, members1, memberName1);
+    // console.log(input1, members1, memberName1);
     mySearchFunction(input1, members1, memberName1);
 
 }
 
 //search members in add manager modal
 let searchMembers = document.getElementById('committee__membersAddSearch');
-console.log('all searched members ', searchMembers);
+// console.log('all searched members ', searchMembers);
 searchMembers.addEventListener('keyup', searchFunctionAddMembers);
 function searchFunctionAddMembers() {
     let input1 = document.getElementById('committee__membersAddSearch').id;
     let members1 = document.getElementById('allMembersDataAdmins').id;
     let memberName1 = document.getElementById('memberCardAdmins').id;
-    console.log(input1, members1, memberName1);
+    // console.log(input1, members1, memberName1);
     // mySearchFunction('inside add admin members ', input1, members1, memberName1);
 
 }
 
 function getButton(id, memberID) {
-    console.log(id, memberID);
+    // console.log(id, memberID);
     let memberPermissionMenu = document.getElementById(`${id}`);
     let input = memberPermissionMenu.querySelector('input');
     // let check;
-    console.log(input.checked, memberID);
+    // console.log(input.checked, memberID);
     let check = input.checked;
-    console.log(check);
+    // console.log(check);
     let data = {
         manage_admin: check
     }
-    console.log(data);
-    let adminStatus = patchRequestByID('admin', memberID, data);
+    // console.log(data);
+    let adminStatus = patchRequest.admin('admin', memberID, data);
     if (adminStatus.error == false) {
         window.location.reload();
     } else {
@@ -129,14 +129,14 @@ function getMemberID(id) {
 }
 
 function deleteAdmin(adminID, userID) {
-    console.log(userID);
-    console.log(loggedInUserId);
-    console.log(userID == loggedInUserId);
+    // console.log(userID);
+    // console.log(loggedInUserId);
+    // console.log(userID == loggedInUserId);
     if (userID == loggedInUserId) {
         alert('You can not remove yourself from admin');
         return;
     }
-    let adminDelete = removePrivilegeByID('admin', adminID)
+    let adminDelete = deleteRequest.admin('admin', adminID)
     if (adminDelete.error == false) {
         console.log('succed')
         window.location.reload();
@@ -152,8 +152,8 @@ function addAllMembersToList() {
     // let data = allMembers;
     // console.log(data);
     let data = stringifyMemebers;
-    console.log('data to post', data);
-    let addMemberAdmins = postPrivilegeRequest('admin_create', data);
+    // console.log('data to post', data);
+    let addMemberAdmins = postRequest.admin('admin_create', data);
     if (addMemberAdmins.error == false) {
         // console.log('member added')
         window.location.reload();

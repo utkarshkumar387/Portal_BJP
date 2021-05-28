@@ -1,11 +1,11 @@
 let link = ['', '', '', '', ''];
 let userDetails = getCookie('member_profile');
 let userCommitteeID = JSON.parse(userDetails).committee_id
-let committeeRelatedDetails = fetchCommitteeByID('committee', userCommitteeID);
+let committeeRelatedDetails = getRequest.committee('committee', userCommitteeID);
 // console.log('committee details', committeeRelatedDetails);
 if (committeeRelatedDetails.error == false) {
     let allCommitteeDetails = committeeRelatedDetails.message.committee_data;
-    console.log('all committee details inside msg ', allCommitteeDetails);
+    // console.log('all committee details inside msg ', allCommitteeDetails);
     $('#myCommitteeName').html(allCommitteeDetails.title);
     $('#myCommitteeDescription').html(allCommitteeDetails.description);
     for (let i = 0; i < allCommitteeDetails.committee_members.length; i++) {

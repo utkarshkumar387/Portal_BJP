@@ -1,9 +1,9 @@
 let link = window.location.href.split('/');
-let contentEvents = fetchContent('events');
+let contentEvents = getRequest.content('events');
 let upcomingEvents = contentEvents.message.upcoming_events;
-console.log(upcomingEvents);
+// console.log(upcomingEvents);
 let pastEvents = contentEvents.message.past_events;
-console.log(pastEvents);
+// console.log(pastEvents);
 
 if (contentEvents.error == false) {
     for (let i = 0; i < upcomingEvents.length; i++) {

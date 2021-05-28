@@ -1,7 +1,7 @@
 let link = ['', '', '', 'complaintsView'];
-let contentComplaints = fetchContent('complaints/pending');
+let contentComplaints = getRequest.content('complaints/pending');
 let complaints = contentComplaints.message.results;
-console.log(complaints);
+// console.log(complaints);
 
 if (contentComplaints.error == false) {
     //appending complaints

@@ -1,24 +1,24 @@
 let link = ['', '', '', ''];
 let contentEvents;
 if (document.getElementById('previousEvents').clicked == true) {
-    console.log('inside previous')
+    // console.log('inside previous')
     document.getElementById('previousEvents').addEventListener('click', function () {
         let previousEventLink = contentEvents.message.previous.split('?').pop();
-        console.log(previousEventLink);
-        contentEvents = fetchContent(`events/pending/?${previousEventLink}`);
+        // console.log(previousEventLink);
+        contentEvents = getRequest.content(`events/pending/?${previousEventLink}`);
     })
 } else if (document.getElementById('nextEvents').clicked == true) {
-    console.log('inside next');
+    // console.log('inside next');
     document.getElementById('nextEvents').addEventListener('click', function () {
         let nextEventLink = contentEvents.message.next.split('?').pop();
-        console.log(nextEventLink);
-        contentEvents = fetchContent(`events/pending/?${nextEventLink}`);
+        // console.log(nextEventLink);
+        contentEvents = getRequest.content(`events/pending/?${nextEventLink}`);
     })
 } else {
-    contentEvents = fetchContent('events/pending');
+    contentEvents = getRequest.content('events/pending');
 }
 let events = contentEvents.message.results;
-console.log(events);
+// console.log(events);
 
 if (contentEvents.error == false) {
     //appending Events
@@ -31,7 +31,7 @@ if (contentEvents.error == false) {
         let eventImage;
         if (events[i].images.length > 0) {
             for (let j = 0; j < events[i].images.length; j++) {
-                console.log(events[i].images[j].image);
+                // console.log(events[i].images[j].image);
                 eventImage = `${events[i].images[j].image}`;
             }
         } else {

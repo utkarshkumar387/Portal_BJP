@@ -1,7 +1,7 @@
 console.log('Download your id card from here');
 let link = ['', '', '', ''];
 let userData = JSON.parse(getCookie('member_profile'));
-console.log(userData);
+// console.log(userData);
 function downloadPoster(type) {
     var container = document.getElementById("IDcard");
     html2canvas(container, { allowTaint: false }).then(function (canvas) {
@@ -14,7 +14,7 @@ function downloadPoster(type) {
         link.click();
     });
 }
-console.log(userData.first_name);
+// console.log(userData.first_name);
 $('#memberName').html(`${userData.first_name} ${userData.last_name}`);
 let memberCommittee = userData.committee_id;
 if (memberCommittee) {

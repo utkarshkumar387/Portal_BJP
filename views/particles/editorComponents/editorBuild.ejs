@@ -12,9 +12,6 @@
                     <button class="btn btn-primary"
                         onclick="changeColor('testElem', 'footerColorPicker')">Apply</button>
                 </div>
-                <!-- <li><a class="nav-link" href="#">Submenu item 1 </a></li>
-                <li><a class="nav-link" href="#">Submenu item 2 </a></li>
-                <li><a class="nav-link" href="#">Submenu item 3 </a> </li> -->
             </ul>
         </li>
         <li class="nav-item has-submenu">
@@ -24,22 +21,32 @@
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" onchange="socialMediaFacebook(this)"
                             id="facebookCheckbox">
-                        <label class="form-check-label" for="exampleCheck1">Facebook</label>
+                        <label class="form-check-label" for="facebookCheckbox">Facebook</label>
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" onchange="socialMediaInstagram(this)"
                             id="instagramCheckbox">
-                        <label class="form-check-label" for="exampleCheck1">Instagram</label>
+                        <label class="form-check-label" for="instagramCheckbox">Instagram</label>
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" onchange="socialMediaTwitter(this)"
                             id="twitterCheckbox">
-                        <label class="form-check-label" for="exampleCheck1">Twitter</label>
+                        <label class="form-check-label" for="twitterCheckbox">Twitter</label>
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" onchange="socialMediaWhatsapp(this)"
                             id="whatsappCheckbox">
-                        <label class="form-check-label" for="exampleCheck1">whatsapp</label>
+                        <label class="form-check-label" for="whatsappCheckbox">whatsapp</label>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" onchange="personalWebsite(this)"
+                            id="websiteCheckbox">
+                        <label class="form-check-label" for="websiteCheckbox">website</label>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" onchange="personalEmail(this)"
+                            id="emailCheckbox">
+                        <label class="form-check-label" for="emailCheckbox">Email</label>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <div>
@@ -96,6 +103,13 @@
                             Left aligned large
                         </label>
                     </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" onchange="addImage()" name="yourImage"
+                            id="imageLeftSmall">
+                        <label class="form-check-label" for="imageLeftSmall">
+                            Left aligned small
+                        </label>
+                    </div>
                 </div>
             </ul>
         </li>
@@ -121,8 +135,15 @@
                         <div>
                             <input name="MyColorPicker" type="color" id="nameColorPicker" />
                         </div>
+                        <button class="btn btn-primary" onclick="changeTextColor('userName', 'nameColorPicker')">Apply
+                            Color</button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <input name="myStrokeColorPicker" type="color" id="nameStrokeColorPicker" />
+                        </div>
                         <button class="btn btn-primary"
-                            onclick="changeTextColor('userName', 'nameColorPicker')">Apply</button>
+                            onclick="changeStrokeColor('userName', 'nameStrokeColorPicker')">Apply Stroke</button>
                     </div>
                     <div class="form-group mb-4">
                         <select onchange="editFontFamily('userName', this.value);" class="form-control"
@@ -160,10 +181,17 @@
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <div>
-                            <input name="MyColorPicker" type="color" id="designationColorPicker" />
+                            <input name="myNameColorPicker" type="color" id="designationColorPicker" />
                         </div>
                         <button class="btn btn-primary"
-                            onclick="changeTextColor('userPost', 'designationColorPicker')">Apply</button>
+                            onclick="changeTextColor('userPost', 'designationColorPicker')">Apply Color</button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <input name="myPostStrokeColorPicker" type="color" id="postStrokeColorPicker" />
+                        </div>
+                        <button class="btn btn-primary"
+                            onclick="changeStrokeColor('userPost', 'postStrokeColorPicker')">Apply Stroke</button>
                     </div>
                     <div class="form-group mb-4">
                         <select onchange="editFontFamily('userPost', this.value);" class="form-control"

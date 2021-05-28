@@ -17,14 +17,15 @@ let glide = new Glide('.glide', {
     }
 });
 // var home = fetchHomepageDataTest('homepage');
-var home = fetchHomepageData('homepage');
+// var home = fetchHomepageData('homepage');
+var home = getRequest.homepage('homepage');
 // console.log(home.message.blogs.length);
 let blogs = home.message.blogs;
-console.log(blogs);
+// console.log(blogs);
 let events = home.message.events;
-console.log(events);
+// console.log(events);
 let complaints = home.message.complaints;
-console.log(complaints);
+// console.log(complaints);
 
 if (home.error == false) {
 
@@ -37,10 +38,10 @@ if (home.error == false) {
         let maxStringTitle = 20;
         let maxStringDesc = 300;
         let trimmedDataBlog = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
-        console.log(trimmedDataBlog);
+        // console.log(trimmedDataBlog);
         if (blogs[i].images.length > 0) {
             for (let j = 0; j < blogs[i].images.length; j++) {
-                console.log(blogs[i].images[j].image);
+                // console.log(blogs[i].images[j].image);
                 blogImage = `${blogs[i].images[j].image}`;
             }
         } else {
@@ -82,7 +83,7 @@ if (home.error == false) {
         let title = complaints[i].complaint_subject;
         let maxStringTitle = 20;
         let trimmedDataComplaint = titleDescTrimmer(title, description = '', maxStringTitle, maxStringDesc = 0);
-        console.log(trimmedDataComplaint);
+        // console.log(trimmedDataComplaint);
         let priority = checkPriority(complaints[i].priority);
         let name = complaints[i].user.first_name + ' ' + complaints[i].user.last_name;
 
@@ -124,11 +125,11 @@ if (home.error == false) {
         let maxStringTitle = 20;
         let maxStringDesc = 300;
         let trimmedDataEvent = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
-        console.log(trimmedDataEvent);
-        console.log(eventDate[0]);
+        // console.log(trimmedDataEvent);
+        // console.log(eventDate[0]);
         if (events[i].images.length > 0) {
             for (let j = 0; j < events[i].images.length; j++) {
-                console.log(events[i].images[j].image);
+                // console.log(events[i].images[j].image);
                 eventImage = `${events[i].images[j].image}`;
             }
         } else {
@@ -162,9 +163,9 @@ if (home.error == false) {
 glide.mount();
 // console.log('Token stored in cookie is :', getCookie('token'));
 let memberDetails = JSON.parse(getCookie('member_profile'));
-console.log('father name', memberDetails.father_name);
+// console.log('father name', memberDetails.father_name);
 if (memberDetails.father_name) {
-    console.log('inside alert block');
+    // console.log('inside alert block');
     $('#alert').css('display', 'none');
 }
 let clickHere = document.getElementById('profileClickHere').setAttribute('href', `/profileEdit/${memberDetails.id}`);

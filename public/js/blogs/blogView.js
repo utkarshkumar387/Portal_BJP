@@ -7,18 +7,18 @@ let recentBlogs;
 //switching acc to status extracted
 switch (link[5]) {
     case '2':
-        blog = fetchContentByID('blogs_with_recent', blog_id);
+        blog = getRequest.content('blogs_with_recent', blog_id);
         blogDetails = blog.message.blog_details;
         recentBlogs = blog.message.recent_blogs;
         console.log(blog);
         break;
     case '1':
-        blog = fetchContentByID('blogs_unapproved', blog_id);
+        blog = getRequest.content('blogs_unapproved', blog_id);
         $('#home__blogs').css("display", "none");
         blogDetails = blog.message
         break;
     case '3':
-        blog = fetchContentByID('blogs_unapproved', blog_id);
+        blog = getRequest.content('blogs_unapproved', blog_id);
         $('#home__blogs').css("display", "none");
         blogDetails = blog.message
         break;
@@ -28,10 +28,10 @@ switch (link[5]) {
 if (blog.error == false) {
     //appending data of the blog which is clicked
     status = blogDetails.status;
-    console.log(status);
+    // console.log(status);
     let authorName = `${blogDetails.user.first_name}` + ' ' + `${blogDetails.user.last_name}`;
     let blogDate = dateConverter(blogDetails.date);
-    console.log(blogDate);
+    // console.log(blogDate);
     $('#blogTitle').html(blogDetails.title);
     if (blogDetails.images.length > 0) {
         for (let j = 0; j < blogDetails.images.length; j++) {
@@ -41,7 +41,7 @@ if (blog.error == false) {
     } else {
         blogImage = `https://akm-img-a-in.tosshub.com/sites/dailyo/fb_feed_images/story_image/201708/bjpup-insta_083117051140.jpg`;
     }
-    console.log('blog image to display ', blogImage)
+    // console.log('blog image to display ', blogImage)
     $('#blogImage').attr('src', blogImage);
     $('#blogContent').html(blogDetails.description);
     $('#blogAuthorName').html(authorName);
@@ -50,7 +50,7 @@ if (blog.error == false) {
     $('#detailsBlogDay').html(blogDate[0]);
     $('#detailsBlogYearName').html(blogDate[1]);
     $('#detailsBlogYear').html(blogDate[2]);
-    console.log(blogDate[0]);
+    // console.log(blogDate[0]);
 
     //appending recent blogs
     if (link[5] == '2') {
@@ -62,7 +62,7 @@ if (blog.error == false) {
             let maxStringTitle = 20;
             let maxStringDesc = 300;
             let trimmedDataBlog = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
-            console.log(trimmedDataBlog);
+            // console.log(trimmedDataBlog);
             if (recentBlogs[i].images.length > 0) {
                 for (let j = 0; j < recentBlogs[i].images.length; j++) {
                     console.log(recentBlogs[i].images[j].image);

@@ -1,5 +1,5 @@
 let link = ['', '', '', ''];
-let committees = fetchCommittee('committee_list');
+let committees = getRequest.committee('committee_list');
 if (committees.error == false) {
     let committee = committees.message.committees;
     for (let i = 0; i < committee.length; i++) {
@@ -8,7 +8,7 @@ if (committees.error == false) {
         let maxStringTitle = 20;
         let maxStringDesc = 300;
         let trimmedDataCommittee = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
-        console.log(trimmedDataCommittee.trimStringTitle, trimmedDataCommittee.trimStringDesc);
+        // console.log(trimmedDataCommittee.trimStringTitle, trimmedDataCommittee.trimStringDesc);
         // https://images.livemint.com/img/2020/01/19/600x338/20190726221L_1564151885181_1579462418514.jpg
         $('#committeeBlock').append(`
         <div class="col-md-6 committee__card mb-4 px-3">

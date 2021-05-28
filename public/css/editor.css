@@ -154,8 +154,11 @@ color: #FFFFFF !important;
     font-size: 20px;
 }
 .background__box{
-    height: 112.333px;
-    width: 79.427px;
+    position: relative;
+    min-height: 6.25rem;
+    max-height: 6.25rem;
+    min-width: 6.25rem;
+    max-width: 6.25rem;
     background-color: #fff;
 }
 .poster img{
