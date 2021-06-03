@@ -1,0 +1,6 @@
+POST  https://bjpbarmer.herokuapp.com/content/complaints/
+content-type: application/json
+
+{
+    "data":"{\"complaint_data\":{\"solutions\":[],\"user_id\":12,\"user_full_name\":\"Barkat khan\",\"user_email\":\"dcba@gmail.com\",\"user_phone_no\":\"9876543212\",\"user_address\":\"fggjj,hj,\",\"complaint_address\":\"\",\"complaint_subject\":\"shds lidos;s\",\"complaint_body\":\"shdjs idosiopi\",\"tagged_members\":[],\"priority\":\"Medium\",\"likes\":[],\"dis_likes\":[],\"has_image\":false,\"status\":\"pending\"},\"complaint_data_images\":\"[]\"}"
+}

@@ -80,6 +80,12 @@ class getRequests {
         let adminUrl = main_url + 'privilege/' + sub_url + '/';
         return ajaxRequest(this.type, adminUrl, this.data, this.status);
     }
+    editor(sub_url, id = null) {
+        let editorUrl;
+        // console.log(sub_url, id);
+        (id == null) ? editorUrl = main_url + 'editor/' + sub_url + '/' : editorUrl = main_url + 'editor/' + sub_url + '/' + id + '/';
+        return ajaxRequest(this.type, editorUrl, this.data, this.status);
+    }
 
 }
 //all post requests
@@ -100,6 +106,11 @@ class postRequests {
     admin(sub_url, data) {
         let adminUrl = main_url + 'privilege/' + sub_url + '/';
         return ajaxRequest(this.type, adminUrl, data, this.status);
+    }
+    editor(sub_url, data, id = null) {
+        let editorUrl;
+        (id == null) ? editorUrl = main_url + 'editor/' + sub_url + '/' : editorUrl = main_url + 'editor/' + sub_url + '/' + id + '/';
+        return ajaxRequest(this.type, editorUrl, data, this.status);
     }
 }
 //all patch requests
@@ -123,7 +134,7 @@ class patchRequests {
     }
 }
 //all delete requests
-class deteteRequests {
+class deleteRequests {
     constructor() {
         this.type = 'delete';
         this.status = 204;
@@ -137,7 +148,7 @@ class deteteRequests {
 let getRequest = new getRequests();
 let postRequest = new postRequests();
 let patchRequest = new patchRequests();
-let deleteRequest = new deleteRequets();
+let deleteRequest = new deleteRequests();
 //function to check status and return it
 function checkStatus(status) {
     console.log(status);

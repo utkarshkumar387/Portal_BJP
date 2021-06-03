@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Hind:wght@600&display=swap" rel="stylesheet">
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <!-- CSS -->
     <link rel="stylesheet" href="/css/editor.css">
     <link rel="stylesheet" href="/css/glide/glide.core.min.css">
@@ -43,7 +43,7 @@
             </div>
             <div class="Navbar-end navbar__right">
                 <div class="d-flex align-items-center">
-                    <a class="ml-4" onclick="getCssSyntaxValues()"><img src="img/icons/save.png"></a>
+                    <a class="ml-4" onclick="postCssSyntaxValues()"><img src="img/icons/save.png"></a>
                     <!-- <a class="ml-4"><img src="img/icons/undo.png"></a>
                     <a class="ml-4"><img src="img/icons/delete.png"></a> -->
                     <a class="button__download ml-4 d-flex align-items-center" onclick="downloadPoster()"
@@ -63,9 +63,9 @@
     </div>
     <!-- Option 1: Bootstrap Bundle with Popper -->
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
@@ -78,7 +78,7 @@
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
 
     <!-- external javascript -->
-
+    <script type="application/javascript" src="/js/main.js"></script>
     <script type="application/javascript" src="/js/editor/editor.js"></script>
     <!-- <script type="application/javascript" src="/js/html2canvas.js"></script> -->
 </body>

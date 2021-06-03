@@ -229,3 +229,16 @@ color: #FFFFFF !important;
 .colorpick-eyedropper-input-trigger {
     display: none;
 }
+.templateCard{
+    background-color: #44495c !important
+}
+.templateButton{
+    border: 1px solid #fff;
+    border-radius: 25px;
+    padding: 5px 8px;
+    cursor: pointer;
+}
+.templateButtons{
+    color: #fff;
+    font-size: 8px;
+}

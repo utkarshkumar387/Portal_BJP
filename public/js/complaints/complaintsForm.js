@@ -63,7 +63,7 @@ $('#complainantAddress').val(userDetails.residence_address_line1);
 function addComplaint() {
     authorDetails = JSON.parse(getCookie('member_profile'));
     authorName = authorDetails.first_name + ' ' + authorDetails.last_name;
-    authorID = authorDetails.user_id;
+    authorID = authorDetails.id;
     let authorEmail = authorDetails.email;
     let authorAddress = authorDetails.residence_address_line1;
     let authorNumber = authorDetails.phone_no;
@@ -74,7 +74,6 @@ function addComplaint() {
                 // image: null,
                 solutions: [],
                 user_id: authorID,
-                user: {},
                 user_full_name: authorName,
                 user_email: authorEmail,
                 user_phone_no: authorNumber,
@@ -86,21 +85,22 @@ function addComplaint() {
                 priority: $('#complaintPriority').val(),
                 likes: [],
                 dis_likes: [],
-                status: 'pending'
+                has_image: false,
+                status: 'pending',
             },
             complaint_data_images: JSON.stringify([
 
             ])
         })
     }
-    console.log(data)
+    console.log(data);
     // window.location.replace('/complaints');
     // if (checkEventValidations() == true) {
-    let complaintDetails = addContent('complaints', data);
+    let complaintDetails = postRequest.content('complaints', data);
     console.log(complaintDetails);
     if (complaintDetails.error == false) {
-        // console.log('complaints added')
-        window.location.replace('/complaintsApproved');
+        console.log('complaints added')
+        // window.location.replace('/complaintsApproved');
     } else {
         console.log(complaintDetails.error);
         console.log(complaintDetails.message);

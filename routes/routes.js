@@ -142,7 +142,7 @@ module.exports = function (app) {
     app.route('/complaintsForm')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/complaintsForm')
+                res.render('templates/complaints/complaintsForm')
             } else {
                 res.render('templates/authentication/logIn')
             }
@@ -150,7 +150,7 @@ module.exports = function (app) {
     app.route('/complaintsForm/:id/:str')
         .get(function (req, res, next) {
             if (req.cookies.token) {
-                res.render('templates/complaintsForm')
+                res.render('templates/complaints/complaintsForm')
             } else {
                 res.render('templates/authentication/logIn')
             }
