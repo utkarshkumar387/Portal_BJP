@@ -355,6 +355,8 @@ function RGBToHex(rgb) {
 function getCssSyntaxValues() {
     let canvas = $('#layoutInner');
     let footerColor = '000000';
+    let footerHeight = document.querySelector('#testElem1').offsetHeight;
+    console.log('footer height is ', footerHeight);
     footerColor = RGBToHex(document.getElementById('testElem1').style.backgroundColor);
     let allSocialMedia = document.getElementsByClassName('socialMedia');
     let facebook = -1, instagram = -1, twitter = -1, whatsapp = -1, website = -1, email = -1;
@@ -398,6 +400,7 @@ function getCssSyntaxValues() {
     console.log('profile picture height ', profilePictureHeight);
     let cssValues = {
         footer_color: footerColor,
+        footer_height: footerHeight,
         facebook: facebook,
         instagram: instagram,
         whatsapp: whatsapp,
@@ -411,12 +414,12 @@ function getCssSyntaxValues() {
         logo_position: logoPosition,
         logo_height: 2.5,
         name_font_size: 1.5,
-        name_font_outer_colour: nameFontColor,
-        name_font_inner_colour: nameStrokeColor,
+        name_font_outer_colour: nameStrokeColor,
+        name_font_inner_colour: nameFontColor,
         post_display: postDisplay,
         post_font_size: 6,
-        post_font_outer_colour: postFontColor,
-        post_font_inner_colour: postStrokeColor,
+        post_font_outer_colour: postStrokeColor,
+        post_font_inner_colour: postFontColor,
     }
     // console.log('all css values are ', cssValues);
     return cssValues;
@@ -512,6 +515,7 @@ class displayAlltemplates {
                 this.template = allTemplates.message[i];
                 this.id = this.template.id;
                 this.footerColor = this.template.footer_color;
+                this.footerHeight = this.template.footer_height;
                 this.facebook = this.template.facebook;
                 this.instagram = this.template.instagram;
                 this.whatsapp = this.template.whatsapp;
@@ -531,7 +535,7 @@ class displayAlltemplates {
                 this.postFontSize = this.template.post_font_size;
                 this.postFontStroke = this.template.post_font_outer_colour;
                 this.postFontColor = this.template.post_font_inner_colour;
-                console.log('footer color :', this.footerColor, 'facebook :', this.facebook, 'whatsapp :', this.whatsapp, 'Instagram :', this.instagram, 'website :', this.website, 'email :', this.email, 'twitter :', this.twitter, 'social media font size :', this.socialMediaFontSize, 'social media font color :', this.socialMediaFontColor, 'profile picture position :', this.profilePicturePosition, 'Profile picture height', this.profilePictureHeight, 'logo position :', this.logoPosition, 'logo height:', this.logoHeight, 'Name font size:', this.nameFontSize, 'Name font stroke', this.nameFontStroke, 'Name font color', this.nameFontColor, 'Post display', this.postDisplay, 'Post font size :', this.postFontSize, 'Post font stroke :', this.postFontStroke, 'Post font color:', this.postFontColor);
+                console.log('footer color :', this.footerColor, 'footer Height :', this.footerHeight, 'facebook :', this.facebook, 'whatsapp :', this.whatsapp, 'Instagram :', this.instagram, 'website :', this.website, 'email :', this.email, 'twitter :', this.twitter, 'social media font size :', this.socialMediaFontSize, 'social media font color :', this.socialMediaFontColor, 'profile picture position :', this.profilePicturePosition, 'Profile picture height', this.profilePictureHeight, 'logo position :', this.logoPosition, 'logo height:', this.logoHeight, 'Name font size:', this.nameFontSize, 'Name font stroke', this.nameFontStroke, 'Name font color', this.nameFontColor, 'Post display', this.postDisplay, 'Post font size :', this.postFontSize, 'Post font stroke :', this.postFontStroke, 'Post font color:', this.postFontColor);
                 this.appendTemplates();
             }
         } else {
@@ -539,12 +543,16 @@ class displayAlltemplates {
         }
     }
     appendTemplates() {
-        let position = this.appendPositionOfImage();
+        let profileImagePosition = this.appendPositionOfImage();
+        let logoPosition = this.appendLogoPosition();
         $('#allTemplate').append(`
         <div class="col-md-6 py-3 d-flex justify-content-center">
             <div class="templateCard p-1">
-                <div class="background__box" style="background-color: grey">
-                    <div class="yourNameAndDesignation d-flex flex-column align-items-center" data-position="1" style="position: absolute;right: calc(3.125em/5)">
+                <div class="background__box" style="background-color: #ced8ff;">
+                    <div class="businessLogo" id="businessLogo" data-logo-position="1" style="position: absolute; top: calc(1.25em/5); ${logoPosition}: calc(1.25em/5)">
+                        <img style="height:calc(2.5em/5); width:calc(2.5em/5)" src="/img/IDcard/logoBack.png" alt="Logo">
+                    </div>
+                    <div class="yourNameAndDesignation d-flex flex-column align-items-center" data-position="1" style="position: absolute; right: calc(3.125em/5); bottom: calc(${this.footerHeight}px/5);">
                         <span class="userName" style="font-size: calc(1.5em/5); font-weight: 700; color: #${this.nameFontColor}; -webkit-text-stroke: calc(0.0325em/5) #${this.nameFontStroke};">
                             Utkarsh
                         </span>
@@ -556,15 +564,15 @@ class displayAlltemplates {
                         style="position: absolute; z-index: 1; background-color: #${this.footerColor}; width:100%; min-height: calc(1.25em/5); bottom: 0;"
                         class="testElem d-flex justify-content-around flex-wrap">
                     </div>
-                    <div class="yourPersonalImage" style="position: absolute; bottom: 0; ${position}: calc(10px/5);">
+                    <div class="yourPersonalImage" style="position: absolute; bottom: 0; ${profileImagePosition}: calc(10px/5);">
                         <img src="/img/your_image.png" style="height: calc(${this.profilePictureHeight}em/5);" alt="your image">
                     </div>
                 </div>
                 <div class="templateButtons d-flex justify-content-between mt-2">
-                    <div class="templateUse templateButton">
+                    <div class="templateUse templateButton" onclick="displaySelectedTemplate.getTemplate(${this.id})">
                         <i class="fas fa-arrow-down"></i>
                     </div>
-                    <div class="templateDelete templateButton">
+                    <div class="templateDelete templateButton" onclick="displaySelectedTemplate.deleteTemplate(${this.id})">
                         <i class="far fa-trash-alt"></i>
                     </div>
                 </div>
@@ -572,8 +580,6 @@ class displayAlltemplates {
         </div>
                 `)
         this.appendSocialMediaInTemplates();
-        position = this.appendPositionOfImage();
-        console.log(this.appendPositionOfImage());
     }
     appendSocialMediaInTemplates() {
         let socialMedias = {
@@ -598,7 +604,7 @@ class displayAlltemplates {
                         $(`#testElem1${this.id}`).append(`
                         <div class="d-flex align-items-center" id="facebookID">
                             <img src="/img/icons/facebook_icon.png" style="height: calc(0.875em/5); width: calc(0.875em/5)" alt="facebook icon"/>
-                            <span class="socialMedia" id="userFacebook" data-name="facebook" style="margin: clac(0.125em/5) calc(0.125em/5); font-size: calc(0.875em/5);color: #${this.nameFontColor};">
+                            <span class="socialMedia" id="userFacebook" data-name="facebook" style="margin: clac(0.125em/5) calc(0.125em/5); font-size: calc(0.875em/5);color: #${this.socialMediaFontColor};">
                                 utkarshkumar387
                             </span>
                         </div>
@@ -608,7 +614,7 @@ class displayAlltemplates {
                         $(`#testElem1${this.id}`).append(`
                         <div class="d-flex align-items-center" id="instagramID">
                             <img src="/img/icons/insta_icon.png" style="height: calc(0.875em/5); width: calc(0.875em/5)" alt="Instagram icon"/>
-                            <span class="socialMedia" id="userInstagram" data-name="instagram" style="margin: calc(0.125em/5) calc(0.125em/5); font-size: calc(0.875em/5);color: #${this.nameFontColor};">
+                            <span class="socialMedia" id="userInstagram" data-name="instagram" style="margin: calc(0.125em/5) calc(0.125em/5); font-size: calc(0.875em/5);color: #${this.socialMediaFontColor};">
                                 utkarshkumar387
                             </span>
                         </div>
@@ -618,7 +624,7 @@ class displayAlltemplates {
                         $(`#testElem1${this.id}`).append(`
                         <div class="d-flex align-items-center" id="twitterID">
                             <img src="/img/icons/twitter_icon.png" style="height: calc(0.875em/5); width: calc(0.875em/5)" alt="twitter icon"/>
-                            <span class="socialMedia" id="userTwitter" data-name="twitter" style="margin: calc(0.125em/5) calc(0.125em/5); font-size: calc(0.875em/5);color:#${this.nameFontColor};">
+                            <span class="socialMedia" id="userTwitter" data-name="twitter" style="margin: calc(0.125em/5) calc(0.125em/5); font-size: calc(0.875em/5);color:#${this.socialMediaFontColor};">
                                 utkarshkumar387
                             </span>
                         </div>
@@ -628,7 +634,7 @@ class displayAlltemplates {
                         $(`#testElem1${this.id}`).append(`
                         <div class="d-flex align-items-center" id="whatsappID">
                             <img src="/img/icons/whatsapp_icon.png" style="height: calc(0.875em/5); width: calc(0.875em/5)" alt="whatsapp icon"/>
-                            <span class="socialMedia" id="userWhatsappNumber" data-name="whatsapp" style="margin: calc(0.125em/5) calc(0.125em/5); font-size: calc(0.875em/5);color:#${this.nameFontColor};">
+                            <span class="socialMedia" id="userWhatsappNumber" data-name="whatsapp" style="margin: calc(0.125em/5) calc(0.125em/5); font-size: calc(0.875em/5);color:#${this.socialMediaFontColor};">
                                 9876543212
                             </span>
                         </div>
@@ -638,7 +644,7 @@ class displayAlltemplates {
                         $(`#testElem1${this.id}`).append(`
                         <div class="d-flex align-items-center" id="websiteID">
                             <img src="/img/icons/website_link.png" style="height: calc(0.875em/5); width: calc(0.875em/5)" alt="website icon"/>
-                            <span class="socialMedia" id="userWebsite" data-name="website" style="margin: calc(0.125em/5) calc(0.125em/5); font-size: calc(0.875em/5);color: #${this.nameFontColor};">
+                            <span class="socialMedia" id="userWebsite" data-name="website" style="margin: calc(0.125em/5) calc(0.125em/5); font-size: calc(0.875em/5);color: #${this.socialMediaFontColor};">
                                 www.abc.com
                             </span>
                         </div>
@@ -648,7 +654,7 @@ class displayAlltemplates {
                         $(`#testElem1${this.id}`).append(`
                         <div class="d-flex align-items-center" id="emailID">
                             <img src="/img/icons/email_icon.png" style="height:calc(0.875em/5); width:calc(0.875em/5)" alt="email icon"/>
-                            <span class="socialMedia" id="userEmail" data-name="email" style="margin: calc(0.125em/5) calc(0.125em/5); font-size: calc(0.875em/5); color: #${this.nameFontColor};">
+                            <span class="socialMedia" id="userEmail" data-name="email" style="margin: calc(0.125em/5) calc(0.125em/5); font-size: calc(0.875em/5); color: #${this.socialMediaFontColor};">
                                 utkarshkumar387@gmail.com
                             </span>
                         </div>
@@ -674,9 +680,244 @@ class displayAlltemplates {
         }
         return position;
     }
+    appendLogoPosition() {
+        let position;
+        switch (this.logoPosition) {
+            case 1:
+                position = 'left'
+                break;
+            case 2:
+                position = 'right'
+                break;
+            default:
+                $('#yourPersonalImage').hide();
+        }
+        return position;
+    }
 }
+
+class displaySelectedTemplates {
+    setTemplateValues(selectedTemplates) {
+        this.selectedTemplates = selectedTemplates
+        console.log('selected template is', this.selectedTemplates);
+        this.template = selectedTemplates;
+        this.id = this.template.id;
+        this.footerColor = this.template.footer_color;
+        this.footerHeight = this.template.footer_height;
+        this.facebook = this.template.facebook;
+        this.instagram = this.template.instagram;
+        this.whatsapp = this.template.whatsapp;
+        this.website = this.template.website;
+        this.email = this.template.email;
+        this.twitter = this.template.twitter;
+        this.socialMediaFontSize = this.template.social_media_font_size;
+        this.socialMediaFontColor = this.template.social_media_color;
+        this.profilePicturePosition = this.template.profile_picture_position;
+        this.profilePictureHeight = this.template.profile_picture_height;
+        this.logoPosition = this.template.logo_position;
+        this.logoHeight = this.template.logo_height;
+        this.nameFontSize = this.template.name_font_size;
+        this.nameFontStroke = this.template.name_font_outer_colour;
+        this.nameFontColor = this.template.name_font_inner_colour;
+        this.postDisplay = this.template.post_display;
+        this.postFontSize = this.template.post_font_size;
+        this.postFontStroke = this.template.post_font_outer_colour;
+        this.postFontColor = this.template.post_font_inner_colour;
+        console.log('footer color :', this.footerColor, 'footer Height :', this.footerHeight, 'facebook :', this.facebook, 'whatsapp :', this.whatsapp, 'Instagram :', this.instagram, 'website :', this.website, 'email :', this.email, 'twitter :', this.twitter, 'social media font size :', this.socialMediaFontSize, 'social media font color :', this.socialMediaFontColor, 'profile picture position :', this.profilePicturePosition, 'Profile picture height', this.profilePictureHeight, 'logo position :', this.logoPosition, 'logo height:', this.logoHeight, 'Name font size:', this.nameFontSize, 'Name font stroke', this.nameFontStroke, 'Name font color', this.nameFontColor, 'Post display', this.postDisplay, 'Post font size :', this.postFontSize, 'Post font stroke :', this.postFontStroke, 'Post font color:', this.postFontColor);
+        this.appendSelectedTemplate();
+    }
+    // setTemplate()
+    appendSelectedTemplate() {
+        let profileImagePosition = this.selectedTemplatePositionOfImage();
+        let logoPosition = this.selectedTemplateLogoPosition();
+        const parentElementOfcanvas = document.getElementById('layoutInner');
+        while (parentElementOfcanvas.firstChild) {
+            parentElementOfcanvas.firstChild.remove()
+        }
+        $('#layoutInner').append(`
+                <div class="businessLogo" id="businessLogo" data-logo-position="1" style="position: absolute; top: 1.25em; ${logoPosition}:1.25em">
+                    <img style="height:2.5em; width:2.5em" src="/img/IDcard/logoBack.png" alt="Logo">
+                </div>
+                <div class="yourNameAndDesignation d-flex flex-column align-items-center" data-position="1" style="position: absolute; right: 3.125em; bottom: ${this.footerHeight}px;">
+                    <span class="userName" style="font-size: 1.5em; font-weight: 700; color: #${this.nameFontColor}; -webkit-text-stroke: 0.0325em #${this.nameFontStroke};">
+                        Utkarsh
+                    </span>
+                    <span class="userPost" id="userPost" style="font-weight: 500; font-size:1rem; color: #${this.postFontColor}; -webkit-text-stroke: 0.0325em #${this.postFontStroke};">
+                        Zila Parisad
+                    </span>
+                </div>
+                <div id="testElem1${this.id}"
+                    style="position: absolute; z-index: 1; background-color: #${this.footerColor}; width:100%; min-height: 1.25em; bottom: 0;"
+                    class="testElem d-flex justify-content-around flex-wrap">
+                </div>
+                <div class="yourPersonalImage" style="position: absolute; bottom: 0; ${profileImagePosition}: 10px;">
+                    <img src="/img/your_image.png" style="height: ${this.profilePictureHeight}em;" alt="your image">
+                </div>
+            `)
+        this.appendSocialMediaInTemplates();
+    }
+    appendSocialMediaInTemplates() {
+        let socialMedias = {
+            facebook: this.facebook,
+            instagram: this.instagram,
+            whatsapp: this.whatsapp,
+            website: this.website,
+            email: this.email,
+            twitter: this.twitter,
+        }
+        var sortableSocialMedias = [];
+        for (var socialMedia in socialMedias) {
+            sortableSocialMedias.push([socialMedia, socialMedias[socialMedia]]);
+        }
+        sortableSocialMedias.sort(function (elementA, elementB) {
+            return elementA[1] - elementB[1];
+        });
+        for (let i = 0; i < sortableSocialMedias.length; i++) {
+            if (sortableSocialMedias[i][1] >= 0) {
+                switch (sortableSocialMedias[i][0]) {
+                    case 'facebook':
+                        $(`#testElem1${this.id}`).append(`
+                        <div class="d-flex align-items-center" id="facebookID">
+                            <img src="/img/icons/facebook_icon.png" style="height: 0.875em; width: 0.875em" alt="facebook icon"/>
+                            <span class="socialMedia" id="userFacebook" data-name="facebook" style="margin: 0.125em 0.125em; font-size: 0.875em;color: #${this.socialMediaFontColor};">
+                                utkarshkumar387
+                            </span>
+                        </div>
+                        `)
+                        break;
+                    case 'instagram':
+                        $(`#testElem1${this.id}`).append(`
+                        <div class="d-flex align-items-center" id="instagramID">
+                            <img src="/img/icons/insta_icon.png" style="height: 0.875em; width: 0.875em" alt="Instagram icon"/>
+                            <span class="socialMedia" id="userInstagram" data-name="instagram" style="margin: 0.125em 0.125em; font-size: 0.875em;color: #${this.socialMediaFontColor};">
+                                utkarshkumar387
+                            </span>
+                        </div>
+                        `)
+                        break;
+                    case 'twitter':
+                        $(`#testElem1${this.id}`).append(`
+                        <div class="d-flex align-items-center" id="twitterID">
+                            <img src="/img/icons/twitter_icon.png" style="height: 0.875em; width: 0.875em" alt="twitter icon"/>
+                            <span class="socialMedia" id="userTwitter" data-name="twitter" style="margin: 0.125em 0.125em; font-size: 0.875em;color:#${this.socialMediaFontColor};">
+                                utkarshkumar387
+                            </span>
+                        </div>
+                        `)
+                        break;
+                    case 'whatsapp':
+                        $(`#testElem1${this.id}`).append(`
+                        <div class="d-flex align-items-center" id="whatsappID">
+                            <img src="/img/icons/whatsapp_icon.png" style="height:0.875em; width: 0.875em" alt="whatsapp icon"/>
+                            <span class="socialMedia" id="userWhatsappNumber" data-name="whatsapp" style="margin: 0.125em 0.125em; font-size: 0.875em;color:#${this.socialMediaFontColor};">
+                                9876543212
+                            </span>
+                        </div>
+                        `)
+                        break;
+                    case 'website':
+                        $(`#testElem1${this.id}`).append(`
+                        <div class="d-flex align-items-center" id="websiteID">
+                            <img src="/img/icons/website_link.png" style="height: 0.875em; width: 0.875em" alt="website icon"/>
+                            <span class="socialMedia" id="userWebsite" data-name="website" style="margin: 0.125em 0.125em; font-size: 0.875em;color: #${this.socialMediaFontColor};">
+                                www.abc.com
+                            </span>
+                        </div>
+                        `)
+                        break;
+                    case 'email':
+                        $(`#testElem1${this.id}`).append(`
+                        <div class="d-flex align-items-center" id="emailID">
+                            <img src="/img/icons/email_icon.png" style="height:0.875em; width:0.875em" alt="email icon"/>
+                            <span class="socialMedia" id="userEmail" data-name="email" style="margin: 0.125em 0.125em; font-size: 0.875em; color: #${this.socialMediaFontColor};">
+                                utkarshkumar387@gmail.com
+                            </span>
+                        </div>
+                        `)
+                        break;
+                    default:
+                        console.log('No social media to show');
+                }
+            }
+        }
+    }
+    selectedTemplatePositionOfImage() {
+        let position;
+        switch (this.profilePicturePosition) {
+            case 1:
+                position = 'left'
+                break;
+            case 2:
+                position = 'right'
+                break;
+            default:
+                $('#yourPersonalImage').hide();
+        }
+        return position;
+    }
+    selectedTemplateLogoPosition() {
+        let position;
+        switch (this.logoPosition) {
+            case 1:
+                position = 'left'
+                break;
+            case 2:
+                position = 'right'
+                break;
+            default:
+                $('#yourPersonalImage').hide();
+        }
+        return position;
+    }
+    deleteTemplate(templateID) {
+        let response = deleteRequest.editorTemplate('custom_design', templateID);
+        console.log(response);
+        if (response.error == false) {
+            window.location.reload();
+        } else {
+            console.log('Error response while deleting the template', response.message);
+        }
+    }
+    getTemplate(templateID) {
+        let response = getRequest.editor('custom_design', templateID);
+        console.log(response);
+        if (response.error == false) {
+            console.log('get request for template successful', response.message);
+            this.setTemplateValues(response.message);
+            // window.location.reload();
+        } else {
+            console.log('Error response while deleting the template', response.message);
+        }
+    }
+}
+// class operationsOnTemplates {
+//     deleteTemplate(templateID) {
+//         let response = deleteRequest.editorTemplate('custom_design', templateID);
+//         console.log(response);
+//         if (response.error == false) {
+//             window.location.reload();
+//         } else {
+//             console.log('Error response while deleting the template', response.message);
+//         }
+//     }
+//     getTemplate(templateID) {
+//         let response = getRequest.editor('custom_design', templateID);
+//         console.log(response);
+//         if (response.error == false) {
+//             console.log('get request for template successful', response.message);
+//             return response.message;
+//             // window.location.reload();
+//         } else {
+//             console.log('Error response while deleting the template', response.message);
+//         }
+//     }
+// }
 let getAllTemplates = getRequest.editor('custom_design');
 const displayTemplates = new displayAlltemplates(getAllTemplates);
+const displaySelectedTemplate = new displaySelectedTemplates();
+// const operationsOnTemplate = new operationsOnTemplates();
+// console.log('get selected template:', operationsOnTemplate.getTemplate())
+// console.log(displaySelectedTemplate(operationsOnTemplate.getTemplate()));
 // //execcommand with command function
 // function sendCmd(command) {
 //     document.execCommand(command, false, null);

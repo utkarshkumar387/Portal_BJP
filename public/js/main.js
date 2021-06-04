@@ -144,6 +144,10 @@ class deleteRequests {
         let adminUrl = main_url + 'privilege/' + sub_url + '/' + id + '/';
         return ajaxRequest(this.type, adminUrl, this.data, this.status);
     }
+    editorTemplate(sub_url, id) {
+        let editorTemplateUrl = main_url + 'editor/' + sub_url + '/' + id + '/';
+        return ajaxRequest(this.type, editorTemplateUrl, this.data, this.status);
+    }
 }
 let getRequest = new getRequests();
 let postRequest = new postRequests();
