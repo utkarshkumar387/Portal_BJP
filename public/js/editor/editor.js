@@ -27,9 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 const bindInputToElement = (inputEl, elementEl) => {
-    // console.log(inputEl, elementEl);
     inputEl.addEventListener('keyup', () => {
-        // console.log(elementEl);
         elementEl.textContent = inputEl.value;
     });
 }
@@ -163,7 +161,7 @@ function personalWebsite(checkbox) {
 }
 
 //add email address
-function personalEmail(checkbox) {
+function personalEmail(checkbox = false) {
     if (checkbox.checked == true) {
         $('#testElem1').append(`<div class="d-flex align-items-center" id="emailID" style="color: rgb(255, 255, 255);">
             <img src="/img/icons/email_icon.png" style="height:0.875em; width:0.875em" alt="email icon"/>
@@ -177,6 +175,8 @@ function personalEmail(checkbox) {
     if ($('.yourNameAndDesignation')) {
         addName()
     }
+    console.log('inside personal email');
+    console.log('Input field value', document.getElementById('email_address'), 'value to be modified', document.getElementById('userEmail'));
     bindInputToElement(
         document.getElementById('email_address'),
         document.getElementById('userEmail')
@@ -545,6 +545,7 @@ class displayAlltemplates {
     appendTemplates() {
         let profileImagePosition = this.appendPositionOfImage();
         let logoPosition = this.appendLogoPosition();
+        let nameAndDesignationPosition = this.appendNameAndDesignation();
         $('#allTemplate').append(`
         <div class="col-md-6 py-3 d-flex justify-content-center">
             <div class="templateCard p-1">
@@ -552,7 +553,7 @@ class displayAlltemplates {
                     <div class="businessLogo" id="businessLogo" data-logo-position="1" style="position: absolute; top: calc(1.25em/5); ${logoPosition}: calc(1.25em/5)">
                         <img style="height:calc(2.5em/5); width:calc(2.5em/5)" src="/img/IDcard/logoBack.png" alt="Logo">
                     </div>
-                    <div class="yourNameAndDesignation d-flex flex-column align-items-center" data-position="1" style="position: absolute; right: calc(3.125em/5); bottom: calc(${this.footerHeight}px/5);">
+                    <div class="yourNameAndDesignation d-flex flex-column align-items-center" data-position="1" style="position: absolute; ${nameAndDesignationPosition}: calc(3.125em/5); bottom: calc(${this.footerHeight}px/5);">
                         <span class="userName" style="font-size: calc(1.5em/5); font-weight: 700; color: #${this.nameFontColor}; -webkit-text-stroke: calc(0.0325em/5) #${this.nameFontStroke};">
                             Utkarsh
                         </span>
@@ -690,7 +691,21 @@ class displayAlltemplates {
                 position = 'right'
                 break;
             default:
-                $('#yourPersonalImage').hide();
+                $('#businessLogo').hide();
+        }
+        return position;
+    }
+    appendNameAndDesignation() {
+        let position;
+        switch (this.profilePicturePosition) {
+            case 1:
+                position = 'right'
+                break;
+            case 2:
+                position = 'left'
+                break;
+            default:
+                $('.ourNameAndDesignation').hide();
         }
         return position;
     }
@@ -730,6 +745,7 @@ class displaySelectedTemplates {
     appendSelectedTemplate() {
         let profileImagePosition = this.selectedTemplatePositionOfImage();
         let logoPosition = this.selectedTemplateLogoPosition();
+        let nameAndDesignationPosition = this.selectedTemplateNameAndDesignation();
         const parentElementOfcanvas = document.getElementById('layoutInner');
         while (parentElementOfcanvas.firstChild) {
             parentElementOfcanvas.firstChild.remove()
@@ -738,7 +754,7 @@ class displaySelectedTemplates {
                 <div class="businessLogo" id="businessLogo" data-logo-position="1" style="position: absolute; top: 1.25em; ${logoPosition}:1.25em">
                     <img style="height:2.5em; width:2.5em" src="/img/IDcard/logoBack.png" alt="Logo">
                 </div>
-                <div class="yourNameAndDesignation d-flex flex-column align-items-center" data-position="1" style="position: absolute; right: 3.125em; bottom: ${this.footerHeight}px;">
+                <div class="yourNameAndDesignation d-flex flex-column align-items-center" data-position="1" style="position: absolute; ${nameAndDesignationPosition}: 3.125em; bottom: ${this.footerHeight}px;">
                     <span class="userName" style="font-size: 1.5em; font-weight: 700; color: #${this.nameFontColor}; -webkit-text-stroke: 0.0325em #${this.nameFontStroke};">
                         Utkarsh
                     </span>
@@ -754,6 +770,14 @@ class displaySelectedTemplates {
                     <img src="/img/your_image.png" style="height: ${this.profilePictureHeight}em;" alt="your image">
                 </div>
             `)
+        bindInputToElement(
+            document.getElementById('your_name'),
+            document.querySelector('.userName')
+        );
+        bindInputToElement(
+            document.getElementById('post_details'),
+            document.querySelector('.userPost')
+        );
         this.appendSocialMediaInTemplates();
     }
     appendSocialMediaInTemplates() {
@@ -784,6 +808,10 @@ class displaySelectedTemplates {
                             </span>
                         </div>
                         `)
+                        bindInputToElement(
+                            document.getElementById('facebook_link'),
+                            document.getElementById('userFacebook')
+                        );
                         break;
                     case 'instagram':
                         $(`#testElem1${this.id}`).append(`
@@ -794,6 +822,10 @@ class displaySelectedTemplates {
                             </span>
                         </div>
                         `)
+                        bindInputToElement(
+                            document.getElementById('instagram_link'),
+                            document.getElementById('userInstagram')
+                        );
                         break;
                     case 'twitter':
                         $(`#testElem1${this.id}`).append(`
@@ -804,6 +836,10 @@ class displaySelectedTemplates {
                             </span>
                         </div>
                         `)
+                        bindInputToElement(
+                            document.getElementById('twitter_link'),
+                            document.getElementById('userTwitter')
+                        );
                         break;
                     case 'whatsapp':
                         $(`#testElem1${this.id}`).append(`
@@ -814,6 +850,10 @@ class displaySelectedTemplates {
                             </span>
                         </div>
                         `)
+                        bindInputToElement(
+                            document.getElementById('Whatsapp_number'),
+                            document.getElementById('userWhatsappNumber')
+                        );
                         break;
                     case 'website':
                         $(`#testElem1${this.id}`).append(`
@@ -824,6 +864,10 @@ class displaySelectedTemplates {
                             </span>
                         </div>
                         `)
+                        bindInputToElement(
+                            document.getElementById('website_link'),
+                            document.getElementById('userWebsite')
+                        );
                         break;
                     case 'email':
                         $(`#testElem1${this.id}`).append(`
@@ -834,6 +878,10 @@ class displaySelectedTemplates {
                             </span>
                         </div>
                         `)
+                        bindInputToElement(
+                            document.getElementById('email_address'),
+                            document.getElementById('userEmail')
+                        );
                         break;
                     default:
                         console.log('No social media to show');
@@ -865,7 +913,21 @@ class displaySelectedTemplates {
                 position = 'right'
                 break;
             default:
-                $('#yourPersonalImage').hide();
+                $('#businessLogo').hide();
+        }
+        return position;
+    }
+    selectedTemplateNameAndDesignation() {
+        let position;
+        switch (this.profilePicturePosition) {
+            case 1:
+                position = 'right'
+                break;
+            case 2:
+                position = 'left'
+                break;
+            default:
+                $('.yourNameAndDesignation').hide();
         }
         return position;
     }

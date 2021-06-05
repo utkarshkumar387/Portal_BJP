@@ -224,7 +224,6 @@ function officialDetails() {
                 <option value="${allStates[i].id}">${allStates[i].name}</option>
             `
             )
-
         }
     }
     document.getElementById('getAllStates').addEventListener('change', function () {
@@ -243,7 +242,6 @@ function officialDetails() {
                     <option value="${allDistricts[i].id}">${allDistricts[i].name}</option>
                 `
                 )
-
             }
         }
     })
