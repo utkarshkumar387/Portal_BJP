@@ -2,7 +2,7 @@
     <h4>Components</h4>
     <hr style="background-color: #fff !important;">
     <ul class="nav sidebar flex-column" id="nav_accordion">
-        <li class="nav-item has-submenu">
+        <li class="nav-item has-submenu" id="addFooter">
             <a class="nav-link" href="#" id="foot1"> Footer </a>
             <ul class="collapse">
                 <div class="nav-link d-flex justify-content-between align-items-center">
@@ -18,42 +18,56 @@
             <a class="nav-link" href="#"> Social Media links </a>
             <ul class="collapse">
                 <div class="nav-link">
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" onchange="socialMediaFacebook(this)"
-                            id="facebookCheckbox">
-                        <label class="form-check-label" for="facebookCheckbox">Facebook</label>
-                    </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" onchange="socialMediaInstagram(this)"
-                            id="instagramCheckbox">
-                        <label class="form-check-label" for="instagramCheckbox">Instagram</label>
-                    </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" onchange="socialMediaTwitter(this)"
-                            id="twitterCheckbox">
-                        <label class="form-check-label" for="twitterCheckbox">Twitter</label>
-                    </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" onchange="socialMediaWhatsapp(this)"
-                            id="whatsappCheckbox">
-                        <label class="form-check-label" for="whatsappCheckbox">whatsapp</label>
-                    </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" onchange="personalWebsite(this)"
-                            id="websiteCheckbox">
-                        <label class="form-check-label" for="websiteCheckbox">website</label>
-                    </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" onchange="personalEmail(this)"
-                            id="emailCheckbox">
-                        <label class="form-check-label" for="emailCheckbox">Email</label>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <div>
-                            <input name="MyColorPicker" type="color" id="socialMediaColorPicker" />
+                    <div class="addSocialMediaCheckbox">
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" onchange="socialMediaFacebook(this)"
+                                id="facebookCheckbox">
+                            <label class="form-check-label" for="facebookCheckbox">Facebook</label>
                         </div>
-                        <button class="btn btn-primary"
-                            onclick="changeTextColor('socialMedia', 'socialMediaColorPicker')">Apply</button>
+                    </div>
+                    <div class="addSocialMediaCheckbox">
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" onchange="socialMediaInstagram(this)"
+                                id="instagramCheckbox">
+                            <label class="form-check-label" for="instagramCheckbox">Instagram</label>
+                        </div>
+                    </div>
+                    <div class="addSocialMediaCheckbox">
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" onchange="socialMediaTwitter(this)"
+                                id="twitterCheckbox">
+                            <label class="form-check-label" for="twitterCheckbox">Twitter</label>
+                        </div>
+                    </div>
+                    <div class="addSocialMediaCheckbox">
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" onchange="socialMediaWhatsapp(this)"
+                                id="whatsappCheckbox">
+                            <label class="form-check-label" for="whatsappCheckbox">whatsapp</label>
+                        </div>
+                    </div>
+                    <div class="addSocialMediaCheckbox">
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" onchange="personalWebsite(this)"
+                                id="websiteCheckbox">
+                            <label class="form-check-label" for="websiteCheckbox">website</label>
+                        </div>
+                    </div>
+                    <div class="addSocialMediaCheckbox">
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" onchange="personalEmail(this)"
+                                id="emailCheckbox">
+                            <label class="form-check-label" for="emailCheckbox">Email</label>
+                        </div>
+                    </div>
+                    <div class="addSocialMediaColor">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div>
+                                <input name="MyColorPicker" type="color" id="socialMediaColorPicker" />
+                            </div>
+                            <button class="btn btn-primary"
+                                onclick="changeTextColor('socialMedia', 'socialMediaColorPicker')">Apply</button>
+                        </div>
                     </div>
                     <div class="form-group mb-4">
                         <select onchange="editFontFamily('socialMedia', this.value);" class="form-control"
@@ -71,7 +85,7 @@
                 </div>
             </ul>
         </li>
-        <li class="nav-item has-submenu">
+        <li class="nav-item has-submenu addProfileImages">
             <a class="nav-link" href="#" id="userProfileImage"> Profile Image </a>
             <ul class="collapse">
                 <div class="nav-link">
@@ -117,33 +131,42 @@
             <a class="nav-link" href="#" id="userName">Name</a>
             <ul class="collapse">
                 <div class="nav-link">
-                    <div class="form-check mb-2">
-                        <input class="form-check-input" type="radio" onchange="addName()" name="yourName"
-                            id="nameRightAligned">
-                        <label class="form-check-label" for="nameRightAligned">
-                            Right aligned
-                        </label>
-                    </div>
-                    <div class="form-check mb-2">
-                        <input class="form-check-input" type="radio" onchange="addName()" name="yourName"
-                            id="nameLeftAligned">
-                        <label class="form-check-label" for="nameLeftAligned">
-                            Left aligned
-                        </label>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <div>
-                            <input name="MyColorPicker" type="color" id="nameColorPicker" />
+                    <div class="addName">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="radio" onchange="addName()" name="yourName"
+                                id="nameRightAligned">
+                            <label class="form-check-label" for="nameRightAligned">
+                                Right aligned
+                            </label>
                         </div>
-                        <button class="btn btn-primary" onclick="changeTextColor('userName', 'nameColorPicker')">Apply
-                            Color</button>
                     </div>
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <div>
-                            <input name="myStrokeColorPicker" type="color" id="nameStrokeColorPicker" />
+                    <div class="addName">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="radio" onchange="addName()" name="yourName"
+                                id="nameLeftAligned">
+                            <label class="form-check-label" for="nameLeftAligned">
+                                Left aligned
+                            </label>
                         </div>
-                        <button class="btn btn-primary"
-                            onclick="changeStrokeColor('userName', 'nameStrokeColorPicker')">Apply Stroke</button>
+                    </div>
+                    <div class="addNameColor">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div>
+                                <input name="MyColorPicker" type="color" id="nameColorPicker" />
+                            </div>
+                            <button class="btn btn-primary"
+                                onclick="changeTextColor('userName', 'nameColorPicker')">Apply
+                                Color</button>
+                        </div>
+                    </div>
+                    <div class="addNameColorStroke">
+                        <div class="d-flex justify-content-between align-items-center mb-4 addNameColorStroke">
+                            <div>
+                                <input name="myStrokeColorPicker" type="color" id="nameStrokeColorPicker" />
+                            </div>
+                            <button class="btn btn-primary"
+                                onclick="changeStrokeColor('userName', 'nameStrokeColorPicker')">Apply Stroke</button>
+                        </div>
                     </div>
                     <div class="form-group mb-4">
                         <select onchange="editFontFamily('userName', this.value);" class="form-control"
@@ -165,33 +188,42 @@
             <a class="nav-link" href="#" id="userDesignation">Designation</a>
             <ul class="collapse">
                 <div class="nav-link">
-                    <div class="form-check mb-2">
-                        <input class="form-check-input" type="radio" onchange="setDesignation()" name="yourDesignation"
-                            id="showDesignation">
-                        <label class="form-check-label" for="showDesignation">
-                            Show
-                        </label>
-                    </div>
-                    <div class="form-check mb-2">
-                        <input class="form-check-input" type="radio" onchange="setDesignation()" name="yourDesignation"
-                            id="hideDesignation">
-                        <label class="form-check-label" for="hideDesignation">
-                            Hide
-                        </label>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <div>
-                            <input name="myNameColorPicker" type="color" id="designationColorPicker" />
+                    <div class="addDesignation">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="radio" onchange="setDesignation()"
+                                name="yourDesignation" id="showDesignation">
+                            <label class="form-check-label" for="showDesignation">
+                                Show
+                            </label>
                         </div>
-                        <button class="btn btn-primary"
-                            onclick="changeTextColor('userPost', 'designationColorPicker')">Apply Color</button>
                     </div>
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <div>
-                            <input name="myPostStrokeColorPicker" type="color" id="postStrokeColorPicker" />
+                    <div class="addDesignation">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="radio" onchange="setDesignation()"
+                                name="yourDesignation" id="hideDesignation">
+                            <label class="form-check-label" for="hideDesignation">
+                                Hide
+                            </label>
                         </div>
-                        <button class="btn btn-primary"
-                            onclick="changeStrokeColor('userPost', 'postStrokeColorPicker')">Apply Stroke</button>
+                    </div>
+                    <div class="addDesignationColor">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div>
+                                <input name="myNameColorPicker" type="color" id="designationColorPicker" />
+                            </div>
+                            <button class="btn btn-primary"
+                                onclick="changeTextColor('userPost', 'designationColorPicker')">Apply Color</button>
+                        </div>
+                    </div>
+                    <div class="addDesignationStroke">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div>
+                                <input name="myPostStrokeColorPicker" type="color" id="postStrokeColorPicker" />
+                            </div>
+                            <button class="btn btn-primary"
+                                onclick="changeStrokeColor('userPost', 'postStrokeColorPicker')">Apply
+                                Stroke</button>
+                        </div>
                     </div>
                     <div class="form-group mb-4">
                         <select onchange="editFontFamily('userPost', this.value);" class="form-control"
@@ -209,7 +241,7 @@
                 </div>
             </ul>
         </li>
-        <li class="nav-item has-submenu">
+        <li class="nav-item has-submenu addBusinessLogo">
             <a class="nav-link" href="#" id="userBusinessLogo"> Business Logo </a>
             <ul class="collapse">
                 <div class="nav-link">

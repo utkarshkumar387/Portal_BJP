@@ -242,3 +242,17 @@ color: #FFFFFF !important;
     color: #fff;
     font-size: 8px;
 }
+.saveTemplates,
+#addFooter,
+.addSocialMediaCheckbox,
+.addSocialMediaColor,
+.addProfileImages,
+.addBusinessLogo,
+.addName,
+.addNameColor,
+.addNameColorStroke,
+.addDesignation,
+.addDesignationColor,
+.addDesignationStroke{
+    display: none;
+}

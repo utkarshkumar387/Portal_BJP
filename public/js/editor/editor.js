@@ -1,5 +1,37 @@
-//sidebar
+
 let link = ['', '', '', '', ''];
+let memberDetails = JSON.parse(getCookie('member_profile'));
+let memberPrivileges = JSON.parse(getCookie('privilege'));
+console.log('member privileges are ', memberPrivileges);
+let memberFacebook;
+(memberDetails.facebook_link) ? memberFacebook = memberDetails.facebook_link : memberFacebook = 'Not Available';
+let memberInstagram;
+(memberDetails.instagram_link) ? memberInstagram = memberDetails.instagram_link : memberInstagram = 'Not Available';
+let memberWhatsapp;
+(memberDetails.phone_no) ? memberWhatsapp = memberDetails.phone_no : memberWhatsapp = 'Not Available';
+let memberTwitter;
+(memberDetails.twitter_link) ? memberTwitter = memberDetails.twitter_link : memberTwitter = 'Not Available';
+let memberWebsite;
+(memberDetails.memberWebsite) ? memberWebsite = memberDetails.memberWebsite : memberWebsite = 'Not Available';
+let memberEmail;
+(memberDetails.memberEmail) ? memberEmail = memberDetails.memberEmail : memberEmail = 'Not Available';
+let memberName = memberDetails.first_name + ' ' + memberDetails.last_name;
+
+if (memberPrivileges.admin_privilege) {
+    $('.saveTemplates').show();
+    $('#addFooter').show();
+    $('.addSocialMediaCheckbox').show();
+    $('.addSocialMediaColor').show();
+    $('.addProfileImages').show();
+    $('.addBusinessLogo').show();
+    $('.addName').show();
+    $('.addNameColor').show();
+    $('.addDesignation').show();
+    $('.addDesignationColor').show();
+    $('.addDesignationStroke').show();
+    $('.addNameColorStroke').show();
+}
+//sidebar 
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('.sidebar .nav-link').forEach(function (element) {
 
@@ -60,7 +92,7 @@ function socialMediaFacebook(checkbox) {
         $('#testElem1').append(`<div class="d-flex align-items-center" id="facebookID" style="color: rgb(255, 255, 255);">
             <img src="/img/icons/facebook_icon.png" style="height: 0.875em; width: 0.875em" alt="Instagram icon"/>
             <span class="socialMedia" id="userFacebook" data-name="facebook" style="margin: 0.125em 0.125em; font-size: 0.875em;color: rgb(255, 255, 255),">
-                utkarshkumar387
+                ${memberFacebook}
             </span>
         </div>`);
     } else {
@@ -82,7 +114,7 @@ function socialMediaInstagram(checkbox) {
         <div class="d-flex align-items-center" id="instagramID" style="color: rgb(255, 255, 255);">
             <img src="/img/icons/insta_icon.png" style="height: 0.875em; width: 0.875em" alt="Instagram icon"/>
             <span class="socialMedia" id="userInstagram" data-name="instagram" style="margin: 0.125em 0.125em; font-size: 0.875em;color: rgb(255, 255, 255);">
-                utkarshkumar387
+                ${memberInstagram}
             </span>
         </div>`);
     } else {
@@ -103,7 +135,7 @@ function socialMediaTwitter(checkbox) {
         $('#testElem1').append(`<div class="d-flex align-items-center" id="twitterID" style="color: rgb(255, 255, 255);">
             <img src="/img/icons/twitter_icon.png" style="height: 0.875em; width: 0.875em" alt="Instagram icon"/>
             <span class="socialMedia" id="userTwitter" data-name="twitter" style="margin: 0.125em 0.125em; font-size: 0.875em;color: rgb(255, 255, 255);">
-                utkarshkumar387
+                ${memberTwitter}
             </span>
         </div>`);
     } else {
@@ -124,7 +156,7 @@ function socialMediaWhatsapp(checkbox) {
         $('#testElem1').append(`<div class="d-flex align-items-center" id="whatsappID" style="color: rgb(255, 255, 255);">
             <img src="/img/icons/whatsapp_icon.png" style="height: 0.875em; width: 0.875em" alt="whatsapp icon"/>
             <span class="socialMedia" id="userWhatsappNumber" data-name="whatsapp" style="margin: 0.125em 0.125em; font-size: 0.875em;color: rgb(255, 255, 255);">
-                9876543212
+                ${memberWhatsapp}
             </span>
         </div>`);
     } else {
@@ -145,7 +177,7 @@ function personalWebsite(checkbox) {
         $('#testElem1').append(`<div class="d-flex align-items-center" id="websiteID" style="color: rgb(255, 255, 255);">
             <img src="/img/icons/website_link.png" style="height: 0.875em; width: 0.875em" alt="website icon"/>
             <span class="socialMedia" id="userWebsite" data-name="website" style="margin: 0.125em 0.125em; font-size: 0.875em;color: rgb(255, 255, 255);">
-                www.abc.com
+                ${memberWebsite}
             </span>
         </div>`);
     } else {
@@ -166,7 +198,7 @@ function personalEmail(checkbox = false) {
         $('#testElem1').append(`<div class="d-flex align-items-center" id="emailID" style="color: rgb(255, 255, 255);">
             <img src="/img/icons/email_icon.png" style="height:0.875em; width:0.875em" alt="email icon"/>
             <span class="socialMedia" id="userEmail" data-name="email" style="margin: 0.125em 0.125em; font-size: 0.875em; color: rgb(255, 255, 255)">
-                utkarshkumar387@gmail.com
+                ${memberEmail}
             </span>
         </div>`);
     } else {
@@ -223,7 +255,7 @@ function addName() {
         $('#testElem1').before(`
         <div class="yourNameAndDesignation d-flex flex-column align-items-center" data-position="2" style="position: absolute; bottom: ${footerHeight}px; right: 3.125em">
             <span class="userName" style="font-size: 1.5em; font-weight: 700; color: rgb(0,0,0); -webkit-text-stroke: 0.0325em rgb(255,255,255);">
-                Utkarsh
+                ${memberName}
             </span>
             <span class="userPost" id="userPost" style="font-weight: 500; color: rgb(0,0,0); -webkit-text-stroke: 0.0325em rgb(255,255,255);">
                 <h6>Zila Parisad<h6>
@@ -234,7 +266,7 @@ function addName() {
         $('#testElem1').before(`
             <div class="yourNameAndDesignation d-flex flex-column align-items-center" data-position="1" style="position: absolute; bottom: ${footerHeight}px; left: 3.125em">
                 <span class="userName" style="font-size: 1.5em; font-weight: 700; color: rgb(0,0,0); -webkit-text-stroke: 0.0325em rgb(255,255,255);">
-                    Utkarsh
+                    ${memberName}
                 </span>
                 <span class="userPost" id="userPost" style="font-weight: 500; color: rgb(0,0,0); -webkit-text-stroke: 0.0325em rgb(255,255,255);">
                     Zila Parisad
@@ -353,7 +385,6 @@ function RGBToHex(rgb) {
     return r + g + b;
 }
 function getCssSyntaxValues() {
-    let canvas = $('#layoutInner');
     let footerColor = '000000';
     let footerHeight = document.querySelector('#testElem1').offsetHeight;
     console.log('footer height is ', footerHeight);
@@ -508,7 +539,14 @@ function checkValidation() {
 }
 
 class displayAlltemplates {
-    constructor(allTemplates) {
+    constructor(allTemplates, memberDetails) {
+        this.memberDetails = memberDetails;
+        (this.memberDetails.instagram_link) ? this.memberInsta = this.memberDetails.instagram_link : this.memberInsta = 'Not available';
+        (this.memberDetails.facebook_link) ? this.memberFacebook = this.memberDetails.facebook_link : this.memberFacebook = 'Not available';
+        (this.memberDetails.phone_no) ? this.memberWhatsapp = this.memberDetails.phone_no : this.memberWhatsapp = 'Not available';
+        (this.memberDetails.twitter_link) ? this.memberTwitter = this.memberDetails.twitter_link : this.memberTwitter = 'Not available';
+        (this.memberDetails.email) ? this.memberEmail = this.memberDetails.email : this.memberEmail = 'Not Available';
+        this.memberName = this.memberDetails.first_name + ' ' + this.memberDetails.last_name;
         this.allTemplates = allTemplates;
         if (this.allTemplates.error == false) {
             for (let i = 0; i < this.allTemplates.message.length; i++) {
@@ -546,6 +584,7 @@ class displayAlltemplates {
         let profileImagePosition = this.appendPositionOfImage();
         let logoPosition = this.appendLogoPosition();
         let nameAndDesignationPosition = this.appendNameAndDesignation();
+        let display = this.appendPostDisplay();
         $('#allTemplate').append(`
         <div class="col-md-6 py-3 d-flex justify-content-center">
             <div class="templateCard p-1">
@@ -555,9 +594,9 @@ class displayAlltemplates {
                     </div>
                     <div class="yourNameAndDesignation d-flex flex-column align-items-center" data-position="1" style="position: absolute; ${nameAndDesignationPosition}: calc(3.125em/5); bottom: calc(${this.footerHeight}px/5);">
                         <span class="userName" style="font-size: calc(1.5em/5); font-weight: 700; color: #${this.nameFontColor}; -webkit-text-stroke: calc(0.0325em/5) #${this.nameFontStroke};">
-                            Utkarsh
+                            ${this.memberName}
                         </span>
-                        <span class="userPost" id="userPost" style="font-weight: 500; font-size:calc(1rem/5); color: #${this.postFontColor}; -webkit-text-stroke: calc(0.0325em/5) #${this.postFontStroke};">
+                        <span class="userPost" id="userPost" style="display: ${display}; font-weight: 500; font-size:calc(1rem/5); color: #${this.postFontColor}; -webkit-text-stroke: calc(0.0325em/5) #${this.postFontStroke};">
                             Zila Parisad
                         </span>
                     </div>
@@ -606,7 +645,7 @@ class displayAlltemplates {
                         <div class="d-flex align-items-center" id="facebookID">
                             <img src="/img/icons/facebook_icon.png" style="height: calc(0.875em/5); width: calc(0.875em/5)" alt="facebook icon"/>
                             <span class="socialMedia" id="userFacebook" data-name="facebook" style="margin: clac(0.125em/5) calc(0.125em/5); font-size: calc(0.875em/5);color: #${this.socialMediaFontColor};">
-                                utkarshkumar387
+                                ${this.memberFacebook}
                             </span>
                         </div>
                         `)
@@ -616,7 +655,7 @@ class displayAlltemplates {
                         <div class="d-flex align-items-center" id="instagramID">
                             <img src="/img/icons/insta_icon.png" style="height: calc(0.875em/5); width: calc(0.875em/5)" alt="Instagram icon"/>
                             <span class="socialMedia" id="userInstagram" data-name="instagram" style="margin: calc(0.125em/5) calc(0.125em/5); font-size: calc(0.875em/5);color: #${this.socialMediaFontColor};">
-                                utkarshkumar387
+                                ${this.memberInsta}
                             </span>
                         </div>
                         `)
@@ -626,7 +665,7 @@ class displayAlltemplates {
                         <div class="d-flex align-items-center" id="twitterID">
                             <img src="/img/icons/twitter_icon.png" style="height: calc(0.875em/5); width: calc(0.875em/5)" alt="twitter icon"/>
                             <span class="socialMedia" id="userTwitter" data-name="twitter" style="margin: calc(0.125em/5) calc(0.125em/5); font-size: calc(0.875em/5);color:#${this.socialMediaFontColor};">
-                                utkarshkumar387
+                                ${this.memberTwitter}
                             </span>
                         </div>
                         `)
@@ -636,7 +675,7 @@ class displayAlltemplates {
                         <div class="d-flex align-items-center" id="whatsappID">
                             <img src="/img/icons/whatsapp_icon.png" style="height: calc(0.875em/5); width: calc(0.875em/5)" alt="whatsapp icon"/>
                             <span class="socialMedia" id="userWhatsappNumber" data-name="whatsapp" style="margin: calc(0.125em/5) calc(0.125em/5); font-size: calc(0.875em/5);color:#${this.socialMediaFontColor};">
-                                9876543212
+                                ${this.memberWhatsapp}
                             </span>
                         </div>
                         `)
@@ -656,7 +695,7 @@ class displayAlltemplates {
                         <div class="d-flex align-items-center" id="emailID">
                             <img src="/img/icons/email_icon.png" style="height:calc(0.875em/5); width:calc(0.875em/5)" alt="email icon"/>
                             <span class="socialMedia" id="userEmail" data-name="email" style="margin: calc(0.125em/5) calc(0.125em/5); font-size: calc(0.875em/5); color: #${this.socialMediaFontColor};">
-                                utkarshkumar387@gmail.com
+                                ${this.memberEmail}
                             </span>
                         </div>
                         `)
@@ -709,12 +748,34 @@ class displayAlltemplates {
         }
         return position;
     }
+    appendPostDisplay() {
+        let display;
+        switch (this.postDisplay) {
+            case true:
+                display = 'block'
+                break;
+            case false:
+                display = 'none'
+                break;
+            default:
+                $('.userPost').hide();
+        }
+        return display;
+    }
+
 }
 
 class displaySelectedTemplates {
+    constructor(memberDetails) {
+        this.memberDetails = memberDetails;
+        (this.memberDetails.instagram_link) ? this.memberInsta = this.memberDetails.instagram_link : this.memberInsta = 'Not available';
+        (this.memberDetails.facebook_link) ? this.memberFacebook = this.memberDetails.facebook_link : this.memberFacebook = 'Not available';
+        (this.memberDetails.phone_no) ? this.memberWhatsapp = this.memberDetails.phone_no : this.memberWhatsapp = 'Not available';
+        (this.memberDetails.twitter_link) ? this.memberTwitter = this.memberDetails.twitter_link : this.memberTwitter = 'Not available';
+        (this.memberDetails.email) ? this.memberEmail = this.memberDetails.email : this.memberEmail = 'Not Available';
+        this.memberName = this.memberDetails.first_name + ' ' + this.memberDetails.last_name;
+    }
     setTemplateValues(selectedTemplates) {
-        this.selectedTemplates = selectedTemplates
-        console.log('selected template is', this.selectedTemplates);
         this.template = selectedTemplates;
         this.id = this.template.id;
         this.footerColor = this.template.footer_color;
@@ -741,11 +802,11 @@ class displaySelectedTemplates {
         console.log('footer color :', this.footerColor, 'footer Height :', this.footerHeight, 'facebook :', this.facebook, 'whatsapp :', this.whatsapp, 'Instagram :', this.instagram, 'website :', this.website, 'email :', this.email, 'twitter :', this.twitter, 'social media font size :', this.socialMediaFontSize, 'social media font color :', this.socialMediaFontColor, 'profile picture position :', this.profilePicturePosition, 'Profile picture height', this.profilePictureHeight, 'logo position :', this.logoPosition, 'logo height:', this.logoHeight, 'Name font size:', this.nameFontSize, 'Name font stroke', this.nameFontStroke, 'Name font color', this.nameFontColor, 'Post display', this.postDisplay, 'Post font size :', this.postFontSize, 'Post font stroke :', this.postFontStroke, 'Post font color:', this.postFontColor);
         this.appendSelectedTemplate();
     }
-    // setTemplate()
     appendSelectedTemplate() {
         let profileImagePosition = this.selectedTemplatePositionOfImage();
         let logoPosition = this.selectedTemplateLogoPosition();
         let nameAndDesignationPosition = this.selectedTemplateNameAndDesignation();
+        let display = this.selectedPostDisplay();
         const parentElementOfcanvas = document.getElementById('layoutInner');
         while (parentElementOfcanvas.firstChild) {
             parentElementOfcanvas.firstChild.remove()
@@ -756,9 +817,9 @@ class displaySelectedTemplates {
                 </div>
                 <div class="yourNameAndDesignation d-flex flex-column align-items-center" data-position="1" style="position: absolute; ${nameAndDesignationPosition}: 3.125em; bottom: ${this.footerHeight}px;">
                     <span class="userName" style="font-size: 1.5em; font-weight: 700; color: #${this.nameFontColor}; -webkit-text-stroke: 0.0325em #${this.nameFontStroke};">
-                        Utkarsh
+                        ${this.memberName}
                     </span>
-                    <span class="userPost" id="userPost" style="font-weight: 500; font-size:1rem; color: #${this.postFontColor}; -webkit-text-stroke: 0.0325em #${this.postFontStroke};">
+                    <span class="userPost" id="userPost" style="font-weight: 500; display:${display}; font-size:1rem; color: #${this.postFontColor}; -webkit-text-stroke: 0.0325em #${this.postFontStroke};">
                         Zila Parisad
                     </span>
                 </div>
@@ -804,7 +865,7 @@ class displaySelectedTemplates {
                         <div class="d-flex align-items-center" id="facebookID">
                             <img src="/img/icons/facebook_icon.png" style="height: 0.875em; width: 0.875em" alt="facebook icon"/>
                             <span class="socialMedia" id="userFacebook" data-name="facebook" style="margin: 0.125em 0.125em; font-size: 0.875em;color: #${this.socialMediaFontColor};">
-                                utkarshkumar387
+                                ${this.memberFacebook}
                             </span>
                         </div>
                         `)
@@ -818,7 +879,7 @@ class displaySelectedTemplates {
                         <div class="d-flex align-items-center" id="instagramID">
                             <img src="/img/icons/insta_icon.png" style="height: 0.875em; width: 0.875em" alt="Instagram icon"/>
                             <span class="socialMedia" id="userInstagram" data-name="instagram" style="margin: 0.125em 0.125em; font-size: 0.875em;color: #${this.socialMediaFontColor};">
-                                utkarshkumar387
+                                ${this.memberInsta}
                             </span>
                         </div>
                         `)
@@ -832,7 +893,7 @@ class displaySelectedTemplates {
                         <div class="d-flex align-items-center" id="twitterID">
                             <img src="/img/icons/twitter_icon.png" style="height: 0.875em; width: 0.875em" alt="twitter icon"/>
                             <span class="socialMedia" id="userTwitter" data-name="twitter" style="margin: 0.125em 0.125em; font-size: 0.875em;color:#${this.socialMediaFontColor};">
-                                utkarshkumar387
+                                ${this.memberTwitter}
                             </span>
                         </div>
                         `)
@@ -846,7 +907,7 @@ class displaySelectedTemplates {
                         <div class="d-flex align-items-center" id="whatsappID">
                             <img src="/img/icons/whatsapp_icon.png" style="height:0.875em; width: 0.875em" alt="whatsapp icon"/>
                             <span class="socialMedia" id="userWhatsappNumber" data-name="whatsapp" style="margin: 0.125em 0.125em; font-size: 0.875em;color:#${this.socialMediaFontColor};">
-                                9876543212
+                                ${this.memberWhatsapp}
                             </span>
                         </div>
                         `)
@@ -874,7 +935,7 @@ class displaySelectedTemplates {
                         <div class="d-flex align-items-center" id="emailID">
                             <img src="/img/icons/email_icon.png" style="height:0.875em; width:0.875em" alt="email icon"/>
                             <span class="socialMedia" id="userEmail" data-name="email" style="margin: 0.125em 0.125em; font-size: 0.875em; color: #${this.socialMediaFontColor};">
-                                utkarshkumar387@gmail.com
+                                ${this.memberEmail}
                             </span>
                         </div>
                         `)
@@ -931,6 +992,20 @@ class displaySelectedTemplates {
         }
         return position;
     }
+    selectedPostDisplay() {
+        let display;
+        switch (this.postDisplay) {
+            case true:
+                display = 'block'
+                break;
+            case false:
+                display = 'none'
+                break;
+            default:
+                $('.userPost').hide();
+        }
+        return display;
+    }
     deleteTemplate(templateID) {
         let response = deleteRequest.editorTemplate('custom_design', templateID);
         console.log(response);
@@ -952,42 +1027,7 @@ class displaySelectedTemplates {
         }
     }
 }
-// class operationsOnTemplates {
-//     deleteTemplate(templateID) {
-//         let response = deleteRequest.editorTemplate('custom_design', templateID);
-//         console.log(response);
-//         if (response.error == false) {
-//             window.location.reload();
-//         } else {
-//             console.log('Error response while deleting the template', response.message);
-//         }
-//     }
-//     getTemplate(templateID) {
-//         let response = getRequest.editor('custom_design', templateID);
-//         console.log(response);
-//         if (response.error == false) {
-//             console.log('get request for template successful', response.message);
-//             return response.message;
-//             // window.location.reload();
-//         } else {
-//             console.log('Error response while deleting the template', response.message);
-//         }
-//     }
-// }
 let getAllTemplates = getRequest.editor('custom_design');
-const displayTemplates = new displayAlltemplates(getAllTemplates);
-const displaySelectedTemplate = new displaySelectedTemplates();
-// const operationsOnTemplate = new operationsOnTemplates();
-// console.log('get selected template:', operationsOnTemplate.getTemplate())
-// console.log(displaySelectedTemplate(operationsOnTemplate.getTemplate()));
-// //execcommand with command function
-// function sendCmd(command) {
-//     document.execCommand(command, false, null);
-// }
-
-// //execute command with command and argument function
-// function sendCommandArg(command, arg) {
-//     document.designMode = "on";
-//     document.execCommand(command, false, arg);
-// }
+const displayTemplates = new displayAlltemplates(getAllTemplates, memberDetails);
+const displaySelectedTemplate = new displaySelectedTemplates(memberDetails);
 
