@@ -114,3 +114,6 @@ if (events.error == false) {
 } else {
     console.log(events.message);
 }
+
+//modifying view in mobile view
+window.onload = contentMobileView();

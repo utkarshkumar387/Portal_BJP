@@ -43,3 +43,6 @@ if (contentBlogsRejected.error == false) {
 } else {
     console.log(contentBlogsRejected.message);
 }
+
+//modifying view in mobile view
+window.onload = contentMobileView();

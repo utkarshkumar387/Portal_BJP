@@ -216,4 +216,7 @@ if (count == 0) {
     `)
 }
 
+//modifying view in mobile view
+window.onload = contentMobileView();
+
 

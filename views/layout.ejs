@@ -36,7 +36,7 @@
     <title>Welcome to BJP</title>
 </head>
 
-<body>
+<body onresize="contentMobileView()">
     <div id="loader-wrapper" class="loader-wrapper loader_dark">
         <div id="loader"></div>
         <div class="loader-section section-left loader_dark"></div>
@@ -44,63 +44,62 @@
     </div>
     <nav class="navbar card_body_dark navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="/"><img src="/img/icons/bjp_logo.png" /></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
-                aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarToggler">
-                <!-- mr-auto mt-2 mt-lg-0 -->
-                <ul class="navbar-nav" id="navbarLinks">
-                    <li class="nav-item">
-                        <a class="nav-link" data-link href="/"><i class="fas fa-home"></i> Home</a>
-                    </li>
-                    <li class="nav-item" id="privilegesLink">
-                        <a class="nav-link" id="privilegeLinkPage" href="/manageMembers" data-link><i
-                                class="fas fa-user-lock"></i>
-                            Privileges</a>
-                    </li>
-                    <li class="nav-item" id="committeesLink">
-                        <a class="nav-link" id="committeesLayout" data-link><i class="fas fa-users"></i> Committees</a>
-                    </li>
-                </ul>
+            <div class="d-flex">
+                <a class="navbar-brand" href="/">
+                    <img class="logoDesktop" src="/img/icons/bjp_logo.png" />
+                    <img class="logoMobile ml-2" src="/img/icons/bjp-logo.png" />
+                </a>
             </div>
-            <div class="Navbar-end">
-                <div class="d-flex">
-                    <div class="dropdown">
-                        <span class="navEndIcon" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <img class="icon_img" src="/img/icons/notification.png">
-                        </span>
-                        <div class="dropdown-menu cardStyle" aria-labelledby="dropdownMenuButton">
-                            <div class="home__header header">
-                                <p>Notifications <span>(15 New)</span></p>
-                            </div>
-                            <% for (var i=1; i <=5; i++ ) { %>
-                                <div class="notification__msg">
-                                    <a class="dropdown-item" href="#">
-                                        <div class="notification_item d-flex">
-                                            <img class="notification_icon" src="/img/icons/notification_icon.png"
-                                                alt="">
-                                            <div class="notification_data">
-                                                <p><b>Utkarsh Kumar </b>posted an event that needs your approval.
-                                                </p>
-                                                <div class="notification_time">
-                                                    <img src="/img/icons/Time.png" alt="">
-                                                    <small><span class="notification_timeItem">15 min</span>
-                                                        ago</small>
-                                                </div>
+            <ul class="navbar-nav" id="navbarLinks">
+                <li class="nav-item">
+                    <a class="nav-link" data-link href="/"><i class="fas fa-home"></i><span class="navbarTabs">
+                            Home</span></a>
+                </li>
+                <li class="nav-item" id="privilegesLink">
+                    <a class="nav-link" id="privilegeLinkPage" href="/manageMembers" data-link><i
+                            class="fas fa-user-lock"></i>
+                        <span class="navbarTabs"> Privileges</span></a>
+                </li>
+                <li class="nav-item" id="committeesLink">
+                    <a class="nav-link" id="committeesLayout" data-link><i class="fas fa-users"></i>
+                        <span class="navbarTabs"> Committees</span></a>
+                </li>
+            </ul>
+            <!-- </div> -->
+            <div class="d-flex">
+                <div class="dropdown">
+                    <!-- <span class="navEndIcon" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <img class="icon_img" src="/img/icons/notification.png">
+                    </span>
+                    <div class="dropdown-menu cardStyle" aria-labelledby="dropdownMenuButton">
+                        <div class="home__header header">
+                            <p>Notifications <span>(15 New)</span></p>
+                        </div>
+                        <% for (var i=1; i <=5; i++ ) { %>
+                            <div class="notification__msg">
+                                <a class="dropdown-item" href="#">
+                                    <div class="notification_item d-flex">
+                                        <img class="notification_icon" src="/img/icons/notification_icon.png" alt="">
+                                        <div class="notification_data">
+                                            <p><b>Utkarsh Kumar </b>posted an event that needs your approval.
+                                            </p>
+                                            <div class="notification_time">
+                                                <img src="/img/icons/Time.png" alt="">
+                                                <small><span class="notification_timeItem">15 min</span>
+                                                    ago</small>
                                             </div>
                                         </div>
-                                    </a>
-                                </div>
-                                <% } %>
-                        </div>
-                        <span class="navEndIcon">
-                            <a id="profileButton"><img class="icon_img" src="/img/icons/Profile.png" /></a>
-                        </span>
-                    </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <% } %>
+                    </div> -->
+                    <span class="navEndIcon">
+                        <a id="profileButton">
+                            <img src="/img/ddp.jpg" alt="profile image" height="40" width="40" class="rounded-circle">
+                        </a>
+                    </span>
                 </div>
             </div>
     </nav>
@@ -108,6 +107,7 @@
     <script type="application/javascript" src="/js/main.js"></script>
     <div class="container mainContainer">
         <%- body -%>
+            <span class="burgerMobileButton" onclick="openNav()">&#9776;</span>
     </div>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

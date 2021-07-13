@@ -22,18 +22,17 @@
     </ul>
 </div>
 <%- include('../molecules/mode.ejs') -%>
-    <%- include('../molecules/language.ejs') -%>
-        <script>
-            var permissions = JSON.parse(getCookie("privilege"));
-            console.log(permissions)
-            console.log('admin privilege is', manageAdmins.admin_privilege);
-            if (permissions.admin_privilege != null) {
-                $('#manageAdmins').css('display', 'block');
-                $('#manageCommittee').css('display', 'block');
-                // $('#manageCommSpecific').css('display', 'block');
-                $('#manageMembers').css('display', 'block');
-                $('#manageVerificationTeam').css('display', 'block');
-            }
+    <script>
+            // var permissions = JSON.parse(getCookie("privilege"));
+            // console.log(permissions)
+            // console.log('admin privilege is', manageAdmins.admin_privilege);
+            // if (permissions.admin_privilege != null) {
+            //     $('#manageAdmins').css('display', 'block');
+            //     $('#manageCommittee').css('display', 'block');
+            //     // $('#manageCommSpecific').css('display', 'block');
+            //     $('#manageMembers').css('display', 'block');
+            //     $('#manageVerificationTeam').css('display', 'block');
+            // }
             // if (permissions.committee_privilege != null) {
             //     $('#manageCommSpecific').css('display', 'block');
             //     // $('#manageCommittee').css('display', 'block');
@@ -47,4 +46,4 @@
             // if (permissions.verification_privilege != null) {
             //     $('#manageVerificationTeam').css('display', 'block');
             // }
-        </script>
+    </script>

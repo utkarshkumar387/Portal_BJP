@@ -23,12 +23,12 @@ if (contentBlogs.error == false) {
         $('#allBlogsBlock').append(`
             <div class="card card_dark cardStyle" id="blogID_${blogs[i].id}">
         <div class="row g-0">
-        <div class="col-md-6">
+        <div class="col-md-6 col-sm-12">
             <img class="blogsImg"
                 src="${blogImage}"
                 alt="Blog Image">
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 col-sm-12">
             <div class="card-body">
                 <h5 class="card-title headerMain">${trimmedDataBlog.trimStringTitle}</h5>
                 <p class="card-text blogText">${trimmedDataBlog.trimStringDesc}...</p>
@@ -52,3 +52,6 @@ if (contentBlogs.error == false) {
 } else {
     console.log(contentBlogs.message);
 }
+
+//modifying view in mobile view
+window.onload = contentMobileView();

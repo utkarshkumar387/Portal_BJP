@@ -286,4 +286,7 @@ function addAllPermittedMembersToList() {
     }
 }
 
+//modifying view in mobile view
+window.onload = contentMobileView();
+
 

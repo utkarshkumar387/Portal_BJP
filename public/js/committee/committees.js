@@ -34,3 +34,6 @@ if (committees.error == false) {
 
     }
 }
+
+//modifying view in mobile view
+window.onload = contentMobileView();

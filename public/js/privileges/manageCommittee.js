@@ -162,3 +162,6 @@ function addAllMembersToList() {
         console.log(addCommitteePrivilege.messsage);
     }
 }
+
+//modifying view in mobile view
+window.onload = contentMobileView();

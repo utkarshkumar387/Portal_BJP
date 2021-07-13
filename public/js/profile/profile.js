@@ -3,10 +3,8 @@ console.log(link[4]);
 let profileID = link[4]
 // let profileDetails = fetchProfileDataById('member_profile', profileID);
 let profileDetails = getRequest.member('member_profile', profileID);
-console.log(profileDetails);
 if (profileDetails.error == false) {
     let user = profileDetails.message.member_details;
-    console.log('User data is ', user);
     let userName;
     (user.first_name || user.last_name) ? userName = user.first_name + ' ' + user.last_name : userName = 'Not available';
     $('#memberName').html(userName);
@@ -190,3 +188,6 @@ if (profileDetails.error == false) {
     }
 }
 $('#editButton').attr('href', `/profileEdit/${link[4]}`)
+
+//modifying view in mobile view
+window.onload = contentMobileView();

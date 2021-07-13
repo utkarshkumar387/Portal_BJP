@@ -1,8 +1,14 @@
 <% layout('layout') %>
     <div class="row mt-4 home">
-        <div class="col-md-3 sidemenu">
+        <div class="col-md-3 sidemenu" id="sidemenu">
             <div class="component">
-                <%- include('../../particles/sidebarProfile.ejs') -%>
+                <%- include('../../particles/sidebarComplaints.ejs') -%>
+            </div>
+        </div>
+        <div id="mySidenav" class="sidenav sidemenuMobile" id="sidemenuMobile">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="component">
+                <%- include('../../particles/sidebarComplaints.ejs') -%>
             </div>
         </div>
         <div class="col-md-9 home__content">

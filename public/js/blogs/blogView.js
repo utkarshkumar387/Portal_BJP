@@ -112,3 +112,6 @@ window.addEventListener('load', function checkStatus(status) {
     return status;
 })
 
+//modifying view in mobile view
+window.onload = contentMobileView();
+

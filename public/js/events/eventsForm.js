@@ -165,3 +165,6 @@ function checkEventValidations() {
     return true;
 }
 
+//modifying view in mobile view
+window.onload = contentMobileView();
+

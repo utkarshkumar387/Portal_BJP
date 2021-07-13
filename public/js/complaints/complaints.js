@@ -41,3 +41,6 @@ if (contentComplaints.error == false) {
 } else {
     console.log(contentComplaints.messsage);
 }
+
+//modifying view in mobile view
+window.onload = contentMobileView();

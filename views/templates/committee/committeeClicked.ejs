@@ -24,12 +24,18 @@
         </div>
     </div>
     <div class="row mt-4 home">
-        <div class="col-md-3 sidemenu">
+        <div class="col-md-3 sidemenu" id="sidemenu">
             <div class="component">
                 <%- include('../../particles/sidebarCommittee.ejs') -%>
             </div>
         </div>
-        <div class="col-md-9 myCommittee">
+        <div id="mySidenav" class="sidenav sidemenuMobile" id="sidemenuMobile">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="component">
+                <%- include('../../particles/sidebarCommittee.ejs') -%>
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-12 myCommittee">
             <div class="card cardStyle card_body_dark myCommittee__card mb-3">
                 <img class="committeeImage" alt="committee image">
                 <div class="myCommittee__data">

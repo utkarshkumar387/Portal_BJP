@@ -3,7 +3,6 @@ let link = ['', '', '', ''];
 let glide = new Glide('.glide', {
     type: 'carousel',
     perView: 3,
-    focusAt: 'center',
     startAt: 0,
     gap: 20,
     autoplay: 4000 | true,
@@ -50,13 +49,13 @@ if (home.error == false) {
         $('#blogsBlock').append(`
         <div class="card cardStyle card_dark">
         <div class="row g-0">
-        <div class="col-md-6">
+        <div class="col-md-6 col-sm-12">
             <img class="blogsImg"
                 src="${blogImage}"
                 alt="Blog Image">
         </div>
-        <div class="col-md-6">
-            <div class="card-body">
+        <div class="col-md-6 col-sm-12">
+            <div class="card-body blog_cardBody">
                 <h5 class="card-title headerMain">${trimmedDataBlog.trimStringTitle}</h5>
                 <p class="card-text blogText">${trimmedDataBlog.trimStringDesc}</p>
                 </p>
@@ -64,7 +63,7 @@ if (home.error == false) {
                     <p id="homePageBlogDate_id">${blogDate[0]} ${blogDate[1]} ${blogDate[2]} <i class="fa fa-circle" aria-hidden="true"></i><span
                             id="homePageBlogAuthor_id">${name}</span></p>
                     <a href="/blogsView/${blogs[i].id}/${blogs[i].status}">
-                        View Blog
+                        <span class="viewTag">View Blog</span>
                         <span>
                             <img src="img/icons/link.png" alt="">
                         </span> 
@@ -92,12 +91,13 @@ if (home.error == false) {
             <div class="complaints__header">
                 <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
                     class="rounded-circle" alt="...">
-                <div class="complaints__sender">
-                    <b>${name}</b>
-                    <p class="small">Pune, <span>Maharashtra</span>
-                    </p>
+                <div class="complaintsUserData d-flex align-items-center">
+                    <div class="complaints__sender">
+                        <b>${name}</b>
+                        <p class="small">Pune, <span>Maharashtra</span></p>
+                    </div>
+                    ${priority}
                 </div>
-                ${priority}
             </div>
             <div class="complaints__body">
                 <p class="card-text"><span>Sub: </span>${trimmedDataComplaint.trimStringTitle}</p>
@@ -105,7 +105,7 @@ if (home.error == false) {
             <div class="card-footer footer">
                 <p>${complaintDate[0]} ${complaintDate[1]} ${complaintDate[2]}</p>
                 <a href="/complaintsView/${complaints[i].id}/${complaints[i].status}">
-                    View Complaint
+                <span class="viewTag">View Complaints</span>
                     <span>
                         <img src="img/icons/link.png" alt="">
                     </span>
@@ -146,7 +146,7 @@ if (home.error == false) {
                     <div class="card-footer footer">
                         <p>${eventDate[0]} ${eventDate[1]} ${eventDate[2]}</p>
                         <a href="/eventsView/${events[i].id}/${events[i].status}">
-                            View Event
+                        <span class="viewTag">View Event</span>
                             <span>
                                 <img src="/img/icons/link.png" alt="">
                             </span>
@@ -169,6 +169,9 @@ if (memberDetails.father_name) {
     $('#alert').css('display', 'none');
 }
 let clickHere = document.getElementById('profileClickHere').setAttribute('href', `/profileEdit/${memberDetails.id}`);
+
+//modifying view in mobile view
+window.onload = contentMobileView();
 
 
 

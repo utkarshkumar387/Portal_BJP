@@ -47,3 +47,6 @@ function addBlog() {
     console.log(complaintDetails);
 }
 
+//modifying view in mobile view
+window.onload = contentMobileView();
+

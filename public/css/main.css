@@ -100,8 +100,8 @@
     display: flex;
     align-items: center;
     margin: 25px 16px;
-    width: 36px;
-    height: 20px;
+    width: 18px;
+    height: 10px;
   }
   .switch p{
       margin: 0 0 0 48px;
@@ -192,6 +192,9 @@
     border-radius: 15px;
 
 }
+/* .card{
+    z-index: -1;
+} */
 .glide{
     width: 85% !important;
     display: block;
@@ -256,7 +259,7 @@
 }
 .home__blogs .card{
     margin: 16px 32px 32px 32px;
-    height: 250px;
+    min-height: 250px;
 }
 .blogsCard .card .blogsImg{
     width: 100%;
@@ -1003,9 +1006,9 @@ text-decoration: none;
       /* width: 100px; */
   }
   /* link manupulation */
-  #eventsPendingLink, #eventsRejectedLink, #complaintsPendingLink, #complaintsRejectedLink, #blogsPendingLink, #blogsRejectedLink, #privilegesLink, #manageAdmins, #manageCommittee, #manageCommSpecific, #manageMembers, #manageVerificationTeam{
+  /* #eventsPendingLink, #eventsRejectedLink, #complaintsPendingLink, #complaintsRejectedLink, #blogsPendingLink, #blogsRejectedLink, #privilegesLink, #manageAdmins, #manageCommittee, #manageCommSpecific, #manageMembers, #manageVerificationTeam{
       display: none;
-  }
+  } */
   .badge_design{
       background-color: #F77B72;
       color: #fff;
@@ -1065,6 +1068,9 @@ text-decoration: none;
     .dark_inputBox, .dark_inputBox input{
         background-color: #dedfe6 !important;
     }
+    .navbarDarkMobile{
+        background-color: #1f1d2b !important;
+    }
     /* light mode */
     .light{
       background-color: #E5E5E5;
@@ -1083,8 +1089,8 @@ text-decoration: none;
 .switch {
     position: relative;
     display: inline-block;
-    width: 100px;
-    height: 34px;
+    width: 54px;
+    height: 24px;
   }
   
   /* Hide default HTML checkbox */
@@ -1110,8 +1116,8 @@ text-decoration: none;
   .slider:before {
     position: absolute;
     content: "";
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     left: 0px;
     bottom: 4px;
     top: 0;
@@ -1235,48 +1241,13 @@ text-decoration: none;
     padding: 10px 20px;
     border-radius: 50px;
 }
-  /* .light{
-    background: #E5E5E5;
-    color: black;
-  } */
-/* .manager{
-    background-color: #F77B72;
-    border-radius: 39px;
-    height: 24px;
+.logoMobile{
+    display: none;
+    height: 50px;
 }
-.manager .badge img{
-    margin-right: 8px;
-    height: 20px;
-    width: 20px;
-}
-.manager .badge{
-    color: #fff;
-    padding: 5px 10px;
-}
-.manager .badge span{
-    font-family: 'Poppins', sans-serif;
-} */
-@media (min-width: 1024px){
-    .navbar #navbarToggler {
-        display: flex;
-        justify-content: center !important;
-    }
-}
-/* @media (prefers-color-scheme: dark) {
-    body {
-      background-color: black;
-      color: white;
-    }
-  } */
-/* @media (prefers-color-scheme: light) {
-    body {
-    background: #E5E5E5;;
-      color: black;
-    }
-  } */
 
-  /* overlay */
-  .mobile-blocker {
+/* overlay */
+.mobile-blocker {
     position: fixed;
     top: 0;
     left: 0;
@@ -1288,3 +1259,146 @@ text-decoration: none;
     text-align: center;
     display: none;
  }
+ .priorityMobile{
+    position: absolute;
+     top: 0;
+     right: 0;
+     border-radius: 0 10px 0 50px;
+     padding: 0 10px;
+ }
+
+/* overlay sidebar */
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #1f1d2b;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav .closebtn {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  /* mobile view bottom nav */
+  .mobileNavbar {
+    overflow: hidden;
+    /* background-color: #1F1D2B; */
+    background-color: #E5E5E5;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 11;
+    border: none;
+
+  }
+  .mobileNavbar a {
+    float: left;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  /* ham-burger button in mobile view */
+  .burgerMobileButton{
+    font-size:30px;
+    cursor:pointer; 
+    position:fixed; 
+    bottom:80px;
+    right:10px;
+    background-color: orange;
+    border-radius: 50px;
+    padding: 8px 16px;
+  }
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+  }
+@media (min-width: 1024px){
+    .navbar #navbarToggler {
+        display: flex;
+        justify-content: center !important;
+    }
+    .manageTabCommittee{
+        align-items: center;
+    }
+}
+@media only screen and (max-device-width: 991px){
+    .viewTag{
+        display: none;
+    }
+    .mobileNavbar{
+        flex-direction: row !important;
+        justify-content: space-between;
+    }
+    .sidenav{
+        z-index: 10;
+    }
+}
+@media only screen and (max-device-width: 480px) {
+    .logoDesktop {
+      display: block;
+    }
+    .logoMobile {
+      display: none;
+    }
+    .blog_cardBody{
+        padding: 20px 10px !important;
+    }
+    .blogText{
+        min-height: 50px;
+    }
+    .complaints__header{
+        align-items: flex-start;
+    }
+    .complaintsUserData{
+        flex-direction: column;
+    }
+    .priorityTag{
+        display: none;
+    }
+    .navbarTabs{
+        font-size: 14px;
+    }
+    #committee__membersSearch{
+        width: 180px;
+    }
+    .complaints__header{
+        flex-direction: column;
+    }
+    .manageTabCommittee{
+        flex-direction: column;
+        margin-top: 10px;
+        width: 100%;
+    }
+    .manageTabButtons{
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+    }
+    .manageTabButtons button{
+        margin-top: 10px;
+    }
+    .accessDenied_card, .accessDenied_card img{
+        width: 90vw;
+    }
+    .accessDenied_card h3{
+        font-size: 24px;
+    }
+  }

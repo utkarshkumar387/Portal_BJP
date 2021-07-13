@@ -90,3 +90,6 @@ if (complaint.error == false) {
 } else {
     console.log(complaint.message);
 }
+
+//modifying view in mobile view
+window.onload = contentMobileView();

@@ -194,3 +194,6 @@ function checkValidations() {
     return true;
 }
 
+//modifying view in mobile view
+window.onload = contentMobileView();
+

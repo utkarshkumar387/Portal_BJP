@@ -178,3 +178,6 @@ if (count == 0) {
         <h2>No member to display</h2>
     `)
 }
+
+//modifying view in mobile view
+window.onload = contentMobileView();

@@ -1,12 +1,18 @@
 <% layout('layout') %>
     <% layout('layout') %>
         <div class="row mt-4 home">
-            <div class="col-md-3 sidemenu">
+            <div class="col-md-3 sidemenu" id="sidemenu">
                 <div class="component">
                     <%- include('../../particles/sidebarCommittee.ejs') -%>
                 </div>
             </div>
-            <div class="col-md-9 myCommittee">
+            <div id="mySidenav" class="sidenav sidemenuMobile" id="sidemenuMobile">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="component">
+                    <%- include('../../particles/sidebarCommittee.ejs') -%>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-12 myCommittee">
                 <div class="card card_body_dark cardStyle myCommittee__card mb-3">
                     <img src="https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2020/01/bjp-cec-1579191185.jpg"
                         alt="">

@@ -21,15 +21,14 @@
     <!-- </div> -->
 </div>
 <%- include('../molecules/mode.ejs') -%>
-    <%- include('../molecules/language.ejs') -%>
-        <%- include('../molecules/otherOptions.ejs') -%>
+    <%- include('../molecules/otherOptions.ejs') -%>
 
-            <script>
-                let windowLink = window.location.href.split('/').slice(3, 4);
-                if (windowLink == 'profileEdit') {
-                    $('#avatarEdit').css('display', 'block');
-                } else {
-                    $('#avatarEdit').css('display', 'none');
-                }
-                console.log('href of window is ', windowLink);
-            </script>
+        <script>
+            let windowLink = window.location.href.split('/').slice(3, 4);
+            if (windowLink == 'profileEdit') {
+                $('#avatarEdit').css('display', 'block');
+            } else {
+                $('#avatarEdit').css('display', 'none');
+            }
+            console.log('href of window is ', windowLink);
+        </script>

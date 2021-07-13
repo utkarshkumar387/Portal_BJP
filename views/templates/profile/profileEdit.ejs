@@ -1,20 +1,26 @@
 <% layout('layout') %>
     <div class="row mt-4 home">
-        <div class="col-md-3 sidemenu">
+        <div class="col-md-3 sidemenu" id="sidemenu">
+            <div class="component">
+                <%- include('../../particles/sidebarProfile.ejs') -%>
+            </div>
+        </div>
+        <div id="mySidenav" class="sidenav sidemenuMobile" id="sidemenuMobile">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <div class="component">
                 <%- include('../../particles/sidebarProfile.ejs') -%>
             </div>
         </div>
         <div class="col-md-9 home__content">
             <div id="validationAlert"></div>
-            <div class="card card_body_dark home__events cardStyle" id="home__events">
+            <div class="card card_body_dark home__events cardStyle mb-4" id="home__events">
                 <div class="home__eventsHeader headerMain d-flex align-items-center justify-content-between py-4">
                     <div class="profile__headerData">
                         <p class="profile__name">Hi, <span id="memberName"></span></p>
                         <p class="profile__committeeDetails" id="memberCommitteeName"></p>
                     </div>
                     <div class="delete">
-                        <a class="delete__button">Delete Profile</a>
+                        <a class="delete__button"><span class="deleteProfile"></span></a>
                     </div>
                 </div>
                 <form>
@@ -96,7 +102,7 @@
                                             placeholder="12345@xyz.com">
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <!-- <div class="form-group row">
                                     <label for="inputEmail3" minlength="10" maxlength="10"
                                         class="col-sm-4 col-form-label">Phone Number
                                         <span>*</span>
@@ -108,11 +114,11 @@
                                                 placeholder="9876543210">
                                             <button onclick="addPhoneNumber()"
                                                 class="btn btn-outline-success ml-2 formButtonPhone">+</button>
-                                        </div>
-                                        <!-- <div class="col-sm-1">
+                                        </div> -->
+                                <!-- <div class="col-sm-1">
                                             <button onclick="addPhoneNumber()" class="btn btn-primary mr-4">+</button>
                                         </div> -->
-                                        <!-- <div id="phoneNumber'+id+'" class="form-group row">
+                                <!-- <div id="phoneNumber'+id+'" class="form-group row">
                                         <div class="col-sm-10">
                                             <input type="tel" class="form-control" id="phoneNumberField'+id+'"
                                                 placeholder="+91-9876543210">
@@ -123,8 +129,8 @@
                                                 class="btn btn-danger">-</button>
                                         </div>
                                     </div> -->
-                                    </div>
-                                </div>
+                                <!-- </div>
+                                </div> -->
                                 <div class="form-group row">
                                     <label for="memberDOB" class="col-sm-4 col-form-label">Date of Birth
                                         <span>*</span></label>
@@ -266,7 +272,7 @@
                     </div>
                 </form>
             </div>
-            <div class="card card_body_dark home__events cardStyle mt-4 mb-5" id="home__events">
+            <!-- <div class="card card_body_dark home__events cardStyle mb-5" id="home__events">
                 <div class="profile__outer mb-4">
                     <div class="profile__inner px-5 mb-4">
                         <div class="profile__innerHeader py-3 mt-3">
@@ -298,7 +304,7 @@
                 <div class="profile__save px-5 mb-4">
                     <a href="">Save All Changes</a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <script type="application/javascript" src="/js/profile/profileEdit.js"></script>

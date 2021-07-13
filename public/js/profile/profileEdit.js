@@ -14,7 +14,6 @@ function selectMaritialStatus() {
     $('#couple_status').empty();
     if (maritalStatus == 'Married') {
         if ($('#genderMale').prop("checked")) {
-            console.log('go append');
             $('#couple_status').append(`
             <label for="inputEmail3" class="col-sm-4 col-form-label">Wife's Name
             (optional)</label>
@@ -519,3 +518,6 @@ function formValidation() {
 
     return true;
 }
+
+//modifying view in mobile view
+window.onload = contentMobileView();

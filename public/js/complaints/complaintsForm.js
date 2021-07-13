@@ -151,3 +151,6 @@ function addComplaint() {
 //     // console.log(blogDetails);
 // }
 
+//modifying view in mobile view
+window.onload = contentMobileView();
+

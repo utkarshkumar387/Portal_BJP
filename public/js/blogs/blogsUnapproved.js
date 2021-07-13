@@ -51,3 +51,6 @@ if (contentBlogsUnapproved.error == false) {
 } else {
     console.log(contentBlogsUnapproved.message);
 }
+
+//modifying view in mobile view
+window.onload = contentMobileView();

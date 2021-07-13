@@ -1,11 +1,17 @@
 <% layout('layout') %>
     <div class="row mt-4 home">
-        <div class="col-md-3 sidemenu">
+        <div class="col-md-3 sidemenu" id="sidemenu">
             <div class="component">
                 <%- include('../../particles/sidebarCommittee.ejs') -%>
             </div>
         </div>
-        <div class="col-md-9 home__content">
+        <div id="mySidenav" class="sidenav sidemenuMobile" id="sidemenuMobile">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="component">
+                <%- include('../../particles/sidebarCommittee.ejs') -%>
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-12 home__content">
             <div class="card home__events cardStyle mb-4" id="home__events">
                 <div class="home__complaintForm headerMain">
                     <p>Committee Form</p>

@@ -38,3 +38,6 @@ if (committeeRelatedDetails.error == false) {
         `)
     }
 }
+
+//modifying view in mobile view
+window.onload = contentMobileView();

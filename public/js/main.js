@@ -525,6 +525,31 @@ if (getCookie('member_profile') != "") {
     $('#profileButton').attr('href', '/profile/' + JSON.parse(getCookie('member_profile')).id);
 }
 
+//modifying view in mobile view
+function contentMobileView() {
+    console.log('inside mobile view');
+    let width = window.outerWidth;
+    let navbar = document.getElementById('navbarLinks');
+    // let sidemenu = document.getElementById('sidemenu').innerHTML;
+    // console.log(sidemenu);
+    if (width <= 991) {
+        navbar.classList.add('mobileNavbar', 'container');
+        $('.burgerMobileButton').show();
+        $('.sidemenuMobile').show();
+        $('.sidemenu').hide();
+        $('.deleteProfile').html(`<i class="fas fa-trash-alt"></i>`)
+    } else {
+        navbar.classList.remove('mobileNavbar', 'container');
+        $('.burgerMobileButton').hide();
+        $('.sidemenuMobile').hide();
+        $('.sidemenu').show();
+        $('.deleteProfile').html(`Delete Profile`)
+    }
+}
+
+// let breakpoint = window.matchMedia("(max-width: 480px)");
+// addElementsInMobileView(breakpoint);
+// breakpoint.addListener(addElementsInMobileView);
 
 //functions for all pages
 //date converted to this format -> (12 feb 2021)
@@ -590,21 +615,43 @@ function checkPriority(priority) {
     console.log(priority);
     if (priority == 'low' || priority == 'Low') {
         // console.log('inside low priority')
-        priorityBar = `<div class="priority priority_low">
-        <span class="badge rounded-pill"><img src="/img/icons/Tag.png"> Priority:<span class="priority_set">Low</span></span>
-    </div>`
+        priorityBar = `
+    <div class="priorityMobile priority_low">
+        <span class="badge rounded-pill">
+            <img src="/img/icons/Tag.png"> 
+            <span class="priorityTag">Priority:</span>
+            <span class="priority_set">
+                Low
+            </span>
+        </span>
+    </div>
+    `
     } else if (priority == 'medium' || priority == 'Medium') {
         // console.log('inside medium priority')
-        priorityBar = `<div class="priority priority_mid">
-        <span class="badge rounded-pill"><img src="/img/icons/Tag.png"> Priority:
-            <span class="priority_set">Medium</span></span>
-    </div>`
+        priorityBar = `
+    <div class="priorityMobile priority_mid">
+        <span class="badge rounded-pill">
+            <img src="/img/icons/Tag.png"> 
+            <span class="priorityTag">Priority:</span>
+            <span class="priority_set">
+                Medium
+            </span>
+        </span>
+    </div>
+    `
     } else if (priority == 'high' || priority == 'High') {
         // console.log('inside high priority')
-        priorityBar = `<div class="priority priority_high">
-        <span class="badge rounded-pill"><img src="/img/icons/Tag.png"> Priority:
-            <span class="priority_set">High</span></span>
-    </div>`
+        priorityBar = `
+    <div class="priorityMobile priority_high">
+        <span class="badge rounded-pill">
+            <img src="/img/icons/Tag.png"> 
+            <span class="priorityTag">Priority:</span>
+            <span class="priority_set">
+                 High
+            </span>
+        </span>
+    </div>
+    `
     }
     return priorityBar;
 }
@@ -805,6 +852,7 @@ function changeTheme() {
         layoutBgDark = document.querySelector('body');
         layoutBgDark.classList.add('dark');
         layoutBgDark.classList.remove('light');
+        document.getElementById('navbarLinks').classList.add('navbarDarkMobile');
         // loader.classList.add('loader_darkMode');
         console.log(allCard);
         for (let i = 0; i < loader.length; i++) {
@@ -843,6 +891,7 @@ function changeTheme() {
         layoutBgLight.classList.remove('dark');
         layoutBgLight.classList.add('light');
         console.log(allCardBody);
+        document.getElementById('navbarLinks').classList.remove('navbarDarkMobile');
         // loader.classList.remove('loader_darkMode');
         for (let i = 0; i < loader.length; i++) {
             loader[i].classList.remove('loader_darkMode')
@@ -876,11 +925,16 @@ function changeTheme() {
         console.log(allCardBody);
 
     }
+    // if(localStorage.getItem('mode'))
+
+    (localStorage.getItem('mode') == 'dark') ? $('#themeMode').attr('checked', true) : $('#themeMode').attr('checked', false);
 }
 
 //set mode name in local storage
-function ChangeThemeOnclick() {
-    localStorage.setItem('mode', (localStorage.getItem('mode') || 'dark') === 'dark' ? 'light' : 'dark');
+function ChangeThemeOnclick(check) {
+    console.log('change mode', check);
+    localStorage.setItem('mode', check === false ? 'light' : 'dark');
+    // localStorage.setItem('mode', (localStorage.getItem('mode') || 'dark') === 'dark' ? 'light' : 'dark');
     changeTheme();
 }
 
@@ -889,14 +943,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
     ((localStorage.getItem('mode') || 'dark') === 'dark') ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark')
 })
 
-// function googleTranslateElementInit() {
-//     new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
-// }
-// parliamentConstituencies
-// legislativeAssemblyConstituencies
-// upBlockEducationConstituencies
-// townshipConstituencies
-// panchayatSamitis
-// villageCouncils
-// revenueVilleges
-// booths
+//overlay sidebar
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}

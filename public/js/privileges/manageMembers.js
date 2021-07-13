@@ -24,11 +24,13 @@ if (allMemberAdmins.error == false) {
                     </p>
                 </div>
             </div>
-            <div class="d-flex">
+            <div class="d-flex manageTabCommittee">
                 <div class="member__committeeName px-5">
                     <p>${committeeName}</p>
                 </div>
-                <button onclick=removePrivilege(this.id) id="${allMemberAdmins.message[i].id}" class="btn btn-danger">Remove</button>
+                <div class="manageTabButtons">
+                    <button onclick=removePrivilege(this.id) id="${allMemberAdmins.message[i].id}" class="btn btn-danger">Remove</button>
+                </div>
             </div>
         </div>
     </div>
@@ -150,11 +152,11 @@ for (let i = 0; i < allMembers.message.length; i++) {
                     </p>
                 </div>
             </div>
-            <div class="d-flex">
+            <div class="d-flex manageTabCommittee">
                 <div class="member__committeeName px-5">
                     <p>${committeeName}</p>
                 </div>
-                    <div class="form-check">
+                <div class="form-check">
                     <input type="checkbox" class="form-check-input" onclick="getMemberID(this.id)" id="${allMembers.message[i].id}">
                 </div>
             </div>
@@ -170,3 +172,6 @@ if (count == 0) {
         <h2>No member to display</h2>
     `)
 }
+
+//modifying view in mobile view
+window.onload = contentMobileView();

@@ -1,17 +1,16 @@
 <div class="mt-4 home__theme">
-    <div class="card card_body_dark home__sidenavigator sidenavigator cardStyle">
-        <div class="home__header header">
-            <p>Choose Theme</p>
+    <div class="card card_body_dark home__sidenavigator sidenavigator">
+        <div class="home__header header d-flex justify-content-between align-items-center" style="border: none;">
+            <p>Mode</p>
+            <label class="switch">
+                <input id="themeMode" onchange="ChangeThemeOnclick(this.checked)" type="checkbox">
+                <span class="slider round"></span>
+            </label>
         </div>
-        <!-- <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span>
-            <p>Dark</p>
-        </label> -->
         <!-- <label id="switch" class="switch">
             <input type="checkbox" onchange="toggleTheme()" id="slider">
             <span class="slider round"></span>
         </label> -->
-        <button onclick="ChangeThemeOnclick()" class="btn btn-success">Change Theme</button>
+        <!-- <button onclick="ChangeThemeOnclick()" class="btn btn-success">Change Theme</button> -->
     </div>
 </div>

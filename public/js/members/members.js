@@ -91,3 +91,6 @@ function searchFunction() {
     // console.log(input1, members1, memberName1);
     mySearchFunction(input1, members1, memberName1);
 }
+
+//modifying view in mobile view
+window.onload = contentMobileView();
