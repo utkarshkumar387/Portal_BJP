@@ -1,24 +1,20 @@
 var main_url = "https://bjpbarmer.herokuapp.com/";
 // var main_url = "http://192.168.1.3:8002/";
-// let headerParams = { 'Authorization': 'Token 45097245b8db006c8a069cf0f7fe89e83a5d1671' };
 //Ajax Request
 let loggedInUserId = null;
 function ajaxRequest(type, url, data, status) {
     if (typeof (data) == typeof ({})) {
         data = JSON.stringify(data);
     }
-    // console.log(data);
     let error = true;
     let message = "";
     console.log('data is', data)
     console.log("calling for : " + url + " " + type);
-    // console.log(getCookie('token'));
     $.ajax({
         type: type,
         async: false,
         url: url,
         data: data,
-        // headers: headerParams,
         contentType: "application/json; charset=utf-8",
         headers: {
             Accept: "application/json; charset=utf-8",
@@ -37,7 +33,6 @@ function ajaxRequest(type, url, data, status) {
         },
         error: function (xhr, status, error) {
             message = xhr.responseText;
-            // console.log('error', JSON.parse(message).detail);
             if (JSON.parse(message).detail == 'Invalid token.') {
                 console.log('inside error');
                 location.replace('/login');
@@ -54,35 +49,40 @@ class getRequests {
         this.status = 200;
         this.data = {};
     }
+    //index page
     homepage(sub_url) {
         let homepageUrl = main_url + sub_url + '/';
         return ajaxRequest(this.type, homepageUrl, this.data, this.status);
     }
+    //data for members/users
     member(sub_url, id = null) {
         (sub_url == 'member') ? sub_url = 'member' : sub_url = `member/${sub_url}`;
         let memberUrl;
         (id == null) ? memberUrl = main_url + sub_url + '/' : memberUrl = main_url + sub_url + '/' + id + '/';
         return ajaxRequest(this.type, memberUrl, this.data, this.status);
     }
+    //content data ( blogs, events, complaints )
     content(sub_url, id = null) {
         (sub_url == 'content') ? sub_url = 'content' : sub_url = `content/${sub_url}`;
         let contentUrl;
         (id == null) ? contentUrl = main_url + sub_url + '/' : contentUrl = main_url + sub_url + '/' + id + '/';
         return ajaxRequest(this.type, contentUrl, this.data, this.status);
     }
+    //committee related data
     committee(sub_url, id = null) {
         (sub_url == 'committee') ? sub_url = 'committee' : sub_url = `committee/${sub_url}`;
         let committeeUrl;
         (id == null) ? committeeUrl = main_url + sub_url + '/' : committeeUrl = main_url + sub_url + '/' + id + '/';
         return ajaxRequest(this.type, committeeUrl, this.data, this.status);
     }
+    //admin privileges for user
     admin(sub_url) {
         let adminUrl = main_url + 'privilege/' + sub_url + '/';
         return ajaxRequest(this.type, adminUrl, this.data, this.status);
     }
+    //editor data
     editor(sub_url, id = null) {
         let editorUrl;
-        // console.log(sub_url, id);
         (id == null) ? editorUrl = main_url + 'editor/' + sub_url + '/' : editorUrl = main_url + 'editor/' + sub_url + '/' + id + '/';
         return ajaxRequest(this.type, editorUrl, this.data, this.status);
     }
@@ -155,7 +155,6 @@ let patchRequest = new patchRequests();
 let deleteRequest = new deleteRequests();
 //function to check status and return it
 function checkStatus(status) {
-    console.log(status);
     return status;
 }
 //cookies implementation
@@ -185,38 +184,19 @@ function getCookie(cname) {
 //To check cookie
 window.addEventListener('load', checkCookie);
 function checkCookie() {
-    // let windowLink = window.location.href.split('/');
-    // let getLink = windowLink[3];
-    // if (getCookie('token') == "" && getLink != "logIn") {
-    //     window.location.replace('/logIn');
-    //     return;
-    // } else {
-    //     console.log('window link :', getLink);
-    // }
 
-    //if token and privilege cookis is not present then return.
+    //if token and privilege cookies is not present then return.
     if (getCookie("token") == "" || getCookie("privilege") == "") return;
 
-    // try {
     var permissions = getCookie("privilege");
     permissionsStringify = JSON.parse(permissions);
-    console.log(permissionsStringify);
     let memberPrivilege = permissionsStringify.member_privilege;
     let committeePrivilege = permissionsStringify.committee_privilege;
     let committeeSpecificPrivilege = permissionsStringify.committee_specific_privilege;
     let verificationPrivilege = permissionsStringify.verification_privilege;
-    let adminPrivilege;
-    if (permissionsStringify.admin_privilege != null) {
-        adminPrivilege = permissionsStringify.admin_privilege.manage_admin;
-    } else {
-        adminPrivilege = permissionsStringify.admin_privilege
-    }
-    let verificationPrivilegeBlog;
-    let verificationPrivilegeEvent;
-    let verificationPrivilegeComplaint;
-
+    let adminPrivilege, verificationPrivilegeBlog, verificationPrivilegeEvent, verificationPrivilegeComplaint;
+    (permissionsStringify.admin_privilege != null) ? adminPrivilege = permissionsStringify.admin_privilege.manage_admin : adminPrivilege = permissionsStringify.admin_privilege;
     //set href link when clicked on navbar privilege
-    console.log('admin privilege is ', adminPrivilege)
     if (adminPrivilege != null) {
         //displaying privilege link according to cookie
         $('#privilegesLink').css('display', 'block')
@@ -225,13 +205,9 @@ function checkCookie() {
     //If member has permission to privilege for blog, event & complaint then store its boolean value
     if (permissionsStringify.verification_privilege != null) {
         verificationPrivilegeBlog = permissionsStringify.verification_privilege.manage_blog;
-        console.log(verificationPrivilegeBlog);
         verificationPrivilegeEvent = permissionsStringify.verification_privilege.manage_event;
-        console.log(verificationPrivilegeEvent);
         verificationPrivilegeComplaint = permissionsStringify.verification_privilege.manage_complaint;
-        console.log(verificationPrivilegeComplaint);
     }
-    console
     let sendLinkToChangeStatus = link[3];
     if (memberPrivilege == null && committeePrivilege == null && committeeSpecificPrivilege == null && verificationPrivilege == null && adminPrivilege == false) {
         $('#footerLikeDislike').append(`
@@ -244,11 +220,9 @@ function checkCookie() {
             `)
     }
     //add or remove permission buttons inside blogsview, eventsview & complaintsview
-    console.log('blogsView, ComplaintsView or EventsView', sendLinkToChangeStatus);
     switch (sendLinkToChangeStatus) {
         case 'blogsView':
             if (verificationPrivilegeBlog == true || permissionsStringify.admin_privilege != null) {
-                console.log('inside blogs view');
                 switch (status) {
                     case 2:
                         document.getElementById("footerPrivilege").classList.add("footerPrivilege");
@@ -336,7 +310,6 @@ function checkCookie() {
             break;
         case 'complaintsView':
             if (verificationPrivilegeComplaint == true || permissionsStringify.admin_privilege != null) {
-                console.log('inside complaints view');
                 switch (status) {
                     case '2':
                         document.getElementById("footerPrivilegeComplaint").classList.add("footerPrivilege");
@@ -409,7 +382,6 @@ function checkCookie() {
             break;
         case 'eventsView':
             if (verificationPrivilegeEvent == true || permissionsStringify.admin_privilege != null) {
-                console.log('inside eventsView');
                 switch (status) {
                     case '2':
                         document.getElementById("footerPrivilegeEvent").classList.add("footerPrivilege");
@@ -484,7 +456,6 @@ function checkCookie() {
             console.log('No view');
     }
     //adding and removing unapproved and rejected button acc. to privilege
-    console.log('check value', verificationPrivilege, adminPrivilege)
     if (verificationPrivilege != null || adminPrivilege != null) {
         if (verificationPrivilegeBlog == true || adminPrivilege != null) {
             $('#eventsPendingLink, #eventsRejectedLink').css('display', 'block')
@@ -496,9 +467,6 @@ function checkCookie() {
             $('#blogsPendingLink, #blogsRejectedLink').css('display', 'block')
         }
     }
-    // } catch (err) {
-    //     console.log('error occured', err);
-    // }
 }
 
 //set privilege in cookie
@@ -513,7 +481,6 @@ if (getCookie('privilege') == '') {
 //set member profile data in cookie
 if (getCookie('member_profile') == '') {
     let memberProfile = getRequest.member('member_profile');
-    console.log(memberProfile.message.member_details);
     if (memberProfile.message.member_details) {
         setCookie('member_profile', JSON.stringify(memberProfile.message.member_details), 10);
     }
@@ -527,11 +494,8 @@ if (getCookie('member_profile') != "") {
 
 //modifying view in mobile view
 function contentMobileView() {
-    console.log('inside mobile view');
     let width = window.outerWidth;
     let navbar = document.getElementById('navbarLinks');
-    // let sidemenu = document.getElementById('sidemenu').innerHTML;
-    // console.log(sidemenu);
     if (width <= 991) {
         navbar.classList.add('mobileNavbar', 'container');
         $('.burgerMobileButton').show();
@@ -546,10 +510,6 @@ function contentMobileView() {
         $('.deleteProfile').html(`Delete Profile`)
     }
 }
-
-// let breakpoint = window.matchMedia("(max-width: 480px)");
-// addElementsInMobileView(breakpoint);
-// breakpoint.addListener(addElementsInMobileView);
 
 //functions for all pages
 //date converted to this format -> (12 feb 2021)
@@ -576,6 +536,7 @@ function dateConverter(date) {
     return (blogDateDis);
 }
 
+//converts time
 function timeConverter(time) {
     let eventTime = time;
     eventTime = eventTime.split(':');
@@ -594,7 +555,6 @@ function timeConverter(time) {
 function titleDescTrimmer(title, description, maxStringTitle, maxStringDesc) {
     let trimStringTitle = title;
     let trimStringDesc = description;
-    // console.log(trimStringTitle, trimStringDesc)
     if (title.length > maxStringTitle) {
         trimStringTitle = title.substr(0, maxStringTitle) + '...';
     }
@@ -612,9 +572,7 @@ function titleDescTrimmer(title, description, maxStringTitle, maxStringDesc) {
 //checking priority of complaints
 function checkPriority(priority) {
     let priorityBar;
-    console.log(priority);
-    if (priority == 'low' || priority == 'Low') {
-        // console.log('inside low priority')
+    if (priority.toLowerCase() == 'low') {
         priorityBar = `
     <div class="priorityMobile priority_low">
         <span class="badge rounded-pill">
@@ -626,8 +584,7 @@ function checkPriority(priority) {
         </span>
     </div>
     `
-    } else if (priority == 'medium' || priority == 'Medium') {
-        // console.log('inside medium priority')
+    } else if (priority.toLowerCase() == 'medium') {
         priorityBar = `
     <div class="priorityMobile priority_mid">
         <span class="badge rounded-pill">
@@ -639,8 +596,7 @@ function checkPriority(priority) {
         </span>
     </div>
     `
-    } else if (priority == 'high' || priority == 'High') {
-        // console.log('inside high priority')
+    } else if (priority.toLowerCase() == 'high') {
         priorityBar = `
     <div class="priorityMobile priority_high">
         <span class="badge rounded-pill">
@@ -677,8 +633,6 @@ function pivilegeButtons(fName, status) {
 
     }
     let patchRequestBlog = patchViewRequestByID(`${reqLink}/content_update`, id, { status: `${status}` });
-    console.log(patchRequestBlog);
-    console.log(typeof (status));
     if (typeof (status) == typeof (1)) {
         status = status.toString();
     }
@@ -696,9 +650,7 @@ function pivilegeButtons(fName, status) {
             console.log('No link found');
 
     }
-    console.log(status);
     if (patchRequestBlog.error == false) {
-        // console.log(`/${reqLink}${status}`)
         window.location.replace(`/${reqLink}${status}`);
     }
 }
@@ -748,41 +700,18 @@ function pivilegeButtons(fName, status) {
 //     }
 // }
 
-//get privilege link when clicked on privilege link on navbar.
-// function getPrivilegesLink(memberPrivilege, committeePrivilege, committeeSpecificPrivilege, verificationPrivilege, adminPrivilege) {
-//     if (memberPrivilege != null) {
-//         let privilegeLink = document.getElementById('privilegeLinkPage');
-//         privilegeLink.href = '/manageMembers';
-//     }
-//     else if (committeeSpecificPrivilege != null) {
-//         let privilegeLink = document.getElementById('privilegeLinkPage');
-//         privilegeLink.href = '/manageCommitteeSpecific';
-//     }
-//     else if (verificationPrivilege != null) {
-//         let privilegeLink = document.getElementById('privilegeLinkPage');
-//         privilegeLink.href = '/manageVerificationTeam';
-//     } else if (adminPrivilege == true) {
-//         let privilegeLink = document.getElementById('privilegeLinkPage');
-//         privilegeLink.href = '/manageAdmins';
-//     }
-
-// }
 //search members
 function mySearchFunction(input, members, memberName) {
     let filter, item, i, txtValue, memberSearch = input, memberBlock = members, memberCard = memberName;
     input = document.getElementById(`${memberSearch}`);
-    console.log(input);
     filter = input.value.toUpperCase();
-    console.log(filter);
     // Grabs the parent element by id
     members = document.getElementById(`${memberBlock}`);
-    console.log(members);
     // Individual item on list
     memberName = members.getElementsByClassName(`${memberCard}`);
     for (i = 0; i < memberName.length; i++) {
         item = memberName[i];
         txtValue = item.textContent || item.innerText;
-        console.log(txtValue);
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
             // Displays list items that are a match, and nothing if no match
             memberName[i].style.display = "";
@@ -821,22 +750,7 @@ window.addEventListener('load', function () {
 //light and dark mode
 window.addEventListener('load', changeTheme);
 function changeTheme() {
-    //main body where all card is shown
-    let allCardBody;
-    //all card
-    let allCard;
-    //all card footer
-    let allCardFooter;
-    //all links
-    let allLink;
-    //all headers of body
-    let allHeader;
-    //all icons
-    let allIcon;
-    //all tabs where members are shown
-    let allTabs;
-    let allInputs;
-    let loader;
+    let allCardBody, allCard, allCardFooter, allLink, allHeader, allIcon, allTabs, allInputs, loader;
     allCardBody = document.querySelectorAll('.card_body_dark');
     allTabs = document.querySelectorAll('.tab_dark');
     allCard = document.querySelectorAll('.card_dark');
@@ -846,15 +760,12 @@ function changeTheme() {
     allIcon = document.querySelectorAll('.icon_img');
     allInputs = document.querySelectorAll('.dark_box');
     loader = document.querySelectorAll('.loader_dark');
-    console.log(allHeader);
     if (localStorage.getItem('mode') === 'dark') {
         let layoutBgDark;
         layoutBgDark = document.querySelector('body');
         layoutBgDark.classList.add('dark');
         layoutBgDark.classList.remove('light');
         document.getElementById('navbarLinks').classList.add('navbarDarkMobile');
-        // loader.classList.add('loader_darkMode');
-        console.log(allCard);
         for (let i = 0; i < loader.length; i++) {
             loader[i].classList.add('loader_darkMode')
         }
@@ -884,15 +795,12 @@ function changeTheme() {
             allCard[i].classList.remove('card_light');
             allCardFooter[i].classList.remove('card_light');
         }
-        console.log(allCardBody);
     } else {
         let layoutBgLight;
         layoutBgLight = document.querySelector('body');
         layoutBgLight.classList.remove('dark');
         layoutBgLight.classList.add('light');
-        console.log(allCardBody);
         document.getElementById('navbarLinks').classList.remove('navbarDarkMobile');
-        // loader.classList.remove('loader_darkMode');
         for (let i = 0; i < loader.length; i++) {
             loader[i].classList.remove('loader_darkMode')
         }
@@ -922,19 +830,14 @@ function changeTheme() {
             allCard[i].classList.add('card_light');
             allCardFooter[i].classList.add('card_light');
         }
-        console.log(allCardBody);
-
     }
-    // if(localStorage.getItem('mode'))
-
+    //check theme inside local storage
     (localStorage.getItem('mode') == 'dark') ? $('#themeMode').attr('checked', true) : $('#themeMode').attr('checked', false);
 }
 
 //set mode name in local storage
 function ChangeThemeOnclick(check) {
-    console.log('change mode', check);
     localStorage.setItem('mode', check === false ? 'light' : 'dark');
-    // localStorage.setItem('mode', (localStorage.getItem('mode') || 'dark') === 'dark' ? 'light' : 'dark');
     changeTheme();
 }
 
@@ -943,11 +846,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
     ((localStorage.getItem('mode') || 'dark') === 'dark') ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark')
 })
 
-//overlay sidebar
+//overlay sidebar open
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
 }
-
+//overlay sidebar close
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
