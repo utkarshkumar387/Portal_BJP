@@ -1415,4 +1415,11 @@ text-decoration: none;
         border: none !important;
         box-shadow: none;
     }
+    .auth_splash_image{
+        display: none !important;
+    }
+    .authPage {
+        display: flex;
+        height: 100vh;
+    }
   }
