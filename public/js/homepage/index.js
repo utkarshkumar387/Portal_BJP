@@ -15,16 +15,10 @@ let glide = new Glide('.glide', {
         }
     }
 });
-// var home = fetchHomepageDataTest('homepage');
-// var home = fetchHomepageData('homepage');
 var home = getRequest.homepage('homepage');
-// console.log(home.message.blogs.length);
 let blogs = home.message.blogs;
-// console.log(blogs);
 let events = home.message.events;
-// console.log(events);
 let complaints = home.message.complaints;
-// console.log(complaints);
 
 if (home.error == false) {
 
@@ -37,10 +31,8 @@ if (home.error == false) {
         let maxStringTitle = 20;
         let maxStringDesc = 300;
         let trimmedDataBlog = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
-        // console.log(trimmedDataBlog);
         if (blogs[i].images.length > 0) {
             for (let j = 0; j < blogs[i].images.length; j++) {
-                // console.log(blogs[i].images[j].image);
                 blogImage = `${blogs[i].images[j].image}`;
             }
         } else {

@@ -760,6 +760,7 @@ function changeTheme() {
     allIcon = document.querySelectorAll('.icon_img');
     allInputs = document.querySelectorAll('.dark_box');
     loader = document.querySelectorAll('.loader_dark');
+    document.querySelector('.sidenav').style.backgroundColor = "#252836"
     if (localStorage.getItem('mode') === 'dark') {
         let layoutBgDark;
         layoutBgDark = document.querySelector('body');
@@ -800,6 +801,7 @@ function changeTheme() {
         layoutBgLight = document.querySelector('body');
         layoutBgLight.classList.remove('dark');
         layoutBgLight.classList.add('light');
+        document.querySelector('.sidenav').style.backgroundColor = "#fff"
         document.getElementById('navbarLinks').classList.remove('navbarDarkMobile');
         for (let i = 0; i < loader.length; i++) {
             loader[i].classList.remove('loader_darkMode')

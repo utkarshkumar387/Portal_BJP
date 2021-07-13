@@ -192,6 +192,9 @@
     border-radius: 15px;
 
 }
+.card_body_mobile{
+    margin-bottom: 20px;
+}
 /* .card{
     z-index: -1;
 } */
@@ -348,7 +351,7 @@
 .home__complaints .card{
     margin: 16px 32px 32px 32px;
     padding: 32px;
-    height: 175px;
+    min-height: 175px;
 }
 .complaints__header{
     display: flex;
@@ -1278,6 +1281,7 @@ text-decoration: none;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+    border-right: 1px solid grey;
   }
   
   .sidenav .closebtn {
@@ -1379,7 +1383,7 @@ text-decoration: none;
     #committee__membersSearch{
         width: 180px;
     }
-    .complaints__header{
+    .member__inner{
         flex-direction: column;
     }
     .manageTabCommittee{
@@ -1400,5 +1404,15 @@ text-decoration: none;
     }
     .accessDenied_card h3{
         font-size: 24px;
+    }
+    .member__buttons {
+        margin-top: 40px;
+    }
+    .card_body_mobile {
+        margin: 0 10px 100px 10px !important;
+    }
+    .home__sidenavigator{
+        border: none !important;
+        box-shadow: none;
     }
   }

@@ -37,7 +37,7 @@ if (committeeDetails.error == false) {
                     <p class="small">${committeeMemberAddress}</p>
                 </div>
             </div>
-            <div>
+            <div class="member__buttons w-100 d-flex">
                 <a class="member__button mr-3" href="/profile/${committee.committee_members[i].id}">View</a>
                 <img class="member__more dropleft" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" src="/img/icons/More.png"
