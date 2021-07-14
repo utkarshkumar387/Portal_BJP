@@ -16,6 +16,10 @@
 .navbar{
     background-color: #ffffff;
 }
+/* navbar display in mobile */
+/* .navbarLinksMobile{
+    display: none !important;
+} */
 .fixed{
     position: fixed;
 }
@@ -366,6 +370,7 @@
 }
 .complaints__header .complaints__sender{
     margin: 0 11.43px;
+    /* display: inline; */
 }
 .complaints__header .complaints__sender p{
     margin: 0;
@@ -1305,7 +1310,7 @@ text-decoration: none;
   .mobileNavbar {
     overflow: hidden;
     /* background-color: #1F1D2B; */
-    background-color: #E5E5E5;
+    /* background-color: #E5E5E5; */
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -1342,6 +1347,9 @@ text-decoration: none;
     .manageTabCommittee{
         align-items: center;
     }
+    #navbarLinks{
+        display: none;
+    }
 }
 @media only screen and (max-device-width: 991px){
     .viewTag{
@@ -1354,6 +1362,15 @@ text-decoration: none;
     .sidenav{
         z-index: 10;
     }
+    .navbarLinksMobile li{
+        padding: 10px 0;
+    }
+    /* .navbarLinksDesktop{
+        display: block;
+    }
+    .navbarLinksMobile{
+        display: none;
+    } */
 }
 @media only screen and (max-device-width: 480px) {
     .logoDesktop {
@@ -1422,4 +1439,18 @@ text-decoration: none;
         display: flex;
         height: 100vh;
     }
+    /* .navbarLinksMobile{
+        display: flex;
+        flex-direction: row !import;
+        justify-content: space-around;
+    } */
+    /* .navbarLinksMobile li{
+        padding: 5px 40px;
+    } */
+    /* .navbarLinksDesktop{
+        display: none;
+    }
+    .navbarLinksMobile{
+        display: block;
+    } */
   }

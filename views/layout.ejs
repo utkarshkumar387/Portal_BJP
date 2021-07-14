@@ -42,6 +42,24 @@
         <div class="loader-section section-left loader_dark"></div>
         <div class="loader-section section-right loader_dark"></div>
     </div>
+    <!-- fix mobile view navbar -->
+    <div class="mobileViewNav" id="navbarLinks">
+        <ul class="navbarLinksMobile d-flex row justify-content-around" style="margin: 0;">
+            <li class="nav-item">
+                <a class="nav-link" data-link href="/"><i class="fas fa-home"></i><span class="navbarTabs">
+                        Home</span></a>
+            </li>
+            <li class="nav-item" id="privilegesLink">
+                <a class="nav-link" id="privilegeLinkPage" href="/manageMembers" data-link><i
+                        class="fas fa-user-lock"></i>
+                    <span class="navbarTabs"> Privileges</span></a>
+            </li>
+            <li class="nav-item" id="committeesLink">
+                <a class="nav-link" id="committeesLayout" data-link><i class="fas fa-users"></i>
+                    <span class="navbarTabs"> Committees</span></a>
+            </li>
+        </ul>
+    </div>
     <nav class="navbar card_body_dark navbar-expand-lg">
         <div class="container">
             <div class="d-flex">
@@ -50,8 +68,8 @@
                     <!-- <img class="logoMobile ml-2" src="/img/icons/bjp-logo.png" /> -->
                 </a>
             </div>
-            <ul class="navbar-nav" id="navbarLinks">
-                <li class="nav-item">
+            <ul class="navbar-nav navbarLinksDesktop">
+                <li class=" nav-item">
                     <a class="nav-link" data-link href="/"><i class="fas fa-home"></i><span class="navbarTabs">
                             Home</span></a>
                 </li>

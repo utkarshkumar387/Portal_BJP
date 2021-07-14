@@ -37,7 +37,7 @@ if (contentBlogs.error == false) {
                     <p id="homePageBlogDate_id">${blogDate[0]} ${blogDate[1]} ${blogDate[2]} <i class="fa fa-circle" aria-hidden="true"></i><span
                             id="homePageBlogAuthor_id">${blogs[i].user.first_name} ${blogs[i].user.last_name}</span></p>
                     <a href="/blogsView/${blogs[i].id}/${blogs[i].status}">
-                        View Blog
+                        <span class="viewTag">View Blog</span>
                         <span>
                             <img src="/img/icons/link.png" alt="">
                         </span>

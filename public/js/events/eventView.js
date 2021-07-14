@@ -92,7 +92,7 @@ if (events.error == false) {
                         <div class="card-footer footer">
                             <p>${recentEventsDate[0]} ${recentEventsDate[1]} ${recentEventsDate[2]}</p>
                             <a href="/eventsView/${recentEvents[i].id}/${recentEvents[i].status}">
-                                View Event
+                            <span class="viewTag">View Event</span>
                                 <span>
                                     <img src="/img/icons/link.png" alt="">
                                 </span>

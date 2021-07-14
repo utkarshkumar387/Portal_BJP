@@ -77,7 +77,7 @@ if (complaint.error == false) {
         <div class="card-footer footer">
             <p>${recentComplaintsDate[0]} ${recentComplaintsDate[1]} ${recentComplaintsDate[2]}</p>
             <a href="/complaintsView/${recentComplaints[i].id}/${recentComplaints[i].status}">
-                View Complaint
+            <span class="viewTag">View Complaint</span>
                 <span>
                     <img src="/img/icons/link.png" alt="">
                 </span>

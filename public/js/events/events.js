@@ -26,7 +26,7 @@ if (contentEvents.error == false) {
                     <div class="card-footer footer">
                         <p>${upcomingEventDate[0]} ${upcomingEventDate[1]} ${upcomingEventDate[2]}</p>
                         <a href="/eventsView/${upcomingEvents[i].id}/${upcomingEvents[i].status}">
-                            View Event
+                        <span class="viewTag">View Event</span>
                             <span>
                                 <img src="img/icons/link.png" alt="">
                             </span>

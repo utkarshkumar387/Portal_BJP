@@ -497,17 +497,21 @@ function contentMobileView() {
     let width = window.outerWidth;
     let navbar = document.getElementById('navbarLinks');
     if (width <= 991) {
-        navbar.classList.add('mobileNavbar', 'container');
+        navbar.classList.add('mobileNavbar');
         $('.burgerMobileButton').show();
         $('.sidemenuMobile').show();
         $('.sidemenu').hide();
         $('.deleteProfile').html(`<i class="fas fa-trash-alt"></i>`)
+        $('.navbarLinksDesktop').hide()
+        $('.mobileViewNav').show()
     } else {
         navbar.classList.remove('mobileNavbar', 'container');
         $('.burgerMobileButton').hide();
         $('.sidemenuMobile').hide();
         $('.sidemenu').show();
         $('.deleteProfile').html(`Delete Profile`)
+        $('.navbarLinksDesktop').show()
+        $('.mobileViewNav').hide()
     }
 }
 
@@ -766,7 +770,8 @@ function changeTheme() {
         layoutBgDark = document.querySelector('body');
         layoutBgDark.classList.add('dark');
         layoutBgDark.classList.remove('light');
-        document.getElementById('navbarLinks').classList.add('navbarDarkMobile');
+        // document.getElementById('navbarLinks').classList.add('navbarDarkMobile');
+        document.querySelector('.navbarLinksMobile').style.backgroundColor = '#252836';
         for (let i = 0; i < loader.length; i++) {
             loader[i].classList.add('loader_darkMode')
         }
@@ -802,7 +807,7 @@ function changeTheme() {
         layoutBgLight.classList.remove('dark');
         layoutBgLight.classList.add('light');
         document.querySelector('.sidenav').style.backgroundColor = "#fff"
-        document.getElementById('navbarLinks').classList.remove('navbarDarkMobile');
+        // document.getElementById('navbarLinks').classList.remove('navbarDarkMobile');
         for (let i = 0; i < loader.length; i++) {
             loader[i].classList.remove('loader_darkMode')
         }

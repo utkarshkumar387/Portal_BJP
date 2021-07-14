@@ -30,7 +30,7 @@ if (contentComplaints.error == false) {
             <div class="card-footer footer">
                 <p>${complaintDate[0]} ${complaintDate[1]} ${complaintDate[2]}</p>
                 <a href="/complaintsView/${complaints[i].id}/${complaints[i].status}">
-                    View Complaint
+                <span class="viewTag">View Complaint</span>
                     <span>
                         <img src="img/icons/link.png" alt="">
                     </span>

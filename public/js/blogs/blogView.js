@@ -88,7 +88,7 @@ if (blog.error == false) {
                     <p id="homePageBlogDate_id">${blogDate[0]} ${blogDate[1]} ${blogDate[2]} <i class="fa fa-circle" aria-hidden="true"></i><span
                             id="homePageBlogAuthor_id">${name}</span></p>
                     <a href="/blogsView/${recentBlogs[i].id}/${recentBlogs[i].status}">
-                        View Blog
+                    <span class="viewTag">View Blog</span>
                         <span>
                             <img src="/img/icons/link.png" alt="">
                         </span>

@@ -68,7 +68,7 @@ if (profileDetails.error == false) {
                     <p id="homePageBlogDate_id">${blogDate[0]} ${blogDate[1]} ${blogDate[2]} <i class="fa fa-circle" aria-hidden="true"></i><span
                             id="homePageBlogAuthor_id">${name}</span></p>
                     <a href="/blogsView/${profileBlogs[i].id}/1">
-                        View Blog
+                    <span class="viewTag">View Blog</span>
                         <span>
                             <img src="/img/icons/link.png" alt="">
                         </span> 
@@ -115,7 +115,7 @@ if (profileDetails.error == false) {
                     <div class="card-footer footer">
                         <p><span>${eventDate[0]} ${eventDate[1]} ${eventDate[2]}</span></p>
                         <a href="/eventsView/${profileEvents[i].id}/1">
-                            View Event
+                        <span class="viewTag">View Event</span>
                             <span>
                                 <img src="/img/icons/link.png" alt="">
                             </span>
@@ -166,7 +166,7 @@ if (profileDetails.error == false) {
             <div class="card-footer footer">
                 <p>${complaintDate[0]} ${complaintDate[1]} ${complaintDate[2]}</p>
                 <a href="/complaintsView/${profileComplaints[i].id}/1">
-                    View Complaint
+                    <span class="viewTag">View Complaint</span>
                     <span>
                         <img src="/img/icons/link.png" alt="">
                     </span>
