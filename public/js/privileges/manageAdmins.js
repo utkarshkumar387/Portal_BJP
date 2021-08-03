@@ -8,37 +8,59 @@ if (allAdmins.error == false) {
         if (allAdmins.message[i].committee_name != null) {
             committeeName = allAdmins.message[i].committee_name;
         } else {
-            committeeName = 'Not in committee';
+            committeeName = 'No committee';
         }
         $('#manageAdminBlock').append(
             `
         <div class="card tab_dark cardStyle mt-3 memberCard" id="memberCard">
-        <div class="complaints__header member__inner d-flex justify-content-between">
-            <div class="d-flex">
+        <div class="complaints__header member__inner">
+            <div class="d-flex w-100">
                 <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
                     class="rounded-circle" alt="...">
-                <div class="complaints__sender">
-                    <b>${adminName}</b>
-                    <p class="small">${allAdmins.message[i].user.district}, <span>${allAdmins.message[i].user.state}</span>
-                    </p>
-                </div>
-            </div>
-            <div class="d-flex">
-                <div class="member__committeeName px-5">
-                    <p>${committeeName}</p>
-                </div>
-                <div class="member__permission btn-group dropright">
-                    <img class="member__more dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" src="img/icons/More.png" alt="">
-                    <div class="dropdown-menu" id="submitMemberAdmins${allAdmins.message[i].id}">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="memberAdminsPermission${allAdmins.message[i].id}">
-                            <label class="form-check-label px-1"
-                                for="memberAdminsPermission${allAdmins.message[i].id}">Super Admin</label>
+                <div class="privilegeCard d-flex w-100 justify-content-between">
+                    <div class="complaints__sender d-flex justify-content-between">
+                    <div>
+                        <b>${adminName}</b>
+                        <p class="small">${allAdmins.message[i].user.district}, <span>${allAdmins.message[i].user.state}</span></p>
+                    </div>
+                    <div class="privilegeFunctionButtonsMobile">
+                            <div class="member__permission btn-group dropright">
+                                <img class="member__more dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false" src="img/icons/More.png" alt="">
+                                <div class="dropdown-menu" id="submitMemberAdmins${allAdmins.message[i].id}">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="memberAdminsPermission${allAdmins.message[i].id}">
+                                        <label class="form-check-label px-1"
+                                            for="memberAdminsPermission${allAdmins.message[i].id}">Super Admin</label>
+                                    </div>
+                                    <div class="d-flex mt-3">
+                                        <button style="width: 100%;" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="deleteAdmin(${allAdmins.message[i].id}, ${allAdmins.message[i].user.id})" class='btn btn-danger'>Delete</button>
+                                        <button style="width: 100%;" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="getButton(this.parentNode.parentNode.id, ${allAdmins.message[i].id})" class='btn btn-primary ml-2'>Submit</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="d-flex mt-3">
-                            <button style="width: 100%;" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="deleteAdmin(${allAdmins.message[i].id}, ${allAdmins.message[i].user.id})" class='btn btn-danger'>Delete</button>
-                            <button style="width: 100%;" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="getButton(this.parentNode.parentNode.id, ${allAdmins.message[i].id})" class='btn btn-primary ml-2'>Submit</button>
+                    </div>
+                    <div class="d-flex privilegeCommitteeName">
+                        <div class="text-left member__committeeName">
+                            <p>${committeeName}</p>
+                        </div>
+                        <div class="privilegeFunctionButtonsDesktop">
+                            <div class="member__permission btn-group dropright">
+                                <img class="member__more dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false" src="img/icons/More.png" alt="">
+                                <div class="dropdown-menu" id="submitMemberAdmins${allAdmins.message[i].id}">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="memberAdminsPermission${allAdmins.message[i].id}">
+                                        <label class="form-check-label px-1"
+                                            for="memberAdminsPermission${allAdmins.message[i].id}">Super Admin</label>
+                                    </div>
+                                    <div class="d-flex mt-3">
+                                        <button style="width: 100%;" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="deleteAdmin(${allAdmins.message[i].id}, ${allAdmins.message[i].user.id})" class='btn btn-danger'>Delete</button>
+                                        <button style="width: 100%;" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="getButton(this.parentNode.parentNode.id, ${allAdmins.message[i].id})" class='btn btn-primary ml-2'>Submit</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -178,32 +200,31 @@ for (let i = 0; i < allMembers.message.length; i++) {
         if (allMembers.message[i].committee != null) {
             committeeName = allMembers.message[i].committee.title;
         } else {
-            committeeName = 'Not in committee';
+            committeeName = 'No committee';
         }
 
         $(`#allMembersDataAdmins`).append(
             `
         <div class="card cardStyle tab_dark mt-3 memberCard" id="memberCardAdmins">
-        <div class="complaints__header member__inner d-flex justify-content-between">
-            <div class="d-flex">
-                <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
-                    class="rounded-circle" alt="...">
-                <div class="complaints__sender">
-                    <b>${memberName}</b>
-                    <p class="small">${allMembers.message[i].district}, <span>${allMembers.message[i].state}</span>
-                    </p>
+            <div class="complaints__header member__inner d-flex justify-content-between">
+                <div class="d-flex">
+                    <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
+                        class="rounded-circle" alt="...">
+                    <div class="complaints__sender">
+                        <b>${memberName}</b>
+                        <p class="small">${allMembers.message[i].district}, <span>${allMembers.message[i].state}</span></p>
+                    </div>
                 </div>
-            </div>
-            <div class="d-flex">
-                <div class="member__committeeName px-5">
-                    <p>${committeeName}</p>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" onclick="getMemberID(this.id)" id="${allMembers.message[i].id}">
+                <div class="d-flex manageTabCommittee justify-content-between align-items-center">
+                    <div class="member__committeeName ml-1 px-5">
+                        <p>${committeeName}</p>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" onclick="getMemberID(this.id)" id="${allMembers.message[i].id}">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
         `
         )
         count++;

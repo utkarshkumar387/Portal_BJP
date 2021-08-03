@@ -1,10 +1,7 @@
 let link = window.location.href.split('/');
 let allMembers = getRequest.member('get_all_members');
-console.log('all members in add members in committee are ', allMembers);
-// console.log(link);
 let committeeID = link[4];
 let committeeDetails = getRequest.committee(`committee`, committeeID);
-console.log(committeeDetails);
 let committee = committeeDetails.message.committee_data;
 if (committeeDetails.error == false) {
     // console.log(committee);
@@ -17,37 +14,58 @@ if (committeeDetails.error == false) {
         committeeLeader = 'No leader';
         committeeLeaderAddress = 'Place';
     }
-    // console.log(committeeLeader, committeeLeaderAddress);
     $('#committeeName').html(committee.title);
     $('#committeeDesc').html(committee.description);
     (committee.image) ? $('.committeeImage').attr('src', `${committee.image}`) : $('.committeeImage').attr('src', 'https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2020/01/bjp-cec-1579191185.jpg')
     $('#committeeLeader').html(committeeLeader);
     $('#committeeLeaderAddress').html(committeeLeaderAddress);
+    //appending committee members
     for (let i = 0; i < committee.committee_members.length; i++) {
         let committeeMemberName = committee.committee_members[i].first_name + ' ' + committee.committee_members[i].last_name;
         let committeeMemberAddress = committee.committee_members[i].district + ', ' + committee.committee_members[i].state;
         $('#committeeMemberBlock').append(`
         <div class="card tab_dark cardStyle mt-3 memberCard" id="memberCard">
         <div class="complaints__header member__inner d-flex justify-content-between">
-            <div class="d-flex">
-                <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
-                    class="rounded-circle" alt="...">
-                <div class="complaints__sender">
-                    <strong>${committeeMemberName}</strong>
-                    <p class="small">${committeeMemberAddress}</p>
+            <div class="d-flex w-100 justify-content-between align-items-center">
+                <div class="d-flex">
+                    <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
+                        class="rounded-circle" alt="...">
+                    <div class="complaints__sender">
+                        <strong>${committeeMemberName}</strong>
+                        <p class="small">${committeeMemberAddress}</p>
+                    </div>
+                </div>
+                <div class="committeePrivilege">
+                    <div class="moreButtonsMobileView">
+                        <img class="member__more dropleft" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" src="/img/icons/More.png"
+                            alt="">
+                        <div class="dropdown-menu tab_dark">
+                            <div class="dropdown-item">
+                                <button class="btn btn-danger" style="width: 100%;">Delete</button>
+                            </div>
+                            <div class="dropdown-item">
+                                <button class="btn btn-warning" style="width: 100%;">Appoint Leader</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="member__buttons w-100 d-flex">
-                <a class="member__button mr-3" href="/profile/${committee.committee_members[i].id}">View</a>
-                <img class="member__more dropleft" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" src="/img/icons/More.png"
-                    alt="">
-                <div class="dropdown-menu tab_dark">
-                    <div class="dropdown-item">
-                        <button class="btn btn-danger" style="width: 100%;">Delete</button>
-                    </div>
-                    <div class="dropdown-item">
-                        <button class="btn btn-warning" style="width: 100%;">Appoint Leader</button>
+            <div class="committeePrivilege w-100">
+                <div class="member__buttons justify-content-end align-items-center d-flex">
+                        <a class="member__button" href="/profile/${committee.committee_members[i].id}">View</a>
+                    <div class="moreButtonDesktopView buttonInvert ml-3">
+                        <img class="member__more dropleft" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" src="/img/icons/More.png"
+                            alt="">
+                        <div class="dropdown-menu tab_dark">
+                            <div class="dropdown-item">
+                                <button class="btn btn-danger" style="width: 100%;">Delete</button>
+                            </div>
+                            <div class="dropdown-item">
+                                <button class="btn btn-warning" style="width: 100%;">Appoint Leader</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -62,7 +80,6 @@ function searchFunction() {
     let input1 = document.getElementById('committee__membersSearch').id;
     let members1 = document.getElementById('committeeMemberBlock').id;
     let memberName1 = document.getElementById('memberCard').id;
-    // console.log(input1, members1, memberName1);
     mySearchFunction(input1, members1, memberName1);
 }
 // function mySearchFunction(input, members, memberName) {
@@ -103,29 +120,20 @@ function getMemberID(id) {
         }
     }
     stringifyMemebers = JSON.stringify(list);
-    // console.log(stringifyMemebers);
-    // for (li in list) console.log(list[li]);
 }
-function addAllMembersToList() {
-    // let allMembers = Object.assign({}, members);
-    // // for (var i = 0; i < members.length; i++) list.push({ 'user_id': members[i] });
-    // // console.log(list);
-    // let data = allMembers;
-    // console.log(data);
-    let data = stringifyMemebers;
-    // console.log('data to post', data);
-    let addMemberAdmins = postRequest.committee('add_members_to_committee', committeeID, data);
-    // console.log('error while adding committee members', addMemberAdmins.error);
-    // console.log('committee in which we want to insert members ', committeeID);
-    // console.log('members whow we want to insert ', data);
-    if (addMemberAdmins.error == false) {
-        console.log('member added in committee successfully');
-        // window.location.reload();
-    } else {
-        console.log('Error occured');
-        console.log(addMemberAdmins);
-    }
-}
+// function addAllMembersToList() {
+//     let data = stringifyMemebers;
+//     let addMemberAdmins = postRequest.committee('add_members_to_committee', committeeID, data);
+//     if (addMemberAdmins.error == false) {
+//         console.log('member added in committee successfully');
+//         // window.location.reload();
+//     } else {
+//         console.log('Error occured');
+//         console.log(addMemberAdmins);
+//     }
+// }
+
+//checking and appending members in add members list
 let count = 0;
 for (let i = 0; i < allMembers.message.length; i++) {
     let exist = false;
@@ -147,7 +155,7 @@ for (let i = 0; i < allMembers.message.length; i++) {
         $(`#allMembersDataCommittee`).append(
             `
         <div class="card tab_dark cardStyle mt-3 memberCard" id="memberCardAdmins">
-        <div class="complaints__header member__inner d-flex justify-content-between">
+        <div class="complaints__header member__inner align-items-center d-flex justify-content-between">
             <div class="d-flex">
                 <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
                     class="rounded-circle" alt="...">
@@ -157,12 +165,9 @@ for (let i = 0; i < allMembers.message.length; i++) {
                     </p>
                 </div>
             </div>
-            <div class="d-flex">
-                <div class="member__committeeName px-5">
-                    <p>${committeeName}</p>
-                </div>
-                    <div class="form-check">
-                    <input type="checkbox" class="form-check-input" onclick="getMemberID(this.id)" id="${allMembers.message[i].id}">
+            <div class="d-flex committeeMemerAddCheck">
+                <div class="form-check">
+                    <input type="checkbox" onclick="getMemberID(this.id)" id="${allMembers.message[i].id}">
                 </div>
             </div>
         </div>
@@ -177,6 +182,14 @@ if (count == 0) {
     $('#allMembersToAddInCommittee').append(`
         <h2>No member to display</h2>
     `)
+}
+
+//checking privilege and adding buttons
+var committeeMemberPivilege = JSON.parse(getCookie('privilege'));
+if (committeeMemberPivilege.committee_privilege || committeeMemberPivilege.admin_privilege) {
+    $('.committeePrivilege').css('display', 'block');
+} else {
+    $('.committeePrivilege').css('display', 'none');
 }
 
 //modifying view in mobile view

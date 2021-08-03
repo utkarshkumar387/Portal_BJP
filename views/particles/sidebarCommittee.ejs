@@ -12,16 +12,4 @@
     </ul>
 </div>
 <%- include('../molecules/mode.ejs') -%>
-    <script>
-        let memberDetails = getCookie('member_profile');
-        let memberPivilege = JSON.parse(getCookie('privilege'));
-        // console.log(memberPivilege);
-        if (memberPivilege.committee_privilege || memberPivilege.admin_privilege) {
-            $('#allCommittees').css('display', 'block');
-        } else {
-            $('#allCommittees').css('display', 'none');
-        }
-        let userCommitteeID = JSON.parse(memberDetails).committee_id;
-        $('#userCommittee').attr('href', `/committeeClicked/${userCommitteeID}`)
-            // let userCommitteeDetails = fetchCommitteeByID('committee', userCommitteeID);
-    </script>
+    <script type="application/javascript" src="/js/sidebar/sidebarCommittee.js"></script>

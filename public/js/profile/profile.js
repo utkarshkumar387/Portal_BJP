@@ -1,5 +1,5 @@
 let link = window.location.href.split('/');
-console.log(link[4]);
+console.log('location is', link[3]);
 let profileID = link[4]
 // let profileDetails = fetchProfileDataById('member_profile', profileID);
 let profileDetails = getRequest.member('member_profile', profileID);
@@ -33,11 +33,8 @@ if (profileDetails.error == false) {
     (user.legislative_assembly_constituency_id) ? $('#memberVidhanSabha').html(user.legislative_assembly_constituency_id.name) : $('#memberVidhanSabha').html('Not Available');
 
     let profileBlogs = profileDetails.message.blogs;
-    console.log(profileBlogs);
     let profileEvents = profileDetails.message.events;
-    console.log(profileEvents);
     let profileComplaints = profileDetails.message.complaints;
-    console.log(profileComplaints);
     if (profileBlogs.length > 0) {
         for (let i = 0; i < profileBlogs.length; i++) {
             let blogDate = dateConverter(profileBlogs[i].date);
@@ -49,7 +46,6 @@ if (profileDetails.error == false) {
             let trimmedDataBlog = titleDescTrimmer(title, description, maxStringTitle, maxStringDesc);
             let blogsImage;
             (profileBlogs[i].images.length > 0) ? blogsImage = profileBlogs[i].images[0].image : blogsImage = 'https://akm-img-a-in.tosshub.com/sites/dailyo/fb_feed_images/story_image/201708/bjpup-insta_083117051140.jpg';
-            console.log(trimmedDataBlog);
             $('#profileBlogsBlock').append(
                 `
             <div class="card card_dark cardStyle">
@@ -144,7 +140,6 @@ if (profileDetails.error == false) {
             let title = profileComplaints[i].complaint_subject;
             let maxStringTitle = 20;
             let trimmedDataComplaint = titleDescTrimmer(title, description = '', maxStringTitle, maxStringDesc = 0);
-            console.log(trimmedDataComplaint);
             let priority = checkPriority(profileComplaints[i].priority);
             let name = profileComplaints[i].user.first_name + ' ' + profileComplaints[i].user.last_name;
             $('#profileComplaintsBlock').append(

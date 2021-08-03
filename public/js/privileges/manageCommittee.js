@@ -25,11 +25,13 @@ if (allCommitteePrivilegeMembers.error == false) {
                     </p>
                 </div>
             </div>
-            <div class="d-flex">
-                <div class="member__committeeName px-5">
+            <div class="d-flex manageTabCommittee align-items-center">
+                <div class="member__committeeName ml-1 px-5">
                     <p>${committeeName}</p>
                 </div>
-                <button class="btn btn-danger" onclick=removePrivilege(this.id) id="${allCommitteePrivilegeMembers.message[i].id}">Remove</button>
+                <div class="manageTabButtons">
+                    <button class="btn btn-outline-danger removeButton" onclick=removePrivilege(this.id) id="${allCommitteePrivilegeMembers.message[i].id}">Remove</button>
+                </div>
             </div>
         </div>
     </div>
@@ -103,12 +105,12 @@ for (let i = 0; i < allMembers.message.length; i++) {
                     </p>
                 </div>
             </div>
-            <div class="d-flex">
-                <div class="member__committeeName px-5">
+            <div class="d-flex manageTabCommittee justify-content-between align-items-center">
+                <div class="member__committeeName ml-1 px-5">
                     <p>${committeeName}</p>
                 </div>
-                    <div class="form-check">
-                    <input type="checkbox" class="form-check-input" onclick="getMemberID(this.id)" id="${allMembers.message[i].id}">
+                <div class="form-check">
+                    <input type="checkbox" onclick="getMemberID(this.id)" id="${allMembers.message[i].id}">
                 </div>
             </div>
         </div>

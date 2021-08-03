@@ -20,7 +20,6 @@ if (committees.error == false) {
                     <p class="card-text">${trimmedDataCommittee.trimStringDesc}</p>
                 </div>
                 <div class="card-footer footer mb-2">
-                    <a class="committee__edit" href="#">Edit Committee</a>
                     <a href="/committeeClicked/${committee[i].id}">
                         View Committee
                         <span>
@@ -34,6 +33,6 @@ if (committees.error == false) {
 
     }
 }
-
+{/* <a class="committee__edit" href="#">Edit Committee</a> */ }
 //modifying view in mobile view
 window.onload = contentMobileView();

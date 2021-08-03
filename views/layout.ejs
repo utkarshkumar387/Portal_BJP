@@ -55,7 +55,7 @@
                     <span class="navbarTabs"> Privileges</span></a>
             </li>
             <li class="nav-item" id="committeesLink">
-                <a class="nav-link" id="committeesLayout" data-link><i class="fas fa-users"></i>
+                <a class="nav-link" id="committeesLayout" href="#" data-link><i class="fas fa-users"></i>
                     <span class="navbarTabs"> Committees</span></a>
             </li>
         </ul>
@@ -79,7 +79,7 @@
                         <span class="navbarTabs"> Privileges</span></a>
                 </li>
                 <li class="nav-item" id="committeesLink">
-                    <a class="nav-link" id="committeesLayout" data-link><i class="fas fa-users"></i>
+                    <a class="nav-link" id="committeesLayout" href="#" data-link><i class="fas fa-users"></i>
                         <span class="navbarTabs"> Committees</span></a>
                 </li>
             </ul>
@@ -126,6 +126,7 @@
     <script type="application/javascript" src="/js/main.js"></script>
     <div class="container mainContainer">
         <%- body -%>
+            <!-- fix theme mode, verification team, search bars, add scrollbar, manage committee, manage admins -->
             <span class="burgerMobileButton" onclick="openNav()">&#9776;</span>
     </div>
 
@@ -143,11 +144,11 @@
             if (memberDetailsLayout.committee) {
                 $('#committeesLink').css('display', 'block');
                 let committeeIDLayout = memberDetailsLayout.committee.id;
-                $('#committeesLayout').attr('href', `/committeeClicked/${committeeIDLayout}`);
+                $('#committeesLink a').attr('href', `/committeeClicked/${committeeIDLayout}`);
+
             } else {
                 $('#committeesLink').css('display', 'none');
             }
-            $('#privilegesLink').css('display', 'block');
         }
     </script>
 

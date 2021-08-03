@@ -24,12 +24,12 @@ if (allMemberAdmins.error == false) {
                     </p>
                 </div>
             </div>
-            <div class="d-flex manageTabCommittee">
+            <div class="d-flex manageTabCommittee align-items-center">
                 <div class="member__committeeName px-5">
                     <p>${committeeName}</p>
                 </div>
                 <div class="manageTabButtons">
-                    <button onclick=removePrivilege(this.id) id="${allMemberAdmins.message[i].id}" class="btn btn-danger">Remove</button>
+                    <button onclick=removePrivilege(this.id) id="${allMemberAdmins.message[i].id}" class="btn btn-outline-danger removeButton"></button>
                 </div>
             </div>
         </div>
@@ -142,26 +142,25 @@ for (let i = 0; i < allMembers.message.length; i++) {
         $(`#allMembersDataAdmins`).append(
             `
         <div class="card tab_dark cardStyle mt-3 memberCard" id="memberCardAdmins">
-        <div class="complaints__header member__inner d-flex justify-content-between">
-            <div class="d-flex">
-                <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
-                    class="rounded-circle" alt="...">
-                <div class="complaints__sender">
-                    <b>${memberName}</b>
-                    <p class="small">${allMembers.message[i].district}, <span>${allMembers.message[i].state}</span>
-                    </p>
+            <div class="complaints__header member__inner d-flex justify-content-between row">
+                <div class="d-flex">
+                    <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
+                        class="rounded-circle" alt="...">
+                    <div class="complaints__sender">
+                        <b>${memberName}</b>
+                        <p class="small">${allMembers.message[i].district}, <span>${allMembers.message[i].state}</span></p>
+                    </div>
                 </div>
-            </div>
-            <div class="d-flex manageTabCommittee">
-                <div class="member__committeeName px-5">
-                    <p>${committeeName}</p>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" onclick="getMemberID(this.id)" id="${allMembers.message[i].id}">
+                <div class="d-flex manageTabCommittee justify-content-between align-items-center">
+                    <div class="member__committeeName ml-1 px-5">
+                        <p>${committeeName}</p>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" onclick="getMemberID(this.id)" id="${allMembers.message[i].id}">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
         `
         )
         count++;

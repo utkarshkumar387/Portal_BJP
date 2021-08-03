@@ -237,7 +237,7 @@ function checkCookie() {
                             `)
                         $('#privilegeButtons').append(`
                             <div class="edit">
-                                <a href="/blogForm/${blog_id}/2" class="edit__button button__design">Edit Blog</a>
+                                <a href="/blogForm/${blog_id}/2" class="edit__button button__design">Edit</a>
                             </div>
                             <div class="rejectApprove d-flex">
                                 <div class="reject mr-3">
@@ -261,7 +261,7 @@ function checkCookie() {
                         document.getElementById("privilegeButtons").classList.add("footerPrivilegeButtons");
                         $('#privilegeButtons').append(`
                             <div class="edit">
-                                <a href="/blogForm/${blog_id}/1" class="edit__button button__design">Edit Blog</a>
+                                <a href="/blogForm/${blog_id}/1" class="edit__button button__design">Edit</a>
                             </div>
                             <div class="rejectApprove d-flex">
                                 <div class="reject mr-3">
@@ -284,7 +284,7 @@ function checkCookie() {
                         document.getElementById("privilegeButtons").classList.add("footerPrivilegeButtons");
                         $('#privilegeButtons').append(`
                             <div class="edit">
-                                <a href="/blogForm/${blog_id}/3" class="edit__button button__design">Edit Blog</a>
+                                <a href="/blogForm/${blog_id}/3" class="edit__button button__design">Edit</a>
                             </div>
                             <div class="rejectApprove d-flex">
                                 <div class="approve">
@@ -316,7 +316,7 @@ function checkCookie() {
                         document.getElementById("privilegeButtonsComplaint").classList.add("footerPrivilegeButtons");
                         $('#privilegeButtonsComplaint').append(`
                                 <div class="edit">
-                                    <a href="/complaintsForm/${complaint_id}/2" class="edit__button button__design">Edit Complaint</a>
+                                    <a href="/complaintsForm/${complaint_id}/2" class="edit__button button__design">Edit</a>
                                 </div>
                                 <div class="rejectApprove d-flex">
                                     <div class="reject mr-3">
@@ -340,7 +340,7 @@ function checkCookie() {
                         document.getElementById("privilegeButtonsComplaint").classList.add("footerPrivilegeButtons");
                         $('#privilegeButtonsComplaint').append(`
                                 <div class="edit">
-                                    <a href="/complaintsForm/${complaint_id}/1" class="edit__button button__design">Edit Complaint</a>
+                                    <a href="/complaintsForm/${complaint_id}/1" class="edit__button button__design">Edit</a>
                                 </div>
                                 <div class="rejectApprove d-flex">
                                     <div class="reject mr-3">
@@ -363,7 +363,7 @@ function checkCookie() {
                         document.getElementById("privilegeButtonsComplaint").classList.add("footerPrivilegeButtons");
                         $('#privilegeButtonsComplaint').append(`
                                 <div class="edit">
-                                    <a href="/complaintsForm/${complaint_id}/3" class="edit__button button__design">Edit Complaint</a>
+                                    <a href="/complaintsForm/${complaint_id}/3" class="edit__button button__design">Edit</a>
                                 </div>
                                 <div class="rejectApprove d-flex">
                                     <div class="approve">
@@ -388,7 +388,7 @@ function checkCookie() {
                         document.getElementById("privilegeButtonsEvent").classList.add("footerPrivilegeButtons");
                         $('#privilegeButtonsEvent').append(`
                                 <div class="edit">
-                                    <a href="/eventsForm/${event_id}/2" class="edit__button button__design">Edit Event</a>
+                                    <a href="/eventsForm/${event_id}/2" class="edit__button button__design">Edit</a>
                                 </div>
                                 <div class="rejectApprove d-flex">
                                     <div class="reject mr-3">
@@ -412,7 +412,7 @@ function checkCookie() {
                         document.getElementById("privilegeButtonsEvent").classList.add("footerPrivilegeButtons");
                         $('#privilegeButtonsEvent').append(`
                                 <div class="edit">
-                                <a href="/eventsForm/${event_id}/1" class="edit__button button__design">Edit Event</a>
+                                <a href="/eventsForm/${event_id}/1" class="edit__button button__design">Edit</a>
                                 </div>
                                     <div class="rejectApprove d-flex">
                                     <div class="reject mr-3">
@@ -435,7 +435,7 @@ function checkCookie() {
                         document.getElementById("privilegeButtonsEvent").classList.add("footerPrivilegeButtons");
                         $('#privilegeButtonsEvent').append(`
                                 <div class="edit">
-                                    <a href="/eventsForm/${event_id}/3" class="edit__button button__design">Edit Event</a>
+                                    <a href="/eventsForm/${event_id}/3" class="edit__button button__design">Edit</a>
                                 </div>
                                 <div class="rejectApprove d-flex">
                                     <div class="approve">
@@ -491,13 +491,18 @@ if (getCookie('member_profile') != "") {
     loggedInUserId = JSON.parse(getCookie('member_profile')).id;
     $('#profileButton').attr('href', '/profile/' + JSON.parse(getCookie('member_profile')).id);
 }
-
 //modifying view in mobile view
 function contentMobileView() {
     let width = window.outerWidth;
     let navbar = document.getElementById('navbarLinks');
+    if (width < 768) {
+        $('.removeButton').html(`<i class="far fa-trash-alt"></i>`);
+    } else {
+        $('.removeButton').html(`Remove`);
+    }
     if (width <= 991) {
         navbar.classList.add('mobileNavbar');
+        console.log('inside');
         $('.burgerMobileButton').show();
         $('.sidemenuMobile').show();
         $('.sidemenu').hide();
@@ -541,6 +546,7 @@ function dateConverter(date) {
 }
 
 //converts time
+
 function timeConverter(time) {
     let eventTime = time;
     eventTime = eventTime.split(':');
@@ -554,7 +560,6 @@ function timeConverter(time) {
     let eventTimeJoin = eventHour + ':' + eventMinute + ' ' + eventSetAmPm;
     return eventTimeJoin;
 }
-
 //trimming of title and description
 function titleDescTrimmer(title, description, maxStringTitle, maxStringDesc) {
     let trimStringTitle = title;
@@ -636,7 +641,7 @@ function pivilegeButtons(fName, status) {
             console.log('No link found')
 
     }
-    let patchRequestBlog = patchViewRequestByID(`${reqLink}/content_update`, id, { status: `${status}` });
+    let patchRequestContent = patchRequest.content(`${reqLink}/content_update`, id, { status: `${status}` });
     if (typeof (status) == typeof (1)) {
         status = status.toString();
     }
@@ -654,8 +659,10 @@ function pivilegeButtons(fName, status) {
             console.log('No link found');
 
     }
-    if (patchRequestBlog.error == false) {
+    if (patchRequestContent.error == false) {
         window.location.replace(`/${reqLink}${status}`);
+    } else {
+        console.log(`can't able to perform patch request for this request`)
     }
 }
 
@@ -764,7 +771,8 @@ function changeTheme() {
     allIcon = document.querySelectorAll('.icon_img');
     allInputs = document.querySelectorAll('.dark_box');
     loader = document.querySelectorAll('.loader_dark');
-    document.querySelector('.sidenav').style.backgroundColor = "#252836"
+    document.querySelector('.sidenav').style.backgroundColor = "#252836";
+    // document.querySelectorAll('.buttonInvert img').style.filter = "invert(100%)"
     if (localStorage.getItem('mode') === 'dark') {
         let layoutBgDark;
         layoutBgDark = document.querySelector('body');
@@ -807,6 +815,7 @@ function changeTheme() {
         layoutBgLight.classList.remove('dark');
         layoutBgLight.classList.add('light');
         document.querySelector('.sidenav').style.backgroundColor = "#fff"
+        document.querySelector('.navbarLinksMobile').style.backgroundColor = '#fff';
         // document.getElementById('navbarLinks').classList.remove('navbarDarkMobile');
         for (let i = 0; i < loader.length; i++) {
             loader[i].classList.remove('loader_darkMode')
@@ -860,4 +869,9 @@ function openNav() {
 //overlay sidebar close
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
+}
+
+//go back button
+function goBack() {
+    window.history.back();
 }

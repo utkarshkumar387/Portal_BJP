@@ -105,27 +105,26 @@ function officialDetails() {
                                         </select>
                                         </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="parliamentConstituencies" class="col-sm-4 col-form-label">Lok Sabha Constituency
-                                        <span>*</span></label>
-                                        <div class="col-md-8">
-                                        <select name="parliamentConstituencies" class="form-select form-control" id="parliamentConstituencies">
-                                        <option selected disabled>-Select Up Block Parliament Constituency-</option>
-                                        </select>
-                                        </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="legislativeAssemblyConstituencies" class="col-sm-4 col-form-label">Legislative Assembly Constituency
-                                        <span>*</span></label>
-                                        <div class="col-md-8">
-                                        <select name="legislativeAssemblyConstituencies" class="form-select form-control" id="legislativeAssemblyConstituencies">
-                                        <option selected disabled>-Select Legislative Assembly Constituency-</option>
-                                        </select>
-                                        </div>
-                                </div>
             `)
     }
-
+    // <div class="form-group row">
+    //     <label for="parliamentConstituencies" class="col-sm-4 col-form-label">Lok Sabha Constituency
+    //         <span>*</span></label>
+    //         <div class="col-md-8">
+    //         <select name="parliamentConstituencies" class="form-select form-control" id="parliamentConstituencies">
+    //         <option selected disabled>-Select Up Block Parliament Constituency-</option>
+    //         </select>
+    //         </div>
+    // </div>
+    // <div class="form-group row">
+    //     <label for="legislativeAssemblyConstituencies" class="col-sm-4 col-form-label">Legislative Assembly Constituency
+    //         <span>*</span></label>
+    //         <div class="col-md-8">
+    //         <select name="legislativeAssemblyConstituencies" class="form-select form-control" id="legislativeAssemblyConstituencies">
+    //         <option selected disabled>-Select Legislative Assembly Constituency-</option>
+    //         </select>
+    //         </div>
+    // </div>
     // <div class="form-group row">
     //  <label for="upBlockEducationConstituencies" class="col-sm-4 col-form-label">Up Block Education Constituency
     //      <span>*</span>
@@ -228,14 +227,10 @@ function officialDetails() {
     document.getElementById('getAllStates').addEventListener('change', function () {
         let state;
         state = document.getElementById("getAllStates").value;
-        // console.log(state);
         let districts = getRequest.member('get_districts', state);
-        // console.log(districts);
         if (districts.error == false) {
             let allDistricts = districts.message.districts;
-            // console.log(allDistricts);
             for (let i = 0; i < allDistricts.length; i++) {
-                // console.log(allDistricts[i].id, allDistricts[i].name);
                 $('#getAllDistricts').append(
                     `
                     <option value="${allDistricts[i].id}">${allDistricts[i].name}</option>
@@ -249,22 +244,17 @@ function officialDetails() {
 
 // post request to api
 let memberDetailsGet = getRequest.member('member_profile', link[4]);
-// console.log('Member details by id ', memberDetailsGet);
 if (memberDetailsGet.error == false) {
     let memberData = memberDetailsGet.message.member_details;
-    // console.log('gender of member ', memberData.gender);
     if (memberData.gender == 1) {
-        // console.log('inside gender male')
         document.getElementById('genderMale').checked = true;
         // $('#genderMale').prop("checked");
     } else if (memberData.gender == 2) {
-        // console.log('inside gender female')
         document.getElementById('genderFemale').checked = true;
     } else {
         document.getElementById('genderMale').checked = true;
     }
 
-    // console.log('member data is', memberData);
     $('#memberName').html(memberData.first_name + ' ' + memberData.last_name);
     (memberData.committee_id) ? $('#memberCommitteeName').html(memberData.committee_id.name) : $('#memberCommitteeName').html('Not in committee');
     $('#memberFirstName').val(memberData.first_name);

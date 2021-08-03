@@ -14,55 +14,77 @@ if (allVerificationMember.error == false) {
         $('#manageVerificationTeamBlock').append(
             `
         <div class="card tab_dark cardStyle memberCard" id="memberCard" style="margin-top: 35px">
-        <div class="allTags" style="position: absolute; margin-top: -25px">
+            <div class="allTags" style="position: absolute; margin-top: -25px">
                 <div class="d-flex">
                     <h6 class="px-1 py-1" id="blogsAdminBadge${allMembers.message[i].id}" style="display:none;"><span class="badge badge_design">Blogs</span></h6>
                     <h6 class="px-1 py-1" id="eventsAdminBadge${allMembers.message[i].id}" style="display:none;"><span class="badge badge_design">Events</span></h6>
                     <h6 class="px-1 py-1" id="complaintsAdminBadge${allMembers.message[i].id}" style="display:none;"><span class="badge badge_design">Complaints</span></h6>
                 </div>
             </div>
-        <div class="complaints__header member__inner d-flex justify-content-between">
-            <div class="d-flex">
-                <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
-                    class="rounded-circle" alt="...">
-                <div class="complaints__sender">
-                    <b>${memberName}</b>
-                    <p class="small">${allVerificationMember.message[i].user.district}, <span>${allVerificationMember.message[i].user.state}</span>
-                    </p>
+            <div class="complaints__header member__inner d-flex justify-content-between">
+                <div class="d-flex">
+                    <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
+                        class="rounded-circle" alt="...">
+                    <div class="d-flex w-100 justify-content-between">
+                    <div class="complaints__sender">
+                        <b>${memberName}</b>
+                        <p class="small">${allVerificationMember.message[i].user.district}, <span>${allVerificationMember.message[i].user.state}</span></p>
+                    </div>
+                    <div class="privilegeFunctionButtonsMobile">
+                        <div class="member__permission btn-group dropright">
+                            <img class="member__more dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="img/icons/More.png" alt="">
+                            <div class="dropdown-menu" id="memberPermissionMenu${allVerificationMember.message[i].id}">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="blogsPermission${allVerificationMember.message[i].id}">
+                                    <label class="form-check-label px-2" for="blogsPermission${allVerificationMember.message[i].id}">Blogs</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="eventsPermission${allVerificationMember.message[i].id}">
+                                    <label class="form-check-label px-2" for="eventsPermission${allVerificationMember.message[i].id}">Events</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="complaintsPermission${allVerificationMember.message[i].id}">
+                                    <label class="form-check-label px-2" for="complaintsPermission${allVerificationMember.message[i].id}">Complaints</label>
+                                </div>
+                                <div class="d-flex">
+                                    <button style="width: 100%;" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="deleteMemberContentPrivilege(${allVerificationMember.message[i].id})" class='btn btn-danger mt-3'>Delete</button>
+                                    <button style="width: 100%;" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="getButton(this.parentNode.parentNode.id, ${allVerificationMember.message[i].id})" class='btn btn-primary mt-3 ml-2'>Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
                 </div>
-            </div>
-            <div class="d-flex">
-                <div class="member__committeeName px-5">
-                    <p>${committeeName}</p>
-                </div>
-                <div class="member__permission btn-group dropright">
-                    <img class="member__more dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" src="img/icons/More.png" alt="">
-                        <div class="dropdown-menu" id="memberPermissionMenu${allVerificationMember.message[i].id}">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="blogsPermission${allVerificationMember.message[i].id}">
-                            <label class="form-check-label px-2"
-                                for="blogsPermission${allVerificationMember.message[i].id}">Blogs</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="eventsPermission${allVerificationMember.message[i].id}">
-                            <label class="form-check-label px-2"
-                                for="eventsPermission${allVerificationMember.message[i].id}">Events</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="complaintsPermission${allVerificationMember.message[i].id}">
-                            <label class="form-check-label px-2"
-                                for="complaintsPermission${allVerificationMember.message[i].id}">Complaints</label>
-                        </div>
-                        <div class="d-flex">
-                            <button style="width: 100%;" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="deleteMemberContentPrivilege(${allVerificationMember.message[i].id})" class='btn btn-danger mt-3'>Delete</button>
-                            <button style="width: 100%;" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="getButton(this.parentNode.parentNode.id, ${allVerificationMember.message[i].id})" class='btn btn-primary mt-3 ml-2'>Submit</button>
+                <div class="d-flex">
+                    <div class="member__committeeName px-5">
+                        <p>${committeeName}</p>
+                    </div>
+                    <div class="privilegeFunctionButtonsDesktop">
+                        <div class="member__permission btn-group dropright">
+                            <img class="member__more dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="img/icons/More.png" alt="">
+                            <div class="dropdown-menu" id="memberPermissionMenu${allVerificationMember.message[i].id}">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="blogsPermission${allVerificationMember.message[i].id}">
+                                    <label class="form-check-label px-2" for="blogsPermission${allVerificationMember.message[i].id}">Blogs</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="eventsPermission${allVerificationMember.message[i].id}">
+                                    <label class="form-check-label px-2" for="eventsPermission${allVerificationMember.message[i].id}">Events</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="complaintsPermission${allVerificationMember.message[i].id}">
+                                    <label class="form-check-label px-2" for="complaintsPermission${allVerificationMember.message[i].id}">Complaints</label>
+                                </div>
+                                <div class="d-flex">
+                                    <button style="width: 100%;" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="deleteMemberContentPrivilege(${allVerificationMember.message[i].id})" class='btn btn-danger mt-3'>Delete</button>
+                                    <button style="width: 100%;" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="getButton(this.parentNode.parentNode.id, ${allVerificationMember.message[i].id})" class='btn btn-primary mt-3 ml-2'>Submit</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
         `
         )
         let verificationPrivilege = allVerificationMember.message[i];
