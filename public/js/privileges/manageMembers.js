@@ -60,13 +60,22 @@ function removePrivilege(id) {
 
 //serach for manage member admin list
 let search = document.getElementById('committee__membersSearch');
-search.addEventListener('keyup', searchFunction);
-function searchFunction() {
-    let input1 = document.getElementById('committee__membersSearch').id;
-    let members1 = document.getElementById('manageMembersData').id;
-    let memberName1 = document.getElementById('memberCard').id;
-    // console.log(input1, members1, memberName1);
-    mySearchFunction(input1, members1, memberName1);
+search.addEventListener('keyup', searchFunctionMembers);
+function searchFunctionMembers() {
+    let input = document.getElementById('committee__membersSearch').id;
+    let members = document.getElementById('manageMembersData').id;
+    let memberName = document.getElementById('memberCard').id;
+    mySearchFunction(input, members, memberName);
+}
+
+//search for add members list  
+let adminsSearch = document.getElementById('privilege__membersAddSearch');
+adminsSearch.addEventListener('keyup', searchFunctionsMemberSearch);
+function searchFunctionsMemberSearch() {
+    let input = document.getElementById('privilege__membersAddSearch').id;
+    let members = document.getElementById('allMembersDataAdmins').id;
+    let memberName = document.getElementById('memberCardMembers').id;
+    mySearchFunction(input, members, memberName);
 }
 
 let members = [];
@@ -141,7 +150,7 @@ for (let i = 0; i < allMembers.message.length; i++) {
         }
         $(`#allMembersDataAdmins`).append(
             `
-        <div class="card tab_dark cardStyle mt-3 memberCard" id="memberCardAdmins">
+        <div class="card tab_dark cardStyle mt-3 memberCardMembers" id="memberCardMembers">
             <div class="complaints__header member__inner d-flex justify-content-between row">
                 <div class="d-flex">
                     <img src="https://akm-img-a-in.tosshub.com/aajtak/images/story/202001/mano_1579261142_749x421.jpeg?size=1200:675"
@@ -152,7 +161,7 @@ for (let i = 0; i < allMembers.message.length; i++) {
                     </div>
                 </div>
                 <div class="d-flex manageTabCommittee justify-content-between align-items-center">
-                    <div class="member__committeeName ml-1 px-5">
+                    <div class="member__committeeName px-5">
                         <p>${committeeName}</p>
                     </div>
                     <div class="form-check">
