@@ -172,9 +172,9 @@
                                         <span>*</span></label>
                                     <div class="col-sm-8">
                                         <div class="d-flex justify-content-end">
-                                            <button class="btn btn-outline-success mb-2 formButtonCopy"
-                                                id="addressCopy">Same as
-                                                permanent address</button>
+                                            <div onclick="copyAddress()"
+                                                class="btn btn-outline-success mb-2 formButtonCopy">Same as
+                                                permanent address</div>
                                         </div>
                                         <textarea rows="3" class="form-control dark_box" id="residentialAddress"
                                             placeholder="Enter Residential Address..."></textarea>
@@ -273,7 +273,7 @@
                             </div>
                         </div>
                         <div class="profile__save px-5 mb-4 mt-4">
-                            <button onclick="addMemberDetails()">Save All Changes</button>
+                            <div class="btn btn-primary" onclick="addMemberDetails()">Save All Changes</div>
                         </div>
                     </div>
                 </form>

@@ -70,15 +70,13 @@ function removePhoneNumber(id) {
 
 
 //copy residential address to permanent address
-let addressCopy = document.getElementById('addressCopy');
-addressCopy.addEventListener('click', copyAddress);
+// let addressCopy = document.getElementById('addressCopy');
+// addressCopy.addEventListener('click', copyAddress);
 function copyAddress() {
     let permanentAddress = document.getElementById('permanentAddress');
     // console.log(permanentAddress.value);
     let residentialAddress = document.getElementById('residentialAddress');
     residentialAddress.value = permanentAddress.value;
-
-
 }
 
 $('#nationalityIndian').on('change', officialDetails);
@@ -302,13 +300,13 @@ function addMemberDetails() {
         alerts.remove()
     }
     // $('#validationAlert').remove('.alert');
-    let allPhoneNumbers = [];
+    // let allPhoneNumbers = [];
     // console.log(allPhoneNumbers);
-    let allPhoneNumbersInput = document.getElementById('allPhoneNumber').getElementsByTagName('input');
-    for (let i = 0; i < allPhoneNumbersInput.length; i++) {
-        let no = allPhoneNumbersInput[i].value;
-        allPhoneNumbers.push(no);
-    }
+    // let allPhoneNumbersInput = document.getElementById('allPhoneNumber').getElementsByTagName('input');
+    // for (let i = 0; i < allPhoneNumbersInput.length; i++) {
+    //     let no = allPhoneNumbersInput[i].value;
+    //     allPhoneNumbers.push(no);
+    // }
 
     let genderInput;
     let maleRadio = document.getElementById('genderMale').checked;
@@ -320,9 +318,6 @@ function addMemberDetails() {
     } else {
         genderInput = 0;
     }
-
-    // console.log(document.getElementById('getAllStates').value);
-    let formData;
     let memberDetails = {
         avatar: null,
         first_name: $('#memberFirstName').val(),
@@ -330,23 +325,22 @@ function addMemberDetails() {
         father_name: $('#memberFatherName').val(),
         gender: genderInput,
         email: $('#memberEmail').val(),
-        // phone_no_list: allPhoneNumbers,
         dob: $('#memberDOB').val(),
         blood_group: $('#memberBloodGrouop').val(),
         anniversary: $('#memberAnniversary').val(),
         permanent_address_line1: $('#permanentAddress').val(),
         residence_address_line1: $('#residentialAddress').val(),
-        nationality: $("input[type='radio'][name='nationality']:checked").val(),
-        state_id: $('#getAllStates').val(),
-        district_id: $('#getAllDistricts').val(),
-        parliament_constituency_id: $('#parliamentConstituencies').val(),
-        legislative_assembly_constituency_id: $('#legislativeAssemblyConstituencies').val(),
-        up_block_education_constituency_id: $('#upBlockEducationConstituencies').val(),
-        township_constituency_id: $('#townshipConstituencies').val(),
-        panchayat_samiti_id: $('#panchayatSamitis').val(),
-        village_council_id: $('#villageCouncils').val(),
-        revenue_villege_id: $('#revenueVilleges').val(),
-        booth_id: $('#booths').val(),
+        nationality: true,
+        state_id: "Rajasthan",
+        district_id: "Balotra",
+        parliament_constituency_id: "parliament",
+        legislative_assembly_constituency_id: "legislative",
+        up_block_education_constituency_id: "up block",
+        township_constituency_id: "township",
+        panchayat_samiti_id: "panchayat",
+        village_council_id: "village",
+        revenue_villege_id: "revenue",
+        booth_id: "booth",
         voter_id_card: $('#voterIdCard').val(),
         pan_card: $('#panCard').val(),
         aadhar_card: $('#adharCard').val(),
@@ -354,63 +348,56 @@ function addMemberDetails() {
         twitter_link: $('#twitterLink').val(),
         instagram_link: $('#instagramLink').val(),
     }
-    // console.log('patch request details in profile edit is ', memberDetails);
     let id = link[4];
-    // if (formValidation() == true) {
-    //     let memberDetailsData = patchRequest.member('edit_member_profile', id, memberDetails);
-    //     if (memberDetailsData.error == false) {
-    //         setCookie('member_profile', JSON.stringify(memberProfile.message.member_details), 10);
-    //         console.log('patch request done');
-    //         window.location.replace(`/profile/${id}`);
-    //     } else {
-    //         console.log(memberDetails.message);
-    //     }
-    // } else {
-    //     console.log('Enter correct details');
-    // }
-
-}
-
-function districtDependentOptions() {
-    let district;
-    district = document.getElementById('getAllDistricts').value;
-    // console.log(district);
-    let districtDependent = getRequest.member('get_district_dependent', district);
-    // console.log('districtDependent');
-    if (districtDependent.error == false) {
-        // let allSelectTag = [];
-        let allofficialDetails = document.getElementById('officialDetails').getElementsByTagName('select');
-        // console.log(allofficialDetails);
-        for (let i = 0; i < allofficialDetails.length; i++) {
-            let id;
-            id = allofficialDetails[i].getAttribute('id');
-            // appendAllOptions(id);
+    if (formValidation() == true) {
+        console.log(`validation verified`);
+        let memberDetailsData = patchRequest.member('edit_member_profile', id, memberDetails);
+        if (memberDetailsData.error == false) {
+            setCookie('member_profile', JSON.stringify(memberProfile.message.member_details), 10);
+            console.log('patch request done');
+            // window.location.replace(`/profile/${id}`);
+        } else {
+            console.log(memberDetails);
+            console.log(memberDetails.message);
         }
-        var temp = districtDependent.message;
-        for (var temp1 in temp) {
-            var words = temp1.split('_');
-            for (var word in words) {
-                if (word == 0) continue;
-                words[word] = words[word].charAt(0).toUpperCase() + words[word].slice(1);
-            }
-            words = (words).join('');
-            for (var i = 0; i < temp[temp1].length; i++) {
-                // console.log(temp[temp1][i].id);
-                // console.log(temp[temp1][i].name);
-                $('#' + words).append(
-                    `
-                            <option value="${temp[temp1][i].id}">${temp[temp1][i].name}</option>
-                        `
-                )
-            }
-
-        }
+    } else {
+        console.log('Enter correct details');
     }
+
 }
+
+// function districtDependentOptions() {
+//     let district;
+//     district = document.getElementById('getAllDistricts').value;
+//     let districtDependent = getRequest.member('get_district_dependent', district);
+//     if (districtDependent.error == false) {
+//         let allofficialDetails = document.getElementById('officialDetails').getElementsByTagName('select');
+//         for (let i = 0; i < allofficialDetails.length; i++) {
+//             let id;
+//             id = allofficialDetails[i].getAttribute('id');
+//         }
+//         var temp = districtDependent.message;
+//         for (var temp1 in temp) {
+//             var words = temp1.split('_');
+//             for (var word in words) {
+//                 if (word == 0) continue;
+//                 words[word] = words[word].charAt(0).toUpperCase() + words[word].slice(1);
+//             }
+//             words = (words).join('');
+//             for (var i = 0; i < temp[temp1].length; i++) {
+//                 $('#' + words).append(
+//                     `
+//                             <option value="${temp[temp1][i].id}">${temp[temp1][i].name}</option>
+//                         `
+//                 )
+//             }
+
+//         }
+//     }
+// }
 function imageURL(input) {
     formData = new FormData();
     formData.append('file', input.files[0]);
-    // console.log('input is ', input.files[0])
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
