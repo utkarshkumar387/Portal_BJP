@@ -319,7 +319,6 @@ function addMemberDetails() {
         genderInput = 0;
     }
     let memberDetails = {
-        avatar: null,
         first_name: $('#memberFirstName').val(),
         last_name: $('#memberLastName').val(),
         father_name: $('#memberFatherName').val(),
@@ -327,20 +326,9 @@ function addMemberDetails() {
         email: $('#memberEmail').val(),
         dob: $('#memberDOB').val(),
         blood_group: $('#memberBloodGrouop').val(),
-        anniversary: $('#memberAnniversary').val(),
+        // anniversary: $('#memberAnniversary').val(),
         permanent_address_line1: $('#permanentAddress').val(),
         residence_address_line1: $('#residentialAddress').val(),
-        nationality: true,
-        state_id: "Rajasthan",
-        district_id: "Balotra",
-        parliament_constituency_id: "parliament",
-        legislative_assembly_constituency_id: "legislative",
-        up_block_education_constituency_id: "up block",
-        township_constituency_id: "township",
-        panchayat_samiti_id: "panchayat",
-        village_council_id: "village",
-        revenue_villege_id: "revenue",
-        booth_id: "booth",
         voter_id_card: $('#voterIdCard').val(),
         pan_card: $('#panCard').val(),
         aadhar_card: $('#adharCard').val(),
@@ -348,6 +336,9 @@ function addMemberDetails() {
         twitter_link: $('#twitterLink').val(),
         instagram_link: $('#instagramLink').val(),
     }
+    // memberDetails = {
+    //     father_name: $('#memberFatherName').val(),
+    // }
     let id = link[4];
     if (formValidation() == true) {
         console.log(`validation verified`);

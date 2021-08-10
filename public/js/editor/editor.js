@@ -1031,3 +1031,22 @@ let getAllTemplates = getRequest.editor('custom_design');
 const displayTemplates = new displayAlltemplates(getAllTemplates, memberDetails);
 const displaySelectedTemplate = new displaySelectedTemplates(memberDetails);
 
+let backgrounds = ['back1', 'back2', 'back3', 'back4'];
+
+for (var i = 0; i < backgrounds.length; i++) {
+    $('#backgroundImages').append(
+        `
+        <div class="col-md-6 py-3 d-flex justify-content-center">
+            <div onclick="addImages('/img/${backgrounds[i]}.jpg')" class="background__box">
+                <img class="backgroundBoxImage" src="/img/${backgrounds[i]}.jpg" alt="">
+            </div>
+        </div>
+        `
+    )
+}
+
+function addImages(image) {
+    document.getElementById('layoutInner').style.background = `url('${image}') no-repeat center center`;
+    document.getElementById('layoutInner').style.backgroundSize = 'cover'
+
+}
