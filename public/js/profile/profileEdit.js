@@ -345,8 +345,7 @@ function addMemberDetails() {
         let memberDetailsData = patchRequest.member('edit_member_profile', id, memberDetails);
         if (memberDetailsData.error == false) {
             setCookie('member_profile', JSON.stringify(memberProfile.message.member_details), 10);
-            console.log('patch request done');
-            // window.location.replace(`/profile/${id}`);
+            window.location.replace(`/profile/${id}`);
         } else {
             console.log(memberDetails);
             console.log(memberDetails.message);
