@@ -78,17 +78,17 @@ function addEvent() {
             event_data_images: JSON.stringify(convertedImage)
         })
     }
-    // console.log(data);
-    // if (checkEventValidations() == true) {
-    //     let eventDetails = addContent('events', data);
-    //     if (eventDetails.error == false) {
-    //         console.log('event added')
-    //         window.location.replace('/eventsApproved');
-    //     } else {
-    //         console.log(eventDetails.error);
-    //         console.log(eventDetails.message);
-    //     }
-    // }
+    console.log(data);
+    if (checkEventValidations() == true) {
+        let eventDetails = postRequest.content('events', data);
+        if (eventDetails.error == false) {
+            console.log('event added')
+            window.location.replace('/eventsApproved');
+        } else {
+            console.log(eventDetails.error);
+            console.log(eventDetails.message);
+        }
+    }
 }
 function editEvent() {
     let alerts = document.getElementById('blogValidations').querySelector('.alert');
@@ -136,7 +136,7 @@ function convertSingleBase64(input) {
 }
 function checkEventValidations() {
     let eventCheckTitle = $('#eventTitle');
-    let evnetCheckChiefGuest = $('#eventChiefGuest');
+    let eventCheckChiefGuest = $('#eventChiefGuest');
     let eventCheckVenue = $('#eventVenue');
     if (eventCheckTitle.val() == "") {
         $('#eventValidations').append(`

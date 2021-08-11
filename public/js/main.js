@@ -24,6 +24,7 @@ function ajaxRequest(type, url, data, status) {
         crossDomain: true,
         dataType: "json",
         success: function (data, textStatus, jqXHR) {
+            console.log('jqXHR status is', jqXHR.status);
             if (jqXHR.status == status) {
                 error = false;
                 message = data;
@@ -92,7 +93,7 @@ class getRequests {
 class postRequests {
     constructor() {
         this.type = 'post';
-        this.status = 201;
+        this.status = 200;
     }
     content(sub_url, data) {
         let contentUrl = main_url + 'content/' + sub_url + '/';
@@ -771,7 +772,7 @@ function changeTheme() {
     allIcon = document.querySelectorAll('.icon_img');
     allInputs = document.querySelectorAll('.dark_box');
     loader = document.querySelectorAll('.loader_dark');
-    document.querySelector('.sidenav').style.backgroundColor = "#252836";
+    (document.querySelector('.sidenav')) ? document.querySelector('.sidenav').style.backgroundColor = "#252836" : console.log('no side nav');
     // document.querySelectorAll('.buttonInvert img').style.filter = "invert(100%)"
     if (localStorage.getItem('mode') === 'dark') {
         let layoutBgDark;

@@ -99,8 +99,8 @@ function addComplaint() {
     let complaintDetails = postRequest.content('complaints', data);
     console.log(complaintDetails);
     if (complaintDetails.error == false) {
-        console.log('complaints added')
-        // window.location.replace('/complaintsApproved');
+        // console.log('complaints added')
+        window.location.replace('/complaintsApproved');
     } else {
         console.log(complaintDetails.error);
         console.log(complaintDetails.message);

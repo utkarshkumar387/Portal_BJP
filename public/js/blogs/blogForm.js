@@ -90,6 +90,7 @@ function addBlog() {
     // console.log(blogDetails);
     if (checkValidations() == true) {
         let blogDetails = postRequest.content('blogs', data);
+        console.log(blogDetails);
         if (blogDetails.error == false) {
             window.location.replace('/blogsApproved');
         } else {
